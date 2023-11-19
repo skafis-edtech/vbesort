@@ -24,5 +24,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Initial version with Wordpress
 - HTTPS enabled
 
-[unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.0.0...HEAD
-[1.0.0]: https://github.com/olivierlacan/keep-a-changelog/releases/tag/v1.0.0
+[unreleased]: https://github.com/naglissul/vbe-sort/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/naglissul/vbe-sort/releases/tag/v1.0.0
