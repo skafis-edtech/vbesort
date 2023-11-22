@@ -1,0 +1,70 @@
+[
+  {
+    "topic": "funkciju-grafiku-eskizai",
+    "name": "Funkcijų grafikų eskizai"
+  },
+  {
+    "topic": "funkcijos-bendrai",
+    "name": "Funkcijos bendrai"
+  },
+  {
+    "topic": "isvestines",
+    "name": "Išvestinės"
+  },
+  {
+    "topic": "integralai",
+    "name": "Integralai"
+  },
+  {
+    "topic": "kombinatorika",
+    "name": "Kombinatorika"
+  },
+  {
+    "topic": "tikimybes",
+    "name": "Tikimybės"
+  },
+  {
+    "topic": "statistika",
+    "name": "Statistika"
+  },
+  {
+    "topic": "trigonometrijos-reiskiniai",
+    "name": "Trigonometrijos reiškiniai"
+  },
+  {
+    "topic": "trigonometrija-bendrai",
+    "name": "Trigonometrija bendrai"
+  },
+  {
+    "topic": "planimetrija",
+    "name": "Planimetrija"
+  },
+  {
+    "topic": "stereometrija",
+    "name": "Stereometrija"
+  },
+  {
+    "topic": "vektoriai",
+    "name": "Vektoriai"
+  },
+  {
+    "topic": "lygtys",
+    "name": "Lygtys"
+  },
+  {
+    "topic": "sekos",
+    "name": "Sekos"
+  },
+  {
+    "topic": "procentai",
+    "name": "Procentai"
+  },
+  {
+    "topic": "aibes",
+    "name": "Aibės"
+  },
+  {
+    "topic": "misc",
+    "name": "Misc"
+  }
+]

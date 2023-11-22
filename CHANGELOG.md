@@ -10,12 +10,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - CHANGELOG.md file
+- 2017 year math problems
 
 ### Changed
+
+- From Wordpress to React
 
 ### Fixed
 
 ### Removed
+
+- Previously sorted 2021-2023 year math problems
 
 ## [1.0.0] - 2023-11-19
 
