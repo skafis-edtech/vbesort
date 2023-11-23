@@ -10,7 +10,10 @@ export default function TopicSection({
 }) {
   return (
     <Accordion.Item eventKey={topic.topic}>
-      <Accordion.Header>{topic.name} </Accordion.Header>
+      <Accordion.Header>
+        {topic.name} (
+        {nrTopicLut.filter((problem) => problem.topic === topic.topic).length})
+      </Accordion.Header>
       <Accordion.Body>
         {nrTopicLut
           .filter((problem) => problem.topic === topic.topic)

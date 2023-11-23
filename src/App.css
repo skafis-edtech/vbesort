@@ -16,7 +16,7 @@ aside {
 }
 
 header {
-  padding: 5em 5em 1em 5em;
+  padding: 5em 5em 5em 5em;
 }
 
 table {
@@ -45,7 +45,7 @@ table {
     display: none;
   }
   header {
-    padding: 3em 0 1em 0;
+    padding: 3em 0 2em 0;
   }
   .dark-button-container {
     height: 60px;
@@ -63,7 +63,7 @@ table {
 
 .title {
   text-align: center;
-  font-size: 40px;
+  font-size: 70px;
 }
 
 footer {
