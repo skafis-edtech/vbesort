@@ -24,10 +24,28 @@ Use, share, rate, suggest, contribute, support.
 
 # Contribute
 
-- Screenshot things
-- Sort things
-- Give ideas
-- Write code
+- Screenshot things: From math exams, name screenshots like this:
+
+\<year>\<g | k>\<section>\<w | r | s>\<number>\<[A | B]>.png
+
+vertical dash means the choice. Square bracket means optional.
+
+g - "pagrindine" session
+k - "pakartotine" session
+w - the whole problem is in that problem number
+r - only the root part of a complex problem is in that problem number
+s - only a sub-problem is in that number (e.g. 21.3.)
+
+Nor A or B should be labelled on root problem screenshots.
+Examples in ./public/2017/ folder.
+
+Then add those filenames to [nr-topic-lut.json](.\src\mainPage\nr-topic-lut.json) file. As a topic you can write everywhere just "misc".
+
+After doing so you can write to me, or jus fork repo, commit changes and create a PR.
+
+- Sort things: Assign topics, rewriting "misc" word in [nr-topic-lut.json](.\src\mainPage\nr-topic-lut.json)
+- Give ideas: just write to me.
+- Write code: fork this repo and make your own improvements, then create a PR.
 
 ## Topics:
 
