@@ -1,3 +1,4 @@
+import React from "react";
 import { Card } from "react-bootstrap";
 
 const ShareLink = () => {
@@ -47,21 +48,19 @@ export default function InfoComponent() {
               Piniginis parėmimas, kad galėčiau tęsti darbą, tobulinant puslapį:
             </strong>
           </Card.Title>
-          <Card.Text>
-            <ul
-              style={{
-                paddingTop: "10px",
-                paddingRight: "0px",
-              }}
-            >
-              <li>
-                PayPal donation – gan daug mokesčių PayPal pasiima:{" "}
-                <a href="https://www.paypal.com/donate/?hosted_button_id=86R4K9Y6BLSXA">
-                  donation linkas
-                </a>
-              </li>
-              <li>Revolut pavedimu: Naglis Šuliokas LT943250092929077836</li>
-            </ul>
+          <Card.Text
+            style={{
+              paddingTop: "10px",
+              paddingLeft: "30px",
+            }}
+          >
+            <li>
+              PayPal donation – gan daug mokesčių PayPal pasiima:{" "}
+              <a href="https://www.paypal.com/donate/?hosted_button_id=86R4K9Y6BLSXA">
+                donation linkas
+              </a>
+            </li>
+            <li>Revolut pavedimu: Naglis Šuliokas LT943250092929077836</li>
           </Card.Text>
         </Card.Body>
       </Card>
@@ -75,10 +74,7 @@ export default function InfoComponent() {
       <p>
         Tinklapio kodas <a href="https://github.com/naglissul/vbe-sort">čia</a>
       </p>
-      <p>
-        Mano blog'as ir daugiau cool stuff čia:{" "}
-        <a href="https://www.npw.lt">npw.lt</a>
-      </p>
+
       <p>
         Užduočių šaltinis:{" "}
         <a href="https://www.nsa.smm.lt/egzaminai-ir-pasiekimu-patikrinimai/brandos-egzaminai/egzaminu-uzduotys/">
@@ -87,7 +83,8 @@ export default function InfoComponent() {
       </p>
       <p>
         Užduotys nesikartoja keliose kategorijose. Esant kelioms temoms viename
-        uždavinyje, priskiriama tik viena kategorija. Plačiau - apačioje.
+        uždavinyje, priskiriama tik viena kategorija. Prioritetiniai kriterijai
+        bus patikslinti vėliau.
       </p>
     </div>
   );

@@ -15,7 +15,7 @@ function App() {
         <aside></aside>
       </main>
       <footer>
-        <p>Uždavinių kategorijų prioritetinė eilė (dar ne pilna):</p>
+        {/* <p>Uždavinių kategorijų prioritetinė eilė (draft):</p>
         <p>
           Vektoriai - Stereometrija - Planimetrija - ... - Integralai -
           Išvestinės - Funkcijų grafikų eskizai - Funkcijos bendrai - ... - Misc
@@ -23,6 +23,10 @@ function App() {
         <p>
           Taip pat, jei abejoju ar jei dar nesu priskyręs kategorijos, viskas
           eina į Misc.
+        </p> */}
+        <p>
+          Mano blog'as ir daugiau cool stuff čia:{" "}
+          <a href="https://www.npw.lt">npw.lt</a>
         </p>
       </footer>
     </div>

@@ -22,28 +22,28 @@ Use, share, rate, suggest, contribute, support.
 
 # Contribute
 
-- Screenshot things: From math exams, name screenshots like this:
+- Screenshot things: From math exams (or history, or whatever), name screenshots like this:
 
 \<year>\<g | k>\<section>\<w | r | s>\<number>\<[A | B]>.png
 
-vertical dash means the choice. Square bracket means optional.
+Vertical dash means the choice. Square bracket means optional.
 
-g - "pagrindine" session
-k - "pakartotine" session
-w - the whole problem is in that problem number
-r - only the root part of a complex problem is in that problem number
-s - only a sub-problem is in that number (e.g. 21.3.)
+g - "pagrindine" session\\
+k - "pakartotine" session\\
+w - the whole problem is in that problem number (e.g. 15, when there's no 15.1)\\
+r - only the root part of a complex problem is in the provided problem number (e.g. 21, when there exists 21.1)\\
+s - only a sub-problem is in that number (e.g. 21.3)\\
 
-Nor A or B should be labelled on root problem screenshots.
+Not A nor B (difficulty level) should be labelled on root parts of problems.\\
 Examples in ./public/2017/ folder.
 
 Then add those filenames to [nr-topic-lut.json](.\src\mainPage\nr-topic-lut.json) file. As a topic you can write everywhere just "misc".
 
-After doing so you can write to me, or jus fork repo, commit changes and create a PR.
+After doing so you can write that to me, or just fork the repo, commit changes and create a PR.
 
 - Sort things: Assign topics, rewriting "misc" word in [nr-topic-lut.json](.\src\mainPage\nr-topic-lut.json)
-- Give ideas: just write to me.
-- Write code: fork this repo and make your own improvements, then create a PR.
+- Give ideas: Just write to me.
+- Write code: Fork this repo and make your own improvements, then create a PR.
 
 ## Topics:
 
