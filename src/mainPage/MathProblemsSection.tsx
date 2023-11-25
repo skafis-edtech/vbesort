@@ -5,33 +5,49 @@ import { useState } from "react";
 
 export default function MathProblemsSection() {
   const [yearList, setYearList] = useState<number[]>([2017]);
+
+  const toggleYearInList = (yearToToggle: number) => {
+    if (yearList.includes(yearToToggle)) {
+      setYearList(yearList.filter((year) => year !== yearToToggle));
+    } else {
+      setYearList([...yearList, yearToToggle]);
+    }
+  };
+
   return (
     <div>
       <div style={{ marginTop: "50px", marginBottom: "20px" }}>
         <hr />
         <p>
-          Siūlau žiūrint užduotis pasilikti bent vienų metų užduotis nematytas,
-          kad ruošiantis būtų galima išspręsti bent vienų metų egzaminą pilnai,
-          sekant laiką ir pasitikrinant pasiruošimą
+          Siūlau žiūrint užduotis pasilikti bent dviejų egzaminų užduotis
+          nematytas, kad ruošiantis būtų galima išspręsti bent vieną egzaminą
+          pilnai, sekant laiką ir pasitikrinant pasiruošimą (pagrindinės
+          sesijos), bei vieną mokykloje išspręsti kaip bandomąjį (greičiausiai
+          2023 m. pakartotinės sesijos)
         </p>
         <div style={{ marginTop: "20px" }}>
           <Form>
             <Form.Check
               inline
-              label="2017"
+              label="2017 pag."
               checked={yearList.includes(2017)}
-              onChange={() => {
-                if (yearList.includes(2017)) {
-                  setYearList(yearList.filter((year) => year !== 2017));
-                } else {
-                  setYearList([...yearList, 2017]);
-                }
-              }}
-              defaultChecked
+              onChange={() => toggleYearInList(2017)}
             />
-            <Form.Check inline disabled label="2021" defaultChecked />
-            <Form.Check inline disabled label="2022" defaultChecked />
-            <Form.Check inline disabled label="2023" defaultChecked={false} />
+            <Form.Check inline disabled label="2021 pag." defaultChecked />
+            <Form.Check inline disabled label="2022 pag." defaultChecked />
+            <Form.Check inline disabled label="2022 pak." defaultChecked />
+            <Form.Check
+              inline
+              disabled
+              label="2023 pag."
+              defaultChecked={false}
+            />
+            <Form.Check
+              inline
+              disabled
+              label="2023 pak."
+              defaultChecked={false}
+            />
           </Form>
         </div>
         <hr />
