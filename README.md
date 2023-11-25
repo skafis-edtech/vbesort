@@ -28,13 +28,13 @@ Coming soon...
 
 Vertical dash means the choice. Square bracket means optional.
 
-g - "pagrindine" session\\
-k - "pakartotine" session\\
-w - the whole problem is in that problem number (e.g. 15, when there's no 15.1)\\
-r - only the root part of a complex problem is in the provided problem number (e.g. 21, when there exists 21.1)\\
-s - only a sub-problem is in that number (e.g. 21.3)\\
+g - "pagrindine" session  
+k - "pakartotine" session  
+w - the whole problem is in that problem number (e.g. 15, when there's no 15.1)  
+r - only the root part of a complex problem is in the provided problem number (e.g. 21, when there exists 21.1)  
+s - only a sub-problem is in that number (e.g. 21.3)
 
-Not A nor B (difficulty level) should be labelled on root parts of problems.\\
+Not A nor B (difficulty level) should be labelled on root parts of problems.  
 Examples in ./public/2017/ folder.
 
 Then add those filenames to [nr-topic-lut.json](.\src\mainPage\nr-topic-lut.json) file. As a topic you can write everywhere just "misc".

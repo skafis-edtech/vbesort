@@ -3,8 +3,8 @@ import { Card } from "react-bootstrap";
 
 const ShareLink = () => {
   const shareInfo = {
-    title: "VBE-sort",
-    text: "Surūšiuotos VBE užduotys",
+    title: "Surūšiuotos VBE užduotys",
+    text: "Surūšiuotos matematikos VBE užduotys",
     url: "https://vbesort.lt",
   };
 
