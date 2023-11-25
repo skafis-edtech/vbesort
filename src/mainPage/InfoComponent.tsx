@@ -82,6 +82,12 @@ export default function InfoComponent() {
         </a>
       </p>
       <p>
+        Čia rasit atsakymus (pasiieškokit pagal metus ir užduoties numerį):{" "}
+        <a href="https://www.nsa.smm.lt/egzaminai-ir-pasiekimu-patikrinimai/brandos-egzaminai/vertinimas/">
+          nsa.smm.lt
+        </a>
+      </p>
+      <p>
         Užduotys nesikartoja keliose kategorijose. Esant kelioms temoms viename
         uždavinyje, priskiriama tik viena kategorija. Prioritetiniai kriterijai
         bus patikslinti vėliau.
