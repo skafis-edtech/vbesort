@@ -16,9 +16,9 @@ Use, share, rate, suggest, contribute, support.
 - Docker compose
 - AWS EC2
 
-# Tech
+# Docs for dev
 
-- Jest for testing.
+Coming soon...
 
 # Contribute
 
@@ -45,7 +45,7 @@ After doing so you can write that to me, or just fork the repo, commit changes a
 - Give ideas: Just write to me.
 - Write code: Fork this repo and make your own improvements, then create a PR.
 
-## Topics:
+## Topics
 
 - funkciju-grafiku-eskizai
 - funkcijos-bendrai
@@ -73,11 +73,10 @@ After doing so you can write that to me, or just fork the repo, commit changes a
 
 - misc
 
-## chatgpt prompts
+## Screenshot naming convention decoding
 
 ```
-Write ma a javascript function that would parse a string into 6 values: year, isSecondary, section, problemType, number, isBLevel. This is the type:
-export type MathProblemIdType = {
+type MathProblemIdType = {
   year: number;
   isSecondary: boolean;
   section: "I" | "II" | "III";
@@ -89,7 +88,6 @@ export type MathProblemIdType = {
 First 4 characters is year. If 5th character is g, isSecondary is false, If 5th character is k, isSecondary is true. 6th character is either 1, 2 or 3 - accordingly section will be "I", "II" or "III". 7th character can be "w", "r" or "s" - accordingly problemType will be "whole", "root" or "sub".  If problemType is "whole" or "root", 8th and 9th character is the number "number", if problemType is "sub", 8-11th characters is the "number". The next character if is ".", isBLevel is undefined, if it is A - isBLevel is false, if it is B - isBLevel is true.
 
 Example:
-
 "2017g1w01B.png"
 
 year=2017
