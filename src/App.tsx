@@ -1,3 +1,4 @@
+import { Tab, Tabs } from "react-bootstrap";
 import "./App.css";
 import MainPage from "./mainPage/MainPage";
 import PrivacyComponent from "./mainPage/PrivacyComponent";
@@ -11,7 +12,65 @@ function App() {
       </header>
       <main>
         <aside></aside>
-        <MainPage />
+        <section>
+          <Tabs defaultActiveKey="math-vbe">
+            <Tab
+              eventKey="math-vbe"
+              title="Matematikos VBE"
+              style={{ marginTop: "20px" }}
+            >
+              <MainPage />
+            </Tab>
+            <Tab
+              eventKey="hist-vbe"
+              title="Istorijos VBE"
+              style={{ marginTop: "20px" }}
+            >
+              <em>
+                Coming soon... Make it come sooner by{" "}
+                <a
+                  href="https://github.com/naglissul/vbe-sort#contribute"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  contributing
+                </a>
+              </em>
+            </Tab>
+            <Tab
+              eventKey="bio-vbe"
+              title="Biologijos VBE"
+              style={{ marginTop: "20px" }}
+            >
+              <em>
+                Coming soon... Make it come sooner by{" "}
+                <a
+                  href="https://github.com/naglissul/vbe-sort#contribute"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  contributing
+                </a>
+              </em>
+            </Tab>
+            <Tab
+              eventKey="math-pupp"
+              title="Matematikos PUPP"
+              style={{ marginTop: "20px" }}
+            >
+              <em>
+                Coming soon... Make it come sooner by{" "}
+                <a
+                  href="https://github.com/naglissul/vbe-sort#contribute"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  contributing
+                </a>
+              </em>
+            </Tab>
+          </Tabs>
+        </section>
         <aside></aside>
       </main>
       <footer>

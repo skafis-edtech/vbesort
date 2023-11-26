@@ -3,10 +3,10 @@ import MathProblemsSection from "./MathProblemsSection";
 
 function MainPage() {
   return (
-    <section>
+    <div>
       <InfoComponent />
       <MathProblemsSection />
-    </section>
+    </div>
   );
 }
 
