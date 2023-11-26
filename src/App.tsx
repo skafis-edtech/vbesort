@@ -77,7 +77,7 @@ function App() {
         {/* <p>Uždavinių kategorijų prioritetinė eilė (draft):</p>
         <p>
           Vektoriai - Stereometrija - Planimetrija - ... - Integralai -
-          Išvestinės - Funkcijų grafikų eskizai - Funkcijos bendrai - ... - Misc
+          Išvestinės - Lygtys - ... - Išvestinės - Funkcijų grafikų eskizai - Funkcijos bendrai - ... - Misc
         </p>
         <p>
           Taip pat, jei abejoju ar jei dar nesu priskyręs kategorijos, viskas
