@@ -10,7 +10,7 @@ export default function TopicSection({
   yearList,
 }: {
   topic: { topic: string; name: string };
-  yearList: number[];
+  yearList: string[];
 }) {
   return (
     <Accordion.Item eventKey={topic.topic}>
@@ -20,7 +20,11 @@ export default function TopicSection({
           nrTopicLut.filter(
             (problem) =>
               problem.topic === topic.topic &&
-              yearList.includes(parseMathProblemId(problem.filename).year)
+              yearList.includes(
+                `${parseMathProblemId(problem.filename).year}${
+                  parseMathProblemId(problem.filename).isSecondary ? "k" : "g"
+                }`
+              )
           ).length
         }
       />
@@ -31,8 +35,11 @@ export default function TopicSection({
               problem.filename
             );
             return (
-              yearList.includes(currProblemInfo.year) &&
-              problem.topic === topic.topic
+              yearList.includes(
+                `${currProblemInfo.year}${
+                  currProblemInfo.isSecondary ? "k" : "g"
+                }`
+              ) && problem.topic === topic.topic
             );
           })
           .map((problem) => {
