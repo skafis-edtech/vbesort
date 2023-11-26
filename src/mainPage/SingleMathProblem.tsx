@@ -1,7 +1,12 @@
+import { parseMathProblemId } from "../misc";
+
 export default function SingleMathProblem({ filename }: { filename: string }) {
   return (
-    <div>
-      <img alt={filename} src={`2017/${filename}`} />
+    <div style={{ marginTop: "20px" }}>
+      <img
+        alt={filename}
+        src={`${parseMathProblemId(filename).year}/${filename}`}
+      />
     </div>
   );
 }
