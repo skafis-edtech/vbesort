@@ -27,10 +27,7 @@
     "topic": "statistika",
     "name": "Statistika"
   },
-  {
-    "topic": "trigonometrijos-reiskiniai",
-    "name": "Trigonometrijos reiškiniai"
-  },
+
   {
     "topic": "trigonometrija-bendrai",
     "name": "Trigonometrija bendrai"
@@ -46,6 +43,10 @@
   {
     "topic": "vektoriai",
     "name": "Vektoriai"
+  },
+  {
+    "topic": "reiskiniai",
+    "name": "Reiškiniai"
   },
   {
     "topic": "lygtys",

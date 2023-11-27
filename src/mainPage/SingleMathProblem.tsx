@@ -5,7 +5,7 @@ export default function SingleMathProblem({ filename }: { filename: string }) {
     <div style={{ marginTop: "20px" }}>
       <img
         alt={filename}
-        src={`${parseMathProblemId(filename).year}/${filename}`}
+        src={`math-problems/${parseMathProblemId(filename).year}/${filename}`}
       />
     </div>
   );

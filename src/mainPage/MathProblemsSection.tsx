@@ -2,14 +2,12 @@ import { Accordion, Form } from "react-bootstrap";
 import TopicSection from "./TopicSection";
 import topics from "./topics-names-list.json";
 import { useState } from "react";
+import allYearList from "./year-list.json";
 
 export default function MathProblemsSection() {
-  const [yearList, setYearList] = useState<string[]>([
-    "2017g",
-    "2021g",
-    "2022g",
-    "2022k",
-  ]);
+  const [yearList, setYearList] = useState<string[]>(
+    allYearList.filter((year) => year !== "2023k" && year !== "2023g")
+  );
 
   const toggleYearInList = (yearToToggle: string) => {
     if (yearList.includes(yearToToggle)) {
@@ -32,47 +30,18 @@ export default function MathProblemsSection() {
         </p>
         <div style={{ marginTop: "20px" }}>
           <Form>
-            <Form.Check
-              inline
-              label="2017 pag."
-              checked={yearList.includes("2017g")}
-              onChange={() => toggleYearInList("2017g")}
-            />
-            <Form.Check
-              inline
-              label="2021 pag."
-              checked={yearList.includes("2021g")}
-              onChange={() => toggleYearInList("2021g")}
-            />
-            <Form.Check
-              inline
-              label="2022 pag."
-              checked={yearList.includes("2022g")}
-              onChange={() => toggleYearInList("2022g")}
-            />
-            <Form.Check
-              inline
-              label="2022 pak."
-              checked={yearList.includes("2022k")}
-              onChange={() => toggleYearInList("2022k")}
-            />
-            <Form.Check
-              inline
-              label="2023 pag."
-              checked={yearList.includes("2023g")}
-              onChange={() => toggleYearInList("2023g")}
-            />
-            <Form.Check
-              inline
-              label="2023 pak."
-              checked={yearList.includes("2023k")}
-              onChange={() => toggleYearInList("2023k")}
-            />
+            {allYearList.map((year) => (
+              <Form.Check
+                inline
+                label={`${year.slice(0, 4)} pa${year.slice(4, 5)}.`}
+                checked={yearList.includes(year)}
+                onChange={() => toggleYearInList(year)}
+              />
+            ))}
           </Form>
         </div>
         <hr />
       </div>
-
       <Accordion>
         {topics.map((topic) => (
           <TopicSection key={topic.topic} topic={topic} yearList={yearList} />

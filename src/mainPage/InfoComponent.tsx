@@ -27,9 +27,10 @@ export default function InfoComponent() {
   return (
     <div>
       <p>
-        Štai čia 2017 m. pagrindinės sesijos matematikos VBE užduotys,
-        surūšiuotos pagal temas. Viskas nemokama. Naudokitės į valias. Jei
-        patinka (arba nepatinka) šitas stuff – {<ShareLink />},{" "}
+        Štai čia 2015–2023 m. pagrindinių ir pakartotinių (kurių paskelbta)
+        sesijų matematikos VBE užduotys, surūšiuotos pagal temas. Viskas
+        nemokama. Naudokitės į valias. Jei patinka (arba nepatinka) šitas stuff
+        – {<ShareLink />},{" "}
         <a href="mailto:naglis.suliokas@gmail.com">rašykit feedback’ą</a>,{" "}
         <a
           href="https://github.com/naglissul/vbe-sort#contribute"
