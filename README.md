@@ -102,3 +102,19 @@ problemType="whole"
 number=01
 isBLevel=true
 ```
+
+# For the future
+
+TIPS tab for pitagorean triples, geometry sqrt()s etc...  
+IT VBE syllabus  
+Links to sci-dict.lt
+
+History, Bio & PUPP
+
+Shuffle
+
+Solutions
+
+AI problem generator
+
+more syllabuses...
