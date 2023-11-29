@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - CHANGELOG.md file
-- 2017 year math problems
+- 2015-2020 year math problems
 - More descriptions
 
 ### Changed
@@ -19,9 +19,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-### Removed
+- 2021-2023 year math problem sorting
 
-- Previously sorted 2021-2023 year math problems
+### Removed
 
 ## [1.0.0] - 2023-11-19
 

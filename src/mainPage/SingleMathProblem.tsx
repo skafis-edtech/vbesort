@@ -2,10 +2,16 @@ import { parseMathProblemId } from "../misc";
 
 export default function SingleMathProblem({ filename }: { filename: string }) {
   return (
-    <div style={{ marginTop: "20px" }}>
+    <div
+      style={{
+        paddingTop: "50px",
+        paddingBottom: "50px",
+        overflowX: "auto",
+      }}
+    >
       <img
         alt={filename}
-        src={`${parseMathProblemId(filename).year}/${filename}`}
+        src={`math-problems/${parseMathProblemId(filename).year}/${filename}`}
       />
     </div>
   );

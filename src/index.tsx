@@ -16,4 +16,4 @@ root.render(
 );
 
 //Performance measure and analytics
-reportWebVitals(console.log);
+//reportWebVitals(console.log);

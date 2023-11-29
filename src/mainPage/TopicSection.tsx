@@ -1,17 +1,21 @@
 import { Accordion } from "react-bootstrap";
 import SingleMathProblem from "./SingleMathProblem";
 import nrTopicLut from "./nr-topic-lut.json";
-import { MathProblemIdType, parseMathProblemId } from "../misc";
+import { MathProblemIdType, parseMathProblemId, shuffle } from "../misc";
 import ProblemRoot from "./ProblemRoot";
 import TopicSectionHeader from "./TopicSectionHeader";
+
+interface TopicSectionProps {
+  topic: { topic: string; name: string };
+  yearList: string[];
+  isShuffleOn: boolean;
+}
 
 export default function TopicSection({
   topic,
   yearList,
-}: {
-  topic: { topic: string; name: string };
-  yearList: string[];
-}) {
+  isShuffleOn,
+}: TopicSectionProps) {
   return (
     <Accordion.Item eventKey={topic.topic}>
       <TopicSectionHeader
@@ -29,8 +33,8 @@ export default function TopicSection({
         }
       />
       <Accordion.Body>
-        {nrTopicLut
-          .filter((problem) => {
+        {shuffle(
+          nrTopicLut.filter((problem) => {
             const currProblemInfo: MathProblemIdType = parseMathProblemId(
               problem.filename
             );
@@ -41,29 +45,27 @@ export default function TopicSection({
                 }`
               ) && problem.topic === topic.topic
             );
-          })
-          .map((problem) => {
-            const currProblemInfo: MathProblemIdType = parseMathProblemId(
-              problem.filename
-            );
-            return (
-              <div
-                key={problem.filename}
-                style={{ paddingTop: "50px", paddingBottom: "50px" }}
-              >
-                <hr />
-                <em>
-                  {currProblemInfo.year} m.{" "}
-                  {currProblemInfo.isSecondary ? "pakartotinė" : "pagrindinė"}{" "}
-                  sesija {currProblemInfo.section} dalis
-                </em>
-                {currProblemInfo.problemType === "sub" && (
-                  <ProblemRoot currProblemInfo={currProblemInfo} />
-                )}
-                <SingleMathProblem filename={problem.filename} />
-              </div>
-            );
-          })}
+          }),
+          isShuffleOn
+        ).map((problem) => {
+          const currProblemInfo: MathProblemIdType = parseMathProblemId(
+            problem.filename
+          );
+          return (
+            <div key={problem.filename} style={{}}>
+              <hr />
+              <em>
+                {currProblemInfo.year} m.{" "}
+                {currProblemInfo.isSecondary ? "pakartotinė" : "pagrindinė"}{" "}
+                sesija {currProblemInfo.section} dalis
+              </em>
+              {currProblemInfo.problemType === "sub" && (
+                <ProblemRoot currProblemInfo={currProblemInfo} />
+              )}
+              <SingleMathProblem filename={problem.filename} />
+            </div>
+          );
+        })}
       </Accordion.Body>
     </Accordion.Item>
   );
