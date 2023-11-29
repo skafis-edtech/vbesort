@@ -18,7 +18,7 @@ const ShareLink = () => {
 
   return (
     <a href="/" onClick={handleShare}>
-      dalinkitės
+      dalinkis
     </a>
   );
 };
@@ -31,15 +31,15 @@ export default function InfoComponent() {
         sesijų matematikos VBE užduotys, surūšiuotos pagal temas. Viskas
         nemokama. Naudokitės į valias. Jei patinka (arba nepatinka) šitas stuff
         – {<ShareLink />},{" "}
-        <a href="mailto:naglis.suliokas@gmail.com">rašykit feedback’ą</a>,{" "}
+        <a href="mailto:naglis.suliokas@gmail.com">rašyk feedback’ą</a>,{" "}
         <a
           href="https://github.com/naglissul/vbe-sort#contribute"
           target="_blank"
           rel="noreferrer"
         >
-          prisidėkit
+          prisidėk
         </a>{" "}
-        prie tobulinimo, followinkit{" "}
+        prie tobulinimo, follow'ink{" "}
         <a
           href="https://www.instagram.com/naglisaudrius/"
           target="_blank"
@@ -55,13 +55,13 @@ export default function InfoComponent() {
         >
           tiktoke
         </a>{" "}
-        arba paremkit. O gal turit idėjų, kas būtų naudinga mokyklai?{" "}
+        arba paremk. O gal turi idėjų, kas būtų naudinga mokyklai?{" "}
         <a
           href="mailto:naglis.suliokas@gmail.com"
           target="_blank"
           rel="noreferrer"
         >
-          Parašykit man
+          Parašyk man
         </a>
         .
       </p>
@@ -125,7 +125,7 @@ export default function InfoComponent() {
         </a>
       </p>
       <p>
-        Čia rasit atsakymus (pasiieškokit pagal metus ir užduoties numerį):{" "}
+        Čia rasi atsakymus (pasiieškok pagal metus ir užduoties numerį):{" "}
         <a
           href="https://www.nsa.smm.lt/egzaminai-ir-pasiekimu-patikrinimai/brandos-egzaminai/vertinimas/"
           target="_blank"
