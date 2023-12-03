@@ -34,3 +34,7 @@ yarn-error.log\*
 
 # dir with math problem screenshots (email me if you want me to give it to you)
 /public/math-problems
+
+# ssh keys
+gh-pages-vbesort
+gh-pages-vbesort.pub
