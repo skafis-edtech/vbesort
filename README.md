@@ -31,7 +31,8 @@ yarn build
 yarn deploy -- https://${username}:${access_token}@github.com/${username}/${username}.github.io
 ```
 
-That's it. No more fun stuff. All the cool docs are in [v1.0.0](https://github.com/naglissul/vbe-sort/releases/tag/v1.0.0), where I used AWS.
+That's it. No more fun stuff. All the cool docs are in [v1.0.0](https://github.com/naglissul/vbe-sort/tree/v1.0.0), where I used AWS.
+
 
 # Contribute
 
