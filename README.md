@@ -8,15 +8,30 @@ Use, share, rate, suggest, contribute, support.
 
 ## Screenshots
 
+![ss1](./public/ss1.png)
+
+![ss2](./public/ss2.png)
+
+![ss3](./public/ss3.png)
+
 ### Tech
 
 - React TS (later gonna be with redux)
 - React Bootstrap (later gonna be Material UI with custom design)
 - GitHub Pages
+- yarn
 
 # Docs for dev
 
-Coming soon...
+Run locally and build - basic react...  
+
+Deploy with gh-pages (need to install this package):
+```
+yarn build
+yarn deploy -- https://${username}:${access_token}@github.com/${username}/${username}.github.io
+```
+
+That's it. No more fun stuff. All the cool docs are in [v1.0.0](https://github.com/naglissul/vbe-sort/releases/tag/v1.0.0), where I used AWS.
 
 # Contribute
 
@@ -38,7 +53,7 @@ B - B level problem, assigned next to the problem number ("Bendrasis kursas")
 
 Not A nor B (difficulty level) should be labelled on root parts of problems.
 
-Examples in [./public/2017/](./public/2017/) folder.
+Examples in [./public/math-problems/](./public/math-problems/) folder.
 
 After doing so, write to me and somehow send the screenshots.
 
@@ -102,16 +117,14 @@ isBLevel=true
 
 # For the future
 
-TIPS tab for pitagorean triples, geometry sqrt()s etc...  
-IT VBE syllabus  
-Links to sci-dict.lt
+TIPS & TRICKS tab for pitagorean triples, geometry sqrt()s, also in general for soolving speed.  
+IT VBE tutorial  
+Links to sci-dict.org  
 
-History, Bio & PUPP
+History, Bio & PUPP  
 
-Shuffle
+Solutions  
 
-Solutions
+AI problem generator  
 
-AI problem generator
-
-more syllabuses...
+Some tutorials about 'template' solutions.  
