@@ -1,6 +1,6 @@
 import { Accordion } from "react-bootstrap";
 import SingleMathProblem from "./SingleMathProblem";
-import nrTopicLut from "./nr-topic-lut.json";
+import nrTopicLut from "./data/nr-topic-lut.json";
 import { MathProblemIdType, parseMathProblemId, shuffle } from "../misc";
 import ProblemRoot from "./ProblemRoot";
 import TopicSectionHeader from "./TopicSectionHeader";
@@ -53,7 +53,7 @@ export default function TopicSection({
           );
           return (
             <div key={problem.filename} style={{}}>
-              <hr />
+              <hr style={{ border: "3px solid black" }} />
               <em>
                 {currProblemInfo.year} m.{" "}
                 {currProblemInfo.isSecondary ? "pakartotinė" : "pagrindinė"}{" "}

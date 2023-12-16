@@ -1,8 +1,8 @@
 import { Accordion, Form } from "react-bootstrap";
 import TopicSection from "./TopicSection";
-import topics from "./topics-names-list.json";
+import topics from "./data/topics-names-list.json";
 import { useState } from "react";
-import allYearList from "./year-list.json";
+import allYearList from "./data/year-list.json";
 
 import ShuffleBar from "./ShuffleBar";
 
