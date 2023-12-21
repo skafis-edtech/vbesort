@@ -27,10 +27,10 @@ export default function InfoComponent() {
   return (
     <div>
       <p>
-        Štai čia 2015–2023 m. pagrindinių ir pakartotinių (kurių paskelbta)
-        sesijų matematikos VBE užduotys, surūšiuotos pagal temas. Viskas
-        nemokama. Naudokitės į valias. Jei patinka (arba nepatinka) šitas stuff
-        – {<ShareLink />},{" "}
+        Štai čia – 2015–2023 m. pagrindinių ir pakartotinių (kurių paskelbta)
+        sesijų matematikos VBE užduotys (su atsakymais), surūšiuotos pagal
+        temas. Viskas nemokama. Naudokitės į valias. Jei patinka (arba
+        nepatinka) šitas stuff – {<ShareLink />},{" "}
         <a href="mailto:naglis.suliokas@gmail.com">rašyk feedback’ą</a>,{" "}
         <a
           href="https://github.com/naglissul/vbe-sort#contribute"
@@ -69,7 +69,8 @@ export default function InfoComponent() {
         <Card.Body>
           <Card.Title>
             <strong>
-              Piniginis parėmimas, kad galėčiau tęsti darbą, tobulinant puslapį:
+              Piniginis parėmimas padėkai, bei kad galėčiau tęsti darbą,
+              tobulinant puslapį:
             </strong>
           </Card.Title>
           <Card.Text
@@ -125,7 +126,7 @@ export default function InfoComponent() {
         </a>
       </p>
       <p>
-        Čia rasi atsakymus (pasiieškok pagal metus ir užduoties numerį):{" "}
+        Atsakymų šaltinis*:{" "}
         <a
           href="https://www.nsa.smm.lt/egzaminai-ir-pasiekimu-patikrinimai/brandos-egzaminai/vertinimas/"
           target="_blank"

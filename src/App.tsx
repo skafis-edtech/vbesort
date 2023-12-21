@@ -20,6 +20,15 @@ function App() {
               style={{ marginTop: "20px" }}
             >
               <MainPage />
+              <p style={{ marginTop: "10px" }}>
+                * 2016 metų pakartotinės sesijos atsakymų nuoroda nsa.smm.lt
+                tinklapyje yra neveikianti, tačiau nuėmus "+" ženklą iš
+                nuorodos, galima vis tiek viešai prieiti prie atsakymų. Štai čia
+                tiksli nuoroda:{" "}
+                <a href="https://www.nsa.smm.lt/wp-content/uploads/2021/03/6696_Mat_vertinimas_II-2016-07_11-red.pdf">
+                  https://www.nsa.smm.lt/wp-content/uploads/2021/03/6696_Mat_vertinimas_II-2016-07_11-red.pdf
+                </a>
+              </p>
             </Tab>
             <Tab
               eventKey="hist-vbe"
@@ -83,6 +92,14 @@ function App() {
           Taip pat, jei abejoju ar jei dar nesu priskyręs kategorijos, viskas
           eina į Misc.
         </p> */}
+
+        <p>
+          Užduočių sąlygų, sprendimų ir atsakymų autorinės teisės priklauso
+          Nacionaliniam egzaminų centrui ir Nacionalinei švietimo agentūrai (LR
+          švietimo, mokslo ir sporto ministerijai). Šiuo tinklapiu
+          nepasisavinamos jokios autorinės teisės, naudojama tik viešai
+          prieinama informacija nekomerciniais tikslais.
+        </p>
         <p>
           Mano blog'as ir daugiau cool stuff čia:{" "}
           <a href="https://www.npw.lt">npw.lt</a>
