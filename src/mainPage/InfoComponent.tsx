@@ -33,7 +33,7 @@ export default function InfoComponent() {
         nepatinka) šitas stuff – {<ShareLink />},{" "}
         <a href="mailto:naglis.suliokas@gmail.com">rašyk feedback’ą</a>,{" "}
         <a
-          href="https://github.com/naglissul/vbe-sort#contribute"
+          href="https://github.com/naglissul/vbe-sort/blob/master/CONTRIBUTE.md"
           target="_blank"
           rel="noreferrer"
         >
@@ -69,8 +69,7 @@ export default function InfoComponent() {
         <Card.Body>
           <Card.Title>
             <strong>
-              Piniginis parėmimas padėkai, bei kad galėčiau tęsti darbą,
-              tobulinant puslapį:
+              Piniginis parėmimas padėkai bei tolimesniam puslapio tobulinimui:
             </strong>
           </Card.Title>
           <Card.Text
