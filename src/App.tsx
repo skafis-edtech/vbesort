@@ -31,14 +31,14 @@ function App() {
               </p>
             </Tab>
             <Tab
-              eventKey="hist-vbe"
-              title="Istorijos VBE"
+              eventKey="bio-vbe"
+              title="Biologijos VBE"
               style={{ marginTop: "20px" }}
             >
               <em>
                 Coming soon... Make it come sooner by{" "}
                 <a
-                  href="https://github.com/naglissul/vbe-sort#contribute"
+                  href="https://github.com/naglissul/vbe-sort/blob/master/CONTRIBUTE.md#biologijos-vbe"
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -47,14 +47,14 @@ function App() {
               </em>
             </Tab>
             <Tab
-              eventKey="bio-vbe"
-              title="Biologijos VBE"
+              eventKey="hist-vbe"
+              title="Istorijos VBE"
               style={{ marginTop: "20px" }}
             >
               <em>
                 Coming soon... Make it come sooner by{" "}
                 <a
-                  href="https://github.com/naglissul/vbe-sort#contribute"
+                  href="https://github.com/naglissul/vbe-sort/blob/master/CONTRIBUTE.md#istorijos-vbe"
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -62,6 +62,7 @@ function App() {
                 </a>
               </em>
             </Tab>
+
             <Tab
               eventKey="math-pupp"
               title="Matematikos PUPP"
@@ -70,7 +71,7 @@ function App() {
               <em>
                 Coming soon... Make it come sooner by{" "}
                 <a
-                  href="https://github.com/naglissul/vbe-sort#contribute"
+                  href="https://github.com/naglissul/vbe-sort/blob/master/CONTRIBUTE.md#matematikos-pupp"
                   target="_blank"
                   rel="noreferrer"
                 >
