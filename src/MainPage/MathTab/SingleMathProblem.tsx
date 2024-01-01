@@ -1,6 +1,6 @@
 import { Accordion } from "react-bootstrap";
-import { MathProblemIdType, parseMathProblemId } from "../misc";
-import answerLut from "./data/nr-topic-lut.json";
+import { MathProblemIdType, parseMathProblemId } from "../../misc";
+import answerLut from "../../data/nr-topic-lut.json";
 import "./specialForRootProblem.css";
 
 export default function SingleMathProblem({ filename }: { filename: string }) {

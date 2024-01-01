@@ -1,9 +1,9 @@
 import { Accordion } from "react-bootstrap";
-import SingleMathProblem from "./SingleMathProblem";
-import nrTopicLut from "./data/nr-topic-lut.json";
-import { MathProblemIdType, parseMathProblemId, shuffle } from "../misc";
-import ProblemRoot from "./ProblemRoot";
+import nrTopicLut from "../../data/nr-topic-lut.json";
+import { MathProblemIdType, parseMathProblemId, shuffle } from "../../misc";
 import TopicSectionHeader from "./TopicSectionHeader";
+import ProblemRoot from "./ProblemRoot";
+import SingleMathProblem from "./SingleMathProblem";
 
 interface TopicSectionProps {
   topic: { topic: string; name: string };

@@ -99,7 +99,7 @@ Jei s tipo užduotis turi savo atskiras dalis, screenshotinama visa užtuotis (t
 (II srautas 9 užduotis)
 
 2005-2019 metų:  
-Taip pat, kaip matematikos VBE
+Taip pat, kaip matematikos VBE, tik be I, II ir III dalių specifikacijos
 
 ### Istorijos VBE
 

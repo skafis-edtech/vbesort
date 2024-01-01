@@ -94,16 +94,6 @@ export default function InfoComponent() {
       </Card>
 
       <p>
-        Senos versijos PDF atsisiųsti{" "}
-        <a
-          href="https://github.com/naglissul/vbe-sort/files/13438956/VBE-sort.pdf"
-          target="_blank"
-          rel="noreferrer"
-        >
-          čia
-        </a>
-      </p>
-      <p>
         Tinklapio kodas{" "}
         <a
           href="https://github.com/naglissul/vbe-sort"

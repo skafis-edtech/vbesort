@@ -1,10 +1,9 @@
 import { Accordion, Form } from "react-bootstrap";
-import TopicSection from "./TopicSection";
-import topics from "./data/topics-names-list.json";
+import topics from "../../data/topics-names-list.json";
 import { useState } from "react";
-import allYearList from "./data/year-list.json";
-
-import ShuffleBar from "./ShuffleBar";
+import allYearList from "../../data/year-list.json";
+import ShuffleBar from "../components/ShuffleBar";
+import TopicSection from "./TopicSection";
 
 export default function MathProblemsSection() {
   const [yearList, setYearList] = useState<string[]>(
@@ -19,10 +18,7 @@ export default function MathProblemsSection() {
     }
   };
 
-  //Shuffle stuff...
   const [isShuffleOn, setShuffleOn] = useState<boolean>(true);
-  const reshuffle = () => {};
-  const undoShuffle = () => {};
 
   return (
     <div>
@@ -50,8 +46,6 @@ export default function MathProblemsSection() {
           <ShuffleBar
             isShuffleOn={isShuffleOn}
             setShuffleOn={setShuffleOn}
-            reshuffle={reshuffle}
-            undoShuffle={undoShuffle}
             style={{ flexGrow: 1 }}
           />
         </div>
