@@ -37,6 +37,10 @@ yarn-error.log\*
 /public/math-answers
 /public/bio-problems
 /public/bio-answers
+/public/hist-problems
+/public/hist-answers
+/public/pupp-problems
+/public/pupp-answers
 
 # ssh keys
 gh-pages-vbesort
