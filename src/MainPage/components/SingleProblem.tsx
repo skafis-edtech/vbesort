@@ -1,5 +1,5 @@
 import { Accordion } from "react-bootstrap";
-import { parseProblemFilename } from "../../misc";
+import { SubjectType, parseProblemFilename } from "../../misc";
 import "./style.css";
 
 export default function SingleProblem({
@@ -8,7 +8,7 @@ export default function SingleProblem({
   answerLut,
 }: {
   filename: string;
-  subject: "math" | "bio";
+  subject: SubjectType;
   answerLut: { filename: string; topic: string; answer?: string }[];
 }) {
   const problemInfo: any = parseProblemFilename(subject, filename);
@@ -24,7 +24,7 @@ export default function SingleProblem({
         alt={filename}
         src={`${subject}-problems/${problemInfo.year}/${filename}`}
       />
-      {problemInfo.problemType !== "root" && (
+      {!["root", "sources"].includes(problemInfo.problemType) && (
         <Accordion style={{ marginTop: "20px" }}>
           <Accordion.Item eventKey="answer">
             <Accordion.Header className="root-header">

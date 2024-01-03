@@ -4,7 +4,7 @@ import nrTopicLut from "./data/nr-topic-lut.json";
 import "../components/style.css";
 import SingleMathProblem from "../components/SingleProblem";
 
-export default function ProblemRoot({
+export default function MathProblemRoot({
   currProblemInfo,
 }: {
   currProblemInfo: MathProblemIdType;

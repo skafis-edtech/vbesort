@@ -1,15 +1,16 @@
 import { Accordion } from "react-bootstrap";
-import { parseProblemFilename, shuffle } from "../../misc";
+import { SubjectType, parseProblemFilename, shuffle } from "../../misc";
 import TopicItemHeader from "./TopicItemHeader";
-import ProblemRoot from "../MathTab/ProblemRoot";
+import MathProblemRoot from "../MathTab/MathProblemRoot";
 import SingleProblem from "./SingleProblem";
+import HistProblemRoot from "../HistTab/HistProblemRoot";
 
 interface TopicItemProps {
   topic: { topic: string; name: string };
   yearList: string[];
   isShuffleOn: boolean;
   nrTopicLut: { filename: string; topic: string; answer?: string }[];
-  subject: "math" | "bio";
+  subject: SubjectType;
 }
 
 export default function TopicItem({
@@ -66,9 +67,14 @@ export default function TopicItem({
                 {currProblemInfo.isSecondary ? "pakartotinė" : "pagrindinė"}{" "}
                 sesija {currProblemInfo.section} dalis
               </em>
+
               {currProblemInfo.problemType === "sub" && subject === "math" && (
-                <ProblemRoot currProblemInfo={currProblemInfo} />
+                <MathProblemRoot currProblemInfo={currProblemInfo} />
               )}
+              {currProblemInfo.problemType === "questions" && (
+                <HistProblemRoot questionsFilename={problem.filename} />
+              )}
+
               <SingleProblem
                 filename={problem.filename}
                 subject={subject}

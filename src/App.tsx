@@ -10,7 +10,7 @@ import AboutPage from "./AboutPage";
 import ContributePage from "./ContributePage";
 
 function App() {
-  const [isDarkMode, setIsDarkMode] = useState<boolean>(true);
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
 
   return (
     <BrowserRouter>

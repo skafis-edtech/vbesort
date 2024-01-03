@@ -14,11 +14,21 @@ export type BioProblemIdType = {
   number: number;
 };
 
+export type HistProblemIdType = {
+  year: number;
+  isSecondary: boolean;
+  section: "I" | "II";
+  number: number;
+  problemType: "sources" | "questions" | "abcd";
+};
+
+export type SubjectType = "math" | "bio" | "hist" | "pupp";
+
 export function parseProblemFilename(
-  type: "math" | "bio" | "hist" | "pupp",
+  subject: SubjectType,
   filename: string
-): MathProblemIdType | BioProblemIdType {
-  if (type === "math") {
+): MathProblemIdType | BioProblemIdType | HistProblemIdType {
+  if (subject === "math") {
     const year = parseInt(filename.substring(0, 4));
     const isSecondary = filename.charAt(4) === "k";
     const section: MathProblemIdType["section"] =
@@ -62,8 +72,7 @@ export function parseProblemFilename(
       number,
       isBlevel: isBLevel,
     };
-  }
-  if (type === "bio") {
+  } else if (subject === "bio") {
     const year = parseInt(filename.substring(0, 4));
     const isSecondary = filename.charAt(4) === "k";
     const section: BioProblemIdType["section"] =
@@ -82,8 +91,37 @@ export function parseProblemFilename(
       section,
       number,
     };
+  } else if (subject === "hist") {
+    const year = parseInt(filename.substring(0, 4));
+    const isSecondary: HistProblemIdType["isSecondary"] =
+      filename.charAt(4) === "k";
+    const section: HistProblemIdType["section"] =
+      filename.charAt(5) === "1" ? "I" : "II";
+    let number: HistProblemIdType["number"];
+    let problemType: HistProblemIdType["problemType"];
+    if (section === "I") {
+      number = parseInt(filename.substring(7, 9));
+      problemType = "abcd";
+    } else if (section === "II") {
+      number = parseInt(filename.substring(7, 8));
+      problemType =
+        filename.charAt(8) === "s"
+          ? "sources"
+          : filename.charAt(8) === "u"
+          ? "questions"
+          : "abcd";
+    } else {
+      throw Error("Filename parse error, section '" + section + "'");
+    }
+    return {
+      year,
+      isSecondary,
+      section,
+      number,
+      problemType,
+    };
   } else {
-    throw Error("No parser for problem type '" + type + "'");
+    throw Error("No parser for problem subject '" + subject + "'");
   }
 }
 
