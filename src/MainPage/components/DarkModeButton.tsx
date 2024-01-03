@@ -1,6 +1,6 @@
 import { Button } from "react-bootstrap";
-import { FiSun } from "react-icons/fi";
-import { BsMoonFill } from "react-icons/bs";
+import { ReactComponent as SunIcon } from "./sun.svg";
+import { ReactComponent as MoonIcon } from "./moon.svg";
 
 interface DarkModeButtonProps {
   isDarkMode: boolean;
@@ -21,9 +21,9 @@ export default function DarkModeButton({
         onClick={() => setIsDarkMode(!isDarkMode)}
       >
         {isDarkMode ? (
-          <FiSun style={{ marginBottom: "4px" }} />
+          <SunIcon style={{ marginBottom: "4px" }} />
         ) : (
-          <BsMoonFill style={{ marginBottom: "4px" }} />
+          <MoonIcon style={{ marginBottom: "4px" }} />
         )}
       </Button>
       <img

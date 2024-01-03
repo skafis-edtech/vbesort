@@ -1,4 +1,4 @@
-import { Alert, Card } from "react-bootstrap";
+import { Alert } from "react-bootstrap";
 
 export default function Support() {
   return (

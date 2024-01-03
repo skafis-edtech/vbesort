@@ -21,6 +21,7 @@ export default function ShuffleBar({
           justifyContent: "flex-start",
         }}
       >
+        <h4>Shuffle is {isShuffleOn ? "ON" : "OFF"}:</h4>{" "}
         <div
           style={{
             margin: "10px",

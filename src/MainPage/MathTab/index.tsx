@@ -1,4 +1,4 @@
-import { Accordion, Alert, Form } from "react-bootstrap";
+import { Accordion, Form } from "react-bootstrap";
 import topics from "./data/topics-names-list.json";
 import { useState } from "react";
 import allYearList from "./data/year-list.json";

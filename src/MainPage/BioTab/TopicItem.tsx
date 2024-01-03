@@ -1,7 +1,6 @@
 import { Accordion } from "react-bootstrap";
 import nrTopicLut from "./data/nr-topic-lut.json";
-import { MathProblemIdType, parseProblemFilename, shuffle } from "../../misc";
-import ProblemRoot from "./ProblemRoot";
+import { BioProblemIdType, parseProblemFilename, shuffle } from "../../misc";
 import SingleProblem from "./SingleProblem";
 import TopicItemHeader from "./TopicItemHeader";
 
@@ -25,8 +24,8 @@ export default function TopicItem({
             (problem) =>
               problem.topic === topic.topic &&
               yearList.includes(
-                `${parseProblemFilename("math", problem.filename).year}${
-                  parseProblemFilename("math", problem.filename).isSecondary
+                `${parseProblemFilename("bio", problem.filename).year}${
+                  parseProblemFilename("bio", problem.filename).isSecondary
                     ? "k"
                     : "g"
                 }`
@@ -37,8 +36,8 @@ export default function TopicItem({
       <Accordion.Body>
         {shuffle(
           nrTopicLut.filter((problem) => {
-            const currProblemInfo: any = parseProblemFilename(
-              "math",
+            const currProblemInfo: BioProblemIdType = parseProblemFilename(
+              "bio",
               problem.filename
             );
             return (
@@ -51,7 +50,7 @@ export default function TopicItem({
           }),
           isShuffleOn
         ).map((problem) => {
-          const currProblemInfo: any = parseProblemFilename(
+          const currProblemInfo: BioProblemIdType = parseProblemFilename(
             "math",
             problem.filename
           );
@@ -63,9 +62,7 @@ export default function TopicItem({
                 {currProblemInfo.isSecondary ? "pakartotinė" : "pagrindinė"}{" "}
                 sesija {currProblemInfo.section} dalis
               </em>
-              {currProblemInfo.problemType === "sub" && (
-                <ProblemRoot currProblemInfo={currProblemInfo} />
-              )}
+
               <SingleProblem filename={problem.filename} />
             </div>
           );
