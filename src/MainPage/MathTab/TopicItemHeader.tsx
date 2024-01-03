@@ -1,6 +1,6 @@
 import { Accordion } from "react-bootstrap";
 
-export default function TopicSectionHeader({
+export default function TopicItemHeader({
   topic,
   problemCount,
 }: {

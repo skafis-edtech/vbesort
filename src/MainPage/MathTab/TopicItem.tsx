@@ -1,24 +1,24 @@
 import { Accordion } from "react-bootstrap";
 import nrTopicLut from "../../data/nr-topic-lut.json";
 import { MathProblemIdType, parseMathProblemId, shuffle } from "../../misc";
-import TopicSectionHeader from "./TopicSectionHeader";
 import ProblemRoot from "./ProblemRoot";
 import SingleMathProblem from "./SingleMathProblem";
+import TopicItemHeader from "./TopicItemHeader";
 
-interface TopicSectionProps {
+interface TopicItemProps {
   topic: { topic: string; name: string };
   yearList: string[];
   isShuffleOn: boolean;
 }
 
-export default function TopicSection({
+export default function TopicItem({
   topic,
   yearList,
   isShuffleOn,
-}: TopicSectionProps) {
+}: TopicItemProps) {
   return (
     <Accordion.Item eventKey={topic.topic}>
-      <TopicSectionHeader
+      <TopicItemHeader
         topic={topic}
         problemCount={
           nrTopicLut.filter(

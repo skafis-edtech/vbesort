@@ -3,10 +3,12 @@ import BioTab from "./BioTab";
 import HistTab from "./HistTab";
 import MathTab from "./MathTab";
 import PuppTab from "./PuppTab";
+import InfoComponent from "./components/InfoComponent";
 
 function MainPage() {
   return (
     <div>
+      <InfoComponent />
       <Tabs defaultActiveKey="math-vbe">
         <Tab
           eventKey="math-vbe"
