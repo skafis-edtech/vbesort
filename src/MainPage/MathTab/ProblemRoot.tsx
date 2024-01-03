@@ -1,8 +1,8 @@
 import { Accordion } from "react-bootstrap";
 import { MathProblemIdType, parseProblemFilename } from "../../misc";
 import nrTopicLut from "./data/nr-topic-lut.json";
-import "./style.css";
-import SingleMathProblem from "./SingleProblem";
+import "../components/style.css";
+import SingleMathProblem from "../components/SingleProblem";
 
 export default function ProblemRoot({
   currProblemInfo,
@@ -27,7 +27,12 @@ export default function ProblemRoot({
               );
             })
             .map((root) => (
-              <SingleMathProblem key={root.filename} filename={root.filename} />
+              <SingleMathProblem
+                key={root.filename}
+                filename={root.filename}
+                subject="math"
+                answerLut={nrTopicLut}
+              />
             ))}
           {nrTopicLut
             .filter((pr) => {
@@ -41,7 +46,12 @@ export default function ProblemRoot({
               );
             })
             .map((root) => (
-              <SingleMathProblem key={root.filename} filename={root.filename} />
+              <SingleMathProblem
+                key={root.filename}
+                filename={root.filename}
+                subject="math"
+                answerLut={nrTopicLut}
+              />
             ))}
         </Accordion.Body>
       </Accordion.Item>

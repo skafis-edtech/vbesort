@@ -1,20 +1,23 @@
 import { Accordion } from "react-bootstrap";
-import nrTopicLut from "./data/nr-topic-lut.json";
-import { MathProblemIdType, parseProblemFilename, shuffle } from "../../misc";
-import ProblemRoot from "./ProblemRoot";
-import SingleProblem from "./SingleProblem";
+import { parseProblemFilename, shuffle } from "../../misc";
 import TopicItemHeader from "./TopicItemHeader";
+import ProblemRoot from "../MathTab/ProblemRoot";
+import SingleProblem from "./SingleProblem";
 
 interface TopicItemProps {
   topic: { topic: string; name: string };
   yearList: string[];
   isShuffleOn: boolean;
+  nrTopicLut: { filename: string; topic: string; answer?: string }[];
+  subject: "math" | "bio";
 }
 
 export default function TopicItem({
   topic,
   yearList,
   isShuffleOn,
+  nrTopicLut,
+  subject,
 }: TopicItemProps) {
   return (
     <Accordion.Item eventKey={topic.topic}>
@@ -25,8 +28,8 @@ export default function TopicItem({
             (problem) =>
               problem.topic === topic.topic &&
               yearList.includes(
-                `${parseProblemFilename("math", problem.filename).year}${
-                  parseProblemFilename("math", problem.filename).isSecondary
+                `${parseProblemFilename(subject, problem.filename).year}${
+                  parseProblemFilename(subject, problem.filename).isSecondary
                     ? "k"
                     : "g"
                 }`
@@ -38,7 +41,7 @@ export default function TopicItem({
         {shuffle(
           nrTopicLut.filter((problem) => {
             const currProblemInfo: any = parseProblemFilename(
-              "math",
+              subject,
               problem.filename
             );
             return (
@@ -52,7 +55,7 @@ export default function TopicItem({
           isShuffleOn
         ).map((problem) => {
           const currProblemInfo: any = parseProblemFilename(
-            "math",
+            subject,
             problem.filename
           );
           return (
@@ -63,10 +66,14 @@ export default function TopicItem({
                 {currProblemInfo.isSecondary ? "pakartotinė" : "pagrindinė"}{" "}
                 sesija {currProblemInfo.section} dalis
               </em>
-              {currProblemInfo.problemType === "sub" && (
+              {currProblemInfo.problemType === "sub" && subject === "math" && (
                 <ProblemRoot currProblemInfo={currProblemInfo} />
               )}
-              <SingleProblem filename={problem.filename} />
+              <SingleProblem
+                filename={problem.filename}
+                subject={subject}
+                answerLut={nrTopicLut}
+              />
             </div>
           );
         })}

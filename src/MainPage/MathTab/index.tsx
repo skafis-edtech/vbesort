@@ -1,9 +1,10 @@
 import { Accordion, Form } from "react-bootstrap";
 import topics from "./data/topics-names-list.json";
+import nrTopicLut from "./data/nr-topic-lut.json";
 import { useState } from "react";
 import allYearList from "./data/year-list.json";
 import ShuffleBar from "../components/ShuffleBar";
-import TopicItem from "./TopicItem";
+import TopicItem from "../components/TopicItem";
 
 export default function MathTab() {
   const [yearList, setYearList] = useState<string[]>(
@@ -56,6 +57,8 @@ export default function MathTab() {
               topic={topic}
               yearList={yearList}
               isShuffleOn={isShuffleOn}
+              nrTopicLut={nrTopicLut}
+              subject="math"
             />
           ))}
         </Accordion>
