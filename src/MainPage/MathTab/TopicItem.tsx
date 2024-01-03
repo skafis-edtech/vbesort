@@ -1,5 +1,5 @@
 import { Accordion } from "react-bootstrap";
-import nrTopicLut from "../../data/nr-topic-lut.json";
+import nrTopicLut from "./data/nr-topic-lut.json";
 import { MathProblemIdType, parseMathProblemId, shuffle } from "../../misc";
 import ProblemRoot from "./ProblemRoot";
 import SingleMathProblem from "./SingleMathProblem";
