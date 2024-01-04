@@ -15,7 +15,7 @@ Kaip prisidėti prie tinklapio tobulinimo?
 
 Screenshotinti viešai prieinamas užduotis/atsakymus ir jų .png failus užvardinti, kaip nurodyta apačioje. Neprieinamas viešai užduotis/atsakymus, žinoma, irgi galima screenshotint, bet negarantuoju ar galėsiu jas/juos panaudoti.
 
-Svarbiausia taisyklingai užvardinti užduočių failus. Atsakymų failai gali būti kad ir iš eilės skaičiais užvardinti. Bet, žinoma, mažiau darbo programuoti būtų, jei atsakymų screenshotai būtų užvardinti taip pat, kaip užduočių, tik sudėti į atskirą folderį.
+Atsakymų screenshotai turi būti užvardinti taip pat, kaip užduočių failai, tik sudėti į atskirą folderį.
 
 !!! Pirmųjų dalių atsakymų (A, B, C, arba D) nereikia screenshotinti. Tam yra per daug vargo. Galima tiesiog surašyti raides tiesiai į programos kodą.
 
@@ -31,6 +31,8 @@ Nuscreenshotinus užduotis (arba dar geriau ir prieš tai, kad nebūtų kokių n
 2021g1-13.png  
 2021g2-01.png  
 2021k4-08.png
+
+Daugiau pavyzdžių [čia](https://github.com/vbesort/vbesort.github.io/tree/gh-pages/bio-problems)
 
 **Formali gramatika:**  
 \<filename> ::= \<year>\<g | k>\<section> - \<number>.png
@@ -99,20 +101,22 @@ Jei s tipo užduotis turi savo atskiras dalis, screenshotinama visa užtuotis (t
 (II srautas 9 užduotis)
 
 2005-2019 metų:  
-Taip pat, kaip matematikos VBE, tik be I, II ir III dalių specifikacijos
+Taip pat, kaip matematikos VBE, tik be I, II ir III dalių specifikacijos, ir be pagrindinės ar šalutinės sesijų specifikacijos.
+
+Daugiau pavyzdžių [čia](https://github.com/vbesort/vbesort.github.io/tree/gh-pages/pupp-problems)
 
 ### Istorijos VBE
-
-Pirmos dalies užduoties dalima screenshotint ir vardinti taip:
 
 2021g1-01.png  
 2021g1-02.png  
 2021g1-12.png  
-...
+2021g2-3u.png  
+2021g2-3s.png
 
-Neįsivaizduoju, kaip rūšiuoti antros dalies su šaltiniais užduotis... Gal kas turit idėjų?
+3u - trečiųjų šaltinių klausimai  
+3s - tretieji šaltiniai
 
-Turėti omeny, kad jau yra tinklapis [istorijai.lt](https://www.istorijai.lt), kuriame yra gan geros informacijos pasiruošti egzaminams.
+Daugiau pavyzdžių [čia](https://github.com/vbesort/vbesort.github.io/tree/gh-pages/hist-problems)
 
 ### Kita
 
@@ -120,8 +124,8 @@ Sugalvojus kažkokią taisyklę (formalią gramatiką), kaip vardinti failus, sc
 
 ## Užduočių rūšiavimas
 
-- Redaguoti [nr-topic-lut.json](./src/mainPage/data/nr-topic-lut.json) failą, priskiriant tam tikrą topic reikšmę.
-- Keisti/papildyti temų aibę [topics-names-list.json](./src/mainPage/data/topics-names-list.json) faile.
+- Redaguoti [Matematikos nr-topic-lut.json](./src/MainPage/MathTab/data/nr-topic-lut.json), [Biologijos nr-topic-lut.json](./src/MainPage/BioTab/data/nr-topic-lut.json), [Istorijos nr-topic-lut.json](./src/MainPage/HistTab/data/nr-topic-lut.json), [Matematikos PUPP nr-topic-lut.json](./src/MainPage/PuppTab/data/nr-topic-lut.json) failus, priskiriant tam tikrą topic reikšmę.
+- Keisti/papildyti temų aibę [Matematikos topics-names-list.json](./src/MainPage/MathTab/data/topics-names-list.json), [Biologijos topics-names-list.json](./src/MainPage/BioTab/data/topics-names-list.json), [Istorijos topics-names-list.json](./src/MainPage/HistTab/data/topics-names-list.json), [Matematikos PUPP topics-names-list.json](./src/MainPage/PuppTab/data/topics-names-list.json) failuose.
 - Vėliau bus ir ne vien matematikos užduočių rūšiavimas, bet pradžioje reikia nuscreenshotint tas užduotis.
 - Susisiekti su manimi ir pasitarti/pasidalinti užduočių rūšiavimo idėjomis.
 

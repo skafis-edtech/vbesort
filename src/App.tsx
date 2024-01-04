@@ -5,12 +5,12 @@ import Header from "./components/Header";
 import MainPage from "./MainPage";
 import { useState } from "react";
 import DarkModeButton from "./MainPage/components/DarkModeButton";
-import { Routes, Route, BrowserRouter } from "react-router-dom";
+import { Routes, Route, BrowserRouter, Navigate } from "react-router-dom";
 import AboutPage from "./AboutPage";
 import ContributePage from "./ContributePage";
 
 function App() {
-  const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(true);
 
   return (
     <BrowserRouter>
@@ -32,7 +32,11 @@ function App() {
           <aside></aside>
           <section>
             <Routes>
-              <Route index element={<MainPage />} />
+              <Route index element={<Navigate to="/math-tab" replace />} />
+              <Route path="/math-tab" element={<MainPage />} />
+              <Route path="/hist-tab" element={<MainPage />} />
+              <Route path="/bio-tab" element={<MainPage />} />
+              <Route path="/math-pupp-tab" element={<MainPage />} />
               <Route path="/about" element={<AboutPage />} />
               <Route path="/contribute" element={<ContributePage />} />
             </Routes>
