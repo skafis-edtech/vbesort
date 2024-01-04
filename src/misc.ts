@@ -22,12 +22,23 @@ export type HistProblemIdType = {
   problemType: "sources" | "questions" | "abcd";
 };
 
+export type PuppProblemIdType = {
+  year: number;
+  number: number;
+  problemType: "whole" | "root" | "sub";
+  isSecondary: null;
+};
+
 export type SubjectType = "math" | "bio" | "hist" | "pupp";
 
 export function parseProblemFilename(
   subject: SubjectType,
   filename: string
-): MathProblemIdType | BioProblemIdType | HistProblemIdType {
+):
+  | MathProblemIdType
+  | BioProblemIdType
+  | HistProblemIdType
+  | PuppProblemIdType {
   if (subject === "math") {
     const year = parseInt(filename.substring(0, 4));
     const isSecondary = filename.charAt(4) === "k";
@@ -119,6 +130,28 @@ export function parseProblemFilename(
       section,
       number,
       problemType,
+    };
+  } else if (subject === "pupp") {
+    const year = parseInt(filename.substring(0, 4));
+    const problemType: PuppProblemIdType["problemType"] =
+      filename.charAt(4) === "w"
+        ? "whole"
+        : filename.charAt(4) === "r"
+        ? "root"
+        : "sub";
+    let number;
+
+    if (problemType === "sub") {
+      number = parseFloat(filename.substring(5, 9));
+    } else {
+      number = parseInt(filename.substring(5, 7));
+    }
+
+    return {
+      year,
+      problemType,
+      number,
+      isSecondary: null,
     };
   } else {
     throw Error("No parser for problem subject '" + subject + "'");

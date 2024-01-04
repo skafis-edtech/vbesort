@@ -4,6 +4,7 @@ import TopicItemHeader from "./TopicItemHeader";
 import MathProblemRoot from "../MathTab/MathProblemRoot";
 import SingleProblem from "./SingleProblem";
 import HistProblemRoot from "../HistTab/HistProblemRoot";
+import PuppProblemRoot from "../PuppTab/PuppProblemRoot";
 
 interface TopicItemProps {
   topic: { topic: string; name: string };
@@ -30,7 +31,11 @@ export default function TopicItem({
               problem.topic === topic.topic &&
               yearList.includes(
                 `${parseProblemFilename(subject, problem.filename).year}${
-                  parseProblemFilename(subject, problem.filename).isSecondary
+                  parseProblemFilename(subject, problem.filename)
+                    .isSecondary === null
+                    ? ""
+                    : parseProblemFilename(subject, problem.filename)
+                        .isSecondary
                     ? "k"
                     : "g"
                 }`
@@ -48,7 +53,11 @@ export default function TopicItem({
             return (
               yearList.includes(
                 `${currProblemInfo.year}${
-                  currProblemInfo.isSecondary ? "k" : "g"
+                  currProblemInfo.isSecondary == null
+                    ? ""
+                    : currProblemInfo.isSecondary
+                    ? "k"
+                    : "g"
                 }`
               ) && problem.topic === topic.topic
             );
@@ -64,15 +73,24 @@ export default function TopicItem({
               <hr style={{ border: "3px solid black" }} />
               <em>
                 {currProblemInfo.year} m.{" "}
-                {currProblemInfo.isSecondary ? "pakartotinė" : "pagrindinė"}{" "}
-                sesija {currProblemInfo.section} dalis
+                {currProblemInfo.isSecondary == null
+                  ? ""
+                  : currProblemInfo.isSecondary
+                  ? "pakartotinė sesija"
+                  : "pagrindinė sesija"}{" "}
+                {currProblemInfo.section} {subject !== "pupp" ? "dalis" : ""}
               </em>
 
               {currProblemInfo.problemType === "sub" && subject === "math" && (
                 <MathProblemRoot currProblemInfo={currProblemInfo} />
               )}
-              {currProblemInfo.problemType === "questions" && (
-                <HistProblemRoot questionsFilename={problem.filename} />
+              {currProblemInfo.problemType === "questions" &&
+                subject === "hist" && (
+                  <HistProblemRoot questionsFilename={problem.filename} />
+                )}
+
+              {currProblemInfo.problemType === "sub" && subject === "pupp" && (
+                <PuppProblemRoot currProblemInfo={currProblemInfo} />
               )}
 
               <SingleProblem
