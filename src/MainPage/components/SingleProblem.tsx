@@ -21,6 +21,7 @@ export default function SingleProblem({
       }}
     >
       <img
+        loading="lazy"
         alt={filename}
         src={`${subject}-problems/${problemInfo.year}/${filename}`}
       />
@@ -40,6 +41,7 @@ export default function SingleProblem({
                 </h3>
               ) : (
                 <img
+                  loading="lazy"
                   alt={`answer screenshot: ${
                     answerLut.find((problem) => problem.filename === filename)
                       ?.answer

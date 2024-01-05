@@ -27,6 +27,7 @@ export default function DarkModeButton({
         )}
       </Button>
       <img
+        loading="lazy"
         className="dark-light-mode-text"
         src={`assets/${isDarkMode ? "light" : "dark"}-mode-${
           window.innerWidth <= 768 ? "mobile" : "web"

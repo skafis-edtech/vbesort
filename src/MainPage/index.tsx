@@ -13,11 +13,20 @@ function MainPage() {
   const location = useLocation();
 
   useEffect(() => {
-    setActiveKey(location.pathname.substring(1));
+    const path = location.pathname;
+    if (path === "/" || path === "") {
+      setActiveKey("math-tab");
+    } else {
+      setActiveKey(path.substring(1));
+    }
   }, [navigate]);
 
   const handleSelect = (key: any) => {
-    navigate(`/${key}`);
+    if (key === "math-tab") {
+      navigate("/");
+    } else {
+      navigate(`/${key}`);
+    }
   };
 
   return (

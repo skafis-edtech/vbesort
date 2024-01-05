@@ -5,7 +5,7 @@ import Header from "./components/Header";
 import MainPage from "./MainPage";
 import { useState } from "react";
 import DarkModeButton from "./MainPage/components/DarkModeButton";
-import { Routes, Route, BrowserRouter, Navigate } from "react-router-dom";
+import { Routes, Route, HashRouter } from "react-router-dom";
 import AboutPage from "./AboutPage";
 import ContributePage from "./ContributePage";
 
@@ -13,7 +13,7 @@ function App() {
   const [isDarkMode, setIsDarkMode] = useState<boolean>(true);
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       {" "}
       <div
         data-bs-theme={`${isDarkMode && "dark"}`}
@@ -32,8 +32,7 @@ function App() {
           <aside></aside>
           <section>
             <Routes>
-              <Route index element={<Navigate to="/math-tab" replace />} />
-              <Route path="/math-tab" element={<MainPage />} />
+              <Route index element={<MainPage />} />
               <Route path="/hist-tab" element={<MainPage />} />
               <Route path="/bio-tab" element={<MainPage />} />
               <Route path="/math-pupp-tab" element={<MainPage />} />
@@ -45,7 +44,7 @@ function App() {
         </main>
         <Footer />
       </div>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
