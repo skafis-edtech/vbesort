@@ -76,6 +76,13 @@ export default function AboutPage() {
           https://www.nsa.smm.lt/wp-content/uploads/2021/03/6696_Mat_vertinimas_II-2016-07_11-red.pdf
         </a>
       </p>
+      <p>
+        Užduočių sąlygų, sprendimų ir atsakymų autorinės teisės priklauso
+        Nacionaliniam egzaminų centrui ir Nacionalinei švietimo agentūrai (LR
+        švietimo, mokslo ir sporto ministerijai). Šiuo tinklapiu nepasisavinamos
+        jokios autorinės teisės, naudojama tik viešai prieinama informacija
+        nekomerciniais tikslais.
+      </p>
     </div>
   );
 }
