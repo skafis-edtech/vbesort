@@ -1,6 +1,5 @@
 export type MathProblemIdType = {
-  year: number;
-  isSecondary: boolean;
+  year: string; //"2023g" | "2023k" | "2010v" | "2010b" | "2002p" ...
   section: "I" | "II" | "III";
   number: number;
   isBlevel: boolean | undefined;
@@ -8,25 +7,22 @@ export type MathProblemIdType = {
 };
 
 export type BioProblemIdType = {
-  year: number;
-  isSecondary: boolean;
+  year: string;
   section: "I" | "II" | "III" | "IV";
   number: number;
 };
 
 export type HistProblemIdType = {
-  year: number;
-  isSecondary: boolean;
+  year: string;
   section: "I" | "II";
   number: number;
   problemType: "sources" | "questions" | "abcd";
 };
 
 export type PuppProblemIdType = {
-  year: number;
+  year: string;
   number: number;
   problemType: "whole" | "root" | "sub";
-  isSecondary: null;
 };
 
 export type SubjectType = "math" | "bio" | "hist" | "pupp";
@@ -40,8 +36,7 @@ export function parseProblemFilename(
   | HistProblemIdType
   | PuppProblemIdType {
   if (subject === "math") {
-    const year = parseInt(filename.substring(0, 4));
-    const isSecondary = filename.charAt(4) === "k";
+    const year = filename.substring(0, 5);
     const section: MathProblemIdType["section"] =
       filename.charAt(5) === "1"
         ? "I"
@@ -77,15 +72,13 @@ export function parseProblemFilename(
 
     return {
       year,
-      isSecondary,
       section,
       problemType,
       number,
       isBlevel: isBLevel,
     };
   } else if (subject === "bio") {
-    const year = parseInt(filename.substring(0, 4));
-    const isSecondary = filename.charAt(4) === "k";
+    const year = filename.substring(0, 5);
     const section: BioProblemIdType["section"] =
       filename.charAt(5) === "1"
         ? "I"
@@ -98,14 +91,11 @@ export function parseProblemFilename(
 
     return {
       year,
-      isSecondary,
       section,
       number,
     };
   } else if (subject === "hist") {
-    const year = parseInt(filename.substring(0, 4));
-    const isSecondary: HistProblemIdType["isSecondary"] =
-      filename.charAt(4) === "k";
+    const year = filename.substring(0, 5);
     const section: HistProblemIdType["section"] =
       filename.charAt(5) === "1" ? "I" : "II";
     let number: HistProblemIdType["number"];
@@ -126,13 +116,12 @@ export function parseProblemFilename(
     }
     return {
       year,
-      isSecondary,
       section,
       number,
       problemType,
     };
   } else if (subject === "pupp") {
-    const year = parseInt(filename.substring(0, 4));
+    const year = filename.substring(0, 5);
     const problemType: PuppProblemIdType["problemType"] =
       filename.charAt(4) === "w"
         ? "whole"
@@ -151,7 +140,6 @@ export function parseProblemFilename(
       year,
       problemType,
       number,
-      isSecondary: null,
     };
   } else {
     throw Error("No parser for problem subject '" + subject + "'");

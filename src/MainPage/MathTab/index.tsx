@@ -37,7 +37,7 @@ export default function MathTab() {
                 <Form.Check
                   key={year}
                   inline
-                  label={`${year.slice(0, 4)} pa${year.slice(4, 5)}.`}
+                  label={year}
                   checked={yearList.includes(year)}
                   onChange={() => toggleYearInList(year)}
                 />

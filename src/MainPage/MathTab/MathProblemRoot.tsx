@@ -22,8 +22,7 @@ export default function MathProblemRoot({
               return (
                 anotherId.number === Math.floor(currProblemInfo.number) &&
                 anotherId.problemType === "root" &&
-                anotherId.year === currProblemInfo.year &&
-                anotherId.isSecondary === currProblemInfo.isSecondary
+                anotherId.year === currProblemInfo.year
               );
             })
             .map((root) => (
@@ -41,8 +40,7 @@ export default function MathProblemRoot({
                 anotherId.number < currProblemInfo.number &&
                 anotherId.number >= Math.floor(currProblemInfo.number) &&
                 anotherId.problemType === "sub" &&
-                anotherId.year === currProblemInfo.year &&
-                anotherId.isSecondary === currProblemInfo.isSecondary
+                anotherId.year === currProblemInfo.year
               );
             })
             .map((root) => (

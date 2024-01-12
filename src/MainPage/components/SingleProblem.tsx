@@ -23,7 +23,10 @@ export default function SingleProblem({
       <img
         loading="lazy"
         alt={filename}
-        src={`${subject}-problems/${problemInfo.year}/${filename}`}
+        src={`${subject}-problems/${problemInfo.year.substring(
+          0,
+          4
+        )}/${filename}`}
       />
       {!["root", "sources"].includes(problemInfo.problemType) && (
         <Accordion style={{ marginTop: "20px" }}>

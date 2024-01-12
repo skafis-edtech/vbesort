@@ -30,15 +30,7 @@ export default function TopicItem({
             (problem) =>
               problem.topic === topic.topic &&
               yearList.includes(
-                `${parseProblemFilename(subject, problem.filename).year}${
-                  parseProblemFilename(subject, problem.filename)
-                    .isSecondary === null
-                    ? ""
-                    : parseProblemFilename(subject, problem.filename)
-                        .isSecondary
-                    ? "k"
-                    : "g"
-                }`
+                parseProblemFilename(subject, problem.filename).year
               )
           ).length
         }
@@ -51,15 +43,8 @@ export default function TopicItem({
               problem.filename
             );
             return (
-              yearList.includes(
-                `${currProblemInfo.year}${
-                  currProblemInfo.isSecondary == null
-                    ? ""
-                    : currProblemInfo.isSecondary
-                    ? "k"
-                    : "g"
-                }`
-              ) && problem.topic === topic.topic
+              yearList.includes(currProblemInfo.year) &&
+              problem.topic === topic.topic
             );
           }),
           isShuffleOn
@@ -72,13 +57,8 @@ export default function TopicItem({
             <div key={problem.filename} style={{}}>
               <hr style={{ border: "3px solid black" }} />
               <em>
-                {currProblemInfo.year} m.{" "}
-                {currProblemInfo.isSecondary == null
-                  ? ""
-                  : currProblemInfo.isSecondary
-                  ? "pakartotinė sesija"
-                  : "pagrindinė sesija"}{" "}
-                {currProblemInfo.section} {subject !== "pupp" ? "dalis" : ""}
+                {currProblemInfo.year} {currProblemInfo.section}{" "}
+                {subject !== "pupp" ? "dalis" : ""}
               </em>
 
               {currProblemInfo.problemType === "sub" && subject === "math" && (

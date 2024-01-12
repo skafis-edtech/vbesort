@@ -67,6 +67,15 @@ export default function AboutPage() {
         uždavinyje, priskiriama tik viena kategorija. Prioritetiniai kriterijai
         bus patikslinti vėliau.
       </p>
+      <p style={{ marginTop: "10px" }}>
+        2016 metų matematikos VBE pakartotinės sesijos atsakymų nuoroda
+        nsa.smm.lt tinklapyje yra neveikianti, tačiau nuėmus "+" ženklą iš
+        nuorodos, galima vis tiek viešai prieiti prie atsakymų. Štai čia tiksli
+        nuoroda:{" "}
+        <a href="https://www.nsa.smm.lt/wp-content/uploads/2021/03/6696_Mat_vertinimas_II-2016-07_11-red.pdf">
+          https://www.nsa.smm.lt/wp-content/uploads/2021/03/6696_Mat_vertinimas_II-2016-07_11-red.pdf
+        </a>
+      </p>
     </div>
   );
 }
