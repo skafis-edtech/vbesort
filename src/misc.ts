@@ -165,3 +165,22 @@ export function shuffle(array: any[], isShuffleOn: boolean) {
     return array;
   }
 }
+export function getLongYearName(year: string) {
+  const yearNumber = parseInt(year.substring(0, 4));
+  const yearLetter = year.charAt(4);
+  let yearName = "";
+  if (yearLetter === "g") {
+    yearName = yearNumber + " m. pagrindinė sesija";
+  } else if (yearLetter === "k") {
+    yearName = yearNumber + " m. pakartotinė sesija";
+  } else if (yearLetter === "v") {
+    yearName = yearNumber + " m. pavyzdinės užduotys";
+  } else if (yearLetter === "b") {
+    yearName = yearNumber + " m. bandomasis egzaminas";
+  } else if (yearLetter === "p") {
+    yearName = yearNumber + " m. užduotys";
+  } else {
+    throw Error("Invalid year letter '" + yearLetter + "'");
+  }
+  return yearName;
+}

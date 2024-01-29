@@ -17,7 +17,7 @@ export default function SingleProblem({
       style={{
         paddingTop: "50px",
         paddingBottom: "50px",
-        //overflowX: "auto",
+        overflowX: "auto",
       }}
     >
       <img

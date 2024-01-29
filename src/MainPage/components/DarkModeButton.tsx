@@ -4,7 +4,7 @@ import { ReactComponent as MoonIcon } from "./moon.svg";
 
 interface DarkModeButtonProps {
   isDarkMode: boolean;
-  setIsDarkMode: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsDarkMode: (isDarkMode: boolean) => void;
 }
 
 export default function DarkModeButton({

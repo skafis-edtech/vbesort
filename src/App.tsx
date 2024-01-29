@@ -8,9 +8,13 @@ import DarkModeButton from "./MainPage/components/DarkModeButton";
 import { Routes, Route, HashRouter } from "react-router-dom";
 import AboutPage from "./AboutPage";
 import ContributePage from "./ContributePage";
+import usePersistantState from "./hooks";
 
 function App() {
-  const [isDarkMode, setIsDarkMode] = useState<boolean>(true);
+  const [isDarkMode, setIsDarkMode] = usePersistantState<boolean>(
+    "DARK_MODE",
+    true
+  );
 
   return (
     <HashRouter>

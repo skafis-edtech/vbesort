@@ -1,5 +1,10 @@
 import { Accordion } from "react-bootstrap";
-import { SubjectType, parseProblemFilename, shuffle } from "../../misc";
+import {
+  SubjectType,
+  getLongYearName,
+  parseProblemFilename,
+  shuffle,
+} from "../../misc";
 import TopicItemHeader from "./TopicItemHeader";
 import MathProblemRoot from "../MathTab/MathProblemRoot";
 import SingleProblem from "./SingleProblem";
@@ -57,8 +62,8 @@ export default function TopicItem({
             <div key={problem.filename} style={{}}>
               <hr style={{ border: "3px solid black" }} />
               <em>
-                {currProblemInfo.year} {currProblemInfo.section}{" "}
-                {subject !== "pupp" ? "dalis" : ""}
+                {getLongYearName(currProblemInfo.year)}{" "}
+                {currProblemInfo.section} {subject !== "pupp" ? "dalis" : ""}
               </em>
 
               {currProblemInfo.problemType === "sub" && subject === "math" && (
