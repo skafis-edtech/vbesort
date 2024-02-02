@@ -123,9 +123,9 @@ export function parseProblemFilename(
   } else if (subject === "pupp") {
     const year = filename.substring(0, 5);
     const problemType: PuppProblemIdType["problemType"] =
-      filename.charAt(4) === "w"
+      filename.charAt(6) === "w"
         ? "whole"
-        : filename.charAt(4) === "r"
+        : filename.charAt(6) === "r"
         ? "root"
         : "sub";
     let number;
@@ -179,6 +179,12 @@ export function getLongYearName(year: string) {
     yearName = yearNumber + " m. bandomasis egzaminas";
   } else if (yearLetter === "p") {
     yearName = yearNumber + " m. užduotys";
+  } else if (yearLetter === "1") {
+    yearName = yearNumber + " m. I srautas";
+  } else if (yearLetter === "2") {
+    yearName = yearNumber + " m. II srautas";
+  } else if (yearLetter === "3") {
+    yearName = yearNumber + " m. III srautas";
   } else {
     throw Error("Invalid year letter '" + yearLetter + "'");
   }
