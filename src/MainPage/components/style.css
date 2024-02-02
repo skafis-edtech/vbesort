@@ -7,3 +7,8 @@
 [data-bs-theme="dark"] .root-header > .accordion-button {
   background-color: var(--background-color);
 }
+
+[data-bs-theme="dark"] .single-problem img {
+  filter: invert(89%) sepia(26%) saturate(311%) hue-rotate(169deg)
+    brightness(88%) contrast(90%);
+}

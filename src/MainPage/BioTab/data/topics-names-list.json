@@ -1,7 +1,59 @@
 [
   {
+    "topic": "lasteles",
+    "name": "Ląstelės"
+  },
+  {
+    "topic": "medziagos",
+    "name": "Medžiagos ir procesai"
+  },
+  {
+    "topic": "audiniai",
+    "name": "Audiniai"
+  },
+  {
+    "topic": "augalai",
+    "name": "Augalai"
+  },
+  {
+    "topic": "gyvunai",
+    "name": "Gyvūnai"
+  },
+  {
+    "topic": "protistai",
+    "name": "Protistai"
+  },
+  {
+    "topic": "pirmuonys",
+    "name": "Pirmuonys"
+  },
+  {
+    "topic": "dumbliai",
+    "name": "Dumbliai"
+  },
+  {
+    "topic": "grybai",
+    "name": "Grybai"
+  },
+  {
+    "topic": "zmogus",
+    "name": "Žmogus"
+  },
+  {
+    "topic": "ekologija",
+    "name": "Ekologija"
+  },
+  {
     "topic": "genetika",
     "name": "Genetika"
+  },
+  {
+    "topic": "evoliucija",
+    "name": "Evoliucija"
+  },
+  {
+    "topic": "ligos",
+    "name": "Ligos"
   },
   {
     "topic": "misc",

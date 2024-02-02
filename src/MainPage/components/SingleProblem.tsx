@@ -19,6 +19,7 @@ export default function SingleProblem({
         paddingBottom: "50px",
         overflowX: "auto",
       }}
+      className="single-problem"
     >
       <img
         loading="lazy"
@@ -27,6 +28,11 @@ export default function SingleProblem({
           0,
           4
         )}/${filename}`}
+        style={{
+          width: "auto",
+          height: "auto",
+          maxWidth: "900px",
+        }}
       />
       {!["root", "sources"].includes(problemInfo.problemType) && (
         <Accordion style={{ marginTop: "20px" }}>
@@ -53,6 +59,11 @@ export default function SingleProblem({
                     answerLut.find((problem) => problem.filename === filename)
                       ?.answer
                   }`}
+                  style={{
+                    width: "auto",
+                    height: "auto",
+                    maxWidth: "900px",
+                  }}
                 />
               )}
             </Accordion.Body>
