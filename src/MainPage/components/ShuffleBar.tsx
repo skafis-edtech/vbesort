@@ -3,7 +3,7 @@ import { ReactComponent as ShuffleIcon } from "./shuffle.svg";
 
 interface ShuffleProps {
   isShuffleOn: boolean;
-  setShuffleOn: React.Dispatch<React.SetStateAction<boolean>>;
+  setShuffleOn: any;
   style: React.CSSProperties;
 }
 

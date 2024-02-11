@@ -43,7 +43,7 @@ export default function AboutPage() {
         </a>
       </p>
       <p>
-        Užduočių šaltinis:{" "}
+        Užduočių šaltinis*:{" "}
         <a
           href="https://www.nsa.smm.lt/egzaminai-ir-pasiekimu-patikrinimai/brandos-egzaminai/egzaminu-uzduotys/"
           target="_blank"
@@ -53,7 +53,7 @@ export default function AboutPage() {
         </a>
       </p>
       <p>
-        Atsakymų šaltinis*:{" "}
+        Atsakymų šaltinis**:{" "}
         <a
           href="https://www.nsa.smm.lt/egzaminai-ir-pasiekimu-patikrinimai/brandos-egzaminai/vertinimas/"
           target="_blank"
@@ -68,7 +68,7 @@ export default function AboutPage() {
         bus patikslinti vėliau.
       </p>
       <p style={{ marginTop: "10px" }}>
-        *2016 metų matematikos VBE pakartotinės sesijos atsakymų nuoroda
+        **2016 metų matematikos VBE pakartotinės sesijos atsakymų nuoroda
         nsa.smm.lt tinklapyje yra neveikianti, tačiau nuėmus "+" ženklą iš
         nuorodos, galima vis tiek viešai prieiti prie atsakymų. Štai čia tiksli
         nuoroda:{" "}
@@ -84,10 +84,19 @@ export default function AboutPage() {
         </a>
       </p>
       <p>
+        *2019, 2020, 2021 pakartotinių sesijų užduotys nėra viešai paskelbtos,
+        bet dalinuosi prastesnės kokybės iš kitų šaltinių gautomis užduotimis.
+      </p>
+      <p>
+        **2002p, 2003p, 2004p, 2005p, 2006p, 2007p, 2008g, 2019k, 2020k, 2021k
+        atsakymai nepaskelbti. Šių egzaminų arba nebus atsakymų šiame
+        tinklapyje, arba bus iš kitų šaltinių, arba bus mano spręsta.
+      </p>
+      <p>
         Užduočių sąlygų, sprendimų ir atsakymų autorinės teisės priklauso
         Nacionaliniam egzaminų centrui ir Nacionalinei švietimo agentūrai (LR
         švietimo, mokslo ir sporto ministerijai). Šiuo tinklapiu nepasisavinamos
-        jokios autorinės teisės, naudojama tik viešai prieinama informacija
+        jokios autorinės teisės, informacija naudojama tik švietimo
         nekomerciniais tikslais.
       </p>
       <hr />

@@ -51,7 +51,7 @@ export default function SingleProblem({
               ) : (
                 <img
                   loading="lazy"
-                  alt={`answer screenshot: ${
+                  alt={`${
                     answerLut.find((problem) => problem.filename === filename)
                       ?.answer
                   }`}

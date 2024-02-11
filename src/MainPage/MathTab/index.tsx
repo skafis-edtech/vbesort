@@ -5,9 +5,10 @@ import { useState } from "react";
 import allYearList from "./data/year-list.json";
 import ShuffleBar from "../components/ShuffleBar";
 import TopicItem from "../components/TopicItem";
+import usePersistantState from "../../hooks";
 
 export default function MathTab() {
-  const [yearList, setYearList] = useState<string[]>(
+  const [yearList, setYearList] = usePersistantState<string[]>("vbesort.lt-YEAR_LIST",
     allYearList.filter((year) => year !== "2023k" && year !== "2023g")
   );
 
@@ -19,9 +20,18 @@ export default function MathTab() {
     }
   };
 
-  const [isShuffleOn, setShuffleOn] = useState<boolean>(true);
+  const [isShuffleOn, setShuffleOn] = usePersistantState<boolean>(
+    "vbesort.lt-IS_SHUFFLE_ON",
+    true
+  );
   return (
     <>
+      <p>
+        Daug (senesnių metų) užduočių neturi oficialių atsakymų, paskelbtų NŠA.
+        Todėl jei kažkas išspręsit užduotis su "NSA nepaskelbtas atsakymas"
+        užrašu prie atsakymo, mielai sprendimus priimčiau ir įkelčiau į
+        tinklapį. Taigi tiesiog parašykit.
+      </p>
       <p>
         Siūlau žiūrint užduotis pasilikti bent dviejų egzaminų užduotis
         nematytas, kad ruošiantis būtų galima išspręsti bent vieną egzaminą

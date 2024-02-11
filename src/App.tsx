@@ -12,7 +12,7 @@ import usePersistantState from "./hooks";
 
 function App() {
   const [isDarkMode, setIsDarkMode] = usePersistantState<boolean>(
-    "DARK_MODE",
+    "vbesort.lt-DARK_MODE",
     true
   );
 

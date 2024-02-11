@@ -70,3 +70,13 @@ footer {
   text-align: center;
   padding-bottom: 10px;
 }
+
+[data-bs-theme="dark"] img::after {
+  content: attr(alt);
+  color: black;
+}
+
+[data-bs-theme="light"] img::after {
+  content: attr(alt);
+  color: white;
+}
