@@ -1,17 +1,13 @@
 import { Button } from "react-bootstrap";
 import { ReactComponent as ShuffleIcon } from "./shuffle.svg";
+import { useDarkMode } from "../../components/DarkModeContext";
 
 interface ShuffleProps {
-  isShuffleOn: boolean;
-  setShuffleOn: any;
   style: React.CSSProperties;
 }
 
-export default function ShuffleBar({
-  isShuffleOn,
-  setShuffleOn,
-  style,
-}: ShuffleProps) {
+export default function ShuffleBar({ style }: ShuffleProps) {
+  const { isShuffleOn, toggleShuffle } = useDarkMode();
   return (
     <div style={style}>
       <div
@@ -42,7 +38,7 @@ export default function ShuffleBar({
               marginRight: "10px",
             }}
             variant={`${isShuffleOn ? "primary" : "light"}`}
-            onClick={() => setShuffleOn(!isShuffleOn)}
+            onClick={toggleShuffle}
           >
             <ShuffleIcon style={{ height: "24px", width: "24px" }} />
           </Button>

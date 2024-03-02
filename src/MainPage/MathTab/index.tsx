@@ -1,14 +1,14 @@
-import { Accordion, Form } from "react-bootstrap";
+import { Accordion, Button, Form } from "react-bootstrap";
 import topics from "./data/topics-names-list.json";
 import nrTopicLut from "./data/nr-topic-lut.json";
-import { useState } from "react";
-import allYearList from "./data/year-list.json";
 import ShuffleBar from "../components/ShuffleBar";
 import TopicItem from "../components/TopicItem";
 import usePersistantState from "../../hooks";
+import allYearList from "./data/year-list.json";
 
 export default function MathTab() {
-  const [yearList, setYearList] = usePersistantState<string[]>("vbesort.lt-YEAR_LIST",
+  const [yearList, setYearList] = usePersistantState<string[]>(
+    "YEAR_LIST",
     allYearList.filter((year) => year !== "2023k" && year !== "2023g")
   );
 
@@ -20,10 +20,13 @@ export default function MathTab() {
     }
   };
 
-  const [isShuffleOn, setShuffleOn] = usePersistantState<boolean>(
-    "vbesort.lt-IS_SHUFFLE_ON",
-    true
-  );
+  const selectAll = () => {
+    setYearList(allYearList);
+  };
+
+  const clearAll = () => {
+    setYearList([]);
+  };
   return (
     <>
       <p>
@@ -32,6 +35,8 @@ export default function MathTab() {
         užrašu prie atsakymo, mielai sprendimus priimčiau ir įkelčiau į
         tinklapį. Taigi tiesiog parašykit.
       </p>
+      <ShuffleBar style={{ flexGrow: 1 }} />
+      <h2>Pasirinkite, kurių metų matematikos VBE užduotis rodyti</h2>
       <p>
         Siūlau žiūrint užduotis pasilikti bent dviejų egzaminų užduotis
         nematytas, kad ruošiantis būtų galima išspręsti bent vieną egzaminą
@@ -39,34 +44,32 @@ export default function MathTab() {
         bei vieną mokykloje išspręsti kaip bandomąjį (greičiausiai 2023 m.
         pakartotinės sesijos)
       </p>
-      <div>
-        <div style={{ marginTop: "50px", marginBottom: "20px" }}>
-          <div style={{ marginTop: "20px", display: "flex" }}>
-            <Form style={{ flexGrow: 3 }}>
-              {allYearList.map((year) => (
-                <Form.Check
-                  key={year}
-                  inline
-                  label={year}
-                  checked={yearList.includes(year)}
-                  onChange={() => toggleYearInList(year)}
-                />
-              ))}
-            </Form>
-            <ShuffleBar
-              isShuffleOn={isShuffleOn}
-              setShuffleOn={setShuffleOn}
-              style={{ flexGrow: 1 }}
-            />
-          </div>
+      <div style={{ marginTop: "50px", marginBottom: "20px" }}>
+        <Button style={{ margin: "10px" }} onClick={clearAll}>
+          Išvalyti visus
+        </Button>
+        <Button onClick={selectAll}>Pažymėti visus</Button>
+        <div style={{ marginTop: "20px", display: "flex" }}>
+          <Form style={{ flexGrow: 3 }}>
+            {allYearList.map((year) => (
+              <Form.Check
+                key={year}
+                inline
+                label={`${year.slice(0, 4)} pa${year.slice(4, 5)}.`}
+                checked={yearList.includes(year)}
+                onChange={() => toggleYearInList(year)}
+              />
+            ))}
+          </Form>
         </div>
+      </div>
+      <div>
         <Accordion>
           {topics.map((topic) => (
             <TopicItem
               key={topic.topic}
               topic={topic}
-              yearList={yearList}
-              isShuffleOn={isShuffleOn}
+              yearList={JSON.parse(localStorage.getItem("YEAR_LIST") || "[]")}
               nrTopicLut={nrTopicLut}
               subject="math"
             />

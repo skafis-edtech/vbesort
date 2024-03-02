@@ -22,14 +22,16 @@ export default function HistTab() {
   const [isShuffleOn, setShuffleOn] = useState<boolean>(true);
   return (
     <>
-      <p>
-        Siūlau žiūrint užduotis pasilikti bent dviejų egzaminų užduotis
-        nematytas, kad ruošiantis būtų galima išspręsti bent vieną egzaminą
-        pilnai, sekant laiką ir pasitikrinant pasiruošimą (pagrindinės sesijos),
-        bei vieną mokykloje išspręsti kaip bandomąjį (greičiausiai 2023 m.
-        pakartotinės sesijos)
-      </p>
+      <ShuffleBar style={{ flexGrow: 1 }} />
+
       <div>
+        <p>
+          Siūlau žiūrint užduotis pasilikti bent dviejų egzaminų užduotis
+          nematytas, kad ruošiantis būtų galima išspręsti bent vieną egzaminą
+          pilnai, sekant laiką ir pasitikrinant pasiruošimą (pagrindinės
+          sesijos), bei vieną mokykloje išspręsti kaip bandomąjį (greičiausiai
+          2023 m. pakartotinės sesijos)
+        </p>
         <div style={{ marginTop: "50px", marginBottom: "20px" }}>
           <div style={{ marginTop: "20px", display: "flex" }}>
             <Form style={{ flexGrow: 3 }}>
@@ -43,11 +45,6 @@ export default function HistTab() {
                 />
               ))}
             </Form>
-            <ShuffleBar
-              isShuffleOn={isShuffleOn}
-              setShuffleOn={setShuffleOn}
-              style={{ flexGrow: 1 }}
-            />
           </div>
         </div>
         <Accordion>
@@ -56,7 +53,6 @@ export default function HistTab() {
               key={topic.topic}
               topic={topic}
               yearList={yearList}
-              isShuffleOn={isShuffleOn}
               nrTopicLut={nrTopicLut}
               subject="hist"
             />

@@ -41,11 +41,7 @@ export default function PuppTab() {
                 />
               ))}
             </Form>
-            <ShuffleBar
-              isShuffleOn={isShuffleOn}
-              setShuffleOn={setShuffleOn}
-              style={{ flexGrow: 1 }}
-            />
+            <ShuffleBar style={{ flexGrow: 1 }} />
           </div>
         </div>
         <Accordion>
@@ -54,7 +50,6 @@ export default function PuppTab() {
               key={topic.topic}
               topic={topic}
               yearList={yearList}
-              isShuffleOn={isShuffleOn}
               nrTopicLut={nrTopicLut}
               subject="pupp"
             />

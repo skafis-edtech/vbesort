@@ -10,11 +10,11 @@ import MathProblemRoot from "../MathTab/MathProblemRoot";
 import SingleProblem from "./SingleProblem";
 import HistProblemRoot from "../HistTab/HistProblemRoot";
 import PuppProblemRoot from "../PuppTab/PuppProblemRoot";
+import { useDarkMode } from "../../components/DarkModeContext";
 
 interface TopicItemProps {
   topic: { topic: string; name: string };
   yearList: string[];
-  isShuffleOn: boolean;
   nrTopicLut: { filename: string; topic: string; answer?: string }[];
   subject: SubjectType;
 }
@@ -22,10 +22,10 @@ interface TopicItemProps {
 export default function TopicItem({
   topic,
   yearList,
-  isShuffleOn,
   nrTopicLut,
   subject,
 }: TopicItemProps) {
+  const { isShuffleOn } = useDarkMode();
   return (
     <Accordion.Item eventKey={topic.topic}>
       <TopicItemHeader

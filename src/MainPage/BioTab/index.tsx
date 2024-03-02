@@ -43,11 +43,7 @@ export default function BioTab() {
                 />
               ))}
             </Form>
-            <ShuffleBar
-              isShuffleOn={isShuffleOn}
-              setShuffleOn={setShuffleOn}
-              style={{ flexGrow: 1 }}
-            />
+            <ShuffleBar style={{ flexGrow: 1 }} />
           </div>
         </div>
         <Accordion>
@@ -56,7 +52,6 @@ export default function BioTab() {
               key={topic.topic}
               topic={topic}
               yearList={yearList}
-              isShuffleOn={isShuffleOn}
               nrTopicLut={nrTopicLut}
               subject="bio"
             />

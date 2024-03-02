@@ -16,6 +16,7 @@
     />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/favicon-apple.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
     <!-- Google tag (gtag.js) -->
     <script
       async
@@ -30,10 +31,23 @@
 
       gtag("config", "G-P8JCZHXYT5");
     </script>
+
     <title>Surūšiuotos VBE užduotys</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
   </body>
+  <script>
+    (function () {
+      const darkMode = localStorage.getItem("IS_DARK_MODE") === "true";
+      const prefersDark = window.matchMedia(
+        "(prefers-color-scheme: dark)"
+      ).matches;
+      if (darkMode || prefersDark) {
+        document.body.setAttribute("data-bs-theme", "dark");
+        document.body.classList.add("bg-dark", "text-light");
+      }
+    })();
+  </script>
 </html>

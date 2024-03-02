@@ -1,4 +1,7 @@
 import { Link } from "react-router-dom";
+import usePersistantState from "../hooks";
+import allYearList from "../MainPage/MathTab/data/year-list.json";
+import { Form } from "react-bootstrap";
 
 export default function AboutPage() {
   return (
@@ -62,10 +65,15 @@ export default function AboutPage() {
           nsa.smm.lt
         </a>
       </p>
+
       <p>
         Užduotys nesikartoja keliose kategorijose. Esant kelioms temoms viename
         uždavinyje, priskiriama tik viena kategorija. Prioritetiniai kriterijai
         bus patikslinti vėliau.
+      </p>
+      <p>
+        Štai čia - matematikos VBE surašyti metai. Galima atžymėti, kurių metų
+        užduočių nerodyti (išsisaugo informacija browseryje)
       </p>
       <p style={{ marginTop: "10px" }}>
         **2016 metų matematikos VBE pakartotinės sesijos atsakymų nuoroda

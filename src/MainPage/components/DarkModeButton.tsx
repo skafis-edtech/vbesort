@@ -1,16 +1,10 @@
 import { Button } from "react-bootstrap";
 import { ReactComponent as SunIcon } from "./sun.svg";
 import { ReactComponent as MoonIcon } from "./moon.svg";
+import { useDarkMode } from "../../components/DarkModeContext";
 
-interface DarkModeButtonProps {
-  isDarkMode: boolean;
-  setIsDarkMode: (isDarkMode: boolean) => void;
-}
-
-export default function DarkModeButton({
-  isDarkMode,
-  setIsDarkMode,
-}: DarkModeButtonProps) {
+export default function DarkModeButton() {
+  const { isDarkMode, toggleDarkMode } = useDarkMode();
   return (
     <>
       <Button
@@ -18,7 +12,7 @@ export default function DarkModeButton({
         style={{
           borderRadius: "100%",
         }}
-        onClick={() => setIsDarkMode(!isDarkMode)}
+        onClick={toggleDarkMode}
       >
         {isDarkMode ? (
           <SunIcon style={{ marginBottom: "4px" }} />
