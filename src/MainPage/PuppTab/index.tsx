@@ -19,14 +19,8 @@ export default function PuppTab() {
     }
   };
 
-  const [isShuffleOn, setShuffleOn] = useState<boolean>(true);
   return (
     <>
-      <p>
-        Norint gerai pasiruošti PUPP egzaminui, patarčiau vienų metų užduotis
-        (2022 m.) išskirti iš šio užduočių sąrašo, išspręsti savarankiškai,
-        pilnai, sekant laiką.
-      </p>
       <div>
         <div style={{ marginTop: "50px", marginBottom: "20px" }}>
           <div style={{ marginTop: "20px", display: "flex" }}>
@@ -41,7 +35,6 @@ export default function PuppTab() {
                 />
               ))}
             </Form>
-            <ShuffleBar style={{ flexGrow: 1 }} />
           </div>
         </div>
         <Accordion>

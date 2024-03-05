@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import usePersistantState from "../hooks";
-import allYearList from "../MainPage/MathTab/data/year-list.json";
 import { Form } from "react-bootstrap";
 
 export default function AboutPage() {

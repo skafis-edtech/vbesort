@@ -41,6 +41,13 @@ function MainPage() {
           <MathTab />
         </Tab>
         <Tab
+          eventKey="math-pupp-tab"
+          title="Matematikos PUPP"
+          style={{ marginTop: "20px" }}
+        >
+          <PuppTab />
+        </Tab>
+        <Tab
           eventKey="bio-tab"
           title="Biologijos VBE"
           style={{ marginTop: "20px" }}
@@ -53,14 +60,6 @@ function MainPage() {
           style={{ marginTop: "20px" }}
         >
           <HistTab />
-        </Tab>
-
-        <Tab
-          eventKey="math-pupp-tab"
-          title="Matematikos PUPP"
-          style={{ marginTop: "20px" }}
-        >
-          <PuppTab />
         </Tab>
       </Tabs>
     </div>

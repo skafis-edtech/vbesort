@@ -122,18 +122,19 @@ export function parseProblemFilename(
     };
   } else if (subject === "pupp") {
     const year = filename.substring(0, 5);
+
     const problemType: PuppProblemIdType["problemType"] =
-      filename.charAt(6) === "w"
+      filename.charAt(5) === "w" || filename.charAt(5) === "-"
         ? "whole"
-        : filename.charAt(6) === "r"
+        : filename.charAt(5) === "r"
         ? "root"
         : "sub";
     let number;
 
     if (problemType === "sub") {
-      number = parseFloat(filename.substring(5, 9));
+      number = parseFloat(filename.substring(6, 10));
     } else {
-      number = parseInt(filename.substring(5, 7));
+      number = parseInt(filename.substring(6, 8));
     }
 
     return {
@@ -165,6 +166,7 @@ export function shuffle(array: any[], isShuffleOn: boolean) {
     return array;
   }
 }
+
 export function getLongYearName(year: string) {
   const yearNumber = parseInt(year.substring(0, 4));
   const yearLetter = year.charAt(4);

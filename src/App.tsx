@@ -6,8 +6,9 @@ import MainPage from "./MainPage";
 import DarkModeButton from "./MainPage/components/DarkModeButton";
 import { Routes, Route, HashRouter } from "react-router-dom";
 import AboutPage from "./AboutPage";
-import ContributePage from "./ContributePage";
 import { DarkModeProvider } from "./components/DarkModeContext";
+import { Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 function App() {
   return (
@@ -24,11 +25,20 @@ function App() {
             <section>
               <Routes>
                 <Route index element={<MainPage />} />
-                <Route path="/hist-tab" element={<MainPage />} />
-                <Route path="/bio-tab" element={<MainPage />} />
-                <Route path="/math-pupp-tab" element={<MainPage />} />
+                <Route path="/hist" element={<MainPage />} />
+                <Route path="/bio" element={<MainPage />} />
+                <Route path="/math-pupp" element={<MainPage />} />
                 <Route path="/about" element={<AboutPage />} />
-                <Route path="/contribute" element={<ContributePage />} />
+                <Route
+                  path="*"
+                  element={
+                    <h1 style={{ textAlign: "center" }}>
+                      <br />
+                      Ups... 404. <br />
+                      <Link to="/">Į PRADŽIĄ</Link>
+                    </h1>
+                  }
+                />
               </Routes>
             </section>
             <aside></aside>

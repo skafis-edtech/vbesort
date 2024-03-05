@@ -1,7 +1,55 @@
 [
   {
-    "topic": "funkcijos",
-    "name": "Funkcijos"
+    "topic": "tieses",
+    "name": "Tiesės"
+  },
+  {
+    "topic": "paraboles",
+    "name": "Parabolės"
+  },
+  {
+    "topic": "funkcijos-bendrai",
+    "name": "Funkcijos bendrai"
+  },
+  {
+    "topic": "skaiciavimai",
+    "name": "Skaičiavimai"
+  },
+  {
+    "topic": "procentai",
+    "name": "Procentai"
+  },
+  {
+    "topic": "lygtys",
+    "name": "Lygtys / lygčių sistemos"
+  },
+  {
+    "topic": "nelygybes",
+    "name": "Nelygybės"
+  },
+  {
+    "topic": "tikimybes",
+    "name": "Tikimybės"
+  },
+  {
+    "topic": "reiskiniai",
+    "name": "Reiškiniai"
+  },
+  {
+    "topic": "statistika",
+    "name": "Statistika"
+  },
+  {
+    "topic": "planimetrija",
+    "name": "Planimetrija"
+  },
+  {
+    "topic": "stereometrija",
+    "name": "Stereometrija"
+  },
+  {
+    "topic": "skaiciai",
+    "name": "Skaičiai (su skaičių teorija)"
   },
   {
     "topic": "misc",

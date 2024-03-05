@@ -17,7 +17,7 @@ export default function ShuffleBar({ style }: ShuffleProps) {
           justifyContent: "flex-start",
         }}
       >
-        <h4>Shuffle is {isShuffleOn ? "ON" : "OFF"}:</h4>{" "}
+        <h4>Užduočių maišymas {isShuffleOn ? "ĮJUNGTAS" : "IŠJUNGTAS"}:</h4>{" "}
         <div
           style={{
             margin: "10px",

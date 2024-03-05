@@ -19,7 +19,6 @@ export default function BioTab() {
     }
   };
 
-  const [isShuffleOn, setShuffleOn] = useState<boolean>(true);
   return (
     <>
       <p>
@@ -43,7 +42,6 @@ export default function BioTab() {
                 />
               ))}
             </Form>
-            <ShuffleBar style={{ flexGrow: 1 }} />
           </div>
         </div>
         <Accordion>

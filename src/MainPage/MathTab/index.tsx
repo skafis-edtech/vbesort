@@ -35,7 +35,6 @@ export default function MathTab() {
         užrašu prie atsakymo, mielai sprendimus priimčiau ir įkelčiau į
         tinklapį. Taigi tiesiog parašykit.
       </p>
-      <ShuffleBar style={{ flexGrow: 1 }} />
       <h2>Pasirinkite, kurių metų matematikos VBE užduotis rodyti</h2>
       <p>
         Siūlau žiūrint užduotis pasilikti bent dviejų egzaminų užduotis

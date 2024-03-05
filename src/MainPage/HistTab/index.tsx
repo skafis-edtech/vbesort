@@ -19,11 +19,8 @@ export default function HistTab() {
     }
   };
 
-  const [isShuffleOn, setShuffleOn] = useState<boolean>(true);
   return (
     <>
-      <ShuffleBar style={{ flexGrow: 1 }} />
-
       <div>
         <p>
           Siūlau žiūrint užduotis pasilikti bent dviejų egzaminų užduotis
