@@ -14,7 +14,8 @@ export default function ShuffleBar({ style }: ShuffleProps) {
         style={{
           display: "flex",
           flexDirection: "row",
-          justifyContent: "flex-start",
+
+          alignItems: "center",
         }}
       >
         <h4>Užduočių maišymas {isShuffleOn ? "ĮJUNGTAS" : "IŠJUNGTAS"}:</h4>{" "}

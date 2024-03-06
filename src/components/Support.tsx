@@ -2,11 +2,9 @@ import { Alert } from "react-bootstrap";
 
 export default function Support() {
   return (
-    <Alert variant="info" style={{ marginBottom: "15px" }}>
+    <Alert variant="info" style={{ marginBottom: "20px", marginTop: "20px" }}>
       <h4>
-        <strong>
-          Piniginis parėmimas padėkai bei tolimesniam puslapio tobulinimui:
-        </strong>
+        <strong>Hmm, matai? Nėra reklamų! Tegu taip ir išlieka ;)</strong>
       </h4>
       <p
         style={{
@@ -14,17 +12,17 @@ export default function Support() {
           paddingLeft: "30px",
         }}
       >
+        <li>Revolut pavedimas: Naglis Šuliokas LT943250092929077836</li>
         <li>
-          PayPal donation – gan daug mokesčių PayPal pasiima:{" "}
+          PayPal donation (PayPal mokesčiai):{" "}
           <a
             href="https://www.paypal.com/donate/?hosted_button_id=86R4K9Y6BLSXA"
             target="_blank"
             rel="noreferrer"
           >
-            donation linkas
+            donation link'as
           </a>
         </li>
-        <li>Revolut pavedimu: Naglis Šuliokas LT943250092929077836</li>
       </p>
     </Alert>
   );

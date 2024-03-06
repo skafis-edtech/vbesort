@@ -1,4 +1,4 @@
-import { Accordion, Button, Form, Tab, Tabs } from "react-bootstrap";
+import { Accordion, Alert, Button, Form, Tab, Tabs } from "react-bootstrap";
 import topics from "./data/topics-names-list.json";
 import nrTopicLut from "./data/nr-topic-lut.json";
 import TopicItem from "../components/TopicItem";
@@ -92,54 +92,56 @@ function YearSelector({
     setYearList(allYearList.filter((year) => !isNotHaveAnswersMathVbe(year)));
   };
   return (
-    <Accordion style={{ marginBottom: "20px" }}>
-      <Accordion.Item eventKey="yo-what-up:))">
-        <Accordion.Header>
-          <div>
-            <InfoIcon
-              style={{ height: "24px", width: "24px", margin: "10px" }}
-            />
-          </div>
-          <h5>Pasirinkite, kurių metų matematikos VBE užduotis rodyti</h5>
-        </Accordion.Header>
-        <Accordion.Body>
-          <p>
-            <strong>12-okams: </strong>Siūlau žiūrint užduotis pasilikti bent
-            vieno egzamino užduotis nematytas, kad ruošiantis būtų galima
-            išspręsti bent vieną egzaminą pilnai, sekant laiką ir pasitikrinant
-            pasiruošimą.
-          </p>
-          <div style={{ marginTop: "50px", marginBottom: "20px" }}>
-            <Button style={{ margin: "10px" }} onClick={clearAll}>
-              Išvalyti visus
-            </Button>
-            <Button style={{ margin: "10px" }} onClick={selectAll}>
-              Pažymėti visus
-            </Button>
-            <Button style={{ margin: "10px" }} onClick={selectWithAns}>
-              Tik su atsakymais (visi)
-            </Button>
-            <div style={{ marginTop: "20px", display: "flex" }}>
-              <Form style={{ flexGrow: 3 }}>
-                {allYearList.map((year) => (
-                  <Form.Check
-                    style={{ width: "250px" }}
-                    key={year}
-                    inline
-                    label={
-                      getShortYearName(year) +
-                      (isNotHaveAnswersMathVbe(year) ? " (be ats.)" : "") +
-                      (isOfficialMathVbe(year) ? "" : " ne oficialu")
-                    }
-                    checked={yearList.includes(year)}
-                    onChange={() => toggleYearInList(year)}
-                  />
-                ))}
-              </Form>
+    <Alert variant="info">
+      <Accordion style={{ marginBottom: "20px" }}>
+        <Accordion.Item eventKey="yo-what-up:))">
+          <Accordion.Header>
+            <div>
+              <InfoIcon
+                style={{ height: "24px", width: "24px", margin: "10px" }}
+              />
             </div>
-          </div>
-        </Accordion.Body>
-      </Accordion.Item>
-    </Accordion>
+            <h5>Pasirinkite, kurių metų matematikos VBE užduotis rodyti</h5>
+          </Accordion.Header>
+          <Accordion.Body>
+            <p>
+              <strong>12-okams: </strong>Siūlau žiūrint užduotis pasilikti bent
+              vieno egzamino užduotis nematytas, kad ruošiantis būtų galima
+              išspręsti bent vieną egzaminą pilnai, sekant laiką ir
+              pasitikrinant pasiruošimą.
+            </p>
+            <div style={{ marginTop: "50px", marginBottom: "20px" }}>
+              <Button style={{ margin: "10px" }} onClick={clearAll}>
+                Išvalyti visus
+              </Button>
+              <Button style={{ margin: "10px" }} onClick={selectAll}>
+                Pažymėti visus
+              </Button>
+              <Button style={{ margin: "10px" }} onClick={selectWithAns}>
+                Tik su atsakymais (visi)
+              </Button>
+              <div style={{ marginTop: "20px", display: "flex" }}>
+                <Form style={{ flexGrow: 3 }}>
+                  {allYearList.map((year) => (
+                    <Form.Check
+                      style={{ width: "250px" }}
+                      key={year}
+                      inline
+                      label={
+                        getShortYearName(year) +
+                        (isNotHaveAnswersMathVbe(year) ? " (be ats.)" : "") +
+                        (isOfficialMathVbe(year) ? "" : " ne oficialu")
+                      }
+                      checked={yearList.includes(year)}
+                      onChange={() => toggleYearInList(year)}
+                    />
+                  ))}
+                </Form>
+              </div>
+            </div>
+          </Accordion.Body>
+        </Accordion.Item>
+      </Accordion>
+    </Alert>
   );
 }
