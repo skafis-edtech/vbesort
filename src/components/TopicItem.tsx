@@ -4,13 +4,13 @@ import {
   getLongYearName,
   parseProblemFilename,
   shuffle,
-} from "../../misc";
+} from "../misc";
 import TopicItemHeader from "./TopicItemHeader";
-import MathProblemRoot from "../MathTab/MathProblemRoot";
+import MathProblemRoot from "../MainPage/MathProblemRoot";
 import SingleProblem from "./SingleProblem";
-import HistProblemRoot from "../HistTab/HistProblemRoot";
-import PuppProblemRoot from "../PuppTab/PuppProblemRoot";
-import { useDarkMode } from "../../components/DarkModeContext";
+import HistProblemRoot from "../HistPage/HistProblemRoot";
+import PuppProblemRoot from "../MathPuppPage/PuppProblemRoot";
+import { useDarkMode } from "./DarkModeContext";
 
 interface TopicItemProps {
   topic: { topic: string; name: string };

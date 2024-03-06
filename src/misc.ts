@@ -192,3 +192,57 @@ export function getLongYearName(year: string) {
   }
   return yearName;
 }
+
+export function isNotHaveAnswersMathVbe(year: string): boolean {
+  const noAnsList: string[] = [
+    "2002p",
+    "2003p",
+    "2004p",
+    "2005p",
+    "2006p",
+    "2007p",
+    "2008g",
+    "2019k",
+    "2021k",
+  ];
+  if (noAnsList.includes(year)) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+export function isOfficialMathVbe(year: string) {
+  const nonOfficialList: string[] = ["2019k", "2020k", "2021k"];
+  if (nonOfficialList.includes(year)) {
+    return false;
+  } else {
+    return true;
+  }
+}
+
+export function getShortYearName(year: string) {
+  const yearNumber = parseInt(year.substring(0, 4));
+  const yearLetter = year.charAt(4);
+  let yearName = "";
+  if (yearLetter === "g") {
+    yearName = yearNumber + " pag.";
+  } else if (yearLetter === "k") {
+    yearName = yearNumber + " pak.";
+  } else if (yearLetter === "v") {
+    yearName = yearNumber + " pav.";
+  } else if (yearLetter === "b") {
+    yearName = yearNumber + " band.";
+  } else if (yearLetter === "p") {
+    yearName = yearNumber + "";
+  } else if (yearLetter === "1") {
+    yearName = yearNumber + " I";
+  } else if (yearLetter === "2") {
+    yearName = yearNumber + " II";
+  } else if (yearLetter === "3") {
+    yearName = yearNumber + " III";
+  } else {
+    throw Error("Invalid year letter '" + yearLetter + "'");
+  }
+  return yearName;
+}

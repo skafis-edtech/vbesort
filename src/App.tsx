@@ -3,12 +3,15 @@ import PrivacyComponent from "./components/PrivacyComponent";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import MainPage from "./MainPage";
-import DarkModeButton from "./MainPage/components/DarkModeButton";
 import { Routes, Route, HashRouter } from "react-router-dom";
 import AboutPage from "./AboutPage";
 import { DarkModeProvider } from "./components/DarkModeContext";
-import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import InfoComponent from "./components/InfoComponent";
+import DarkModeButton from "./components/DarkModeButton";
+import HistPage from "./HistPage";
+import BioPage from "./BioPage";
+import MathPuppPage from "./MathPuppPage";
 
 function App() {
   return (
@@ -23,11 +26,13 @@ function App() {
           <main>
             <aside></aside>
             <section>
+              <InfoComponent />
+
               <Routes>
                 <Route index element={<MainPage />} />
-                <Route path="/hist" element={<MainPage />} />
-                <Route path="/bio" element={<MainPage />} />
-                <Route path="/math-pupp" element={<MainPage />} />
+                <Route path="/hist" element={<HistPage />} />
+                <Route path="/bio" element={<BioPage />} />
+                <Route path="/math-pupp" element={<MathPuppPage />} />
                 <Route path="/about" element={<AboutPage />} />
                 <Route
                   path="*"

@@ -1,7 +1,7 @@
 import { Button } from "react-bootstrap";
 import { ReactComponent as SunIcon } from "./sun.svg";
 import { ReactComponent as MoonIcon } from "./moon.svg";
-import { useDarkMode } from "../../components/DarkModeContext";
+import { useDarkMode } from "./DarkModeContext";
 
 export default function DarkModeButton() {
   const { isDarkMode, toggleDarkMode } = useDarkMode();

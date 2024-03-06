@@ -1,7 +1,5 @@
-import { Link } from "react-router-dom";
-import Support from "../../components/Support";
-import { Alert } from "react-bootstrap";
 import ShuffleBar from "./ShuffleBar";
+import Support from "./Support";
 
 export default function InfoComponent() {
   return (

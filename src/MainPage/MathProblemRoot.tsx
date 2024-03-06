@@ -1,13 +1,13 @@
 import { Accordion } from "react-bootstrap";
-import { PuppProblemIdType, parseProblemFilename } from "../../misc";
+import { MathProblemIdType, parseProblemFilename } from "../misc";
 import nrTopicLut from "./data/nr-topic-lut.json";
 import "../components/style.css";
 import SingleMathProblem from "../components/SingleProblem";
 
-export default function PuppProblemRoot({
+export default function MathProblemRoot({
   currProblemInfo,
 }: {
-  currProblemInfo: PuppProblemIdType;
+  currProblemInfo: MathProblemIdType;
 }) {
   return (
     <Accordion style={{ marginTop: "20px" }}>
@@ -18,7 +18,7 @@ export default function PuppProblemRoot({
         <Accordion.Body>
           {nrTopicLut
             .filter((pr) => {
-              const anotherId: any = parseProblemFilename("pupp", pr.filename);
+              const anotherId: any = parseProblemFilename("math", pr.filename);
               return (
                 anotherId.number === Math.floor(currProblemInfo.number) &&
                 anotherId.problemType === "root" &&
@@ -29,13 +29,13 @@ export default function PuppProblemRoot({
               <SingleMathProblem
                 key={root.filename}
                 filename={root.filename}
-                subject="pupp"
+                subject="math"
                 answerLut={nrTopicLut}
               />
             ))}
           {nrTopicLut
             .filter((pr) => {
-              const anotherId: any = parseProblemFilename("pupp", pr.filename);
+              const anotherId: any = parseProblemFilename("math", pr.filename);
               return (
                 anotherId.number < currProblemInfo.number &&
                 anotherId.number >= Math.floor(currProblemInfo.number) &&
@@ -47,7 +47,7 @@ export default function PuppProblemRoot({
               <SingleMathProblem
                 key={root.filename}
                 filename={root.filename}
-                subject="pupp"
+                subject="math"
                 answerLut={nrTopicLut}
               />
             ))}

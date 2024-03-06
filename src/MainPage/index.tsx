@@ -1,69 +1,145 @@
-import { Tab, Tabs } from "react-bootstrap";
-import BioTab from "./BioTab";
-import HistTab from "./HistTab";
-import MathTab from "./MathTab";
-import PuppTab from "./PuppTab";
-import InfoComponent from "./components/InfoComponent";
-import { useLocation, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { Accordion, Button, Form, Tab, Tabs } from "react-bootstrap";
+import topics from "./data/topics-names-list.json";
+import nrTopicLut from "./data/nr-topic-lut.json";
+import TopicItem from "../components/TopicItem";
+import allYearList from "./data/year-list.json";
+import { useNavigate } from "react-router-dom";
+import usePersistantState from "../hooks";
+import {
+  getShortYearName,
+  isNotHaveAnswersMathVbe,
+  isOfficialMathVbe,
+} from "../misc";
+import { ReactComponent as InfoIcon } from "../components/info.svg";
 
-function MainPage() {
-  const [activeKey, setActiveKey] = useState<string>("math-tab");
+export default function MainPage() {
   const navigate = useNavigate();
-  const location = useLocation();
-
-  useEffect(() => {
-    const path = location.pathname;
-    if (path === "/" || path === "") {
-      setActiveKey("math-tab");
-    } else {
-      setActiveKey(path.substring(1));
-    }
-  }, [navigate]);
 
   const handleSelect = (key: any) => {
-    if (key === "math-tab") {
-      navigate("/");
-    } else {
-      navigate(`/${key}`);
-    }
+    navigate(key);
   };
+  return (
+    <Tabs defaultActiveKey="/" onSelect={handleSelect}>
+      <Tab eventKey="/" title="Matematikos VBE" style={{ marginTop: "20px" }}>
+        <MathTab />
+      </Tab>
+      <Tab
+        eventKey="/math-pupp"
+        title="Matematikos PUPP"
+        style={{ marginTop: "20px" }}
+      ></Tab>
+      <Tab
+        eventKey="/bio"
+        title="Biologijos VBE"
+        style={{ marginTop: "20px" }}
+      ></Tab>
+      <Tab
+        eventKey="/hist"
+        title="Istorijos VBE"
+        style={{ marginTop: "20px" }}
+      ></Tab>
+    </Tabs>
+  );
+}
 
+function MathTab() {
+  const [yearList, setYearList] = usePersistantState<string[]>(
+    "YEAR_LIST",
+    allYearList.filter((year) => year !== "2023g")
+  );
   return (
     <div>
-      <InfoComponent />
-      <Tabs activeKey={activeKey} onSelect={handleSelect}>
-        <Tab
-          eventKey="math-tab"
-          title="Matematikos VBE"
-          style={{ marginTop: "20px" }}
-        >
-          <MathTab />
-        </Tab>
-        <Tab
-          eventKey="math-pupp-tab"
-          title="Matematikos PUPP"
-          style={{ marginTop: "20px" }}
-        >
-          <PuppTab />
-        </Tab>
-        <Tab
-          eventKey="bio-tab"
-          title="Biologijos VBE"
-          style={{ marginTop: "20px" }}
-        >
-          <BioTab />
-        </Tab>
-        <Tab
-          eventKey="hist-tab"
-          title="Istorijos VBE"
-          style={{ marginTop: "20px" }}
-        >
-          <HistTab />
-        </Tab>
-      </Tabs>
+      <YearSelector yearList={yearList} setYearList={setYearList} />
+      <Accordion>
+        {topics.map((topic) => (
+          <TopicItem
+            key={topic.topic}
+            topic={topic}
+            yearList={yearList}
+            nrTopicLut={nrTopicLut}
+            subject="math"
+          />
+        ))}
+      </Accordion>
     </div>
   );
 }
 
-export default MainPage;
+function YearSelector({
+  yearList,
+  setYearList,
+}: {
+  yearList: string[];
+  setYearList: (value: string[]) => void;
+}) {
+  const toggleYearInList = (yearToToggle: string) => {
+    if (yearList.includes(yearToToggle)) {
+      setYearList(yearList.filter((year) => year !== yearToToggle));
+    } else {
+      setYearList([...yearList, yearToToggle]);
+    }
+  };
+
+  const selectAll = () => {
+    setYearList(allYearList);
+  };
+
+  const clearAll = () => {
+    setYearList([]);
+  };
+
+  const selectWithAns = () => {
+    setYearList(allYearList.filter((year) => !isNotHaveAnswersMathVbe(year)));
+  };
+  return (
+    <Accordion style={{ marginBottom: "20px" }}>
+      <Accordion.Item eventKey="yo-what-up:))">
+        <Accordion.Header>
+          <div>
+            <InfoIcon
+              style={{ height: "24px", width: "24px", margin: "10px" }}
+            />
+          </div>
+          <h5>Pasirinkite, kurių metų matematikos VBE užduotis rodyti</h5>
+        </Accordion.Header>
+        <Accordion.Body>
+          <p>
+            <strong>12-okams: </strong>Siūlau žiūrint užduotis pasilikti bent
+            vieno egzamino užduotis nematytas, kad ruošiantis būtų galima
+            išspręsti bent vieną egzaminą pilnai, sekant laiką ir pasitikrinant
+            pasiruošimą.
+          </p>
+          <div style={{ marginTop: "50px", marginBottom: "20px" }}>
+            <Button style={{ margin: "10px" }} onClick={clearAll}>
+              Išvalyti visus
+            </Button>
+            <Button style={{ margin: "10px" }} onClick={selectAll}>
+              Pažymėti visus
+            </Button>
+            <Button style={{ margin: "10px" }} onClick={selectWithAns}>
+              Tik su atsakymais (visi)
+            </Button>
+            <div style={{ marginTop: "20px", display: "flex" }}>
+              <Form style={{ flexGrow: 3 }}>
+                {allYearList.map((year) => (
+                  <Form.Check
+                    style={{ width: "250px" }}
+                    key={year}
+                    inline
+                    label={
+                      getShortYearName(year) +
+                      (isNotHaveAnswersMathVbe(year) ? " (be ats.)" : "") +
+                      (isOfficialMathVbe(year) ? "" : " ne oficialu")
+                    }
+                    checked={yearList.includes(year)}
+                    onChange={() => toggleYearInList(year)}
+                  />
+                ))}
+              </Form>
+            </div>
+          </div>
+        </Accordion.Body>
+      </Accordion.Item>
+    </Accordion>
+  );
+}

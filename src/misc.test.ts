@@ -1,4 +1,4 @@
-import { parseProblemFilename } from "./misc";
+import { isNotHaveAnswersMathVbe, parseProblemFilename } from "./misc";
 
 describe("parseProblemFilename", () => {
   it("should correctly parse math problem filename", () => {
@@ -47,5 +47,17 @@ describe("parseProblemFilename", () => {
       problemType: "sub",
       number: 1.2,
     });
+  });
+});
+
+describe("isNotHaveAnsMathVbe", () => {
+  it("should correctly filter noans years", () => {
+    const result = isNotHaveAnswersMathVbe("2002p");
+    expect(result).toEqual(true);
+  });
+
+  it("should correctly filter noans years", () => {
+    const result = isNotHaveAnswersMathVbe("2015g");
+    expect(result).toEqual(false);
   });
 });

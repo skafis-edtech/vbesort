@@ -1,6 +1,6 @@
 import { Button } from "react-bootstrap";
 import { ReactComponent as ShuffleIcon } from "./shuffle.svg";
-import { useDarkMode } from "../../components/DarkModeContext";
+import { useDarkMode } from "./DarkModeContext";
 
 interface ShuffleProps {
   style: React.CSSProperties;
