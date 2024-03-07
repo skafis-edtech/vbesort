@@ -1,6 +1,7 @@
 import { Accordion } from "react-bootstrap";
 import {
   SubjectType,
+  isNotHaveAnswersMathPupp,
   isNotHaveAnswersMathVbe,
   parseProblemFilename,
 } from "../misc";
@@ -42,8 +43,9 @@ export default function SingleProblem({
       </div>
       <div>
         {!["root", "sources"].includes(problemInfo.problemType) &&
+          !(subject === "math" && isNotHaveAnswersMathVbe(problemInfo.year)) &&
           !(
-            subject === "math" && isNotHaveAnswersMathVbe(problemInfo.year)
+            subject === "pupp" && isNotHaveAnswersMathPupp(problemInfo.year)
           ) && (
             <Accordion style={{ marginTop: "20px" }}>
               <Accordion.Item eventKey="answer">
@@ -63,8 +65,6 @@ export default function SingleProblem({
                     <div
                       className="single-problem"
                       style={{
-                        paddingTop: "50px",
-                        paddingBottom: "50px",
                         overflowX: "auto",
                       }}
                     >

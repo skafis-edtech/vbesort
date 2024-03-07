@@ -6,11 +6,16 @@ export default function PrivacyComponent() {
       <Accordion defaultActiveKey="0" style={{ fontSize: "small" }}>
         <Accordion.Item eventKey="1">
           <Accordion.Header>
-            Šis puslapis naudoja Google Analytics, kad galima būtų sekti
-            tinklapio gyvybingumą. Naudodamiesi šiuo tinklapiu Jūs sutinkate su
-            Google Analytics nuostatais (išskleisti dėl daugiau informacijos)
+            Šis puslapis naudoja Google Analytics bei saugo tinklapio
+            informaciją Jūsų įrenginyje, naudodamiesi šiuo tinklapiu Jūs
+            sutinkate su Google Analytics nuostatais bei informacijos
+            išsaugojimu Jūsų įrenginyje.
           </Accordion.Header>
-          <Accordion.Body>
+          <Accordion.Body style={{ overflowX: "auto" }}>
+            <p>
+              Renkama informacija tik tinklapio gyvybingumo sekimo tikslais bei
+              dėl Jūsų patogesnio tinklapio naudojimo.
+            </p>
             <ul>
               <li>
                 <strong>Google Analytics Privacy Overview</strong>:{" "}
@@ -49,6 +54,11 @@ export default function PrivacyComponent() {
                 </a>
               </li>
             </ul>
+            <p>
+              Įrenginyje išsaugoma: dienos ar naktinis rėžimas pasirinktas,
+              pasirinkta maišyti ar nemaišyti užduočių, kurių metų matematikos
+              VBE užduotys pasirinktos
+            </p>
           </Accordion.Body>
         </Accordion.Item>
       </Accordion>

@@ -1,45 +1,14 @@
-import { Accordion, Form, Tab, Tabs } from "react-bootstrap";
+import { Accordion, Alert, Form } from "react-bootstrap";
 import topics from "./data/topics-names-list.json";
 import nrTopicLut from "./data/nr-topic-lut.json";
 import { useState } from "react";
 import allYearList from "./data/year-list.json";
-import ShuffleBar from "../components/ShuffleBar";
 import TopicItem from "../components/TopicItem";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function BioPage() {
-  const navigate = useNavigate();
-
-  const handleSelect = (key: any) => {
-    navigate(key);
-  };
-  return (
-    <Tabs defaultActiveKey="/bio" onSelect={handleSelect}>
-      <Tab
-        eventKey="/"
-        title="Matematikos VBE"
-        style={{ marginTop: "20px" }}
-      ></Tab>
-      <Tab
-        eventKey="/math-pupp"
-        title="Matematikos PUPP"
-        style={{ marginTop: "20px" }}
-      ></Tab>
-      <Tab eventKey="/bio" title="Biologijos VBE" style={{ marginTop: "20px" }}>
-        <BioTab />
-      </Tab>
-      <Tab
-        eventKey="/hist"
-        title="Istorijos VBE"
-        style={{ marginTop: "20px" }}
-      ></Tab>
-    </Tabs>
-  );
-}
-
-function BioTab() {
   const [yearList, setYearList] = useState<string[]>(
-    allYearList.filter((year) => year !== "2023k" && year !== "2023g")
+    allYearList.filter((year) => year !== "2023g")
   );
 
   const toggleYearInList = (yearToToggle: string) => {
@@ -52,12 +21,14 @@ function BioTab() {
 
   return (
     <>
+      <Alert variant="success">
+        Hmm, nelabai daug surūšiuota, ane? Pasvarstyk prisidėti prie tinklapio
+        tobulinimo. Plačiau – <Link to="/contribute">puslapyje "Prisidėk"</Link>
+      </Alert>
       <p>
-        Siūlau žiūrint užduotis pasilikti bent dviejų egzaminų užduotis
-        nematytas, kad ruošiantis būtų galima išspręsti bent vieną egzaminą
-        pilnai, sekant laiką ir pasitikrinant pasiruošimą (pagrindinės sesijos),
-        bei vieną mokykloje išspręsti kaip bandomąjį (greičiausiai 2023 m.
-        pakartotinės sesijos)
+        <strong>12-okams: </strong>Siūlau žiūrint užduotis pasilikti 2023 m.
+        egzamino užduotis nematytas, kad ruošiantis būtų galima išspręsti
+        egzaminą pilnai, sekant laiką ir pasitikrinant pasiruošimą.
       </p>
       <div>
         <div style={{ marginTop: "50px", marginBottom: "20px" }}>

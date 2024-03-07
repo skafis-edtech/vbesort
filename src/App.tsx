@@ -12,6 +12,8 @@ import DarkModeButton from "./components/DarkModeButton";
 import HistPage from "./HistPage";
 import BioPage from "./BioPage";
 import MathPuppPage from "./MathPuppPage";
+import ContributePage from "./ContributePage";
+import TabsContainer from "./components/TabsContainer";
 
 function App() {
   return (
@@ -29,11 +31,30 @@ function App() {
               <InfoComponent />
 
               <Routes>
-                <Route index element={<MainPage />} />
-                <Route path="/hist" element={<HistPage />} />
-                <Route path="/bio" element={<BioPage />} />
-                <Route path="/math-pupp" element={<MathPuppPage />} />
-                <Route path="/about" element={<AboutPage />} />
+                <Route
+                  index
+                  element={<TabsContainer MathTab={<MainPage />} />}
+                />
+                <Route
+                  path="/hist"
+                  element={<TabsContainer HistTab={<HistPage />} />}
+                />
+                <Route
+                  path="/bio"
+                  element={<TabsContainer BioTab={<BioPage />} />}
+                />
+                <Route
+                  path="/math-pupp"
+                  element={<TabsContainer PuppTab={<MathPuppPage />} />}
+                />
+                <Route
+                  path="/about"
+                  element={<TabsContainer AboutTab={<AboutPage />} />}
+                />
+                <Route
+                  path="/contribute"
+                  element={<TabsContainer ContributeTab={<ContributePage />} />}
+                />
                 <Route
                   path="*"
                   element={

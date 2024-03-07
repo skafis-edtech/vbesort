@@ -5,8 +5,8 @@ export default function InfoComponent() {
   return (
     <div>
       <p>
-        Štai čia – matematikos VBE ir kitų egzaminų užduotys (su atsakymais),
-        surūšiuotos pagal temas. Viskas nemokama. Naudokitės į valias.
+        Štai čia – matematikos VBE ir kitų egzaminų užduotys, surūšiuotos pagal
+        temas, dauguma su atsakymais. Viskas nemokama. Naudokitės į valias.
       </p>
       <ShuffleBar style={{ flexGrow: 1 }} />
       <Support />

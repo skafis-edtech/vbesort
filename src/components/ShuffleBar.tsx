@@ -18,7 +18,9 @@ export default function ShuffleBar({ style }: ShuffleProps) {
           alignItems: "center",
         }}
       >
-        <h4>Užduočių maišymas {isShuffleOn ? "ĮJUNGTAS" : "IŠJUNGTAS"}:</h4>{" "}
+        <h4 style={{ width: "350px" }}>
+          Užduočių maišymas {isShuffleOn ? "ĮJUNGTAS" : "IŠJUNGTAS"}:
+        </h4>{" "}
         <div
           style={{
             margin: "10px",

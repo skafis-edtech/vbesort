@@ -3,12 +3,16 @@ import { Accordion } from "react-bootstrap";
 export default function TopicItemHeader({
   topic,
   problemCount,
+  expanded,
+  setExpanded,
 }: {
   topic: { topic: string; name: string };
   problemCount: number;
+  expanded: boolean;
+  setExpanded: (expanded: boolean) => void;
 }) {
   return (
-    <Accordion.Header>
+    <Accordion.Header onClick={() => setExpanded(!expanded)}>
       <div
         style={{
           display: "flex",

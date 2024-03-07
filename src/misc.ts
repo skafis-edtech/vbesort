@@ -204,7 +204,17 @@ export function isNotHaveAnswersMathVbe(year: string): boolean {
     "2008g",
     "2019k",
     "2021k",
+    "2013g",
   ];
+  if (noAnsList.includes(year)) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+export function isNotHaveAnswersMathPupp(year: string): boolean {
+  const noAnsList: string[] = ["20211", "2013p"];
   if (noAnsList.includes(year)) {
     return true;
   } else {
