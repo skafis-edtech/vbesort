@@ -47,10 +47,10 @@ export default function Support() {
       <h4>
         <strong>Hmm, matai? Nėra reklamų! Tegu taip ir išlieka ;)</strong>
       </h4>
+      <p>Būčiau labai dėkingas už piniginę paramą, už įdėtą darbą.</p>
       <p
         style={{
-          paddingTop: "10px",
-          paddingLeft: "30px",
+          paddingLeft: "15px",
         }}
       >
         <li>

@@ -1,81 +1,58 @@
 # VBE-sort
 
-Website with Lithuania state exam (high school graduation) math problems, sorted in categories.
+Website with Lithuania state exam (high school graduation) math problems (and other examinations' problems), sorted in categories by topic.
 
-Website deployed here: [https://vbesort.lt](https://vbesort.lt)
+Website is deployed here: [https://www.vbesort.lt](https://www.vbesort.lt)
 
-Use, share, rate, suggest, contribute, support.
+The whole website is in Lithuanian, therefore, sorry, but if you don't speak Lithuanian, you will need to use Google Translate... No English translation is here yet.
+
+Use, share, rate, suggest, contribute, support!
 
 ## Screenshots
 
-![ss1](./public/ss1.png)
-
-![ss2](./public/ss2.png)
-
-![ss3](./public/ss3.png)
+![ss1](./screenshots/1.png)
+![ss2](./screenshots/2.png)
+![ss3](./screenshots/3.png)
+![ss4](./screenshots/4.png)
 
 ### Tech
 
-- React TS (later gonna be with redux)
-- React Bootstrap (later gonna be Material UI with custom design)
+- React Typescript
+- React Bootstrap
+- React Bootstrap Icons
 - GitHub Pages
 - yarn
 
 # Docs for dev
 
-Run locally and build - basic react...
+Run locally (need to have nodejs and yarn):
+
+```
+yarn start
+```
 
 Deploy with gh-pages (need to install this package):
 
 ```
 yarn build
-yarn deploy -- https://${username}:${access_token}@github.com/${username}/${username}.github.io
+yarn deploy https://${username}:${access_token}@github.com/${username}/${username}.github.io
 ```
 
-That's it. No more fun stuff. All the cool docs are in [v1.0.0](https://github.com/naglissul/vbe-sort/tree/v1.0.0), where I used AWS.
+That's it. No more fun stuff. All the cool docs with docker etc. are in [v1.0.0](https://github.com/naglissul/vbe-sort/tree/v1.0.0), where I used AWS.
 
 # Contribute
 
 Contribution instructions are described in Lithuanian [here](./CONTRIBUTE.md).
 
-# Math topics
-
-- funkciju-grafiku-eskizai
-- funkcijos-bendrai
-- isvestines
-- integralai
-
-- kombinatorika
-- tikimybes
-- statistika
-
-- trigonometrija-bendrai
-
-- planimetrija
-- stereometrija
-- vektoriai
-
-- lygtys
-- nelygybes
-- reiskiniai
-
-- sekos
-
-- procentai
-
-- aibes
-
-- misc
-
 # For the future
 
-TIPS & TRICKS tab for pitagorean triples, geometry sqrt()s, also in general for soolving speed.  
-IT VBE tutorial  
+TIPS & TRICKS tab for pitagorean triples, geometry sqrts, also in general for solving speed.
+
+INTERESTING tab for beyond school maths and other sciences.
+
 Links to sci-dict.org
 
-History, Bio & PUPP
-
-Solutions
+NMPP Math problems
 
 AI problem generator
 

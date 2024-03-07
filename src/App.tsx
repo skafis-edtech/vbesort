@@ -14,6 +14,7 @@ import BioPage from "./BioPage";
 import MathPuppPage from "./MathPuppPage";
 import ContributePage from "./ContributePage";
 import TabsContainer from "./components/TabsContainer";
+import ItPage from "./ItPage";
 
 function App() {
   return (
@@ -38,6 +39,10 @@ function App() {
                 <Route
                   path="/hist"
                   element={<TabsContainer HistTab={<HistPage />} />}
+                />
+                <Route
+                  path="/it-template"
+                  element={<TabsContainer ItTab={<ItPage />} />}
                 />
                 <Route
                   path="/bio"

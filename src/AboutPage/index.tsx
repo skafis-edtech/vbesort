@@ -1,6 +1,6 @@
 export default function AboutPage() {
   return (
-    <div style={{ overflowX: "auto" }}>
+    <div style={{ overflowX: "hidden" }}>
       <h3>Kontaktai</h3>
       <ul>
         <li>

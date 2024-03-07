@@ -205,6 +205,7 @@ export function isNotHaveAnswersMathVbe(year: string): boolean {
     "2019k",
     "2021k",
     "2013g",
+    "2011k",
   ];
   if (noAnsList.includes(year)) {
     return true;

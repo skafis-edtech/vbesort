@@ -9,16 +9,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Answers
-- Instructions for contribution
-- Dark mode
-- Bio, hist, pupp problems
-
 ### Changed
 
 ### Fixed
 
 ### Removed
+
+## [2.1.0] - 2024-03-07
+
+### Added
+
+- Answers
+- Instructions for contribution
+- Dark mode
+- Bio, hist, pupp problems
+- IT, about, contribute pages
+- A lot of stuff...
+
+### Fixed
+
+- Lag
+- img not rendered
 
 ## [2.0.0] - 2023-12-09
 
@@ -46,6 +57,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Initial version with Wordpress
 - HTTPS enabled
 
-[unreleased]: https://github.com/naglissul/vbe-sort/compare/v2.0.0...HEAD
+[unreleased]: https://github.com/naglissul/vbe-sort/compare/v2.1.0...HEAD
+[2.1.0]: https://github.com/naglissul/vbe-sort/compare/v2.1.0...v2.0.0
 [2.0.0]: https://github.com/naglissul/vbe-sort/compare/v2.0.0...v1.0.0
 [1.0.0]: https://github.com/naglissul/vbe-sort/releases/tag/v1.0.0

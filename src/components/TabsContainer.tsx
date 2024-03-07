@@ -6,6 +6,7 @@ export default function TabsContainer({
   PuppTab,
   BioTab,
   HistTab,
+  ItTab,
   AboutTab,
   ContributeTab,
 }: {
@@ -13,6 +14,7 @@ export default function TabsContainer({
   PuppTab?: React.ReactNode;
   BioTab?: React.ReactNode;
   HistTab?: React.ReactNode;
+  ItTab?: React.ReactNode;
   AboutTab?: React.ReactNode;
   ContributeTab?: React.ReactNode;
 }) {
@@ -40,6 +42,9 @@ export default function TabsContainer({
       </Tab>
       <Tab eventKey="/hist" title="Istorijos VBE" style={{ marginTop: "20px" }}>
         {HistTab}
+      </Tab>
+      <Tab eventKey="/it-template" title="IT VBE" style={{ marginTop: "20px" }}>
+        {ItTab}
       </Tab>
       <Tab eventKey="/about" title="Apie" style={{ marginTop: "20px" }}>
         {AboutTab}
