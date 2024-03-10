@@ -21,6 +21,52 @@ Nuscreenshotinus užduotis (arba dar geriau ir prieš tai, kad nebūtų kokių n
 
 Screenshotinant stenkitės palaikyti vienodas dimensijas – net jei bus daug tuščios vietos (kitaip gausis kaip biologijos VBE kai kurie screenshotai – per dideli).
 
+### Matematikos VBE
+
+**Pavyzdžiai:**  
+2023g1w02B.png  
+2023k2r14.png  
+2023k2s14.1B.png  
+2023k2s14.2A.png
+
+Daugiau pavyzdžių [čia](https://github.com/vbesort/vbesort.github.io/tree/gh-pages/math-problems)
+
+**Formali gramatika:**  
+\<filename> ::= \<year>\<g | k | b | p | v>\<section>\<w | r | s>\<number>[\<A | B>].png
+
+\<year> ::= 2023 | 2022 | 2021 | 2020 | ... | 2002
+\<section> ::= 1 | 2 | 3  
+\<number> ::= 01 | 02 | ... | 10 | 11 | 11.1 | 11.2 | ... | 12 | 12.1 | ... | 99.9
+
+**Paaiškinimai:**  
+year - kurių metų egzamino užduotis.
+
+g - pagrindinė sesija.
+
+k - pakartotinė sesija.
+
+b - bandomosios užduotys.
+
+p - paprastos užduotys (tais metais buvo tik viena sesija).
+
+v - pavyzdinės užduotys.
+
+section - kurioje dalyje: I dalyje, II dalyje ar III dalyje - yra užduotis.
+
+w - užduotis yra pilna, be jokių smulkesnių tos užduoties dalių (t.y. pvz. užduoties numeris 15, ir nėra jokios užduoties 15.1)
+
+r - screenshote yra tik "šakninė" užduoties dalis, t.y. tik sąlygos pradžia (t.y. pvz. 21 užduoties salyga, kuri turi atskiras užduoties dalis 21.1 ir 21.2)
+
+s - screenshote yra "dalinė" užduotis, kuri turi kažkokią "šakninę" sąlygos dalį (t.y. pvz. 21.1 užduotis, kuri turi atskirame 21 screenshote sąlygos pradžią)
+
+A - Išplėstinio kurso užduotis (prie užduoties nieko nepažymėta)
+
+B - Bendrojo kursoužduotis (pažymėta B raide prie užduoties)
+
+r tipo screenshotai neturi turėti priskirtos nei A, nei B raidės.
+
+Jei s tipo užduotis turi savo atskiras dalis, screenshotinama visa užtuotis (t.y. pvz. jei yra 22.1, 22.1.1, 22.1.2, 22.1.3, tuomet visos sąlygos sudedamos į vieną screenshotą ir užvardinama 22.1)
+
 ### Matematikos PUPP
 
 2021 metų:  

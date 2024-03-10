@@ -15,6 +15,7 @@ import MathPuppPage from "./MathPuppPage";
 import ContributePage from "./ContributePage";
 import TabsContainer from "./components/TabsContainer";
 import ItPage from "./ItPage";
+import PhysicsPage from "./PhysicsPage";
 
 function App() {
   return (
@@ -59,6 +60,10 @@ function App() {
                 <Route
                   path="/contribute"
                   element={<TabsContainer ContributeTab={<ContributePage />} />}
+                />
+                <Route
+                  path="/physics"
+                  element={<TabsContainer PhysicsTab={<PhysicsPage />} />}
                 />
                 <Route
                   path="*"

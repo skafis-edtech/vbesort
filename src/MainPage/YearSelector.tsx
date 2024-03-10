@@ -48,9 +48,9 @@ export default function YearSelector({
           <Accordion.Body>
             <p>
               <strong>12-okams: </strong>Siūlau žiūrint užduotis pasilikti bent
-              vieno, 2023 m. egzamino užduotis nematytas, kad ruošiantis būtų
-              galima išspręsti egzaminą pilnai, sekant laiką ir pasitikrinant
-              pasiruošimą.
+              vieno, 2023 m. egzamino pagrindinės sesijos užduotis nematytas,
+              kad ruošiantis būtų galima išspręsti egzaminą pilnai, sekant laiką
+              ir pasitikrinant pasiruošimą.
             </p>
             <div style={{ marginTop: "50px", marginBottom: "20px" }}>
               <Button style={{ margin: "10px" }} onClick={clearAll}>

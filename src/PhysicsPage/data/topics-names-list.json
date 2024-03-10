@@ -1,0 +1,71 @@
+[
+  {
+    "topic": "kinematics",
+    "name": "Kinematika"
+  },
+  {
+    "topic": "forces",
+    "name": "Jėgos"
+  },
+  {
+    "topic": "momentum/collisions",
+    "name": "Impulsas/Susidūrimai"
+  },
+  {
+    "topic": "energy/work",
+    "name": "Energija/Darbas"
+  },
+  {
+    "topic": "molecular",
+    "name": "Molekulinė fizika"
+  },
+  {
+    "topic": "thermodynamics",
+    "name": "Termodinamika"
+  },
+  {
+    "topic": "electrostatics",
+    "name": "Elektrostatika"
+  },
+  {
+    "topic": "electrodynamics",
+    "name": "Elektrodinamika"
+  },
+  {
+    "topic": "magnetism",
+    "name": "Magnetizmas"
+  },
+  {
+    "topic": "capacitors",
+    "name": "Kondensatoriai"
+  },
+  {
+    "topic": "waves(not_light)",
+    "name": "Bangos (ne šviesa)"
+  },
+  {
+    "topic": "linear_optics",
+    "name": "Linijinė optika"
+  },
+  {
+    "topic": "wave_optics",
+    "name": "Bangų optika"
+  },
+  {
+    "topic": "pendulums",
+    "name": "Svyravimai"
+  },
+  {
+    "topic": "quantum/photoeffect",
+    "name": "Kvantinė fizika/Fotoefektas"
+  },
+  {
+    "topic": "atom_physics",
+    "name": "Atomų fizika"
+  },
+  {
+    "topic": "astronomy",
+    "name": "Astronomija"
+  },
+  { "topic": "theory", "name": "Teoriniai klausimai" }
+]

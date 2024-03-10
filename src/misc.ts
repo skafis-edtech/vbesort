@@ -25,7 +25,7 @@ export type PuppProblemIdType = {
   problemType: "whole" | "root" | "sub";
 };
 
-export type SubjectType = "math" | "bio" | "hist" | "pupp";
+export type SubjectType = "math" | "bio" | "hist" | "pupp" | "physics";
 
 export function parseProblemFilename(
   subject: SubjectType,
@@ -140,6 +140,23 @@ export function parseProblemFilename(
     return {
       year,
       problemType,
+      number,
+    };
+  } else if (subject === "physics") {
+    const year = filename.substring(0, 5);
+    const section: BioProblemIdType["section"] =
+      filename.charAt(5) === "1"
+        ? "I"
+        : filename.charAt(5) === "2"
+        ? "II"
+        : filename.charAt(5) === "3"
+        ? "III"
+        : "IV";
+    const number = parseInt(filename.substring(7, 9));
+
+    return {
+      year,
+      section,
       number,
     };
   } else {

@@ -4,9 +4,9 @@ import nrTopicLut from "./data/nr-topic-lut.json";
 import { useState } from "react";
 import allYearList from "./data/year-list.json";
 import TopicItem from "../components/TopicItem";
-import { Link } from "react-router-dom";
+import { getShortYearName } from "../misc";
 
-export default function BioPage() {
+export default function PhysicsPage() {
   const [yearList, setYearList] = useState<string[]>(
     allYearList.filter((year) => year !== "2023g")
   );
@@ -21,9 +21,9 @@ export default function BioPage() {
 
   return (
     <>
-      <Alert variant="success">
-        Hmm, nelabai daug surūšiuota, ane? Pasvarstyk prisidėti prie tinklapio
-        tobulinimo. Plačiau – <Link to="/contribute">puslapyje "Prisidėk"</Link>
+      <Alert variant="warning">Augustas surūšiavo. Tai dėkokit jam.</Alert>
+      <Alert variant="info">
+        Kolkas tik pirmųjų dalių užduotys (testinės ABCD)
       </Alert>
       <p>
         <strong>12-okams: </strong>Siūlau žiūrint užduotis pasilikti 2023 m.
@@ -39,7 +39,7 @@ export default function BioPage() {
                 <Form.Check
                   key={year}
                   inline
-                  label={`${year.slice(0, 4)} pa${year.slice(4, 5)}.`}
+                  label={getShortYearName(year)}
                   checked={yearList.includes(year)}
                   onChange={() => toggleYearInList(year)}
                 />
@@ -54,7 +54,7 @@ export default function BioPage() {
               topic={topic}
               yearList={yearList}
               nrTopicLut={nrTopicLut}
-              subject="bio"
+              subject="physics"
             />
           ))}
         </Accordion>

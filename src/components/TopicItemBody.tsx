@@ -56,6 +56,7 @@ export default function TopicItemBody({
             {currProblemInfo.problemType === "sub" && subject === "math" && (
               <MathProblemRoot currProblemInfo={currProblemInfo} />
             )}
+
             {currProblemInfo.problemType === "questions" &&
               subject === "hist" && (
                 <HistProblemRoot questionsFilename={problem.filename} />
