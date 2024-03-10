@@ -21,7 +21,7 @@ export default function PhysicsPage() {
 
   return (
     <>
-      <Alert variant="warning">Augustas surūšiavo. Tai dėkokit jam.</Alert>
+      <Alert variant="warning">Augustas surūšiavo</Alert>
       <Alert variant="info">
         Kolkas tik pirmųjų dalių užduotys (testinės ABCD)
       </Alert>
