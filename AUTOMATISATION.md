@@ -3,7 +3,7 @@
 
 Aprašymas kaip naudotis python scripts klausimų generavimui, mano kompiuteriu sugeneruoti 13 egzaminų užduotis užtrunka apie 3.5 minutės.
 
-Yra du failai, gen_questions.py ir parse.py  
+Automatisation folderyje yra du failai, gen_questions.py ir parse.py  
 * gen_questions sugeneruoja klausimų nuotraukas iš pdf failų  
 * parse sugeneruoja txt failus kurie turi kiekvienos klausimo  nuotraukos temą ir atsakymą šalia.
 
