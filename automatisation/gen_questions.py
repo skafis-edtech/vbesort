@@ -28,9 +28,9 @@ def create_question_images(filename):
         pixel_map = img.load()
         hloc = 158
         for i in range(h-20):
-            for ad in range(8):
-                if(pixel_map[hloc+ad,i]==(0,0,0)):
-                    if(pixel_map[hloc+ad,i+1]==(0,0,0) and pixel_map[hloc+ad,i+2]==(0,0,0) and pixel_map[hloc+ad,i+3]==(0,0,0)): #27 for some 107 for others
+            for ad in range(8): #jei kažkas neveikia greičiausiai čia problema, pagal idėją šis kodas ieško taško po klausimo numerio
+                if(pixel_map[hloc+ad,i]==(0,0,0)): # ir kai jį randa ieško sekančio juodo pixelio ir taip jų mano kad yra klausimas, debuginimui labai naudinga https://pixspy.com/ įmeti nuotrauką iš page_images ir žiūri.
+                    if(pixel_map[hloc+ad,i+1]==(0,0,0) and pixel_map[hloc+ad,i+2]==(0,0,0) and pixel_map[hloc+ad,i+3]==(0,0,0)):
                         if(pixel_map[hloc+ad,i-1]==(27,27,27) and pixel_map[hloc+ad+1,i-1]==(27,27,27) or pixel_map[hloc+ad,i-1]==(107,107,107) and pixel_map[hloc+ad+1,i-1]==(107,107,107)):
                             for j in range(h):
                                 if (pixel_map[hloc+ad,j+i+5]==(0,0,0) or pixel_map[hloc+ad+1,j+i+5]==(0,0,0) or pixel_map[hloc+ad-1,j+i+5]==(0,0,0) or pixel_map[hloc+ad+2,j+i+5]==(0,0,0) or pixel_map[hloc+ad-2,j+i+5]==(0,0,0)):
@@ -42,6 +42,7 @@ def create_question_images(filename):
                                 for hig in range(himg):
                                     #print(i-30+hig)
                                     qpixelmap[wid,hig]=pixel_map[wid,i-30+hig]
+
                             new.save(f"final/"+filename[0:6]+f"/{year}{session}1-{str(count).zfill(2)}.png", format="png")
                             print(count)
                             count+=1
@@ -85,10 +86,10 @@ def remove_whitespace(filename):
 onlyfiles = [f for f in listdir("egzaminai/") if isfile(join("egzaminai/", f))]
 #onlyfiles = ["2020-1.pdf"]
 for file in onlyfiles:
-    create_folder(file, "E:\pyth\pdfparse")
-    pdf_to_images(file)
-    create_question_images(file)
-    remove_whitespace(file)
+    create_folder(file, "E:\pyth\pdfparse") #sukuria metų folderius, jei tokių dar nėra
+    pdf_to_images(file) # sukuria nuotraukas visų pdf'o puslapių
+    create_question_images(file) # sukuria pačias klausimų nuotraukas
+    remove_whitespace(file) # nukerpa klausimo nuotraukos apačią jei ji per didesnė negu reikia.
 
 #currently p good, dies on q's that span pages and leaves too much whitespace
 #sometimes, problem 1 - idk,
