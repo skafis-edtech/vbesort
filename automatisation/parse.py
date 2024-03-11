@@ -3,9 +3,7 @@ import codecs
 from os import listdir
 from os.path import isfile, join
 
-#onlyfiles = [f for f in listdir("egzaminai/") if isfile(join("egzaminai/", f))]
-#
-onlyfiles = ["2022-1.pdf"]
+onlyfiles = [f for f in listdir("egzaminai/") if isfile(join("egzaminai/", f))]
 for fi in onlyfiles:
     print(fi)
     year = fi[0:6]
