@@ -54,18 +54,9 @@ export default function Support() {
         }}
       >
         <li>
-          Revolut pavedimas: Naglis Šuliokas LT943250092929077836{" "}
+          Pavedimu (Pervedimo paskirtis: Vbesort tinklapio parama + Jūsų norima
+          žinutė): Naglis Šuliokas LT943250092929077836{" "}
           <CopyButton text="Naglis Šuliokas LT943250092929077836" />{" "}
-        </li>
-        <li>
-          PayPal donation (su PayPal mokesčiais):{" "}
-          <a
-            href="https://www.paypal.com/donate/?hosted_button_id=86R4K9Y6BLSXA"
-            target="_blank"
-            rel="noreferrer"
-          >
-            donation link'as
-          </a>
         </li>
       </p>
     </Alert>
