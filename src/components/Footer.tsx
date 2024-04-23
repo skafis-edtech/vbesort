@@ -5,7 +5,7 @@ export default function Footer() {
         Mano blog'as bei daugiau įdomių dalykų čia:{" "}
         <a href="https://www.npw.lt">npw.lt</a>
       </p>
-      <p>Paskutinį kartą atnaujinta: 2024-03-10</p>
+      <p>Paskutinį kartą atnaujinta: 2024-04-23</p>
     </footer>
   );
 }

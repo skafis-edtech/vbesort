@@ -5,6 +5,7 @@ import TopicItem from "../components/TopicItem";
 import allYearList from "./data/year-list.json";
 import usePersistantState from "../hooks";
 import YearSelector from "./YearSelector";
+import ListMaker from "./ListMaker";
 
 export default function MainPage() {
   const [yearList, setYearList] = usePersistantState<string[]>(
@@ -14,6 +15,7 @@ export default function MainPage() {
   return (
     <div>
       <YearSelector yearList={yearList} setYearList={setYearList} />
+      <ListMaker />
       <Accordion>
         {topics.map((topic) => (
           <TopicItem

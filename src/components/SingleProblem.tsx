@@ -1,4 +1,4 @@
-import { Accordion } from "react-bootstrap";
+import { Accordion, Button } from "react-bootstrap";
 import {
   SubjectType,
   isNotHaveAnswersMathPupp,
@@ -6,6 +6,7 @@ import {
   parseProblemFilename,
 } from "../misc";
 import "./style.css";
+import { useState } from "react";
 
 export default function SingleProblem({
   filename,
@@ -17,6 +18,10 @@ export default function SingleProblem({
   answerLut: { filename: string; topic: string; answer?: string }[];
 }) {
   const problemInfo: any = parseProblemFilename(subject, filename);
+
+  // ListMaker for Math VBE
+  const [isAdded, setIsAdded] = useState(false);
+
   return (
     <>
       <div
@@ -41,6 +46,28 @@ export default function SingleProblem({
           }}
         />
       </div>
+      {subject === "math" && problemInfo.problemType !== "root" && (
+        <div style={{ display: "flex", justifyContent: "flex-end" }}>
+          {!isAdded && (
+            <Button variant="warning" onClick={() => setIsAdded(!isAdded)}>
+              Pridėti į sąrašą
+            </Button>
+          )}
+          {isAdded && (
+            <div>
+              <em>Pridėta</em>
+              <Button
+                variant="danger"
+                onClick={() => setIsAdded(!isAdded)}
+                style={{ marginLeft: "10px" }}
+              >
+                Išimti iš sąrašo
+              </Button>
+            </div>
+          )}
+        </div>
+      )}
+
       <div>
         {!["root", "sources"].includes(problemInfo.problemType) &&
           !(subject === "math" && isNotHaveAnswersMathVbe(problemInfo.year)) &&
