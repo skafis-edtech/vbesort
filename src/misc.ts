@@ -220,6 +220,7 @@ export function isNotHaveAnswersMathVbe(year: string): boolean {
     "2007p",
     "2008g",
     "2008k",
+    "2009k",
     "2019k",
     "2021k",
     "2013g",
