@@ -235,7 +235,16 @@ export function isNotHaveAnswersMathVbe(year: string): boolean {
 }
 
 export function isNotHaveAnswersMathPupp(year: string): boolean {
-  const noAnsList: string[] = ["20211", "2013p"];
+  const noAnsList: string[] = [
+    "20211",
+    "2013p",
+    "20212",
+    "20213",
+    "20221",
+    "20222",
+    "20231",
+    "20232",
+  ];
   if (noAnsList.includes(year)) {
     return true;
   } else {
