@@ -3,7 +3,7 @@ import PrivacyComponent from "./components/PrivacyComponent";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import MainPage from "./MainPage";
-import { Routes, Route, HashRouter } from "react-router-dom";
+import { Routes, Route, HashRouter, BrowserRouter } from "react-router-dom";
 import AboutPage from "./AboutPage";
 import { DarkModeProvider } from "./components/DarkModeContext";
 import { Link } from "react-router-dom";
@@ -21,7 +21,7 @@ import ListPage from "./ListPage";
 function App() {
   return (
     <DarkModeProvider>
-      <HashRouter>
+      <BrowserRouter>
         <div style={{ minHeight: "100vh" }}>
           <PrivacyComponent />
           <Header />
@@ -86,7 +86,7 @@ function App() {
           </main>
           <Footer />
         </div>
-      </HashRouter>
+      </BrowserRouter>
     </DarkModeProvider>
   );
 }

@@ -7,7 +7,7 @@ const ListMaker: React.FC<{
   setListUrl: (value: string) => void;
 }> = ({ listUrl, setListUrl }) => {
   const clearList = () => {
-    setListUrl("https://www.vbesort.lt/#/list?list=");
+    setListUrl("https://www.vbesort.lt/list?list=");
   };
 
   return (
@@ -20,7 +20,7 @@ const ListMaker: React.FC<{
         </p>
         <textarea readOnly rows={3} value={listUrl} style={{ width: "100%" }} />
         <CopyButton text={listUrl} />
-        <Link to={listUrl.slice(24)}>
+        <Link to={listUrl.slice(23)}>
           <Button variant="primary" style={{ margin: "10px" }}>
             Atidaryti nuorodą
           </Button>

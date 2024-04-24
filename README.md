@@ -38,6 +38,8 @@ yarn build
 yarn deploy https://${username}:${access_token}@github.com/${username}/${username}.github.io
 ```
 
+(Currently FIREBASE)
+
 That's it. No more fun stuff. All the cool docs with docker etc. are in [v1.0.0](https://github.com/naglissul/vbe-sort/tree/v1.0.0), where I used AWS.
 
 # Contribute
