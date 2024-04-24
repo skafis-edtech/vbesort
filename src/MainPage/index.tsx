@@ -12,10 +12,15 @@ export default function MainPage() {
     "YEAR_LIST",
     allYearList.filter((year) => year !== "2023g")
   );
+  const [listUrl, setListUrl] = usePersistantState<string>(
+    "LIST_URL",
+    "https://www.vbesort.lt/#/list?list=2015k3s22.1B,2022g1w10A"
+  );
+
   return (
     <div>
       <YearSelector yearList={yearList} setYearList={setYearList} />
-      <ListMaker />
+      <ListMaker listUrl={listUrl} setListUrl={setListUrl} />
       <Accordion>
         {topics.map((topic) => (
           <TopicItem
@@ -24,6 +29,8 @@ export default function MainPage() {
             yearList={yearList}
             nrTopicLut={nrTopicLut}
             subject="math"
+            listUrl={listUrl}
+            setListUrl={setListUrl}
           />
         ))}
       </Accordion>

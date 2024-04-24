@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 export default function TabsContainer({
   MathTab,
+  ListTab,
   PhysicsTab,
   PuppTab,
   BioTab,
@@ -12,6 +13,7 @@ export default function TabsContainer({
   ContributeTab,
 }: {
   MathTab?: React.ReactNode;
+  ListTab?: React.ReactNode;
   PhysicsTab?: React.ReactNode;
   PuppTab?: React.ReactNode;
   BioTab?: React.ReactNode;
@@ -32,6 +34,7 @@ export default function TabsContainer({
       <Tab eventKey="/" title="Matematikos VBE" style={{ marginTop: "20px" }}>
         {MathTab}
       </Tab>
+
       <Tab
         eventKey="/physics"
         title="Fizikos VBE"
@@ -64,6 +67,9 @@ export default function TabsContainer({
         style={{ marginTop: "20px" }}
       >
         {ContributeTab}
+      </Tab>
+      <Tab eventKey="/list" title="Atrinktos" style={{ marginTop: "20px" }}>
+        {ListTab}
       </Tab>
     </Tabs>
   );

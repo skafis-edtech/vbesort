@@ -1,11 +1,15 @@
 import { Alert, Button } from "react-bootstrap";
 import usePersistentState from "../hooks";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
-const ListMaker: React.FC = () => {
-  const [listUrl, setListUrl] = usePersistentState<string>(
-    "LIST_URL",
-    "https://www.vbesort.lt/#/show-list?list=1,2,3,4,5,6,7,8,9,10"
-  );
+const ListMaker: React.FC<{
+  listUrl: string;
+  setListUrl: (url: string) => void;
+}> = ({ listUrl, setListUrl }) => {
+  const clearList = () => {
+    setListUrl("https://www.vbesort.lt/#/list?list=");
+  };
 
   return (
     <div>
@@ -16,18 +20,49 @@ const ListMaker: React.FC = () => {
           čia susigeneruoja užduočių sąrašo nuoroda:
         </p>
         <textarea readOnly rows={3} value={listUrl} style={{ width: "100%" }} />
-        <Button variant="primary" style={{ margin: "10px" }}>
-          Kopijuoti nuorodą
-        </Button>
-        <Button variant="primary" style={{ margin: "10px" }}>
-          Atidaryti nuorodą
-        </Button>
-        <Button variant="danger" style={{ margin: "10px" }}>
+        <CopyButton text={listUrl} />
+        <Link to={listUrl.slice(24)}>
+          <Button variant="primary" style={{ margin: "10px" }}>
+            Atidaryti nuorodą
+          </Button>
+        </Link>
+
+        <Button variant="danger" onClick={clearList} style={{ margin: "10px" }}>
           Išvalyti sąrašą
         </Button>
       </Alert>
     </div>
   );
 };
+
+function CopyButton({ text }: { text: string }) {
+  const [copied, setCopied] = useState(false);
+
+  useEffect(() => {
+    if (copied) {
+      const timer = setTimeout(() => {
+        setCopied(false);
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [copied]);
+
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(text);
+    setCopied(true);
+  };
+
+  return (
+    <>
+      <Button
+        variant="primary"
+        onClick={copyToClipboard}
+        style={{ margin: "10px" }}
+      >
+        {copied ? <em>Nukopijuota!</em> : "Kopijuoti nuorodą"}
+      </Button>
+    </>
+  );
+}
 
 export default ListMaker;

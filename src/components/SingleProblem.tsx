@@ -6,28 +6,64 @@ import {
   parseProblemFilename,
 } from "../misc";
 import "./style.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function SingleProblem({
   filename,
   subject,
   answerLut,
+  theListItIs = false,
+  listUrl,
+  setListUrl,
 }: {
   filename: string;
   subject: SubjectType;
   answerLut: { filename: string; topic: string; answer?: string }[];
+  theListItIs?: boolean;
+  listUrl?: string;
+  setListUrl?: (url: string) => void;
 }) {
   const problemInfo: any = parseProblemFilename(subject, filename);
 
   // ListMaker for Math VBE
-  const [isAdded, setIsAdded] = useState(false);
+  const [isAdded, setIsAdded] = useState(
+    listUrl?.includes(filename.slice(0, -4)) || false
+  );
+  const appendToList = (item: string) => {
+    if (!listUrl || !setListUrl) return;
+    const url = new URL(listUrl);
+    const listParam = url.searchParams.get("list") || "";
+    const listItems = listParam.split(",");
+    listItems.push(item);
+    url.searchParams.set("list", listItems.join(","));
+    setListUrl(url.toString());
+  };
+
+  const removeFromList = (item: string) => {
+    if (!listUrl || !setListUrl) return;
+    const url = new URL(listUrl);
+    const listParam = url.searchParams.get("list") || "";
+    const listItems = listParam
+      .split(",")
+      .filter((listItem) => listItem !== item);
+    url.searchParams.set("list", listItems.join(","));
+    setListUrl(url.toString());
+  };
+
+  useEffect(() => {
+    if (isAdded) {
+      appendToList(filename.slice(0, -4));
+    } else {
+      removeFromList(filename.slice(0, -4));
+    }
+  }, [isAdded]);
 
   return (
     <>
       <div
         style={{
-          paddingTop: "50px",
-          paddingBottom: "50px",
+          paddingTop: "30px",
+          paddingBottom: "30px",
           overflowX: "auto",
         }}
         className="single-problem"
@@ -46,27 +82,29 @@ export default function SingleProblem({
           }}
         />
       </div>
-      {subject === "math" && problemInfo.problemType !== "root" && (
-        <div style={{ display: "flex", justifyContent: "flex-end" }}>
-          {!isAdded && (
-            <Button variant="warning" onClick={() => setIsAdded(!isAdded)}>
-              Pridėti į sąrašą
-            </Button>
-          )}
-          {isAdded && (
-            <div>
-              <em>Pridėta</em>
-              <Button
-                variant="danger"
-                onClick={() => setIsAdded(!isAdded)}
-                style={{ marginLeft: "10px" }}
-              >
-                Išimti iš sąrašo
+      {!theListItIs &&
+        subject === "math" &&
+        problemInfo.problemType !== "root" && (
+          <div style={{ display: "flex", justifyContent: "flex-end" }}>
+            {!isAdded && (
+              <Button variant="warning" onClick={() => setIsAdded(!isAdded)}>
+                Pridėti į sąrašą
               </Button>
-            </div>
-          )}
-        </div>
-      )}
+            )}
+            {isAdded && (
+              <div>
+                <em>Pridėta</em>
+                <Button
+                  variant="danger"
+                  onClick={() => setIsAdded(!isAdded)}
+                  style={{ marginLeft: "10px" }}
+                >
+                  Išimti iš sąrašo
+                </Button>
+              </div>
+            )}
+          </div>
+        )}
 
       <div>
         {!["root", "sources"].includes(problemInfo.problemType) &&

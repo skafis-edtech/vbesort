@@ -16,6 +16,8 @@ interface TopicItemBodyProps {
   yearList: string[];
   nrTopicLut: { filename: string; topic: string; answer?: string }[];
   subject: SubjectType;
+  listUrl?: string;
+  setListUrl?: (url: string) => void;
 }
 
 export default function TopicItemBody({
@@ -23,6 +25,8 @@ export default function TopicItemBody({
   yearList,
   nrTopicLut,
   subject,
+  listUrl,
+  setListUrl,
 }: TopicItemBodyProps) {
   const { isShuffleOn } = useDarkMode();
 
@@ -70,6 +74,8 @@ export default function TopicItemBody({
               filename={problem.filename}
               subject={subject}
               answerLut={nrTopicLut}
+              listUrl={listUrl}
+              setListUrl={setListUrl}
             />
           </div>
         );

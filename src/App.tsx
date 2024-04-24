@@ -16,6 +16,7 @@ import ContributePage from "./ContributePage";
 import TabsContainer from "./components/TabsContainer";
 import ItPage from "./ItPage";
 import PhysicsPage from "./PhysicsPage";
+import ListPage from "./ListPage";
 
 function App() {
   return (
@@ -36,6 +37,10 @@ function App() {
                 <Route
                   index
                   element={<TabsContainer MathTab={<MainPage />} />}
+                />
+                <Route
+                  path="/list"
+                  element={<TabsContainer ListTab={<ListPage />} />}
                 />
                 <Route
                   path="/hist"
