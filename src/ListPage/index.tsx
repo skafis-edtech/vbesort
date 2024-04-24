@@ -36,7 +36,7 @@ const ListPage: React.FC = () => {
             <h1>{index + 1}.</h1>
             <em>({getLongYearName(item)})</em>
             {currProblemInfo.problemType === "sub" && (
-              <MathProblemRoot currProblemInfo={currProblemInfo} />
+              <MathProblemRoot theListItIs currProblemInfo={currProblemInfo} />
             )}
             <SingleProblem
               filename={item + ".png"}

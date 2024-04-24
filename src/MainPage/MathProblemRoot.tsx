@@ -6,8 +6,10 @@ import SingleMathProblem from "../components/SingleProblem";
 
 export default function MathProblemRoot({
   currProblemInfo,
+  theListItIs = false,
 }: {
   currProblemInfo: MathProblemIdType;
+  theListItIs?: boolean;
 }) {
   return (
     <Accordion style={{ marginTop: "20px" }}>
@@ -31,6 +33,7 @@ export default function MathProblemRoot({
                 filename={root.filename}
                 subject="math"
                 answerLut={nrTopicLut}
+                theListItIs={theListItIs}
               />
             ))}
           {nrTopicLut
@@ -49,6 +52,7 @@ export default function MathProblemRoot({
                 filename={root.filename}
                 subject="math"
                 answerLut={nrTopicLut}
+                theListItIs={theListItIs}
               />
             ))}
         </Accordion.Body>

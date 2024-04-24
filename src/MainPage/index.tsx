@@ -16,7 +16,7 @@ export default function MainPage() {
 
   // List Maker for Math VBE
   const [listUrl, setListUrl] = useState<string>(
-    localStorage.getItem("LIST_URL") || "https://www.vbesort.lt/#/list?list="
+    localStorage.getItem("LIST_URL") || "https://www.vbesort.lt/list?list="
   );
 
   useEffect(() => {
