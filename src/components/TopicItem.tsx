@@ -9,6 +9,8 @@ interface TopicItemProps {
   yearList: string[];
   nrTopicLut: { filename: string; topic: string; answer?: string }[];
   subject: SubjectType;
+  listUrl?: string;
+  setListUrl?: (url: string) => void;
 }
 
 export default function TopicItem(props: TopicItemProps) {

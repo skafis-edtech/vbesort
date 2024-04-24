@@ -1,28 +1,56 @@
-import { Accordion } from "react-bootstrap";
+import { Accordion, Button } from "react-bootstrap";
 import {
   SubjectType,
+  appendToMakerListUrl,
   isNotHaveAnswersMathPupp,
   isNotHaveAnswersMathVbe,
   parseProblemFilename,
+  removeFromListUrl,
 } from "../misc";
 import "./style.css";
+import { useEffect, useState } from "react";
 
 export default function SingleProblem({
   filename,
   subject,
   answerLut,
+  theListItIs = false,
+  listUrl,
+  setListUrl,
 }: {
   filename: string;
   subject: SubjectType;
   answerLut: { filename: string; topic: string; answer?: string }[];
+  theListItIs?: boolean;
+  listUrl?: string;
+  setListUrl?: (url: string) => void;
 }) {
   const problemInfo: any = parseProblemFilename(subject, filename);
+
+  // ListMaker for Math VBE
+
+  const [isAdded, setIsAdded] = useState(
+    listUrl?.includes(filename.slice(0, -4)) || false
+  );
+
+  useEffect(() => {
+    if (isAdded) {
+      setListUrl?.(
+        appendToMakerListUrl(filename.slice(0, -4), listUrl ? listUrl : "")
+      );
+    } else {
+      setListUrl?.(
+        removeFromListUrl(filename.slice(0, -4), listUrl ? listUrl : "")
+      );
+    }
+  }, [isAdded]);
+
   return (
     <>
       <div
         style={{
-          paddingTop: "50px",
-          paddingBottom: "50px",
+          paddingTop: "30px",
+          paddingBottom: "30px",
           overflowX: "auto",
         }}
         className="single-problem"
@@ -41,6 +69,34 @@ export default function SingleProblem({
           }}
         />
       </div>
+      {!theListItIs &&
+        subject === "math" &&
+        problemInfo.problemType !== "root" && (
+          <div style={{ display: "flex", justifyContent: "flex-end" }}>
+            {!isAdded && (
+              <Button variant="warning" onClick={() => setIsAdded(!isAdded)}>
+                Pridėti į sąrašą
+              </Button>
+            )}
+            {isAdded && (
+              <div>
+                <Button
+                  variant="outline-danger"
+                  onClick={() => setIsAdded(!isAdded)}
+                  style={{ marginRight: "10px" }}
+                >
+                  Išimti iš sąrašo
+                </Button>
+                <Button variant="success" disabled>
+                  <strong>
+                    <em>Pridėta</em>
+                  </strong>
+                </Button>
+              </div>
+            )}
+          </div>
+        )}
+
       <div>
         {!["root", "sources"].includes(problemInfo.problemType) &&
           !(subject === "math" && isNotHaveAnswersMathVbe(problemInfo.year)) &&

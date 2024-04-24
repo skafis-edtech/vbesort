@@ -1,4 +1,9 @@
-import { isNotHaveAnswersMathVbe, parseProblemFilename } from "./misc";
+import {
+  appendToMakerListUrl,
+  isNotHaveAnswersMathVbe,
+  parseProblemFilename,
+  removeFromListUrl,
+} from "./misc";
 
 describe("parseProblemFilename", () => {
   it("should correctly parse math problem filename", () => {
@@ -59,5 +64,47 @@ describe("isNotHaveAnsMathVbe", () => {
   it("should correctly filter noans years", () => {
     const result = isNotHaveAnswersMathVbe("2015g");
     expect(result).toEqual(false);
+  });
+});
+
+describe("listMaker", () => {
+  it("should correctly remove item from list", () => {
+    const result = removeFromListUrl(
+      "2015k3s22.1B",
+      "https://www.vbesort.lt/#/list?list=2015k3s22.1B+2022g1w10A"
+    );
+    expect(result).toEqual("https://www.vbesort.lt/#/list?list=2022g1w10A");
+  });
+
+  it("should correctly remove item from list2", () => {
+    const result = removeFromListUrl(
+      "2015k3s22.1B",
+      "https://www.vbesort.lt/#/list?list=2022g1w10A"
+    );
+    expect(result).toEqual("https://www.vbesort.lt/#/list?list=2022g1w10A");
+  });
+
+  it("should correctly remove item from list3", () => {
+    const result = removeFromListUrl(
+      "2015k3s22.1B",
+      "https://www.vbesort.lt/#/list?list=2015k3s22.1B"
+    );
+    expect(result).toEqual("https://www.vbesort.lt/#/list?list=");
+  });
+
+  it("should correctly add item to list", () => {
+    const result = appendToMakerListUrl(
+      "2015k3s22.1B",
+      "https://www.vbesort.lt/#/list?list="
+    );
+    expect(result).toEqual("https://www.vbesort.lt/#/list?list=2015k3s22.1B");
+  });
+
+  it("should correctly add item to list2", () => {
+    const result = appendToMakerListUrl(
+      "2015k3s22.1B",
+      "https://www.vbesort.lt/#/list?list=2015k3s22.1B"
+    );
+    expect(result).toEqual("https://www.vbesort.lt/#/list?list=2015k3s22.1B");
   });
 });

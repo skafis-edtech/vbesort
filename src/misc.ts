@@ -221,6 +221,7 @@ export function isNotHaveAnswersMathVbe(year: string): boolean {
     "2008g",
     "2008k",
     "2009k",
+    "2015k",
     "2019k",
     "2021k",
     "2013g",
@@ -286,3 +287,40 @@ export function getShortYearName(year: string) {
   }
   return yearName;
 }
+
+export const appendToMakerListUrl = (item: string, listUrl: string): string => {
+  if (listUrl === "") {
+    console.error("No listUrl provided");
+    return "";
+  }
+
+  const baseUrl = listUrl.split("?")[0];
+  const searchParams = new URLSearchParams(listUrl.split("?")[1]);
+  const listParam = searchParams.get("list") || "";
+  const listItems = listParam
+    .split("+")
+    .filter((listItem) => listItem !== item);
+  searchParams.set("list", listItems.join("+"));
+  const cleanUrl = `${baseUrl}?${searchParams.toString()}`;
+
+  if (cleanUrl[cleanUrl.length - 1] === "=") {
+    return cleanUrl + item;
+  } else {
+    return cleanUrl + "+" + item;
+  }
+};
+
+export const removeFromListUrl = (item: string, listUrl: string): string => {
+  if (listUrl === "") {
+    console.error("No listUrl provided");
+    return "";
+  }
+  const baseUrl = listUrl.split("?")[0];
+  const searchParams = new URLSearchParams(listUrl.split("?")[1]);
+  const listParam = searchParams.get("list") || "";
+  const listItems = listParam
+    .split(" ")
+    .filter((listItem) => listItem !== item);
+  searchParams.set("list", listItems.join(" "));
+  return `${baseUrl}?${searchParams.toString()}`;
+};

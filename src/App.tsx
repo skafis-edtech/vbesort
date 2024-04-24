@@ -3,7 +3,7 @@ import PrivacyComponent from "./components/PrivacyComponent";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import MainPage from "./MainPage";
-import { Routes, Route, HashRouter } from "react-router-dom";
+import { Routes, Route, HashRouter, BrowserRouter } from "react-router-dom";
 import AboutPage from "./AboutPage";
 import { DarkModeProvider } from "./components/DarkModeContext";
 import { Link } from "react-router-dom";
@@ -16,11 +16,12 @@ import ContributePage from "./ContributePage";
 import TabsContainer from "./components/TabsContainer";
 import ItPage from "./ItPage";
 import PhysicsPage from "./PhysicsPage";
+import ListPage from "./ListPage";
 
 function App() {
   return (
     <DarkModeProvider>
-      <HashRouter>
+      <BrowserRouter>
         <div style={{ minHeight: "100vh" }}>
           <PrivacyComponent />
           <Header />
@@ -36,6 +37,10 @@ function App() {
                 <Route
                   index
                   element={<TabsContainer MathTab={<MainPage />} />}
+                />
+                <Route
+                  path="/list"
+                  element={<TabsContainer ListTab={<ListPage />} />}
                 />
                 <Route
                   path="/hist"
@@ -81,7 +86,7 @@ function App() {
           </main>
           <Footer />
         </div>
-      </HashRouter>
+      </BrowserRouter>
     </DarkModeProvider>
   );
 }

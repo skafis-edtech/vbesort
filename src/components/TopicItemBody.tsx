@@ -10,12 +10,15 @@ import PuppProblemRoot from "../MathPuppPage/PuppProblemRoot";
 import HistProblemRoot from "../HistPage/HistProblemRoot";
 import { useDarkMode } from "./DarkModeContext";
 import SingleProblem from "./SingleProblem";
+import { useEffect, useState } from "react";
 
 interface TopicItemBodyProps {
   topic: { topic: string; name: string };
   yearList: string[];
   nrTopicLut: { filename: string; topic: string; answer?: string }[];
   subject: SubjectType;
+  listUrl?: string;
+  setListUrl?: (url: string) => void;
 }
 
 export default function TopicItemBody({
@@ -23,12 +26,25 @@ export default function TopicItemBody({
   yearList,
   nrTopicLut,
   subject,
+  listUrl,
+  setListUrl,
 }: TopicItemBodyProps) {
   const { isShuffleOn } = useDarkMode();
+  const [problemList, setProblemList] = useState(
+    nrTopicLut.filter((problem) => {
+      const currProblemInfo: any = parseProblemFilename(
+        subject,
+        problem.filename
+      );
+      return (
+        yearList.includes(currProblemInfo.year) && problem.topic === topic.topic
+      );
+    })
+  );
 
-  return (
-    <Accordion.Body>
-      {shuffle(
+  useEffect(() => {
+    setProblemList(
+      shuffle(
         nrTopicLut.filter((problem) => {
           const currProblemInfo: any = parseProblemFilename(
             subject,
@@ -40,7 +56,13 @@ export default function TopicItemBody({
           );
         }),
         isShuffleOn
-      ).map((problem) => {
+      )
+    );
+  }, [yearList, isShuffleOn]);
+
+  return (
+    <Accordion.Body>
+      {problemList.map((problem) => {
         const currProblemInfo: any = parseProblemFilename(
           subject,
           problem.filename
@@ -70,6 +92,8 @@ export default function TopicItemBody({
               filename={problem.filename}
               subject={subject}
               answerLut={nrTopicLut}
+              listUrl={listUrl}
+              setListUrl={setListUrl}
             />
           </div>
         );

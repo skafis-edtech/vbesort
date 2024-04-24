@@ -55,9 +55,10 @@ export default function PrivacyComponent() {
               </li>
             </ul>
             <p>
-              Įrenginyje išsaugoma: dienos ar naktinis rėžimas pasirinktas,
-              pasirinkta maišyti ar nemaišyti užduočių, kurių metų matematikos
-              VBE užduotys pasirinktos
+              Įrenginyje (localStorage) išsaugoma: dienos ar naktinis rėžimas
+              pasirinktas, pasirinkta maišyti ar nemaišyti užduočių, kurių metų
+              matematikos VBE užduotys pasirinktos rodyti, kokia sugeneruota
+              užduočių sąrašo nuoroda.
             </p>
           </Accordion.Body>
         </Accordion.Item>
