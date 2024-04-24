@@ -1,11 +1,10 @@
 import { Alert, Button } from "react-bootstrap";
-import usePersistentState from "../hooks";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const ListMaker: React.FC<{
   listUrl: string;
-  setListUrl: (url: string) => void;
+  setListUrl: (value: string) => void;
 }> = ({ listUrl, setListUrl }) => {
   const clearList = () => {
     setListUrl("https://www.vbesort.lt/#/list?list=");

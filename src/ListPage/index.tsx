@@ -17,7 +17,7 @@ const ListPage: React.FC = () => {
     const queryString = window.location.href.split("?")[1];
     const urlParams = new URLSearchParams(queryString);
     const list = urlParams.get("list");
-    const items = list ? list.split(",") : [];
+    const items = list ? list.split(" ") : [];
     setItems(items);
   }, []);
 

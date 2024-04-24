@@ -1,9 +1,11 @@
 import { Accordion, Button } from "react-bootstrap";
 import {
   SubjectType,
+  appendToMakerListUrl,
   isNotHaveAnswersMathPupp,
   isNotHaveAnswersMathVbe,
   parseProblemFilename,
+  removeFromListUrl,
 } from "../misc";
 import "./style.css";
 import { useEffect, useState } from "react";
@@ -26,35 +28,20 @@ export default function SingleProblem({
   const problemInfo: any = parseProblemFilename(subject, filename);
 
   // ListMaker for Math VBE
+
   const [isAdded, setIsAdded] = useState(
     listUrl?.includes(filename.slice(0, -4)) || false
   );
-  const appendToList = (item: string) => {
-    if (!listUrl || !setListUrl) return;
-    const url = new URL(listUrl);
-    const listParam = url.searchParams.get("list") || "";
-    const listItems = listParam.split(",");
-    listItems.push(item);
-    url.searchParams.set("list", listItems.join(","));
-    setListUrl(url.toString());
-  };
-
-  const removeFromList = (item: string) => {
-    if (!listUrl || !setListUrl) return;
-    const url = new URL(listUrl);
-    const listParam = url.searchParams.get("list") || "";
-    const listItems = listParam
-      .split(",")
-      .filter((listItem) => listItem !== item);
-    url.searchParams.set("list", listItems.join(","));
-    setListUrl(url.toString());
-  };
 
   useEffect(() => {
     if (isAdded) {
-      appendToList(filename.slice(0, -4));
+      setListUrl?.(
+        appendToMakerListUrl(filename.slice(0, -4), listUrl ? listUrl : "")
+      );
     } else {
-      removeFromList(filename.slice(0, -4));
+      setListUrl?.(
+        removeFromListUrl(filename.slice(0, -4), listUrl ? listUrl : "")
+      );
     }
   }, [isAdded]);
 
@@ -93,13 +80,17 @@ export default function SingleProblem({
             )}
             {isAdded && (
               <div>
-                <em>Pridėta</em>
                 <Button
-                  variant="danger"
+                  variant="outline-danger"
                   onClick={() => setIsAdded(!isAdded)}
-                  style={{ marginLeft: "10px" }}
+                  style={{ marginRight: "10px" }}
                 >
                   Išimti iš sąrašo
+                </Button>
+                <Button variant="success" disabled>
+                  <strong>
+                    <em>Pridėta</em>
+                  </strong>
                 </Button>
               </div>
             )}

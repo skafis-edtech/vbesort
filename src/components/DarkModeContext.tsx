@@ -1,5 +1,5 @@
 import { type ReactNode, createContext, useContext, useEffect } from "react";
-import usePersistantState from "../hooks";
+import usePersistentState from "../hooks";
 
 interface DarkModeContextType {
   isDarkMode: boolean;
@@ -17,11 +17,11 @@ interface DarkModeProviderProps {
 }
 
 function DarkModeProvider({ children }: DarkModeProviderProps) {
-  const [isDarkMode, setIsDarkMode] = usePersistantState<boolean>(
+  const [isDarkMode, setIsDarkMode] = usePersistentState<boolean>(
     "IS_DARK_MODE",
     window.matchMedia("(prefers-color-scheme: dark)").matches
   );
-  const [isShuffleOn, setIsShuffleOn] = usePersistantState<boolean>(
+  const [isShuffleOn, setIsShuffleOn] = usePersistentState<boolean>(
     "IS_SHUFFLE_ON",
     true
   );
