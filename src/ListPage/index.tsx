@@ -1,11 +1,7 @@
 import { useEffect, useState } from "react";
 import SingleProblem from "../components/SingleProblem";
 import nrTopicLut from "../MainPage/data/nr-topic-lut.json";
-import {
-  MathProblemIdType,
-  getLongYearName,
-  parseProblemFilename,
-} from "../misc";
+import { getLongYearName, parseProblemFilename } from "../misc";
 import MathProblemRoot from "../MainPage/MathProblemRoot";
 import { Alert } from "react-bootstrap";
 import { Link } from "react-router-dom";
@@ -27,7 +23,7 @@ const ListPage: React.FC = () => {
         <Alert variant="warning">
           Užduotys atrenkamos pagal nuorodą. Šiuo metu nuorodoje esantis sąrašas
           tuščias. Jei norite sukurti sąrašą, eikite į{" "}
-          <Link to="/">Matematikos VBE</Link> skirtuką
+          <Link to="/">puslapį "Matematikos VBE"</Link>.
         </Alert>
       ) : (
         <Alert variant="warning">Užduotys atrinktos pagal nuorodą</Alert>
