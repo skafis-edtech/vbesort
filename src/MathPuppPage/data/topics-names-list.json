@@ -17,7 +17,7 @@
   },
   {
     "topic": "procentai",
-    "name": "Procentai"
+    "name": "Procentai ir skaičiaus dalys"
   },
   {
     "topic": "lygtys",
@@ -29,7 +29,7 @@
   },
   {
     "topic": "tikimybes",
-    "name": "Tikimybės"
+    "name": "Tikimybės ir kombinatorika"
   },
   {
     "topic": "reiskiniai",
@@ -50,6 +50,22 @@
   {
     "topic": "skaiciai",
     "name": "Skaičiai (su skaičių teorija)"
+  },
+  {
+    "topic": "greicio",
+    "name": "Greičio uždaviniai"
+  },
+  {
+    "topic": "darbo",
+    "name": "Darbo uždaviniai"
+  },
+  {
+    "topic": "koordinates",
+    "name": "Koordinačių plokštuma"
+  },
+  {
+    "topic": "mastymo",
+    "name": "Mąstymo / analizės (paprasti) uždaviniai"
   },
   {
     "topic": "misc",
