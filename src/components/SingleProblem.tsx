@@ -109,7 +109,10 @@ export default function SingleProblem({
                   Atsakymas
                 </Accordion.Header>
                 <Accordion.Body>
-                  {problemInfo.section === "I" ? (
+                  {problemInfo.section === "I" ||
+                  !answerLut
+                    .find((problem) => problem.filename === filename)
+                    ?.answer?.includes(".png") ? (
                     <h3>
                       {
                         answerLut.find(

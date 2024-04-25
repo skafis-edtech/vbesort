@@ -237,7 +237,6 @@ export function isNotHaveAnswersMathVbe(year: string): boolean {
 
 export function isNotHaveAnswersMathPupp(year: string): boolean {
   const noAnsList: string[] = [
-    "20211",
     "2013p",
     "20212",
     "20213",
