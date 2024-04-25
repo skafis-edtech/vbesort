@@ -362,7 +362,7 @@
   {
     "answer": "A",
     "filename": "2016k1-13.png",
-    "topic": "theory"
+    "topic": "capacitors"
   },
   {
     "answer": "C",
@@ -512,7 +512,7 @@
   {
     "answer": "A",
     "filename": "2017g1-13.png",
-    "topic": "capacitors"
+    "topic": "electrodynamics"
   },
   {
     "answer": "B",
@@ -657,7 +657,7 @@
   {
     "answer": "D",
     "filename": "2017k1-12.png",
-    "topic": "capacitors"
+    "topic": "electrostatics"
   },
   {
     "answer": "D",
@@ -667,7 +667,7 @@
   {
     "answer": "C",
     "filename": "2017k1-14.png",
-    "topic": "capacitors"
+    "topic": "electrodynamics"
   },
   {
     "answer": "C",
@@ -677,7 +677,7 @@
   {
     "answer": "A",
     "filename": "2017k1-16.png",
-    "topic": "electrostatics"
+    "topic": "capacitors"
   },
   {
     "answer": "C",
@@ -697,7 +697,7 @@
   {
     "answer": "A",
     "filename": "2017k1-20.png",
-    "topic": "linear_optics"
+    "topic": "capacitors"
   },
   {
     "answer": "C",
@@ -1417,7 +1417,7 @@
   {
     "answer": "A",
     "filename": "2022g1-14.png",
-    "topic": "capacitors"
+    "topic": "electrodynamics"
   },
   {
     "answer": "B",
@@ -1552,7 +1552,7 @@
   {
     "answer": "B",
     "filename": "2022k1-11.png",
-    "topic": "capacitors"
+    "topic": "electrodynamics"
   },
   {
     "answer": "C",
