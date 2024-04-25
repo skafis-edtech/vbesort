@@ -27,7 +27,7 @@ export default function SingleProblem({
 }) {
   const problemInfo: any = parseProblemFilename(subject, filename);
 
-  // ListMaker for Math VBE
+  // ListMaker for Math VBE and PUPP
 
   const [isAdded, setIsAdded] = useState(
     listUrl?.includes(filename.slice(0, -4)) || false
@@ -43,7 +43,7 @@ export default function SingleProblem({
         removeFromListUrl(filename.slice(0, -4), listUrl ? listUrl : "")
       );
     }
-  }, [isAdded]);
+  }, [isAdded, filename, listUrl, setListUrl]);
 
   return (
     <>
@@ -70,7 +70,7 @@ export default function SingleProblem({
         />
       </div>
       {!theListItIs &&
-        subject === "math" &&
+        (subject === "math" || subject === "pupp") &&
         problemInfo.problemType !== "root" && (
           <div style={{ display: "flex", justifyContent: "flex-end" }}>
             {!isAdded && (

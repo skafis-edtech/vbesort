@@ -5,6 +5,7 @@ import { getLongYearName, parseProblemFilename } from "../misc";
 import MathProblemRoot from "../MainPage/MathProblemRoot";
 import { Alert } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import PuppProblemRoot from "../MathPuppPage/PuppProblemRoot";
 
 const ListPage: React.FC = () => {
   const [items, setItems] = useState<string[]>([]);
@@ -23,29 +24,64 @@ const ListPage: React.FC = () => {
         <Alert variant="warning">
           Užduotys atrenkamos pagal nuorodą. Šiuo metu nuorodoje esantis sąrašas
           tuščias. Jei norite sukurti sąrašą, eikite į{" "}
-          <Link to="/">puslapį "Matematikos VBE"</Link>.
+          <Link to="/">puslapį "Matematikos VBE"</Link> arba{" "}
+          <Link to="/math-pupp">puslapį "Matematikos PUPP"</Link>.
         </Alert>
       ) : (
         <Alert variant="warning">Užduotys atrinktos pagal nuorodą</Alert>
       )}
       {items.map((item, index) => {
-        const currProblemInfo: any = parseProblemFilename("math", item);
-        return (
-          <div key={index}>
-            <hr style={{ border: "3px solid black" }} />
-            <h1>{index + 1}.</h1>
-            <em>({getLongYearName(item)})</em>
-            {currProblemInfo.problemType === "sub" && (
-              <MathProblemRoot theListItIs currProblemInfo={currProblemInfo} />
-            )}
-            <SingleProblem
-              filename={item + ".png"}
-              subject="math"
-              answerLut={nrTopicLut}
-              theListItIs
-            />
-          </div>
-        );
+        if (
+          item.charAt(5) === "1" ||
+          item.charAt(5) === "2" ||
+          item.charAt(5) === "3"
+        ) {
+          const currProblemInfo: any = parseProblemFilename("math", item);
+          return (
+            <div key={index}>
+              <hr style={{ border: "3px solid black" }} />
+              <h1>{index + 1}.</h1>
+              <em>
+                (VBE {getLongYearName(item)} {currProblemInfo.number} užd.)
+              </em>
+              {currProblemInfo.problemType === "sub" && (
+                <MathProblemRoot
+                  theListItIs
+                  currProblemInfo={currProblemInfo}
+                />
+              )}
+              <SingleProblem
+                filename={item + ".png"}
+                subject="math"
+                answerLut={nrTopicLut}
+                theListItIs
+              />
+            </div>
+          );
+        } else {
+          const currProblemInfo: any = parseProblemFilename("pupp", item);
+          return (
+            <div key={index}>
+              <hr style={{ border: "3px solid black" }} />
+              <h1>{index + 1}.</h1>
+              <em>
+                (PUPP {getLongYearName(item)} {currProblemInfo.number} užd.)
+              </em>
+              {currProblemInfo.problemType === "sub" && (
+                <PuppProblemRoot
+                  theListItIs
+                  currProblemInfo={currProblemInfo}
+                />
+              )}
+              <SingleProblem
+                filename={item + ".png"}
+                subject="pupp"
+                answerLut={nrTopicLut}
+                theListItIs
+              />
+            </div>
+          );
+        }
       })}
     </div>
   );

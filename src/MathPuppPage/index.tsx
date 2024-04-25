@@ -7,7 +7,13 @@ import TopicItem from "../components/TopicItem";
 import { Link } from "react-router-dom";
 import { getShortYearName, isNotHaveAnswersMathPupp } from "../misc";
 
-export default function MathPuppPage() {
+export default function MathPuppPage({
+  listUrl,
+  setListUrl,
+}: {
+  listUrl?: string;
+  setListUrl?: (url: string) => void;
+}) {
   const [yearList, setYearList] = useState<string[]>(
     allYearList.filter((year) => year !== "2023")
   );
@@ -52,6 +58,8 @@ export default function MathPuppPage() {
               topic={topic}
               yearList={yearList}
               nrTopicLut={nrTopicLut}
+              listUrl={listUrl}
+              setListUrl={setListUrl}
               subject="pupp"
             />
           ))}

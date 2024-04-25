@@ -58,7 +58,7 @@ export default function TopicItemBody({
         isShuffleOn
       )
     );
-  }, [yearList, isShuffleOn]);
+  }, [yearList, isShuffleOn, nrTopicLut, subject, topic.topic]);
 
   return (
     <Accordion.Body>
@@ -72,7 +72,7 @@ export default function TopicItemBody({
             <hr style={{ border: "3px solid black" }} />
             <em>
               {getLongYearName(currProblemInfo.year)} {currProblemInfo.section}{" "}
-              {subject !== "pupp" ? "dalis" : ""}
+              {subject !== "pupp" ? "dalis" : ""} {currProblemInfo.number} užd.
             </em>
 
             {currProblemInfo.problemType === "sub" && subject === "math" && (

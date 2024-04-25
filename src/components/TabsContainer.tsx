@@ -34,14 +34,6 @@ export default function TabsContainer({
       <Tab eventKey="/" title="Matematikos VBE" style={{ marginTop: "20px" }}>
         {MathTab}
       </Tab>
-
-      <Tab
-        eventKey="/physics"
-        title="Fizikos VBE"
-        style={{ marginTop: "20px" }}
-      >
-        {PhysicsTab}
-      </Tab>
       <Tab
         eventKey="/math-pupp"
         title="Matematikos PUPP"
@@ -49,6 +41,17 @@ export default function TabsContainer({
       >
         {PuppTab}
       </Tab>
+      <Tab eventKey="/list" title="Atrinktos" style={{ marginTop: "20px" }}>
+        {ListTab}
+      </Tab>
+      <Tab
+        eventKey="/physics"
+        title="Fizikos VBE"
+        style={{ marginTop: "20px" }}
+      >
+        {PhysicsTab}
+      </Tab>
+
       <Tab eventKey="/bio" title="Biologijos VBE" style={{ marginTop: "20px" }}>
         {BioTab}
       </Tab>
@@ -67,9 +70,6 @@ export default function TabsContainer({
         style={{ marginTop: "20px" }}
       >
         {ContributeTab}
-      </Tab>
-      <Tab eventKey="/list" title="Atrinktos" style={{ marginTop: "20px" }}>
-        {ListTab}
       </Tab>
     </Tabs>
   );

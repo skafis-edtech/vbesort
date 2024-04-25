@@ -15,8 +15,8 @@ const ListMaker: React.FC<{
       <Alert variant="warning">
         <h5>Nauja! (Mokytojams)</h5>
         <p>
-          Kurkite užduočių sąrašą, naudodamiesi mygtukais prie užduočių. Štai
-          čia susigeneruoja užduočių sąrašo nuoroda:
+          Kurkite užduočių sąrašą, naudodamiesi mygtukais prie matematikos VBE
+          ir PUPP užduočių. Štai čia susigeneruoja užduočių sąrašo nuoroda:
         </p>
         <textarea readOnly rows={3} value={listUrl} style={{ width: "100%" }} />
         <CopyButton text={listUrl} />
