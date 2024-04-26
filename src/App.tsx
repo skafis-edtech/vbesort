@@ -19,6 +19,7 @@ import PhysicsPage from "./PhysicsPage";
 import ListPage from "./ListPage";
 import ListMaker from "./ListMaker";
 import { useEffect, useState } from "react";
+import NaglisProblemsPage from "./NaglisProblemsPage";
 
 function App() {
   // List Maker for Math VBE
@@ -61,6 +62,19 @@ function App() {
                   element={<TabsContainer ListTab={<ListPage />} />}
                 />
                 <Route
+                  path="/naglis-problems"
+                  element={
+                    <TabsContainer
+                      NaglisProblemsTab={
+                        <NaglisProblemsPage
+                          listUrl={listUrl}
+                          setListUrl={setListUrl}
+                        />
+                      }
+                    />
+                  }
+                />
+                <Route
                   path="/hist"
                   element={<TabsContainer HistTab={<HistPage />} />}
                 />
@@ -97,6 +111,7 @@ function App() {
                   path="/physics"
                   element={<TabsContainer PhysicsTab={<PhysicsPage />} />}
                 />
+
                 <Route
                   path="*"
                   element={

@@ -1,3 +1,5 @@
+import naglisNrTopicLut from "./NaglisProblemsPage/data/nr-topic-lut.json";
+
 export type MathProblemIdType = {
   year: string; //"2023g" | "2023k" | "2010v" | "2010b" | "2002p" ...
   section: "I" | "II" | "III";
@@ -25,7 +27,18 @@ export type PuppProblemIdType = {
   problemType: "whole" | "root" | "sub";
 };
 
-export type SubjectType = "math" | "bio" | "hist" | "pupp" | "physics";
+export type NaglisProblemIdType = {
+  year: string;
+  number: number;
+};
+
+export type SubjectType =
+  | "math"
+  | "bio"
+  | "hist"
+  | "pupp"
+  | "physics"
+  | "naglis";
 
 export function parseProblemFilename(
   subject: SubjectType,
@@ -34,7 +47,8 @@ export function parseProblemFilename(
   | MathProblemIdType
   | BioProblemIdType
   | HistProblemIdType
-  | PuppProblemIdType {
+  | PuppProblemIdType
+  | NaglisProblemIdType {
   if (subject === "math") {
     const year = filename.substring(0, 5);
     const section: MathProblemIdType["section"] =
@@ -159,6 +173,12 @@ export function parseProblemFilename(
       section,
       number,
     };
+  } else if (subject === "naglis") {
+    return {
+      year:
+        naglisNrTopicLut.find((item) => item.filename === filename)?.date || "",
+      number: parseInt(filename.substring(5, 7)),
+    };
   } else {
     throw Error("No parser for problem subject '" + subject + "'");
   }
@@ -204,6 +224,8 @@ export function getLongYearName(year: string) {
     yearName = yearNumber + " m. II srautas";
   } else if (yearLetter === "3") {
     yearName = yearNumber + " m. III srautas";
+  } else if (yearLetter === "-") {
+    yearName = yearNumber + " (SKF)";
   } else {
     throw Error("Invalid year letter '" + yearLetter + "'");
   }
@@ -281,6 +303,8 @@ export function getShortYearName(year: string) {
     yearName = yearNumber + " II";
   } else if (yearLetter === "3") {
     yearName = yearNumber + " III";
+  } else if (yearLetter === "-") {
+    yearName = yearNumber + " (SKF)";
   } else {
     throw Error("Invalid year letter '" + yearLetter + "'");
   }
@@ -322,4 +346,14 @@ export const removeFromListUrl = (item: string, listUrl: string): string => {
     .filter((listItem) => listItem !== item);
   searchParams.set("list", listItems.join(" "));
   return `${baseUrl}?${searchParams.toString()}`;
+};
+
+export const isNotHaveAnsNaglis = (filename: string) => {
+  if (
+    naglisNrTopicLut.find((item) => item.filename === filename)?.answer === ""
+  ) {
+    return true;
+  } else {
+    return false;
+  }
 };

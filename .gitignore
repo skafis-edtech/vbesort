@@ -43,6 +43,8 @@ yarn-error.log\*
 /public/pupp-answers
 /public/chem-problems
 /public/physics-problems
+/public/naglis-problems
+/public/naglis-answers
 
 # ssh keys
 gh-pages-vbesort

@@ -2,6 +2,7 @@ import { Accordion, Button } from "react-bootstrap";
 import {
   SubjectType,
   appendToMakerListUrl,
+  isNotHaveAnsNaglis,
   isNotHaveAnswersMathPupp,
   isNotHaveAnswersMathVbe,
   parseProblemFilename,
@@ -43,7 +44,7 @@ export default function SingleProblem({
         removeFromListUrl(filename.slice(0, -4), listUrl ? listUrl : "")
       );
     }
-  }, [isAdded, filename, listUrl, setListUrl]);
+  }, [isAdded]);
 
   return (
     <>
@@ -70,7 +71,7 @@ export default function SingleProblem({
         />
       </div>
       {!theListItIs &&
-        (subject === "math" || subject === "pupp") &&
+        (subject === "math" || subject === "pupp" || subject === "naglis") &&
         problemInfo.problemType !== "root" && (
           <div style={{ display: "flex", justifyContent: "flex-end" }}>
             {!isAdded && (
@@ -100,9 +101,8 @@ export default function SingleProblem({
       <div>
         {!["root", "sources"].includes(problemInfo.problemType) &&
           !(subject === "math" && isNotHaveAnswersMathVbe(problemInfo.year)) &&
-          !(
-            subject === "pupp" && isNotHaveAnswersMathPupp(problemInfo.year)
-          ) && (
+          !(subject === "pupp" && isNotHaveAnswersMathPupp(problemInfo.year)) &&
+          !(subject === "naglis" && isNotHaveAnsNaglis(filename)) && (
             <Accordion style={{ marginTop: "20px" }}>
               <Accordion.Item eventKey="answer">
                 <Accordion.Header className="root-header">
