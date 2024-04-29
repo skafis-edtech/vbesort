@@ -29,8 +29,10 @@ export default function MathPuppPage({
   return (
     <>
       <Alert variant="success">
-        Hmm, nelabai daug surūšiuota, ane? Pasvarstyk prisidėti prie tinklapio
-        tobulinimo. Plačiau – <Link to="/contribute">puslapyje "Prisidėk"</Link>
+        Turėti omenyje, kad PUPP egzaminai sprendžiami prie kompiuterių, todėl
+        rekomenduoju pasimėginti rašyti formules{" "}
+        <Link to="https://beta.etestavimas.lt">beta.etestavimas.lt</Link>{" "}
+        platformoje
       </Alert>
       <div>
         <div style={{ marginTop: "50px", marginBottom: "20px" }}>

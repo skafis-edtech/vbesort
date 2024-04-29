@@ -115,8 +115,8 @@ export default function AboutPage() {
             </a>
           </li>
           <li>
-            2020 metų matematikos VBE pakartotinės sesijos užduotys gautos iš
-            kitų, neoficialių šaltinių.
+            2020 metų matematikos VBE pakartotinės sesijos, 2022 PUPP bei 2023
+            metų PUPP atsakymai gauti iš kitų, neoficialių šaltinių.
           </li>
         </ul>
       </p>
