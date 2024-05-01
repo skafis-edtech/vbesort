@@ -118,6 +118,10 @@ export default function AboutPage() {
             2020 metų matematikos VBE pakartotinės sesijos, 2022 PUPP bei 2023
             metų PUPP atsakymai gauti iš kitų, neoficialių šaltinių.
           </li>
+          <li>
+            2023 metų I srauto PUPP 18 užd. vertinimo instrukcijoje klaida, buvo
+            parašyta atsakymas B, nors turėtų būti D.
+          </li>
         </ul>
       </p>
 
