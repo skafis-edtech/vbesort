@@ -1102,22 +1102,22 @@
   {
     "answer": "D",
     "filename": "2020g1-11.png",
-    "topic": "electrostatics"
+    "topic": "electrodynamics"
   },
   {
     "answer": "D",
     "filename": "2020g1-12.png",
-    "topic": "theory"
+    "topic": "electrodynamics"
   },
   {
     "answer": "B",
     "filename": "2020g1-13.png",
-    "topic": "theory"
+    "topic": "electrodynamics"
   },
   {
     "answer": "C",
     "filename": "2020g1-14.png",
-    "topic": "electrodynamics"
+    "topic": "electrostatics"
   },
   {
     "answer": "C",
@@ -1127,7 +1127,7 @@
   {
     "answer": "B",
     "filename": "2020g1-16.png",
-    "topic": "theory"
+    "topic": "electrodynamics"
   },
   {
     "answer": "A",
@@ -1257,17 +1257,17 @@
   {
     "answer": "C",
     "filename": "2021g1-12.png",
-    "topic": "theory"
+    "topic": "electrostatics"
   },
   {
     "answer": "B",
     "filename": "2021g1-13.png",
-    "topic": "theory"
+    "topic": "electrodynamics"
   },
   {
     "answer": "A",
     "filename": "2021g1-14.png",
-    "topic": "theory"
+    "topic": "electrodynamics"
   },
   {
     "answer": "C",
@@ -1277,7 +1277,7 @@
   {
     "answer": "C",
     "filename": "2021g1-16.png",
-    "topic": "electromagnetism"
+    "topic": "magnetism"
   },
   {
     "answer": "A",
@@ -1407,12 +1407,12 @@
   {
     "answer": "C",
     "filename": "2022g1-12.png",
-    "topic": "electrodynamics"
+    "topic": "energy/work"
   },
   {
     "answer": "D",
     "filename": "2022g1-13.png",
-    "topic": "theory"
+    "topic": "electrostatics"
   },
   {
     "answer": "A",
@@ -1427,7 +1427,7 @@
   {
     "answer": "D",
     "filename": "2022g1-16.png",
-    "topic": "theory"
+    "topic": "electrodynamics"
   },
   {
     "answer": "C",
@@ -1557,27 +1557,27 @@
   {
     "answer": "C",
     "filename": "2022k1-12.png",
-    "topic": "theory"
+    "topic": "electrodynamics"
   },
   {
     "answer": "B",
     "filename": "2022k1-13.png",
-    "topic": "theory"
+    "topic": "electrodynamics"
   },
   {
     "answer": "C",
     "filename": "2022k1-14.png",
-    "topic": "theory"
+    "topic": "energy/work"
   },
   {
     "answer": "C",
     "filename": "2022k1-15.png",
-    "topic": "theory"
+    "topic": "electrodynamics"
   },
   {
     "answer": "A",
     "filename": "2022k1-16.png",
-    "topic": "theory"
+    "topic": "electrodynamics"
   },
   {
     "answer": "B",
@@ -1707,27 +1707,27 @@
   {
     "answer": "A",
     "filename": "2023g1-12.png",
-    "topic": "theory"
+    "topic": "electrodynamics"
   },
   {
     "answer": "C",
     "filename": "2023g1-13.png",
-    "topic": "theory"
+    "topic": "electrodynamics"
   },
   {
     "answer": "D",
     "filename": "2023g1-14.png",
-    "topic": "theory"
+    "topic": "electrodynamics"
   },
   {
     "answer": "C",
     "filename": "2023g1-15.png",
-    "topic": "theory"
+    "topic": "electrodynamics"
   },
   {
     "answer": "D",
     "filename": "2023g1-16.png",
-    "topic": "theory"
+    "topic": "magnetism"
   },
   {
     "answer": "C",
