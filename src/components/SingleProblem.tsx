@@ -27,9 +27,15 @@ export default function SingleProblem({
   setListUrl?: (url: string) => void;
 }) {
   const problemInfo: any = parseProblemFilename(subject, filename);
+  const problemSrc = `${subject}-problems/${problemInfo.year.substring(
+    0,
+    4
+  )}/${filename}`;
+  const answerSrc = `${subject}-answers/${
+    answerLut.find((problem) => problem.filename === filename)?.answer
+  }`;
 
   // ListMaker for Math VBE and PUPP
-
   const [isAdded, setIsAdded] = useState(
     listUrl?.includes(filename.slice(0, -4)) || false
   );
@@ -45,6 +51,7 @@ export default function SingleProblem({
       );
     }
   }, [isAdded]);
+  // end of list maker
 
   return (
     <>
@@ -59,10 +66,7 @@ export default function SingleProblem({
         <img
           loading="lazy"
           alt={filename}
-          src={`${subject}-problems/${problemInfo.year.substring(
-            0,
-            4
-          )}/${filename}`}
+          src={problemSrc}
           style={{
             width: "auto",
             height: "auto",
@@ -134,11 +138,7 @@ export default function SingleProblem({
                             (problem) => problem.filename === filename
                           )?.answer
                         }`}
-                        src={`${subject}-answers/${
-                          answerLut.find(
-                            (problem) => problem.filename === filename
-                          )?.answer
-                        }`}
+                        src={answerSrc}
                         style={{
                           width: "auto",
                           height: "auto",
