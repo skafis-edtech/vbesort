@@ -1,4 +1,4 @@
-import { Alert, Button } from "react-bootstrap";
+import { Accordion, Alert, Button } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -13,22 +13,40 @@ const ListMaker: React.FC<{
   return (
     <div>
       <Alert variant="warning">
-        <h5>Nauja! (Mokytojams)</h5>
-        <p>
-          Kurkite užduočių sąrašą, naudodamiesi mygtukais prie matematikos VBE
-          ir PUPP užduočių. Štai čia susigeneruoja užduočių sąrašo nuoroda:
-        </p>
-        <textarea readOnly rows={3} value={listUrl} style={{ width: "100%" }} />
-        <CopyButton text={listUrl} />
-        <Link to={listUrl.slice(23)}>
-          <Button variant="primary" style={{ margin: "10px" }}>
-            Atidaryti nuorodą
-          </Button>
-        </Link>
+        <Accordion>
+          <Accordion.Item eventKey="yo-what-up:))">
+            <Accordion.Header>
+              <h5>Užduočių sąrašo sudarymas (mokytojams)</h5>
+            </Accordion.Header>
+            <Accordion.Body>
+              <p>
+                Kurkite užduočių sąrašą, naudodamiesi mygtukais prie matematikos
+                VBE ir PUPP užduočių. Štai čia susigeneruoja užduočių sąrašo
+                nuoroda:
+              </p>
+              <textarea
+                readOnly
+                rows={3}
+                value={listUrl}
+                style={{ width: "100%" }}
+              />
+              <CopyButton text={listUrl} />
+              <Link to={listUrl.slice(23)}>
+                <Button variant="primary" style={{ margin: "10px" }}>
+                  Atidaryti nuorodą
+                </Button>
+              </Link>
 
-        <Button variant="danger" onClick={clearList} style={{ margin: "10px" }}>
-          Išvalyti sąrašą
-        </Button>
+              <Button
+                variant="danger"
+                onClick={clearList}
+                style={{ margin: "10px" }}
+              >
+                Išvalyti sąrašą
+              </Button>
+            </Accordion.Body>
+          </Accordion.Item>
+        </Accordion>
       </Alert>
     </div>
   );

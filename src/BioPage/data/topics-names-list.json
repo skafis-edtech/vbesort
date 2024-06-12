@@ -1,5 +1,9 @@
 [
   {
+    "topic": "nervai",
+    "name": "Nervų sistema"
+  },
+  {
     "topic": "lasteles",
     "name": "Ląstelės"
   },
@@ -20,8 +24,8 @@
     "name": "Gyvūnai"
   },
   {
-    "topic": "grybai",
-    "name": "Grybai -> sistematika (visos karalystės - atskirai: visos karalystės)"
+    "topic": "karalystes",
+    "name": "Karalystės"
   },
   {
     "topic": "zmogus",
@@ -37,7 +41,7 @@
   },
   {
     "topic": "evoliucija",
-    "name": "Evoliucija ir sistematika (atskirti nuo evoliucijos?)"
+    "name": "Evoliucija"
   },
   {
     "topic": "ligos",

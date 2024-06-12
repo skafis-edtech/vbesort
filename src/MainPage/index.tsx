@@ -15,7 +15,7 @@ export default function MainPage({
 }) {
   const [yearList, setYearList] = usePersistentState<string[]>(
     "YEAR_LIST",
-    allYearList.filter((year) => year !== "2023g")
+    allYearList.filter((year) => year !== "")
   );
 
   return (

@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 export default function BioPage() {
   const [yearList, setYearList] = useState<string[]>(
-    allYearList.filter((year) => year !== "2023g")
+    allYearList.filter((year) => year !== "")
   );
 
   const toggleYearInList = (yearToToggle: string) => {
