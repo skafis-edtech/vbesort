@@ -42,6 +42,8 @@ yarn deploy https://${username}:${access_token}@github.com/${username}/${usernam
 
 That's it. No more fun stuff. All the cool docs with docker etc. are in [v1.0.0](https://github.com/naglissul/vbe-sort/tree/v1.0.0), where I used AWS.
 
+For screenshots - checkout automatisation folder!
+
 # Contribute
 
 Contribution instructions are described in Lithuanian [here](./CONTRIBUTE.md).

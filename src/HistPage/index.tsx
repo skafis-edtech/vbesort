@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 export default function HistPage() {
   const [yearList, setYearList] = useState<string[]>(
-    allYearList.filter((year) => year !== "2023k" && year !== "2023g")
+    allYearList.filter((year) => true)
   );
 
   const toggleYearInList = (yearToToggle: string) => {
@@ -28,11 +28,7 @@ export default function HistPage() {
           <Link to="/contribute">puslapyje "Prisidėk"</Link>
         </Alert>
         <Alert variant="info">
-          Tarp kitko,{" "}
-          <a target="_blank" rel="noreferrer" href="https://istorijai.lt/">
-            istorijai.lt
-          </a>{" "}
-          yra visai geras puslapis ruošiantis egzaminui
+          Kolkas tik pirmųjų dalių užduotys (testinės ABCD)
         </Alert>
         <div style={{ marginTop: "50px", marginBottom: "20px" }}>
           <div style={{ marginTop: "20px", display: "flex" }}>

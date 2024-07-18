@@ -2,7 +2,7 @@ export default function ItPage() {
   return (
     <div style={{ overflowX: "hidden" }}>
       <h3>
-        Štai čia – nuoroda į Informacinių technologijų VBE konspektą/šabloną:{" "}
+        Štai čia – nuoroda į Informacinių technologijų VBE konspektą/šabloną (pagal programą iki 2024 m.):{" "}
         <a
           target="_blank"
           rel="noreferrer"
