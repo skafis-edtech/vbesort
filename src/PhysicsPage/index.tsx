@@ -25,6 +25,9 @@ export default function PhysicsPage() {
       <Alert variant="info">
         Kolkas tik pirmųjų dalių užduotys (testinės ABCD)
       </Alert>
+      <Alert variant="info">
+        VBE formulynas (nuo 2025 m.): <a href="https://www.nsa.smm.lt/wp-content/uploads/2024/03/3-priedas.-Fizikos-formules-ir-konstantos.docx.pdf">ČIA</a>
+        </Alert>
       <p>
         <strong>12-okams: </strong>Siūlau žiūrint užduotis pasilikti 2023 m.
         egzamino pagrindinės sesijos užduotis nematytas, kad ruošiantis būtų

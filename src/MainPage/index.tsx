@@ -1,4 +1,4 @@
-import { Accordion } from "react-bootstrap";
+import { Accordion, Alert } from "react-bootstrap";
 import topics from "./data/topics-names-list.json";
 import nrTopicLut from "./data/nr-topic-lut.json";
 import TopicItem from "../components/TopicItem";
@@ -20,6 +20,9 @@ export default function MainPage({
 
   return (
     <div>
+      <Alert variant="info">
+        VBE formulynas (nuo 2025 m.): <a href="https://www.nsa.smm.lt/wp-content/uploads/2024/02/2023-Mat_PRIEDAS_isplestinis_projektas.pdf">A lygis</a>, <a href="https://www.nsa.smm.lt/wp-content/uploads/2024/02/2023-Mat_PRIEDAS_bendrasis_projektas.pdf">B lygis</a>
+      </Alert>
       <YearSelector yearList={yearList} setYearList={setYearList} />
       <Accordion>
         {topics.map((topic) => (
