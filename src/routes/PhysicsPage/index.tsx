@@ -24,6 +24,7 @@ const PhysicsPage: React.FC<Components.PageProps> = () => {
   return (
     <>
       <ShuffleBar />
+      <h1 className="vbesort-title">vbesort.lt</h1>
 
       <h1 className="title">Fizikos VBE</h1>
 

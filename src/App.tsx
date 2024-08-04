@@ -33,6 +33,7 @@ function App() {
       <BrowserRouter>
         <div style={{ minHeight: "100vh" }}>
           {isMobile ? <MobileHeader /> : <DesktopHeader />}
+
           <main>
             <aside></aside>
             <section>

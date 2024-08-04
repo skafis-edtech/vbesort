@@ -17,6 +17,7 @@ const MainPage: React.FC<Components.PageProps> = (props) => {
   return (
     <div>
       <ShuffleBar />
+      <h1 className="vbesort-title">vbesort.lt</h1>
 
       <h1 className="title">Matematikos VBE</h1>
 

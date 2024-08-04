@@ -23,6 +23,7 @@ const HistPage: React.FC<Components.PageProps> = () => {
   return (
     <div>
       <ShuffleBar />
+      <h1 className="vbesort-title">vbesort.lt</h1>
 
       <h1 className="title">Istorijos VBE</h1>
       <Alert variant="info">Tvarkoma... </Alert>

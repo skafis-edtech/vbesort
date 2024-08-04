@@ -31,6 +31,13 @@ table {
 
 .title {
   text-align: center;
+  font-size: 40px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.vbesort-title {
+  text-align: center;
   font-size: 70px;
   margin-top: 50px;
   margin-bottom: 50px;

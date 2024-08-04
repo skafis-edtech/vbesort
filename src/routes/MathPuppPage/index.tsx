@@ -25,6 +25,7 @@ const MathPuppPage: React.FC<Components.PageProps> = (props) => {
   return (
     <>
       <ShuffleBar />
+      <h1 className="vbesort-title">vbesort.lt</h1>
 
       <h1 className="title">Matematikos PUPP</h1>
 

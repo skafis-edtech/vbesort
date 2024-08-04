@@ -35,11 +35,14 @@ npm install
 npm run start
 ```
 
-4. For deployment run if not have yet `firebase login`, setup stuff on firebase hosting and change project name in [/.firebaserc](/.firebaserc) to the name you use in firebase hosting.
+4. For deployment run if not have yet `npx firebase login`, setup stuff on firebase hosting and change project name in [/.firebaserc](/.firebaserc) to the name you use in firebase hosting.
 
+```bash
+npm run build
+npm run deploy
 ```
-firebase deploy
-```
+
+You might not succeed from the first time (cuz of many image files) but after a few deploy tries everything should upload. It doesn't reach storage limits, it just reaches timeout (after a few deploy tries everything will be uploaded by parts).
 
 > There was in previous versions some cool stuff with docker, AWS, Wordpress etc. You can chack it out and have a nice read here: [v1.0.0](https://github.com/naglissul/vbe-sort/tree/v1.0.0).
 

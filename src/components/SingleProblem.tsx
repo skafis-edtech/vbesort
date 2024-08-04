@@ -49,7 +49,7 @@ export default function SingleProblem({
         removeFromListUrl(filename.slice(0, -4), listUrl ? listUrl : "")
       );
     }
-  }, [isAdded]);
+  }, [isAdded, listUrl, setListUrl, filename]);
   // end of list maker
 
   return (

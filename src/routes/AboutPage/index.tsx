@@ -4,6 +4,8 @@ import { Components } from "../../types";
 const AboutPage: React.FC<Components.PageProps> = () => {
   return (
     <div style={{ overflowX: "hidden" }}>
+      <h1 className="vbesort-title">vbesort.lt</h1>
+
       <h1 className="title">Apie</h1>
 
       <Support />
