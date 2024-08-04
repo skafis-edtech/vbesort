@@ -6,6 +6,7 @@ import allYearList from "./data/year-list.json";
 import TopicItem from "../../components/TopicItem";
 import { getShortYearName } from "../../misc";
 import { Components } from "../../types";
+import ShuffleBar from "../../components/ShuffleBar";
 
 const PhysicsPage: React.FC<Components.PageProps> = () => {
   const [yearList, setYearList] = useState<string[]>(
@@ -22,12 +23,15 @@ const PhysicsPage: React.FC<Components.PageProps> = () => {
 
   return (
     <>
-      <Alert variant="warning">Augustas surūšiavo</Alert>
-      <Alert variant="info">
-        Kolkas tik pirmųjų dalių užduotys (testinės ABCD)
+      <ShuffleBar />
+
+      <h1 className="title">Fizikos VBE</h1>
+
+      <Alert variant="warning">
+        Augustas surūšiavo. Kolkas tik pirmųjų dalių užduotys (testinės ABCD)
       </Alert>
       <Alert variant="info">
-        VBE formulynas (nuo 2025 m.):{" "}
+        VBE formulynas:{" "}
         <a href="https://www.nsa.smm.lt/wp-content/uploads/2024/03/3-priedas.-Fizikos-formules-ir-konstantos.docx.pdf">
           ČIA
         </a>

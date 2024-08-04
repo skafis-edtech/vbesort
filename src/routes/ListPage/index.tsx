@@ -4,21 +4,31 @@ import nrTopicLut from "../MainPage/data/nr-topic-lut.json";
 import puppTopicLut from "../MathPuppPage/data/nr-topic-lut.json";
 import { getLongYearName, parseProblemFilename } from "../../misc";
 import MathProblemRoot from "../MainPage/MathProblemRoot";
-import { Alert } from "react-bootstrap";
+import { Alert, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import PuppProblemRoot from "../MathPuppPage/PuppProblemRoot";
 import { Components } from "../../types";
 
-const ListPage: React.FC<Components.PageProps> = () => {
+const ListPage: React.FC<Components.PageProps> = (props) => {
   const [items, setItems] = useState<string[]>([]);
 
   useEffect(() => {
-    const queryString = window.location.href.split("?")[1];
+    let queryString = window.location.href.split("?")[1];
+    if (!queryString) {
+      queryString = props.listUrl.split("?")[1];
+      window.history.pushState(null, "", "?" + queryString);
+    }
     const urlParams = new URLSearchParams(queryString);
     const list = urlParams.get("list");
     const items = list ? list.split(" ") : [];
     setItems(items);
-  }, []);
+  }, [props.listUrl]);
+
+  const clearList = () => {
+    props.setListUrl("https://www.vbesort.lt/list?list=");
+    setItems([]);
+    window.history.pushState(null, "", "/list?list=");
+  };
 
   return (
     <div>
@@ -30,8 +40,23 @@ const ListPage: React.FC<Components.PageProps> = () => {
           <Link to="/math-pupp">puslapį "Matematikos PUPP"</Link>.
         </Alert>
       ) : (
-        <Alert variant="warning">Užduotys atrinktos pagal nuorodą</Alert>
+        <Alert
+          variant="warning"
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+          }}
+        >
+          <div>
+            Užduotys atrinktos pagal nuorodą. Ją galite kopijuoti ir dalintis.
+          </div>
+          <Button variant="danger" onClick={clearList}>
+            Išvalyti sukurtą sąrašą
+          </Button>
+        </Alert>
       )}
+
       {items.map((item, index) => {
         if (
           item.charAt(5) === "1" ||

@@ -4,8 +4,8 @@ import nrTopicLut from "./data/nr-topic-lut.json";
 import { useState } from "react";
 import allYearList from "./data/year-list.json";
 import TopicItem from "../../components/TopicItem";
-import { Link } from "react-router-dom";
 import { Components } from "../../types";
+import ShuffleBar from "../../components/ShuffleBar";
 
 const HistPage: React.FC<Components.PageProps> = () => {
   const [yearList, setYearList] = useState<string[]>(
@@ -21,44 +21,38 @@ const HistPage: React.FC<Components.PageProps> = () => {
   };
 
   return (
-    <>
-      <div>
-        <Alert variant="success">
-          Hmm, nelabai daug surūšiuota, ane? Pasvarstyk prisidėti prie tinklapio
-          tobulinimo. Plačiau –{" "}
-          <Link to="/contribute">puslapyje "Prisidėk"</Link>
-        </Alert>
-        <Alert variant="info">
-          Kolkas tik pirmųjų dalių užduotys (testinės ABCD)
-        </Alert>
-        <div style={{ marginTop: "50px", marginBottom: "20px" }}>
-          <div style={{ marginTop: "20px", display: "flex" }}>
-            <Form style={{ flexGrow: 3 }}>
-              {allYearList.map((year) => (
-                <Form.Check
-                  key={year}
-                  inline
-                  label={`${year.slice(0, 4)} pa${year.slice(4, 5)}.`}
-                  checked={yearList.includes(year)}
-                  onChange={() => toggleYearInList(year)}
-                />
-              ))}
-            </Form>
-          </div>
+    <div>
+      <ShuffleBar />
+
+      <h1 className="title">Istorijos VBE</h1>
+      <Alert variant="info">Tvarkoma... </Alert>
+      <div style={{ marginTop: "50px", marginBottom: "20px" }}>
+        <div style={{ marginTop: "20px", display: "flex" }}>
+          <Form style={{ flexGrow: 3 }}>
+            {allYearList.map((year) => (
+              <Form.Check
+                key={year}
+                inline
+                label={`${year.slice(0, 4)} pa${year.slice(4, 5)}.`}
+                checked={yearList.includes(year)}
+                onChange={() => toggleYearInList(year)}
+              />
+            ))}
+          </Form>
         </div>
-        <Accordion>
-          {topics.map((topic) => (
-            <TopicItem
-              key={topic.topic}
-              topic={topic}
-              yearList={yearList}
-              nrTopicLut={nrTopicLut}
-              subject="hist"
-            />
-          ))}
-        </Accordion>
       </div>
-    </>
+      <Accordion>
+        {topics.map((topic) => (
+          <TopicItem
+            key={topic.topic}
+            topic={topic}
+            yearList={yearList}
+            nrTopicLut={nrTopicLut}
+            subject="hist"
+          />
+        ))}
+      </Accordion>
+    </div>
   );
 };
 

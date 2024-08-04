@@ -1,11 +1,11 @@
-import { Accordion, Alert, Form } from "react-bootstrap";
+import { Accordion, Form } from "react-bootstrap";
 import topics from "./data/topics-names-list.json";
 import nrTopicLut from "./data/nr-topic-lut.json";
 import { useState } from "react";
 import allYearList from "./data/year-list.json";
 import TopicItem from "../../components/TopicItem";
-import { Link } from "react-router-dom";
 import { Components } from "../../types";
+import ShuffleBar from "../../components/ShuffleBar";
 
 const BioPage: React.FC<Components.PageProps> = () => {
   const [yearList, setYearList] = useState<string[]>(
@@ -22,10 +22,10 @@ const BioPage: React.FC<Components.PageProps> = () => {
 
   return (
     <>
-      <Alert variant="success">
-        Hmm, nelabai daug surūšiuota, ane? Pasvarstyk prisidėti prie tinklapio
-        tobulinimo. Plačiau – <Link to="/contribute">puslapyje "Prisidėk"</Link>
-      </Alert>
+      <ShuffleBar />
+
+      <h1 className="title">Biologijos VBE</h1>
+
       <div>
         <div style={{ marginTop: "50px", marginBottom: "20px" }}>
           <div style={{ marginTop: "20px", display: "flex" }}>

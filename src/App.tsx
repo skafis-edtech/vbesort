@@ -5,8 +5,6 @@ import MobileHeader from "./components/MobileHeader";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { DarkModeProvider } from "./components/DarkModeContext";
 import { useEffect, useState } from "react";
-import ListMaker from "./components/ListMaker";
-import ShuffleBar from "./components/ShuffleBar";
 import { Alert } from "react-bootstrap";
 import usePersistentState from "./hooks";
 import { routes } from "./routes/routes";
@@ -35,19 +33,9 @@ function App() {
       <BrowserRouter>
         <div style={{ minHeight: "100vh" }}>
           {isMobile ? <MobileHeader /> : <DesktopHeader />}
-          <h1 className="title">vbesort.lt</h1>
           <main>
             <aside></aside>
             <section>
-              <ListMaker listUrl={listUrl} setListUrl={setListUrl} />
-              <div>
-                <p>
-                  Štai čia – matematikos VBE ir kitų egzaminų užduotys,
-                  surūšiuotos pagal temas, dauguma su atsakymais. Viskas
-                  nemokama. Naudokitės į valias.
-                </p>
-                <ShuffleBar style={{ flexGrow: 1 }} />
-              </div>
               <Routes>
                 {routes.map((route, index) => (
                   <Route

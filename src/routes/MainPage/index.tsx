@@ -6,6 +6,7 @@ import allYearList from "./data/year-list.json";
 import usePersistentState from "../../hooks";
 import YearSelector from "./YearSelector";
 import { Components } from "../../types";
+import ShuffleBar from "../../components/ShuffleBar";
 
 const MainPage: React.FC<Components.PageProps> = (props) => {
   const [yearList, setYearList] = usePersistentState<string[]>(
@@ -15,8 +16,12 @@ const MainPage: React.FC<Components.PageProps> = (props) => {
 
   return (
     <div>
+      <ShuffleBar />
+
+      <h1 className="title">Matematikos VBE</h1>
+
       <Alert variant="info">
-        VBE formulynas (nuo 2025 m.):{" "}
+        VBE formulynas:{" "}
         <a href="https://www.nsa.smm.lt/wp-content/uploads/2024/02/2023-Mat_PRIEDAS_isplestinis_projektas.pdf">
           A lygis
         </a>

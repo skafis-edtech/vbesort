@@ -7,6 +7,7 @@ import TopicItem from "../../components/TopicItem";
 import { Link } from "react-router-dom";
 import { getShortYearName, isNotHaveAnswersMathPupp } from "../../misc";
 import { Components } from "../../types";
+import ShuffleBar from "../../components/ShuffleBar";
 
 const MathPuppPage: React.FC<Components.PageProps> = (props) => {
   const [yearList, setYearList] = useState<string[]>(
@@ -23,6 +24,10 @@ const MathPuppPage: React.FC<Components.PageProps> = (props) => {
 
   return (
     <>
+      <ShuffleBar />
+
+      <h1 className="title">Matematikos PUPP</h1>
+
       <Alert variant="success">
         Turėti omenyje, kad PUPP egzaminai sprendžiami prie kompiuterių, todėl
         rekomenduoju pasimėginti rašyti formules{" "}

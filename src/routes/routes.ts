@@ -37,7 +37,7 @@ export const routes = [
   },
   {
     path: "/list",
-    title: "Atrinktos",
+    title: "ATRINKTOS",
     element: ListPage,
   },
   {

@@ -4,6 +4,8 @@ import { Components } from "../../types";
 const ContributePage: React.FC<Components.PageProps> = () => {
   return (
     <div>
+      <h1 className="title">Prisidėk</h1>
+
       <Support />
       <h3>Kaip galima prisidėti?</h3>
       <ul>

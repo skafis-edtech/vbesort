@@ -46,7 +46,7 @@ export default function YearSelector({
             <h5>Pasirinkite, kurių metų matematikos VBE užduotis rodyti</h5>
           </Accordion.Header>
           <Accordion.Body>
-            <div style={{ marginTop: "50px", marginBottom: "20px" }}>
+            <div style={{ marginTop: "ą“px", marginBottom: "20px" }}>
               <Button style={{ margin: "10px" }} onClick={clearAll}>
                 Išvalyti visus
               </Button>
