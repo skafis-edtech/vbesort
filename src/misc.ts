@@ -1,5 +1,3 @@
-import naglisNrTopicLut from "./NaglisProblemsPage/data/nr-topic-lut.json";
-
 export type MathProblemIdType = {
   year: string; //"2023g" | "2023k" | "2010v" | "2010b" | "2002p" ...
   section: "I" | "II" | "III";
@@ -173,12 +171,6 @@ export function parseProblemFilename(
       section,
       number,
     };
-  } else if (subject === "naglis") {
-    return {
-      year:
-        naglisNrTopicLut.find((item) => item.filename === filename)?.date || "",
-      number: parseInt(filename.substring(5, 7)),
-    };
   } else {
     throw Error("No parser for problem subject '" + subject + "'");
   }
@@ -338,14 +330,4 @@ export const removeFromListUrl = (item: string, listUrl: string): string => {
     .filter((listItem) => listItem !== item);
   searchParams.set("list", listItems.join(" "));
   return `${baseUrl}?${searchParams.toString()}`;
-};
-
-export const isNotHaveAnsNaglis = (filename: string) => {
-  if (
-    naglisNrTopicLut.find((item) => item.filename === filename)?.answer === ""
-  ) {
-    return true;
-  } else {
-    return false;
-  }
 };

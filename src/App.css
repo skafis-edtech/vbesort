@@ -15,29 +15,12 @@ aside {
   margin: 1em;
 }
 
-header {
-  padding: 5em 5em 0em 5em;
-}
-
 table {
   max-width: 100%;
 }
 
 .table-container {
   overflow-x: auto;
-}
-
-.dark-button-container {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  padding-right: 20%;
-}
-.dark-light-mode-text {
-  max-width: 100%;
-  width: 10em;
-  padding-top: 1em;
-  margin-right: 2.5em;
 }
 
 @media screen and (max-width: 768px) {
@@ -47,28 +30,18 @@ table {
   header {
     padding: 3em 0 2em 0;
   }
-  .dark-button-container {
-    height: 60px;
-    padding-right: 5%;
-    padding-top: 1em;
-    display: flex;
-    flex-direction: row-reverse;
-  }
-  .dark-light-mode-text {
-    max-width: 100%;
-    width: 10em;
-    margin-right: 0;
-  }
 }
 
 .title {
   text-align: center;
   font-size: 70px;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 footer {
   text-align: center;
-  padding-bottom: 10px;
+  padding-bottom: 60px;
 }
 
 [data-bs-theme="dark"] img::after {

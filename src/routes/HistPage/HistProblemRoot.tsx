@@ -1,7 +1,7 @@
 import { Accordion } from "react-bootstrap";
 import nrTopicLut from "./data/nr-topic-lut.json";
-import "../components/style.css";
-import SingleProblem from "../components/SingleProblem";
+import "../../components/style.css";
+import SingleProblem from "../../components/SingleProblem";
 
 export default function HistProblemRoot({
   questionsFilename,

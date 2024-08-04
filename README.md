@@ -1,10 +1,10 @@
-# VBE-sort
+# vbesort.lt
 
-Website with Lithuania state exam (high school graduation) math problems (and other examinations' problems), sorted in categories by topic.
+Website with Lithuania state exam (liet. VBE) math and other exams' problems, sorted by topic.
 
 Website is deployed here: [https://www.vbesort.lt](https://www.vbesort.lt)
 
-The whole website is in Lithuanian, therefore, sorry, but if you don't speak Lithuanian, you will need to use Google Translate... No English translation is here yet.
+The whole website is in Lithuanian (because it is made for Lithuania's students and teachers), all the exam problems are also in Lithuanian.
 
 Use, share, rate, suggest, contribute, support!
 
@@ -15,49 +15,52 @@ Use, share, rate, suggest, contribute, support!
 ![ss3](./screenshots/3.png)
 ![ss4](./screenshots/4.png)
 
-### Tech
+## Tech
 
-- React Typescript
-- React Bootstrap
-- React Bootstrap Icons
-- GitHub Pages
-- yarn
+- React with Typescript
+- [React Bootstrap Components](https://react-bootstrap.github.io/)
+- [React Bootstrap Icons](https://icons.getbootstrap.com/)
+- Firebase Hosting
 
-# Docs for dev
+## Setup for dev
 
-Run locally (need to have nodejs and yarn):
+1. Download all the problem screenshots from [this Google Drive](https://drive.google.com/drive/folders/1hVOXXNupm-cZZdraDrXthxK3PUeCeY7g?usp=sharing) and place all the folders under [public/](public/) directory.
 
-```
-yarn start
-```
+2. Install if not have yet `nodejs` and `npm`
 
-Deploy with gh-pages (need to install this package):
+3. Run locally (access via browser [http://localhost:3000](http://localhost:3000))
 
-```
-yarn build
-yarn deploy https://${username}:${access_token}@github.com/${username}/${username}.github.io
+```bash
+npm install
+npm run start
 ```
 
-(Currently FIREBASE)
+4. For deployment run if not have yet `firebase login`, setup stuff on firebase hosting and change project name in [/.firebaserc](/.firebaserc) to the name you use in firebase hosting.
 
-That's it. No more fun stuff. All the cool docs with docker etc. are in [v1.0.0](https://github.com/naglissul/vbe-sort/tree/v1.0.0), where I used AWS.
+```
+firebase deploy
+```
 
-For screenshots - checkout automatisation folder!
+> There was in previous versions some cool stuff with docker, AWS, Wordpress etc. You can chack it out and have a nice read here: [v1.0.0](https://github.com/naglissul/vbe-sort/tree/v1.0.0).
 
-# Contribute
+## Working principle
+
+All data is kept on the client side. No API or database. Meta data is in JSONs in `data/` directories in every page, e.g. [here](/src/MainPage/data/). Then according to the meta data in JSONs problem and answer screenshots are taken from `public/` directory (it is gitignored, you need to download it from Google Drive, checkout 'Setup for dev' section).
+
+Mainly the data about problems is kept in their screenshot filenames. There's a lot of explaining for the naming logic, so for that checkout the next section.
+
+## File naming
+
+(For now mainly described in the CONTRIBUTE.md file, later gonna be here also)
+
+## Contribute
 
 Contribution instructions are described in Lithuanian [here](./CONTRIBUTE.md).
 
-# For the future
-
-TIPS & TRICKS tab for pitagorean triples, geometry sqrts, also in general for solving speed.
-
-INTERESTING tab for beyond school maths and other sciences.
+## For the future
 
 Links to sci-dict.org
 
-NMPP Math problems
+NMPP Math problems, olympiad problems, school acceptance problems, hist VBE problems, lt VBE essay topics.
 
 AI problem generator
-
-Some tutorials about 'template' solutions.

@@ -5,9 +5,9 @@ import {
   parseProblemFilename,
   shuffle,
 } from "../misc";
-import MathProblemRoot from "../MainPage/MathProblemRoot";
-import PuppProblemRoot from "../MathPuppPage/PuppProblemRoot";
-import HistProblemRoot from "../HistPage/HistProblemRoot";
+import MathProblemRoot from "../routes/MainPage/MathProblemRoot";
+import PuppProblemRoot from "../routes/MathPuppPage/PuppProblemRoot";
+import HistProblemRoot from "../routes/HistPage/HistProblemRoot";
 import { useDarkMode } from "./DarkModeContext";
 import SingleProblem from "./SingleProblem";
 import { useEffect, useState } from "react";

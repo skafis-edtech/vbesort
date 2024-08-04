@@ -3,19 +3,12 @@ import topics from "./data/topics-names-list.json";
 import nrTopicLut from "./data/nr-topic-lut.json";
 import { useState } from "react";
 import allYearList from "./data/year-list.json";
-import TopicItem from "../components/TopicItem";
-import { Link } from "react-router-dom";
-import { getShortYearName, isNotHaveAnswersMathPupp } from "../misc";
+import TopicItem from "../../components/TopicItem";
+import { getShortYearName } from "../../misc";
 
-export default function MathPuppPage({
-  listUrl,
-  setListUrl,
-}: {
-  listUrl?: string;
-  setListUrl?: (url: string) => void;
-}) {
+export default function PhysicsPage() {
   const [yearList, setYearList] = useState<string[]>(
-    allYearList.filter((year) => year !== "2023")
+    allYearList.filter((year) => year !== "")
   );
 
   const toggleYearInList = (yearToToggle: string) => {
@@ -28,12 +21,22 @@ export default function MathPuppPage({
 
   return (
     <>
-      <Alert variant="success">
-        Turėti omenyje, kad PUPP egzaminai sprendžiami prie kompiuterių, todėl
-        rekomenduoju pasimėginti rašyti formules{" "}
-        <Link to="https://beta.etestavimas.lt">beta.etestavimas.lt</Link>{" "}
-        platformoje
+      <Alert variant="warning">Augustas surūšiavo</Alert>
+      <Alert variant="info">
+        Kolkas tik pirmųjų dalių užduotys (testinės ABCD)
       </Alert>
+      <Alert variant="info">
+        VBE formulynas (nuo 2025 m.):{" "}
+        <a href="https://www.nsa.smm.lt/wp-content/uploads/2024/03/3-priedas.-Fizikos-formules-ir-konstantos.docx.pdf">
+          ČIA
+        </a>
+      </Alert>
+      <p>
+        <strong>12-okams: </strong>Siūlau žiūrint užduotis pasilikti 2023 m.
+        egzamino pagrindinės sesijos užduotis nematytas, kad ruošiantis būtų
+        galima išspręsti egzaminą pilnai, sekant laiką ir pasitikrinant
+        pasiruošimą.
+      </p>
       <div>
         <div style={{ marginTop: "50px", marginBottom: "20px" }}>
           <div style={{ marginTop: "20px", display: "flex" }}>
@@ -42,10 +45,7 @@ export default function MathPuppPage({
                 <Form.Check
                   key={year}
                   inline
-                  label={
-                    getShortYearName(year) +
-                    (isNotHaveAnswersMathPupp(year) ? " (be ats.)" : "")
-                  }
+                  label={getShortYearName(year)}
                   checked={yearList.includes(year)}
                   onChange={() => toggleYearInList(year)}
                 />
@@ -60,9 +60,7 @@ export default function MathPuppPage({
               topic={topic}
               yearList={yearList}
               nrTopicLut={nrTopicLut}
-              listUrl={listUrl}
-              setListUrl={setListUrl}
-              subject="pupp"
+              subject="physics"
             />
           ))}
         </Accordion>

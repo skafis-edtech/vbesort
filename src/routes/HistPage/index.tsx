@@ -3,12 +3,12 @@ import topics from "./data/topics-names-list.json";
 import nrTopicLut from "./data/nr-topic-lut.json";
 import { useState } from "react";
 import allYearList from "./data/year-list.json";
-import TopicItem from "../components/TopicItem";
-import { getShortYearName } from "../misc";
+import TopicItem from "../../components/TopicItem";
+import { Link } from "react-router-dom";
 
-export default function PhysicsPage() {
+export default function HistPage() {
   const [yearList, setYearList] = useState<string[]>(
-    allYearList.filter((year) => year !== "")
+    allYearList.filter((year) => true)
   );
 
   const toggleYearInList = (yearToToggle: string) => {
@@ -21,20 +21,15 @@ export default function PhysicsPage() {
 
   return (
     <>
-      <Alert variant="warning">Augustas surūšiavo</Alert>
-      <Alert variant="info">
-        Kolkas tik pirmųjų dalių užduotys (testinės ABCD)
-      </Alert>
-      <Alert variant="info">
-        VBE formulynas (nuo 2025 m.): <a href="https://www.nsa.smm.lt/wp-content/uploads/2024/03/3-priedas.-Fizikos-formules-ir-konstantos.docx.pdf">ČIA</a>
-        </Alert>
-      <p>
-        <strong>12-okams: </strong>Siūlau žiūrint užduotis pasilikti 2023 m.
-        egzamino pagrindinės sesijos užduotis nematytas, kad ruošiantis būtų
-        galima išspręsti egzaminą pilnai, sekant laiką ir pasitikrinant
-        pasiruošimą.
-      </p>
       <div>
+        <Alert variant="success">
+          Hmm, nelabai daug surūšiuota, ane? Pasvarstyk prisidėti prie tinklapio
+          tobulinimo. Plačiau –{" "}
+          <Link to="/contribute">puslapyje "Prisidėk"</Link>
+        </Alert>
+        <Alert variant="info">
+          Kolkas tik pirmųjų dalių užduotys (testinės ABCD)
+        </Alert>
         <div style={{ marginTop: "50px", marginBottom: "20px" }}>
           <div style={{ marginTop: "20px", display: "flex" }}>
             <Form style={{ flexGrow: 3 }}>
@@ -42,7 +37,7 @@ export default function PhysicsPage() {
                 <Form.Check
                   key={year}
                   inline
-                  label={getShortYearName(year)}
+                  label={`${year.slice(0, 4)} pa${year.slice(4, 5)}.`}
                   checked={yearList.includes(year)}
                   onChange={() => toggleYearInList(year)}
                 />
@@ -57,7 +52,7 @@ export default function PhysicsPage() {
               topic={topic}
               yearList={yearList}
               nrTopicLut={nrTopicLut}
-              subject="physics"
+              subject="hist"
             />
           ))}
         </Accordion>

@@ -1,25 +1,23 @@
 import "./App.css";
-import PrivacyComponent from "./components/PrivacyComponent";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-import MainPage from "./MainPage";
+import MainPage from "./routes/MainPage";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
-import AboutPage from "./AboutPage";
+import AboutPage from "./routes/AboutPage";
 import { DarkModeProvider } from "./components/DarkModeContext";
 import { Link } from "react-router-dom";
-import InfoComponent from "./components/InfoComponent";
-import DarkModeButton from "./components/DarkModeButton";
-import HistPage from "./HistPage";
-import BioPage from "./BioPage";
-import MathPuppPage from "./MathPuppPage";
-import ContributePage from "./ContributePage";
-import TabsContainer from "./components/TabsContainer";
-import ItPage from "./ItPage";
-import PhysicsPage from "./PhysicsPage";
-import ListPage from "./ListPage";
-import ListMaker from "./ListMaker";
+import HistPage from "./routes/HistPage";
+import BioPage from "./routes/BioPage";
+import MathPuppPage from "./routes/MathPuppPage";
+import ContributePage from "./routes/ContributePage";
+import PhysicsPage from "./routes/PhysicsPage";
+import ListPage from "./routes/ListPage";
 import { useEffect, useState } from "react";
-import NaglisProblemsPage from "./NaglisProblemsPage";
+import ListMaker from "./ListMaker";
+import ShuffleBar from "./components/ShuffleBar";
+import Support from "./components/Support";
+import { Alert } from "react-bootstrap";
+import usePersistentState from "./hooks";
 
 function App() {
   // List Maker for Math VBE
@@ -32,85 +30,49 @@ function App() {
   }, [listUrl]);
   // End of list maker
 
+  const [isCookiesAccepted, setIsCookiesAccepted] = usePersistentState(
+    "COOKIES_ACCEPTED",
+    false
+  );
+
   return (
     <DarkModeProvider>
       <BrowserRouter>
         <div style={{ minHeight: "100vh" }}>
-          <PrivacyComponent />
           <Header />
-          <div className="dark-button-container">
-            <DarkModeButton />
-          </div>
+          <h1 className="title">vbesort.lt</h1>
           <main>
             <aside></aside>
             <section>
-              <InfoComponent />
               <ListMaker listUrl={listUrl} setListUrl={setListUrl} />
+              <div>
+                <p>
+                  Štai čia – matematikos VBE ir kitų egzaminų užduotys,
+                  surūšiuotos pagal temas, dauguma su atsakymais. Viskas
+                  nemokama. Naudokitės į valias.
+                </p>
+                <ShuffleBar style={{ flexGrow: 1 }} />
+                <Support />
+              </div>
               <Routes>
                 <Route
                   index
                   element={
-                    <TabsContainer
-                      MathTab={
-                        <MainPage listUrl={listUrl} setListUrl={setListUrl} />
-                      }
-                    />
+                    <MainPage listUrl={listUrl} setListUrl={setListUrl} />
                   }
                 />
-                <Route
-                  path="/list"
-                  element={<TabsContainer ListTab={<ListPage />} />}
-                />
-                <Route
-                  path="/naglis-problems"
-                  element={
-                    <TabsContainer
-                      NaglisProblemsTab={
-                        <NaglisProblemsPage
-                          listUrl={listUrl}
-                          setListUrl={setListUrl}
-                        />
-                      }
-                    />
-                  }
-                />
-                <Route
-                  path="/hist"
-                  element={<TabsContainer HistTab={<HistPage />} />}
-                />
-                <Route
-                  path="/it-template"
-                  element={<TabsContainer ItTab={<ItPage />} />}
-                />
-                <Route
-                  path="/bio"
-                  element={<TabsContainer BioTab={<BioPage />} />}
-                />
+                <Route path="/list" element={<ListPage />} />
+                <Route path="/hist" element={<HistPage />} />
+                <Route path="/bio" element={<BioPage />} />
                 <Route
                   path="/math-pupp"
                   element={
-                    <TabsContainer
-                      PuppTab={
-                        <MathPuppPage
-                          listUrl={listUrl}
-                          setListUrl={setListUrl}
-                        />
-                      }
-                    />
+                    <MathPuppPage listUrl={listUrl} setListUrl={setListUrl} />
                   }
                 />
-                <Route
-                  path="/about"
-                  element={<TabsContainer AboutTab={<AboutPage />} />}
-                />
-                <Route
-                  path="/contribute"
-                  element={<TabsContainer ContributeTab={<ContributePage />} />}
-                />
-                <Route
-                  path="/physics"
-                  element={<TabsContainer PhysicsTab={<PhysicsPage />} />}
-                />
+                <Route path="/about" element={<AboutPage />} />
+                <Route path="/contribute" element={<ContributePage />} />
+                <Route path="/physics" element={<PhysicsPage />} />
 
                 <Route
                   path="*"
@@ -126,6 +88,19 @@ function App() {
             </section>
             <aside></aside>
           </main>
+          {!isCookiesAccepted && (
+            <Alert
+              variant="info"
+              dismissible
+              onClose={() => setIsCookiesAccepted(true)}
+              style={{ position: "fixed", bottom: "-16px", left: 0, right: 0 }}
+            >
+              Šis tinklapis naudoja Google Analytics slapukus bei Jūsų
+              kompiuterio atmintį. Tęsdami lankymąsi puslapyje Jūs sutinkate su
+              slapukų bei kompiuterio atminties naudojimu. Plačiau puslapyje{" "}
+              <a href="/about">"Apie"</a> skiltyje "Privatumo politika".
+            </Alert>
+          )}
           <Footer />
         </div>
       </BrowserRouter>

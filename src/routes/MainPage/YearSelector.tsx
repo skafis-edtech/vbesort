@@ -2,8 +2,8 @@ import {
   getShortYearName,
   isNotHaveAnswersMathVbe,
   isOfficialMathVbe,
-} from "../misc";
-import { ReactComponent as InfoIcon } from "../components/info.svg";
+} from "../../misc";
+import { ReactComponent as InfoIcon } from "../../components/info.svg";
 import { Accordion, Alert, Button, Form } from "react-bootstrap";
 import allYearList from "./data/year-list.json";
 

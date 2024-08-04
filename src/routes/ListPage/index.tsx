@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-import SingleProblem from "../components/SingleProblem";
+import SingleProblem from "../../components/SingleProblem";
 import nrTopicLut from "../MainPage/data/nr-topic-lut.json";
 import puppTopicLut from "../MathPuppPage/data/nr-topic-lut.json";
-import naglisNrTopicLut from "../NaglisProblemsPage/data/nr-topic-lut.json";
-import { getLongYearName, parseProblemFilename } from "../misc";
+import { getLongYearName, parseProblemFilename } from "../../misc";
 import MathProblemRoot from "../MainPage/MathProblemRoot";
 import { Alert } from "react-bootstrap";
 import { Link } from "react-router-dom";
@@ -34,24 +33,6 @@ const ListPage: React.FC = () => {
       )}
       {items.map((item, index) => {
         if (
-          item.charAt(0) === "S" &&
-          item.charAt(1) === "K" &&
-          item.charAt(2) === "F"
-        ) {
-          return (
-            <div key={index}>
-              <hr style={{ border: "3px solid black" }} />
-              <h1>{index + 1}.</h1>
-              <em>({item})</em>
-              <SingleProblem
-                filename={item + ".png"}
-                subject="naglis"
-                answerLut={naglisNrTopicLut}
-                theListItIs
-              />
-            </div>
-          );
-        } else if (
           item.charAt(5) === "1" ||
           item.charAt(5) === "2" ||
           item.charAt(5) === "3"
