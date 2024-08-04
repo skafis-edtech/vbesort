@@ -56,6 +56,16 @@ Mainly the data about problems is kept in their screenshot filenames. There's a 
 
 (For now mainly described in the CONTRIBUTE.md file, later gonna be here also)
 
+## Automatisation
+
+When you have screenshots in folders in `public/` dir, navigate to the dir with folders that have screenshots (e.g. `math-problems/`) and run this bash script:
+
+```bash
+sh ../../automatisation/filenames-bash/gen-filename-json-recursive.sh
+```
+
+Use generated content for the meta data JSONs.
+
 ## Contribute
 
 Contribution instructions are described in Lithuanian [here](./CONTRIBUTE.md).
