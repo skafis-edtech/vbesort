@@ -5,8 +5,9 @@ import { useState } from "react";
 import allYearList from "./data/year-list.json";
 import TopicItem from "../../components/TopicItem";
 import { Link } from "react-router-dom";
+import { Components } from "../../types";
 
-export default function BioPage() {
+const BioPage: React.FC<Components.PageProps> = () => {
   const [yearList, setYearList] = useState<string[]>(
     allYearList.filter((year) => year !== "")
   );
@@ -25,12 +26,6 @@ export default function BioPage() {
         Hmm, nelabai daug surūšiuota, ane? Pasvarstyk prisidėti prie tinklapio
         tobulinimo. Plačiau – <Link to="/contribute">puslapyje "Prisidėk"</Link>
       </Alert>
-      <p>
-        <strong>12-okams: </strong>Siūlau žiūrint užduotis pasilikti 2023 m.
-        egzamino pagrindinės sesijos užduotis nematytas, kad ruošiantis būtų
-        galima išspręsti egzaminą pilnai, sekant laiką ir pasitikrinant
-        pasiruošimą.
-      </p>
       <div>
         <div style={{ marginTop: "50px", marginBottom: "20px" }}>
           <div style={{ marginTop: "20px", display: "flex" }}>
@@ -61,4 +56,6 @@ export default function BioPage() {
       </div>
     </>
   );
-}
+};
+
+export default BioPage;

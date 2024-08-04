@@ -1,6 +1,10 @@
-export default function ContributePage() {
+import Support from "../../components/Support";
+import { Components } from "../../types";
+
+const ContributePage: React.FC<Components.PageProps> = () => {
   return (
     <div>
+      <Support />
       <h3>Kaip galima prisidėti?</h3>
       <ul>
         <li>Screenshotinti užduotis ir atsakymus</li>
@@ -20,4 +24,6 @@ export default function ContributePage() {
       </h4>
     </div>
   );
-}
+};
+
+export default ContributePage;

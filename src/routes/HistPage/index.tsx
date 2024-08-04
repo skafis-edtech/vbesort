@@ -5,8 +5,9 @@ import { useState } from "react";
 import allYearList from "./data/year-list.json";
 import TopicItem from "../../components/TopicItem";
 import { Link } from "react-router-dom";
+import { Components } from "../../types";
 
-export default function HistPage() {
+const HistPage: React.FC<Components.PageProps> = () => {
   const [yearList, setYearList] = useState<string[]>(
     allYearList.filter((year) => true)
   );
@@ -59,4 +60,6 @@ export default function HistPage() {
       </div>
     </>
   );
-}
+};
+
+export default HistPage;

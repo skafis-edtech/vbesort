@@ -1,6 +1,10 @@
-export default function AboutPage() {
+import Support from "../../components/Support";
+import { Components } from "../../types";
+
+const AboutPage: React.FC<Components.PageProps> = () => {
   return (
     <div style={{ overflowX: "hidden" }}>
+      <Support />
       <h3>Kontaktai</h3>
       <ul>
         <li>
@@ -40,6 +44,7 @@ export default function AboutPage() {
           https://github.com/naglissul/vbe-sort
         </a>
       </p>
+      <p>Mielai prašome prisidėti rašant kodą!</p>
       <h3>Apie užduočių rūšiavimą ir šaltinius</h3>
       <p>
         Užduotys nesikartoja keliose kategorijose. Esant kelioms temoms viename
@@ -191,4 +196,6 @@ export default function AboutPage() {
       </p>
     </div>
   );
-}
+};
+
+export default AboutPage;

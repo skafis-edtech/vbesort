@@ -5,14 +5,9 @@ import TopicItem from "../../components/TopicItem";
 import allYearList from "./data/year-list.json";
 import usePersistentState from "../../hooks";
 import YearSelector from "./YearSelector";
+import { Components } from "../../types";
 
-export default function MainPage({
-  listUrl,
-  setListUrl,
-}: {
-  listUrl?: string;
-  setListUrl?: (url: string) => void;
-}) {
+const MainPage: React.FC<Components.PageProps> = (props) => {
   const [yearList, setYearList] = usePersistentState<string[]>(
     "YEAR_LIST",
     allYearList.filter((year) => year !== "")
@@ -39,11 +34,13 @@ export default function MainPage({
             yearList={yearList}
             nrTopicLut={nrTopicLut}
             subject="math"
-            listUrl={listUrl}
-            setListUrl={setListUrl}
+            listUrl={props.listUrl}
+            setListUrl={props.setListUrl}
           />
         ))}
       </Accordion>
     </div>
   );
-}
+};
+
+export default MainPage;

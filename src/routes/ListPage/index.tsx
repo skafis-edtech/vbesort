@@ -7,8 +7,9 @@ import MathProblemRoot from "../MainPage/MathProblemRoot";
 import { Alert } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import PuppProblemRoot from "../MathPuppPage/PuppProblemRoot";
+import { Components } from "../../types";
 
-const ListPage: React.FC = () => {
+const ListPage: React.FC<Components.PageProps> = () => {
   const [items, setItems] = useState<string[]>([]);
 
   useEffect(() => {
