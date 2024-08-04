@@ -2,50 +2,44 @@ import { Button } from "react-bootstrap";
 import { ReactComponent as ShuffleIcon } from "./shuffle.svg";
 import { useDarkMode } from "./DarkModeContext";
 
-interface ShuffleProps {
-  style: React.CSSProperties;
-}
-
-export default function ShuffleBar({ style }: ShuffleProps) {
+export default function ShuffleBar() {
   const { isShuffleOn, toggleShuffle } = useDarkMode();
   return (
-    <div style={style}>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "row",
+
+        alignItems: "center",
+      }}
+    >
+      <h4 style={{ width: "350px" }}>
+        Užduočių maišymas {isShuffleOn ? "ĮJUNGTAS" : "IŠJUNGTAS"}:
+      </h4>{" "}
       <div
         style={{
+          margin: "10px",
           display: "flex",
           flexDirection: "row",
-
           alignItems: "center",
+          textAlign: "center",
         }}
       >
-        <h4 style={{ width: "350px" }}>
-          Užduočių maišymas {isShuffleOn ? "ĮJUNGTAS" : "IŠJUNGTAS"}:
-        </h4>{" "}
-        <div
+        <Button
           style={{
-            margin: "10px",
+            height: "40px",
+            width: "40px",
             display: "flex",
-            flexDirection: "row",
+            justifyContent: "center",
             alignItems: "center",
-            textAlign: "center",
+            padding: 0,
+            marginRight: "10px",
           }}
+          variant={`${isShuffleOn ? "primary" : "light"}`}
+          onClick={toggleShuffle}
         >
-          <Button
-            style={{
-              height: "40px",
-              width: "40px",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              padding: 0,
-              marginRight: "10px",
-            }}
-            variant={`${isShuffleOn ? "primary" : "light"}`}
-            onClick={toggleShuffle}
-          >
-            <ShuffleIcon style={{ height: "24px", width: "24px" }} />
-          </Button>
-        </div>
+          <ShuffleIcon style={{ height: "24px", width: "24px" }} />
+        </Button>
       </div>
     </div>
   );

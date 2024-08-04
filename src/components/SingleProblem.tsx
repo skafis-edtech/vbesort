@@ -2,7 +2,6 @@ import { Accordion, Button } from "react-bootstrap";
 import {
   SubjectType,
   appendToMakerListUrl,
-  isNotHaveAnsNaglis,
   isNotHaveAnswersMathPupp,
   isNotHaveAnswersMathVbe,
   parseProblemFilename,
@@ -105,8 +104,9 @@ export default function SingleProblem({
       <div>
         {!["root", "sources"].includes(problemInfo.problemType) &&
           !(subject === "math" && isNotHaveAnswersMathVbe(problemInfo.year)) &&
-          !(subject === "pupp" && isNotHaveAnswersMathPupp(problemInfo.year)) &&
-          !(subject === "naglis" && isNotHaveAnsNaglis(filename)) && (
+          !(
+            subject === "pupp" && isNotHaveAnswersMathPupp(problemInfo.year)
+          ) && (
             <Accordion style={{ marginTop: "20px" }}>
               <Accordion.Item eventKey="answer">
                 <Accordion.Header className="root-header">
