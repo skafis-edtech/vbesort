@@ -224,30 +224,23 @@ export function getLongYearName(year: string) {
   return yearName;
 }
 
-export function isNotHaveAnswersMathVbe(year: string): boolean {
-  const noAnsList: string[] = [
-    "2002p",
-    "2003p",
-    "2004p",
-    "2005p",
-    "2006p",
-    "2007p",
-    "2008g",
-    "2008k",
-    "2009k",
-    "2015k",
-    "2019k",
-    "2021k",
-    "2013g",
-    "2011k",
-    "2010k",
-  ];
-  if (noAnsList.includes(year)) {
-    return true;
-  } else {
-    return false;
-  }
-}
+export const noAnsMathVbeYearList = [
+  "2002p",
+  "2003p",
+  "2004p",
+  "2005p",
+  "2006p",
+  "2007p",
+  "2008g",
+  "2008k",
+  "2009k",
+  "2015k",
+  "2019k",
+  "2021k",
+  "2013g",
+  "2011k",
+  "2010k",
+];
 
 export function isNotHaveAnswersMathPupp(year: string): boolean {
   const noAnsList: string[] = ["2013p"];

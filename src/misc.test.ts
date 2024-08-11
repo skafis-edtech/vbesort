@@ -1,6 +1,5 @@
 import {
   appendToMakerListUrl,
-  isNotHaveAnswersMathVbe,
   parseProblemFilename,
   removeFromListUrl,
 } from "./misc";
@@ -52,18 +51,6 @@ describe("parseProblemFilename", () => {
       problemType: "sub",
       number: 1.2,
     });
-  });
-});
-
-describe("isNotHaveAnsMathVbe", () => {
-  it("should correctly filter noans years", () => {
-    const result = isNotHaveAnswersMathVbe("2002p");
-    expect(result).toEqual(true);
-  });
-
-  it("should correctly filter noans years", () => {
-    const result = isNotHaveAnswersMathVbe("2015g");
-    expect(result).toEqual(false);
   });
 });
 

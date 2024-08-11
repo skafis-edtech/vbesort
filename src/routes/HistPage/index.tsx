@@ -24,6 +24,9 @@ const HistPage: React.FC<Components.PageProps> = () => {
     <div>
       <ShuffleBar />
       <h1 className="vbesort-title">vbesort.lt</h1>
+      <p className="vbesort-description">
+        Surūšiuotos VBE bei kitų egzaminų užduotys
+      </p>
 
       <h1 className="title">Istorijos VBE</h1>
       <Alert variant="info">Tvarkoma... </Alert>

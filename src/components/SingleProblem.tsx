@@ -3,7 +3,7 @@ import {
   SubjectType,
   appendToMakerListUrl,
   isNotHaveAnswersMathPupp,
-  isNotHaveAnswersMathVbe,
+  noAnsMathVbeYearList,
   parseProblemFilename,
   removeFromListUrl,
 } from "../misc";
@@ -103,7 +103,10 @@ export default function SingleProblem({
 
       <div>
         {!["root", "sources"].includes(problemInfo.problemType) &&
-          !(subject === "math" && isNotHaveAnswersMathVbe(problemInfo.year)) &&
+          !(
+            subject === "math" &&
+            noAnsMathVbeYearList.includes(problemInfo.year)
+          ) &&
           !(
             subject === "pupp" && isNotHaveAnswersMathPupp(problemInfo.year)
           ) && (

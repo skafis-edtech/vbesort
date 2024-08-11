@@ -7,6 +7,11 @@ import usePersistentState from "../../hooks";
 import YearSelector from "./YearSelector";
 import { Components } from "../../types";
 import ShuffleBar from "../../components/ShuffleBar";
+import {
+  getShortYearName,
+  isOfficialMathVbe,
+  noAnsMathVbeYearList,
+} from "../../misc";
 
 const MainPage: React.FC<Components.PageProps> = (props) => {
   const [yearList, setYearList] = usePersistentState<string[]>(
@@ -18,6 +23,9 @@ const MainPage: React.FC<Components.PageProps> = (props) => {
     <div>
       <ShuffleBar />
       <h1 className="vbesort-title">vbesort.lt</h1>
+      <p className="vbesort-description">
+        Surūšiuotos VBE bei kitų egzaminų užduotys
+      </p>
 
       <h1 className="title">Matematikos VBE</h1>
 
@@ -31,7 +39,17 @@ const MainPage: React.FC<Components.PageProps> = (props) => {
           B lygis
         </a>
       </Alert>
-      <YearSelector yearList={yearList} setYearList={setYearList} />
+      <YearSelector
+        yearList={yearList}
+        setYearList={setYearList}
+        allYearList={allYearList}
+        yearLabelStringify={(year) =>
+          getShortYearName(year) +
+          (noAnsMathVbeYearList.includes(year) ? " (be ats.)" : "") +
+          (isOfficialMathVbe(year) ? "" : " ne oficialu")
+        }
+        noAnsYearList={noAnsMathVbeYearList}
+      />
       <Accordion>
         {topics.map((topic) => (
           <TopicItem

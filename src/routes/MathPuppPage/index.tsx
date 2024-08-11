@@ -26,6 +26,9 @@ const MathPuppPage: React.FC<Components.PageProps> = (props) => {
     <>
       <ShuffleBar />
       <h1 className="vbesort-title">vbesort.lt</h1>
+      <p className="vbesort-description">
+        Surūšiuotos VBE bei kitų egzaminų užduotys
+      </p>
 
       <h1 className="title">Matematikos PUPP</h1>
 

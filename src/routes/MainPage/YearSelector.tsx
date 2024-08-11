@@ -1,19 +1,21 @@
-import {
-  getShortYearName,
-  isNotHaveAnswersMathVbe,
-  isOfficialMathVbe,
-} from "../../misc";
 import { ReactComponent as InfoIcon } from "../../components/info.svg";
 import { Accordion, Alert, Button, Form } from "react-bootstrap";
-import allYearList from "./data/year-list.json";
 
-export default function YearSelector({
-  yearList,
-  setYearList,
-}: {
+interface YearSelectorProps {
   yearList: string[];
   setYearList: (value: string[]) => void;
-}) {
+  allYearList: string[];
+  yearLabelStringify: (year: string) => string;
+  noAnsYearList: string[];
+}
+
+const YearSelector: React.FC<YearSelectorProps> = ({
+  yearList,
+  setYearList,
+  allYearList,
+  yearLabelStringify,
+  noAnsYearList,
+}) => {
   const toggleYearInList = (yearToToggle: string) => {
     if (yearList.includes(yearToToggle)) {
       setYearList(yearList.filter((year) => year !== yearToToggle));
@@ -31,7 +33,7 @@ export default function YearSelector({
   };
 
   const selectWithAns = () => {
-    setYearList(allYearList.filter((year) => !isNotHaveAnswersMathVbe(year)));
+    setYearList(allYearList.filter((year) => !noAnsYearList.includes(year)));
   };
   return (
     <Alert variant="success" style={{ marginBottom: "20px" }}>
@@ -46,7 +48,7 @@ export default function YearSelector({
             <h5>Pasirinkite, kurių metų matematikos VBE užduotis rodyti</h5>
           </Accordion.Header>
           <Accordion.Body>
-            <div style={{ marginTop: "ą“px", marginBottom: "20px" }}>
+            <div style={{ marginTop: "10px", marginBottom: "20px" }}>
               <Button style={{ margin: "10px" }} onClick={clearAll}>
                 Išvalyti visus
               </Button>
@@ -63,11 +65,7 @@ export default function YearSelector({
                       style={{ width: "250px" }}
                       key={year}
                       inline
-                      label={
-                        getShortYearName(year) +
-                        (isNotHaveAnswersMathVbe(year) ? " (be ats.)" : "") +
-                        (isOfficialMathVbe(year) ? "" : " ne oficialu")
-                      }
+                      label={yearLabelStringify(year)}
                       checked={yearList.includes(year)}
                       onChange={() => toggleYearInList(year)}
                     />
@@ -80,4 +78,6 @@ export default function YearSelector({
       </Accordion>
     </Alert>
   );
-}
+};
+
+export default YearSelector;
