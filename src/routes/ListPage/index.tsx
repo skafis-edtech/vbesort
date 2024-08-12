@@ -51,17 +51,19 @@ const ListPage: React.FC<Components.PageProps> = (props) => {
           <div>
             Užduotys atrinktos pagal nuorodą. Ją galite kopijuoti ir dalintis.
           </div>
-          <Button variant="danger" onClick={clearList}>
-            Išvalyti sukurtą sąrašą
-          </Button>
+          {props.listUrl !== "https://www.vbesort.lt/list?list=" && (
+            <Button variant="danger" onClick={clearList}>
+              Išvalyti sukurtą sąrašą
+            </Button>
+          )}
         </Alert>
       )}
 
       {items.map((item, index) => {
         if (
-          item.charAt(5) === "1" ||
-          item.charAt(5) === "2" ||
-          item.charAt(5) === "3"
+          item.charAt(7) === "1" ||
+          item.charAt(7) === "2" ||
+          item.charAt(7) === "3"
         ) {
           const currProblemInfo: any = parseProblemFilename("math", item);
           return (

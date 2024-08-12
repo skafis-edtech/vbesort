@@ -48,36 +48,36 @@ export function parseProblemFilename(
   | PuppProblemIdType
   | NaglisProblemIdType {
   if (subject === "math") {
-    const year = filename.substring(0, 5);
+    const year = filename.substring(2, 7);
     const section: MathProblemIdType["section"] =
-      filename.charAt(5) === "1"
+      filename.charAt(7) === "1"
         ? "I"
-        : filename.charAt(5) === "2"
+        : filename.charAt(7) === "2"
         ? "II"
         : "III";
     const problemType: MathProblemIdType["problemType"] =
-      filename.charAt(6) === "w"
+      filename.charAt(8) === "w"
         ? "whole"
-        : filename.charAt(6) === "r"
+        : filename.charAt(8) === "r"
         ? "root"
         : "sub";
     let number;
     let isBLevel;
 
     if (problemType === "sub") {
-      number = parseFloat(filename.substring(7, 11));
+      number = parseFloat(filename.substring(9, 13));
+      isBLevel =
+        filename.charAt(13) === "A"
+          ? false
+          : filename.charAt(13) === "B"
+          ? true
+          : undefined;
+    } else {
+      number = parseInt(filename.substring(9, 11));
       isBLevel =
         filename.charAt(11) === "A"
           ? false
           : filename.charAt(11) === "B"
-          ? true
-          : undefined;
-    } else {
-      number = parseInt(filename.substring(7, 9));
-      isBLevel =
-        filename.charAt(9) === "A"
-          ? false
-          : filename.charAt(9) === "B"
           ? true
           : undefined;
     }
@@ -90,16 +90,16 @@ export function parseProblemFilename(
       isBlevel: isBLevel,
     };
   } else if (subject === "bio") {
-    const year = filename.substring(0, 5);
+    const year = filename.substring(2, 7);
     const section: BioProblemIdType["section"] =
-      filename.charAt(5) === "1"
+      filename.charAt(7) === "1"
         ? "I"
-        : filename.charAt(5) === "2"
+        : filename.charAt(7) === "2"
         ? "II"
-        : filename.charAt(5) === "3"
+        : filename.charAt(7) === "3"
         ? "III"
         : "IV";
-    const number = parseInt(filename.substring(7, 9));
+    const number = parseInt(filename.substring(9, 11));
 
     return {
       year,
@@ -107,20 +107,20 @@ export function parseProblemFilename(
       number,
     };
   } else if (subject === "hist") {
-    const year = filename.substring(0, 5);
+    const year = filename.substring(2, 7);
     const section: HistProblemIdType["section"] =
-      filename.charAt(5) === "1" ? "I" : "II";
+      filename.charAt(7) === "1" ? "I" : "II";
     let number: HistProblemIdType["number"];
     let problemType: HistProblemIdType["problemType"];
     if (section === "I") {
-      number = parseInt(filename.substring(7, 9));
+      number = parseInt(filename.substring(9, 11));
       problemType = "abcd";
     } else if (section === "II") {
-      number = parseInt(filename.substring(7, 8));
+      number = parseInt(filename.substring(9, 10));
       problemType =
-        filename.charAt(8) === "s"
+        filename.charAt(10) === "s"
           ? "sources"
-          : filename.charAt(8) === "u"
+          : filename.charAt(10) === "u"
           ? "questions"
           : "abcd";
     } else {
@@ -133,20 +133,20 @@ export function parseProblemFilename(
       problemType,
     };
   } else if (subject === "pupp") {
-    const year = filename.substring(0, 5);
+    const year = filename.substring(2, 7);
 
     const problemType: PuppProblemIdType["problemType"] =
-      filename.charAt(5) === "w" || filename.charAt(5) === "-"
+      filename.charAt(7) === "w" || filename.charAt(7) === "-"
         ? "whole"
-        : filename.charAt(5) === "r"
+        : filename.charAt(7) === "r"
         ? "root"
         : "sub";
     let number;
 
     if (problemType === "sub") {
-      number = parseFloat(filename.substring(6, 10));
+      number = parseFloat(filename.substring(8, 12));
     } else {
-      number = parseInt(filename.substring(6, 8));
+      number = parseInt(filename.substring(8, 10));
     }
 
     return {
@@ -155,16 +155,16 @@ export function parseProblemFilename(
       number,
     };
   } else if (subject === "physics") {
-    const year = filename.substring(0, 5);
+    const year = filename.substring(2, 7);
     const section: BioProblemIdType["section"] =
-      filename.charAt(5) === "1"
+      filename.charAt(7) === "1"
         ? "I"
-        : filename.charAt(5) === "2"
+        : filename.charAt(7) === "2"
         ? "II"
-        : filename.charAt(5) === "3"
+        : filename.charAt(7) === "3"
         ? "III"
         : "IV";
-    const number = parseInt(filename.substring(7, 9));
+    const number = parseInt(filename.substring(9, 11));
 
     return {
       year,
