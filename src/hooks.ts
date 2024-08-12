@@ -7,18 +7,32 @@ export default function usePersistentState<T>(
   const [state, setInternalState] = useState<T>(() => {
     const valueFromStorage = localStorage.getItem(key);
     if (valueFromStorage) {
-      // If there is something in localStorage, we parse it
-      return JSON.parse(valueFromStorage);
+      try {
+        const parsedValue = JSON.parse(valueFromStorage);
+        // Add a type check to ensure parsedValue matches the expected type
+        if (typeof parsedValue === typeof initialValue) {
+          return parsedValue as T;
+        } else {
+          console.warn(
+            `Stored value for key "${key}" does not match the expected type. Using initialValue instead.`
+          );
+          return initialValue;
+        }
+      } catch (e) {
+        console.error(
+          `Error parsing localStorage value for key "${key}". Using initialValue instead.`,
+          e
+        );
+        return initialValue;
+      }
     } else {
-      // If not, we use the initialValue provided
       return initialValue;
     }
   });
 
   useEffect(() => {
-    // Save to local storage whenever state changes
     localStorage.setItem(key, JSON.stringify(state));
-  }, [key, state]); // Only re-run effect if key or state changes
+  }, [key, state]);
 
   return [state, setInternalState];
 }

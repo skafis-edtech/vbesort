@@ -1,26 +1,13 @@
-import { Accordion, Alert, Form } from "react-bootstrap";
+import { Accordion, Alert } from "react-bootstrap";
 import topics from "./data/topics-names-list.json";
 import nrTopicLut from "./data/nr-topic-lut.json";
-import { useState } from "react";
-import allYearList from "./data/year-list.json";
 import TopicItem from "../../components/TopicItem";
 import { getShortYearName } from "../../misc";
 import { Components } from "../../types";
 import ShuffleBar from "../../components/ShuffleBar";
+import YearSelector from "../../components/YearSelector";
 
-const PhysicsPage: React.FC<Components.PageProps> = () => {
-  const [yearList, setYearList] = useState<string[]>(
-    allYearList.filter((year) => year !== "")
-  );
-
-  const toggleYearInList = (yearToToggle: string) => {
-    if (yearList.includes(yearToToggle)) {
-      setYearList(yearList.filter((year) => year !== yearToToggle));
-    } else {
-      setYearList([...yearList, yearToToggle]);
-    }
-  };
-
+const PhysicsPage: React.FC<Components.PageProps> = (props) => {
   return (
     <>
       <ShuffleBar />
@@ -32,7 +19,8 @@ const PhysicsPage: React.FC<Components.PageProps> = () => {
       <h1 className="title">Fizikos VBE</h1>
 
       <Alert variant="warning">
-        Augustas surūšiavo. Kolkas tik pirmųjų dalių užduotys (testinės ABCD)
+        Special thanks Augustui už surūšiavimą! Kolkas tik pirmųjų dalių
+        užduotys (testinės ABCD)
       </Alert>
       <Alert variant="info">
         VBE formulynas:{" "}
@@ -40,34 +28,25 @@ const PhysicsPage: React.FC<Components.PageProps> = () => {
           ČIA
         </a>
       </Alert>
-      <div>
-        <div style={{ marginTop: "50px", marginBottom: "20px" }}>
-          <div style={{ marginTop: "20px", display: "flex" }}>
-            <Form style={{ flexGrow: 3 }}>
-              {allYearList.map((year) => (
-                <Form.Check
-                  key={year}
-                  inline
-                  label={getShortYearName(year)}
-                  checked={yearList.includes(year)}
-                  onChange={() => toggleYearInList(year)}
-                />
-              ))}
-            </Form>
-          </div>
-        </div>
-        <Accordion>
-          {topics.map((topic) => (
-            <TopicItem
-              key={topic.topic}
-              topic={topic}
-              yearList={yearList}
-              nrTopicLut={nrTopicLut}
-              subject="physics"
-            />
-          ))}
-        </Accordion>
-      </div>
+      <YearSelector
+        yearList={props.yearList}
+        setYearList={props.setYearList}
+        allYearList={props.allYearList}
+        yearLabelStringify={(year) => getShortYearName(year)}
+        noAnsYearList={[]}
+        title="Pasirinkite, kurių metų fizikos VBE užduotis rodyti"
+      />
+      <Accordion>
+        {topics.map((topic) => (
+          <TopicItem
+            key={topic.topic}
+            topic={topic}
+            yearList={props.yearList}
+            nrTopicLut={nrTopicLut}
+            subject="physics"
+          />
+        ))}
+      </Accordion>
     </>
   );
 };

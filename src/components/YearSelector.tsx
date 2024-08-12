@@ -1,4 +1,4 @@
-import { ReactComponent as InfoIcon } from "../../components/info.svg";
+import { ReactComponent as InfoIcon } from "./info.svg";
 import { Accordion, Alert, Button, Form } from "react-bootstrap";
 
 interface YearSelectorProps {
@@ -7,6 +7,7 @@ interface YearSelectorProps {
   allYearList: string[];
   yearLabelStringify: (year: string) => string;
   noAnsYearList: string[];
+  title: string;
 }
 
 const YearSelector: React.FC<YearSelectorProps> = ({
@@ -15,6 +16,7 @@ const YearSelector: React.FC<YearSelectorProps> = ({
   allYearList,
   yearLabelStringify,
   noAnsYearList,
+  title,
 }) => {
   const toggleYearInList = (yearToToggle: string) => {
     if (yearList.includes(yearToToggle)) {
@@ -45,7 +47,7 @@ const YearSelector: React.FC<YearSelectorProps> = ({
                 style={{ height: "24px", width: "24px", margin: "10px" }}
               />
             </div>
-            <h5>Pasirinkite, kurių metų matematikos VBE užduotis rodyti</h5>
+            <h5>{title}</h5>
           </Accordion.Header>
           <Accordion.Body>
             <div style={{ marginTop: "10px", marginBottom: "20px" }}>

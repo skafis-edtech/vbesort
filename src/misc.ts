@@ -242,14 +242,7 @@ export const noAnsMathVbeYearList = [
   "2010k",
 ];
 
-export function isNotHaveAnswersMathPupp(year: string): boolean {
-  const noAnsList: string[] = ["2013p"];
-  if (noAnsList.includes(year)) {
-    return true;
-  } else {
-    return false;
-  }
-}
+export const noAnsMathPuppYearList = ["2013p"];
 
 export function isOfficialMathVbe(year: string) {
   const nonOfficialList: string[] = ["2019k", "2020k", "2021k"];

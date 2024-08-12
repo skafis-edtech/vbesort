@@ -2,7 +2,7 @@ import { Accordion, Button } from "react-bootstrap";
 import {
   SubjectType,
   appendToMakerListUrl,
-  isNotHaveAnswersMathPupp,
+  noAnsMathPuppYearList,
   noAnsMathVbeYearList,
   parseProblemFilename,
   removeFromListUrl,
@@ -108,7 +108,8 @@ export default function SingleProblem({
             noAnsMathVbeYearList.includes(problemInfo.year)
           ) &&
           !(
-            subject === "pupp" && isNotHaveAnswersMathPupp(problemInfo.year)
+            subject === "pupp" &&
+            noAnsMathPuppYearList.includes(problemInfo.year)
           ) && (
             <Accordion style={{ marginTop: "20px" }}>
               <Accordion.Item eventKey="answer">

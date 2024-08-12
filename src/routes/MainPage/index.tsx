@@ -2,9 +2,7 @@ import { Accordion, Alert } from "react-bootstrap";
 import topics from "./data/topics-names-list.json";
 import nrTopicLut from "./data/nr-topic-lut.json";
 import TopicItem from "../../components/TopicItem";
-import allYearList from "./data/year-list.json";
-import usePersistentState from "../../hooks";
-import YearSelector from "./YearSelector";
+import YearSelector from "../../components/YearSelector";
 import { Components } from "../../types";
 import ShuffleBar from "../../components/ShuffleBar";
 import {
@@ -14,11 +12,6 @@ import {
 } from "../../misc";
 
 const MainPage: React.FC<Components.PageProps> = (props) => {
-  const [yearList, setYearList] = usePersistentState<string[]>(
-    "YEAR_LIST",
-    allYearList.filter((year) => year !== "")
-  );
-
   return (
     <div>
       <ShuffleBar />
@@ -40,22 +33,23 @@ const MainPage: React.FC<Components.PageProps> = (props) => {
         </a>
       </Alert>
       <YearSelector
-        yearList={yearList}
-        setYearList={setYearList}
-        allYearList={allYearList}
+        yearList={props.yearList}
+        setYearList={props.setYearList}
+        allYearList={props.allYearList}
         yearLabelStringify={(year) =>
           getShortYearName(year) +
           (noAnsMathVbeYearList.includes(year) ? " (be ats.)" : "") +
           (isOfficialMathVbe(year) ? "" : " ne oficialu")
         }
         noAnsYearList={noAnsMathVbeYearList}
+        title="Pasirinkite, kurių metų matematikos VBE užduotis rodyti"
       />
       <Accordion>
         {topics.map((topic) => (
           <TopicItem
             key={topic.topic}
             topic={topic}
-            yearList={yearList}
+            yearList={props.yearList}
             nrTopicLut={nrTopicLut}
             subject="math"
             listUrl={props.listUrl}

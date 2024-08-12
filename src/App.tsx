@@ -9,22 +9,30 @@ import { Alert } from "react-bootstrap";
 import usePersistentState from "./hooks";
 import { routes } from "./routes/routes";
 import { useMediaQuery } from "react-responsive";
+import globalYearListImport from "./year-list.json";
+
+const globalYearList = globalYearListImport as { [key: string]: string[] };
 
 function App() {
-  // List Maker for Math VBE
   const [listUrl, setListUrl] = useState<string>(
     localStorage.getItem("LIST_URL") || "https://www.vbesort.lt/list?list="
   );
 
-  useEffect(() => {
-    localStorage.setItem("LIST_URL", listUrl);
-  }, [listUrl]);
-  // End of list maker
+  const [yearList, setYearList] = usePersistentState<{
+    [key: string]: string[];
+  }>("GLOBAL_YEAR_LIST", globalYearList);
 
   const [isCookiesAccepted, setIsCookiesAccepted] = usePersistentState(
     "COOKIES_ACCEPTED",
     false
   );
+
+  useEffect(() => {
+    localStorage.setItem("LIST_URL", listUrl);
+    /* migration */
+    localStorage.removeItem("YEAR_LIST");
+    /* migration */
+  }, [listUrl]);
 
   const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
 
@@ -46,6 +54,11 @@ function App() {
                       <route.element
                         listUrl={listUrl}
                         setListUrl={setListUrl}
+                        yearList={yearList[route.path]}
+                        setYearList={(value) =>
+                          setYearList({ ...yearList, [route.path]: value })
+                        }
+                        allYearList={globalYearList[route.path]}
                       />
                     }
                   />
