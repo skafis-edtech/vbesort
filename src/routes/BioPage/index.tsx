@@ -5,6 +5,12 @@ import TopicItem from "../../components/ui/TopicItem";
 import { Components } from "../../types";
 import ShuffleBar from "../../components/layout/ShuffleBar";
 import YearSelector from "../../components/ui/YearSelector";
+import {
+  getShortYearName,
+  noAnsYearList,
+  parseProblemFilename,
+} from "../../misc";
+import BioTopicProblemList from "./BioTopicProblemList";
 
 const BioPage: React.FC<Components.PageProps> = (props) => {
   return (
@@ -16,27 +22,42 @@ const BioPage: React.FC<Components.PageProps> = (props) => {
       </p>
 
       <h1 className="title">Biologijos VBE</h1>
-      {/* <YearSelector
+      <YearSelector
         yearList={props.yearList}
         setYearList={props.setYearList}
         allYearList={props.allYearList}
-        yearLabelStringify={(year) =>
-          `${year.slice(0, 4)} pa${year.slice(4, 5)}.`
+        yearLabelStringify={(year, session) =>
+          getShortYearName(year, session) +
+          (noAnsYearList["bv"].includes(year.toString() + session)
+            ? " (be ats.)"
+            : "")
         }
-        noAnsYearList={[]}
+        noAnsYearList={noAnsYearList["bv"]}
         title="Pasirinkite, kurių metų biologijos VBE užduotis rodyti"
       />
       <Accordion>
         {topics.map((topic) => (
           <TopicItem
             key={topic.topic}
-            topic={topic}
-            yearList={props.yearList}
-            nrTopicLut={nrTopicLut}
-            subject="bio"
-          />
+            topicName={topic.name}
+            problemCount={
+              nrTopicLut.filter((x) => {
+                const xInfo = parseProblemFilename(x.filename);
+                return (
+                  x.topic === topic.topic &&
+                  props.yearList.includes(xInfo.year.toString() + xInfo.session)
+                );
+              }).length
+            }
+          >
+            <BioTopicProblemList
+              nrTopicLut={nrTopicLut}
+              yearList={props.yearList}
+              topicString={topic.topic}
+            />
+          </TopicItem>
         ))}
-      </Accordion> */}
+      </Accordion>
     </>
   );
 };
