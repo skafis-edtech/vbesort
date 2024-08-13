@@ -2,18 +2,17 @@ import { useEffect, useState } from "react";
 import { useDarkMode } from "../../components/layout/DarkModeContext";
 import { parseProblemFilename, shuffle } from "../../misc";
 import { Accordion } from "react-bootstrap";
-import MathProblem from "./MathProblem";
+import MathProblem from "./MathPuppProblem";
+import MathPuppProblem from "./MathPuppProblem";
 
 interface TopicProblemListProps {
   yearList: string[];
-  nrTopicLut: { filename: string; topic: string; answer?: string }[];
-  topicString: string;
+  nrTopicLutOfTopic: { filename: string; topic: string; answer?: string }[];
 }
 
-const MathTopicProblemList: React.FC<TopicProblemListProps> = ({
+const MathPuppTopicProblemList: React.FC<TopicProblemListProps> = ({
   yearList,
-  nrTopicLut,
-  topicString,
+  nrTopicLutOfTopic,
 }) => {
   const { isShuffleOn } = useDarkMode();
 
@@ -24,18 +23,16 @@ const MathTopicProblemList: React.FC<TopicProblemListProps> = ({
   useEffect(() => {
     setProblemList(
       shuffle(
-        nrTopicLut.filter((problem) => {
+        nrTopicLutOfTopic.filter((problem) => {
           const currProblemInfo = parseProblemFilename(problem.filename);
-          return (
-            yearList.includes(
-              currProblemInfo.year.toString() + currProblemInfo.session
-            ) && problem.topic === topicString
+          return yearList.includes(
+            currProblemInfo.year.toString() + currProblemInfo.session
           );
         }),
         isShuffleOn
       )
     );
-  }, [yearList, isShuffleOn, nrTopicLut]);
+  }, [yearList, isShuffleOn, nrTopicLutOfTopic]);
 
   return (
     <Accordion.Body>
@@ -44,7 +41,7 @@ const MathTopicProblemList: React.FC<TopicProblemListProps> = ({
         return (
           <div key={problem.filename}>
             <hr style={{ border: "3px solid black" }} />
-            <MathProblem
+            <MathPuppProblem
               key={problem.filename}
               filename={problem.filename}
               nrTopicLutSubsetForRoot={problemList.filter((pr) => {
@@ -70,4 +67,4 @@ const MathTopicProblemList: React.FC<TopicProblemListProps> = ({
     </Accordion.Body>
   );
 };
-export default MathTopicProblemList;
+export default MathPuppTopicProblemList;

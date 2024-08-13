@@ -3,10 +3,15 @@ import topics from "./data/topics-names-list.json";
 import nrTopicLut from "./data/nr-topic-lut.json";
 import TopicItem from "../../components/ui/TopicItem";
 import { Link } from "react-router-dom";
-import { getShortYearName } from "../../misc";
+import {
+  getShortYearName,
+  noAnsYearList,
+  parseProblemFilename,
+} from "../../misc";
 import { Components } from "../../types";
 import ShuffleBar from "../../components/layout/ShuffleBar";
 import YearSelector from "../../components/ui/YearSelector";
+import MathPuppTopicProblemList from "./MathPuppTopicProblemList";
 
 const MathPuppPage: React.FC<Components.PageProps> = (props) => {
   return (
@@ -25,30 +30,43 @@ const MathPuppPage: React.FC<Components.PageProps> = (props) => {
         <Link to="https://beta.etestavimas.lt">beta.etestavimas.lt</Link>{" "}
         platformoje
       </Alert>
-      {/* <YearSelector
+      <YearSelector
         yearList={props.yearList}
         setYearList={props.setYearList}
         allYearList={props.allYearList}
-        yearLabelStringify={(year) =>
-          getShortYearName(year) +
-          (noAnsMathVbeYearList.includes(year) ? " (be ats.)" : "")
+        yearLabelStringify={(year, session) =>
+          getShortYearName(year, session) +
+          (noAnsYearList["mp"].includes(year.toString() + session)
+            ? " (be ats.)"
+            : "")
         }
-        noAnsYearList={noAnsMathVbeYearList}
+        noAnsYearList={noAnsYearList["mp"]}
         title="Pasirinkite, kurių metų matematikos PUPP užduotis rodyti"
       />
       <Accordion>
         {topics.map((topic) => (
           <TopicItem
             key={topic.topic}
-            topic={topic}
-            yearList={props.yearList}
-            nrTopicLut={nrTopicLut}
-            listUrl={props.listUrl}
-            setListUrl={props.setListUrl}
-            subject="pupp"
-          />
+            topicName={topic.name}
+            problemCount={
+              nrTopicLut.filter((x) => {
+                const xInfo = parseProblemFilename(x.filename);
+                return (
+                  x.topic === topic.topic &&
+                  props.yearList.includes(xInfo.year.toString() + xInfo.session)
+                );
+              }).length
+            }
+          >
+            <MathPuppTopicProblemList
+              nrTopicLutOfTopic={nrTopicLut.filter(
+                (x) => x.topic === topic.topic
+              )}
+              yearList={props.yearList}
+            />
+          </TopicItem>
         ))}
-      </Accordion> */}
+      </Accordion>
     </>
   );
 };
