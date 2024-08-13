@@ -5,7 +5,7 @@ export interface ProblemDetails {
   section: Section;
   problemType: ProblemType;
   level: Level;
-  problemNumber: ProblemNumber;
+  problemNumber: ProblemNumber; // for history sources A is .1, B is .2, C is .3 etc
 }
 
 /* 
@@ -111,13 +111,26 @@ export function parseProblemFilename(filename: string): ProblemDetails {
     const section: ProblemDetails["section"] = filename.charAt(7) as Section;
     let number;
     let problemType: ProblemDetails["problemType"];
+    const letterToFrac: { [key: string]: number } = {
+      A: 0.1,
+      B: 0.2,
+      C: 0.3,
+      D: 0.4,
+      E: 0.5,
+      F: 0.6,
+      G: 0.7,
+      H: 0.8,
+      I: 0.9,
+    };
+
     if (section === "1") {
-      number = parseInt(filename.substring(9, 11));
+      number = Number(filename.substring(9, 11));
       problemType = "w";
     } else if (section === "2") {
       number = parseInt(filename.substring(9, 10));
       if (filename.charAt(10) === "s") {
         problemType = "o";
+        number += letterToFrac[filename.charAt(11)];
       } else if (filename.charAt(10) === "u") {
         problemType = "q";
       } else {
@@ -238,7 +251,24 @@ export const noAnsYearList: { [key: string]: string[] } = {
   mp: ["2013p"],
   fv: [],
   bv: [],
-  iv: [],
+  iv: [
+    "2015g",
+    "2015k",
+    "2016g",
+    "2016k",
+    "2017g",
+    "2017k",
+    "2018g",
+    "2019g",
+    "2020g",
+    "2021g",
+    "2022g",
+    "2022k",
+    "2023g",
+    "2023k",
+    "2024g",
+    "2024k",
+  ],
 };
 
 export function isOfficialMathVbe(year: number, session: Session) {
@@ -312,4 +342,16 @@ export const removeFromListUrl = (item: string, listUrl: string): string => {
     .filter((listItem) => listItem !== item);
   searchParams.set("list", listItems.join(" "));
   return `${baseUrl}?${searchParams.toString()}`;
+};
+
+export const fracToLetter: { [key: number]: string } = {
+  0.1: "A",
+  0.2: "B",
+  0.3: "C",
+  0.4: "D",
+  0.5: "E",
+  0.6: "F",
+  0.7: "G",
+  0.8: "H",
+  0.9: "I",
 };

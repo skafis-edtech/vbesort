@@ -1,5 +1,5 @@
 import { Accordion } from "react-bootstrap";
-import { parseProblemFilename } from "../../misc";
+import { noAnsYearList, parseProblemFilename } from "../../misc";
 import "./style.css";
 import { useState } from "react";
 
@@ -40,44 +40,47 @@ const SingleProblem: React.FC<SingleProblemProps> = ({
       </div>
 
       <div>
-        {answerFilenameOrAnswer && (
-          <Accordion style={{ marginTop: "20px" }}>
-            <Accordion.Item eventKey="answer">
-              <Accordion.Header
-                className="root-header"
-                onClick={() => setAnswerExpanded(!answerExpanded)}
-              >
-                Atsakymas
-              </Accordion.Header>
-              {answerExpanded && (
-                <Accordion.Body>
-                  {!answerFilenameOrAnswer.includes(".png") ? (
-                    <h3>{answerFilenameOrAnswer}</h3>
-                  ) : (
-                    <div
-                      className="single-problem"
-                      style={{
-                        overflowX: "auto",
-                      }}
-                    >
-                      <img
-                        loading="lazy"
-                        alt={answerFilenameOrAnswer}
-                        src={answerSrc}
+        {answerFilenameOrAnswer &&
+          !noAnsYearList[problemInfo.subjectExam].includes(
+            problemInfo.year.toString() + problemInfo.session
+          ) && (
+            <Accordion style={{ marginTop: "20px" }}>
+              <Accordion.Item eventKey="answer">
+                <Accordion.Header
+                  className="root-header"
+                  onClick={() => setAnswerExpanded(!answerExpanded)}
+                >
+                  Atsakymas
+                </Accordion.Header>
+                {answerExpanded && (
+                  <Accordion.Body>
+                    {!answerFilenameOrAnswer.includes(".png") ? (
+                      <h3>{answerFilenameOrAnswer}</h3>
+                    ) : (
+                      <div
+                        className="single-problem"
                         style={{
-                          width: "auto",
-                          height: "auto",
-                          maxWidth: "900px",
                           overflowX: "auto",
                         }}
-                      />
-                    </div>
-                  )}
-                </Accordion.Body>
-              )}
-            </Accordion.Item>
-          </Accordion>
-        )}
+                      >
+                        <img
+                          loading="lazy"
+                          alt={answerFilenameOrAnswer}
+                          src={answerSrc}
+                          style={{
+                            width: "auto",
+                            height: "auto",
+                            maxWidth: "900px",
+                            overflowX: "auto",
+                          }}
+                        />
+                      </div>
+                    )}
+                  </Accordion.Body>
+                )}
+              </Accordion.Item>
+            </Accordion>
+          )}
       </div>
     </>
   );

@@ -1,27 +1,22 @@
 import { Accordion } from "react-bootstrap";
-import nrTopicLut from "./data/nr-topic-lut.json";
-import "../../components/style.css";
+import "../../components/ui/style.css";
 import SingleProblem from "../../components/ui/SingleProblem";
+import { fracToLetter, parseProblemFilename } from "../../misc";
+import { useEffect } from "react";
 
-export default function HistProblemRoot({
-  questionsFilename,
-}: {
-  questionsFilename: string;
-}) {
+export default function HistProblemRoot({ filename }: { filename: string }) {
+  const sourceInfo = parseProblemFilename(filename);
+  const sourceLetter =
+    fracToLetter[Number((sourceInfo.problemNumber % 1).toFixed(1))];
+
   return (
     <Accordion style={{ marginTop: "20px" }}>
-      <Accordion.Item eventKey="crazy">
-        <Accordion.Header className="root-header">Šaltiniai</Accordion.Header>
+      <Accordion.Item eventKey={"crazy" + filename}>
+        <Accordion.Header className="root-header">
+          Šaltinis {sourceLetter}
+        </Accordion.Header>
         <Accordion.Body>
-          {/* <SingleProblem
-            filename={
-              questionsFilename.substring(0, 8) +
-              "s" +
-              questionsFilename.substring(9)
-            }
-            subject="hist"
-            answerLut={nrTopicLut}
-          /> */}
+          <SingleProblem filename={filename} />
         </Accordion.Body>
       </Accordion.Item>
     </Accordion>

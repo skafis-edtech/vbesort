@@ -1,5 +1,6 @@
 import {
   appendToMakerListUrl,
+  fracToLetter,
   getLongYearName,
   getShortYearName,
   parseProblemFilename,
@@ -73,13 +74,26 @@ describe("parseProblemFilename", () => {
   });
 
   it("should correctly parse hist problem filename", () => {
-    const result = parseProblemFilename("iv2017g2-4s");
+    const result = parseProblemFilename("iv2017g2-4sA");
     expect(result).toEqual({
       subjectExam: "iv",
       year: 2017,
       session: "g",
       section: "2",
-      problemNumber: 4,
+      problemNumber: 4.1,
+      level: "n/a",
+      problemType: "o",
+    });
+  });
+
+  it("should correctly parse hist problem filename", () => {
+    const result = parseProblemFilename("iv2017g2-4sB");
+    expect(result).toEqual({
+      subjectExam: "iv",
+      year: 2017,
+      session: "g",
+      section: "2",
+      problemNumber: 4.2,
       level: "n/a",
       problemType: "o",
     });
@@ -135,6 +149,11 @@ describe("parseProblemFilename", () => {
       level: "n/a",
       problemNumber: 1,
     });
+  });
+
+  it("hist letter", () => {
+    const result = fracToLetter[0.1];
+    expect(result).toEqual("A");
   });
 });
 

@@ -59,10 +59,9 @@ const MathPuppPage: React.FC<Components.PageProps> = (props) => {
             }
           >
             <MathPuppTopicProblemList
-              nrTopicLutOfTopic={nrTopicLut.filter(
-                (x) => x.topic === topic.topic
-              )}
+              nrTopicLut={nrTopicLut}
               yearList={props.yearList}
+              topicString={topic.topic}
             />
           </TopicItem>
         ))}

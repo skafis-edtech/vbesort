@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDarkMode } from "../../components/layout/DarkModeContext";
 import { parseProblemFilename, shuffle } from "../../misc";
 import { Accordion } from "react-bootstrap";
-import MathPuppProblem from "./MathPuppProblem";
+import HistProblem from "./HistProblem";
 
 interface TopicProblemListProps {
   yearList: string[];
@@ -10,7 +10,7 @@ interface TopicProblemListProps {
   topicString: string;
 }
 
-const MathPuppTopicProblemList: React.FC<TopicProblemListProps> = ({
+const HistTopicProblemList: React.FC<TopicProblemListProps> = ({
   yearList,
   nrTopicLut,
   topicString,
@@ -29,7 +29,9 @@ const MathPuppTopicProblemList: React.FC<TopicProblemListProps> = ({
           return (
             yearList.includes(
               currProblemInfo.year.toString() + currProblemInfo.session
-            ) && problem.topic === topicString
+            ) &&
+            problem.topic === topicString &&
+            currProblemInfo.problemType !== "o"
           );
         }),
         isShuffleOn
@@ -44,24 +46,20 @@ const MathPuppTopicProblemList: React.FC<TopicProblemListProps> = ({
         return (
           <div key={problem.filename}>
             <hr style={{ border: "3px solid black" }} />
-            <MathPuppProblem
+            <HistProblem
               key={problem.filename}
               filename={problem.filename}
-              nrTopicLutSubsetForRoot={nrTopicLut.filter((pr) => {
+              answerFilenameOrAnswer={problem.answer}
+              nrTopicLutForSources={nrTopicLut.filter((pr) => {
                 const prInfo = parseProblemFilename(pr.filename);
-                return (
-                  (prInfo.year === problemInfo.year &&
-                    prInfo.session === problemInfo.session &&
-                    prInfo.problemNumber < problemInfo.problemNumber &&
-                    prInfo.problemNumber >
-                      Math.floor(problemInfo.problemNumber) &&
-                    prInfo.problemType === "s") ||
-                  (prInfo.year === problemInfo.year &&
-                    prInfo.session === problemInfo.session &&
-                    prInfo.problemNumber ===
-                      Math.floor(problemInfo.problemNumber) &&
-                    prInfo.problemType === "r")
-                );
+                const isSource =
+                  prInfo.year === problemInfo.year &&
+                  prInfo.session === problemInfo.session &&
+                  prInfo.problemType === "o" &&
+                  Math.floor(prInfo.problemNumber) ===
+                    problemInfo.problemNumber;
+
+                return isSource;
               })}
             />
           </div>
@@ -70,4 +68,4 @@ const MathPuppTopicProblemList: React.FC<TopicProblemListProps> = ({
     </Accordion.Body>
   );
 };
-export default MathPuppTopicProblemList;
+export default HistTopicProblemList;
