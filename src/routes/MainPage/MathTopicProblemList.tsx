@@ -35,7 +35,7 @@ const MathTopicProblemList: React.FC<TopicProblemListProps> = ({
         isShuffleOn
       )
     );
-  }, [yearList, isShuffleOn, nrTopicLut]);
+  }, [yearList, isShuffleOn, nrTopicLut, topicString]);
 
   return (
     <Accordion.Body>
@@ -47,6 +47,7 @@ const MathTopicProblemList: React.FC<TopicProblemListProps> = ({
             <MathProblem
               key={problem.filename}
               filename={problem.filename}
+              answerFilenameOrAnswer={problem.answer}
               nrTopicLutSubsetForRoot={nrTopicLut
                 .filter((pr) => {
                   const prInfo = parseProblemFilename(pr.filename);

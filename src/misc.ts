@@ -304,7 +304,11 @@ export function getProblemName(problemDetails: ProblemDetails) {
     problemDetails.session
   )} ${
     problemDetails.section === "none" ? "" : `${problemDetails.section} dalis`
-  } ${problemDetails.problemNumber} užd.`;
+  } ${problemDetails.problemNumber} užd.${
+    problemDetails.level !== "n/a" && problemDetails.level !== "none"
+      ? " " + problemDetails.level + " lygio"
+      : ""
+  }`;
 }
 
 export const appendToMakerListUrl = (item: string, listUrl: string): string => {

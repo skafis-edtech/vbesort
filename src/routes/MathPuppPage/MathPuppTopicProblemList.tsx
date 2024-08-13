@@ -35,7 +35,7 @@ const MathPuppTopicProblemList: React.FC<TopicProblemListProps> = ({
         isShuffleOn
       )
     );
-  }, [yearList, isShuffleOn, nrTopicLut]);
+  }, [yearList, isShuffleOn, nrTopicLut, topicString]);
 
   return (
     <Accordion.Body>
@@ -63,6 +63,7 @@ const MathPuppTopicProblemList: React.FC<TopicProblemListProps> = ({
                     prInfo.problemType === "r")
                 );
               })}
+              answerFilenameOrAnswer={problem.answer}
             />
           </div>
         );

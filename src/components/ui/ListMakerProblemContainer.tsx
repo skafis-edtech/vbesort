@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Button } from "react-bootstrap";
+import { FormCheck, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { appendToMakerListUrl, removeFromListUrl } from "../../misc";
 import { useDarkMode } from "../layout/DarkModeContext";
 
@@ -35,31 +35,22 @@ const ListMakerProblemContainer: React.FC<ProblemSelectContainerProps> = ({
       <div
         style={{
           position: "absolute",
-          right: "0",
-          bottom: "0",
+          right: "16px",
+          bottom: "50px",
         }}
       >
-        {!isAdded && (
-          <Button variant="warning" onClick={() => setIsAdded(!isAdded)}>
-            Pridėti į sąrašą
-          </Button>
-        )}
-        {isAdded && (
-          <div>
-            <Button
-              variant="outline-danger"
-              onClick={() => setIsAdded(!isAdded)}
-              style={{ marginRight: "10px" }}
-            >
-              Išimti iš sąrašo
-            </Button>
-            <Button variant="success" disabled>
-              <strong>
-                <em>Pridėta</em>
-              </strong>
-            </Button>
-          </div>
-        )}
+        <OverlayTrigger
+          placement="top"
+          delay={{ show: 700, hide: 100 }}
+          overlay={<Tooltip id="checkbox-tooltip">Pridėti į sąrašą</Tooltip>}
+        >
+          <FormCheck
+            style={{ transform: "scale(1.5)" }}
+            type="checkbox"
+            checked={isAdded}
+            onChange={() => setIsAdded(!isAdded)}
+          />
+        </OverlayTrigger>
       </div>
     </div>
   );
