@@ -1,4 +1,4 @@
-import Support from "../../components/Support";
+import Support from "../../components/layout/Support";
 import { Components } from "../../types";
 
 const ContributePage: React.FC<Components.PageProps> = () => {

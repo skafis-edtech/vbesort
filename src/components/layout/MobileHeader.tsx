@@ -3,10 +3,10 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import DarkModeButton from "./DarkModeButton";
 import { useNavigate } from "react-router-dom";
-import { routes } from "../routes/routes";
+import { routes } from "../../routes/routes";
 import { Button, Offcanvas } from "react-bootstrap";
 import { useState } from "react";
-import { ReactComponent as ListIcon } from "./list.svg";
+import { ReactComponent as ListIcon } from "../icons/list.svg";
 
 export default function DesktopHeader() {
   const navigate = useNavigate();

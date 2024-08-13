@@ -32,19 +32,16 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log\*
 
-# dir with math and bio problem screenshots (email me if you want me to give it to you)
-/public/math-problems
-/public/math-answers
-/public/bio-problems
-/public/bio-answers
-/public/hist-problems
-/public/hist-answers
-/public/pupp-problems
-/public/pupp-answers
-/public/chem-problems
-/public/physics-problems
-/public/naglis-problems
-/public/naglis-answers
+# dir with math and bio problem screenshots (stored in google drive)
+/public/mv-problems
+/public/mv-answers
+/public/bv-problems
+/public/bv-answers
+/public/iv-problems
+/public/iv-answers
+/public/mp-problems
+/public/mp-answers
+/public/fv-problems
 
 # ssh keys
 gh-pages-vbesort

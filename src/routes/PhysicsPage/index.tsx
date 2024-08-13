@@ -1,11 +1,11 @@
 import { Accordion, Alert } from "react-bootstrap";
 import topics from "./data/topics-names-list.json";
 import nrTopicLut from "./data/nr-topic-lut.json";
-import TopicItem from "../../components/TopicItem";
+import TopicItem from "../../components/ui/TopicItem";
 import { getShortYearName } from "../../misc";
 import { Components } from "../../types";
-import ShuffleBar from "../../components/ShuffleBar";
-import YearSelector from "../../components/YearSelector";
+import ShuffleBar from "../../components/layout/ShuffleBar";
+import YearSelector from "../../components/ui/YearSelector";
 
 const PhysicsPage: React.FC<Components.PageProps> = (props) => {
   return (
@@ -28,7 +28,7 @@ const PhysicsPage: React.FC<Components.PageProps> = (props) => {
           ČIA
         </a>
       </Alert>
-      <YearSelector
+      {/* <YearSelector
         yearList={props.yearList}
         setYearList={props.setYearList}
         allYearList={props.allYearList}
@@ -46,7 +46,7 @@ const PhysicsPage: React.FC<Components.PageProps> = (props) => {
             subject="physics"
           />
         ))}
-      </Accordion>
+      </Accordion> */}
     </>
   );
 };

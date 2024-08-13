@@ -1,14 +1,14 @@
 import { Accordion } from "react-bootstrap";
-import { PuppProblemIdType, parseProblemFilename } from "../../misc";
+import { parseProblemFilename, ProblemDetails } from "../../misc";
 import nrTopicLut from "./data/nr-topic-lut.json";
 import "../../components/style.css";
-import SingleMathProblem from "../../components/SingleProblem";
+import SingleMathProblem from "../../components/ui/SingleProblem";
 
 export default function PuppProblemRoot({
   currProblemInfo,
   theListItIs = false,
 }: {
-  currProblemInfo: PuppProblemIdType;
+  currProblemInfo: ProblemDetails;
   theListItIs?: boolean;
 }) {
   return (
@@ -18,7 +18,7 @@ export default function PuppProblemRoot({
           Uždavinio sąlygos pradžia
         </Accordion.Header>
         <Accordion.Body>
-          {nrTopicLut
+          {/* {nrTopicLut
             .filter((pr) => {
               const anotherId: any = parseProblemFilename("pupp", pr.filename);
               return (
@@ -54,7 +54,7 @@ export default function PuppProblemRoot({
                 answerLut={nrTopicLut}
                 theListItIs={theListItIs}
               />
-            ))}
+            ))} */}
         </Accordion.Body>
       </Accordion.Item>
     </Accordion>

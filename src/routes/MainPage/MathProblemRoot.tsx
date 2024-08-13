@@ -1,62 +1,39 @@
 import { Accordion } from "react-bootstrap";
-import { MathProblemIdType, parseProblemFilename } from "../../misc";
-import nrTopicLut from "./data/nr-topic-lut.json";
-import "../../components/style.css";
-import SingleMathProblem from "../../components/SingleProblem";
+import "../../components/ui/style.css";
+import SingleMathProblem from "../../components/ui/SingleProblem";
+import { useState } from "react";
 
-export default function MathProblemRoot({
-  currProblemInfo,
-  theListItIs = false,
-}: {
-  currProblemInfo: MathProblemIdType;
-  theListItIs?: boolean;
-}) {
+interface MathProblemRootProps {
+  nrTopicLutSubset: { filename: string; topic: string; answer?: string }[];
+}
+
+const MathProblemRoot: React.FC<MathProblemRootProps> = ({
+  nrTopicLutSubset,
+}) => {
+  const [expanded, setExpanded] = useState(false);
   return (
     <Accordion style={{ marginTop: "20px" }}>
       <Accordion.Item eventKey="crazy">
-        <Accordion.Header className="root-header">
+        <Accordion.Header
+          className="root-header"
+          onClick={() => setExpanded(!expanded)}
+        >
           Uždavinio sąlygos pradžia
         </Accordion.Header>
-        <Accordion.Body>
-          {nrTopicLut
-            .filter((pr) => {
-              const anotherId: any = parseProblemFilename("math", pr.filename);
-              return (
-                anotherId.number === Math.floor(currProblemInfo.number) &&
-                anotherId.problemType === "root" &&
-                anotherId.year === currProblemInfo.year
-              );
-            })
-            .map((root) => (
+        {expanded && (
+          <Accordion.Body>
+            {nrTopicLutSubset.map((problem) => (
               <SingleMathProblem
-                key={root.filename}
-                filename={root.filename}
-                subject="math"
-                answerLut={nrTopicLut}
-                theListItIs={theListItIs}
+                key={problem.filename}
+                filename={problem.filename}
+                answerFilenameOrAnswer={problem.answer}
               />
             ))}
-          {nrTopicLut
-            .filter((pr) => {
-              const anotherId: any = parseProblemFilename("math", pr.filename);
-              return (
-                anotherId.number < currProblemInfo.number &&
-                anotherId.number >= Math.floor(currProblemInfo.number) &&
-                anotherId.problemType === "sub" &&
-                anotherId.year === currProblemInfo.year
-              );
-            })
-            .map((root) => (
-              <SingleMathProblem
-                key={root.filename}
-                filename={root.filename}
-                subject="math"
-                answerLut={nrTopicLut}
-                theListItIs={theListItIs}
-              />
-            ))}
-        </Accordion.Body>
+          </Accordion.Body>
+        )}
       </Accordion.Item>
     </Accordion>
   );
-}
+};
+
+export default MathProblemRoot;

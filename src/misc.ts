@@ -1,178 +1,184 @@
-export type MathProblemIdType = {
-  year: string; //"2023g" | "2023k" | "2010v" | "2010b" | "2002p" ...
-  section: "I" | "II" | "III";
-  number: number;
-  isBlevel: boolean | undefined;
-  problemType: "whole" | "root" | "sub";
-};
+export interface ProblemDetails {
+  subjectExam: SubjectExam;
+  year: number;
+  session: Session;
+  section: Section;
+  problemType: ProblemType;
+  level: Level;
+  problemNumber: ProblemNumber;
+}
 
-export type BioProblemIdType = {
-  year: string;
-  section: "I" | "II" | "III" | "IV";
-  number: number;
-};
+/* 
+mv - Matematikos VBE
+bv - Biologijos VBE
+iv - Istorijos VBE
+mp - Matematikos PUPP
+fv - Fizikos VBE
+*/
+export type SubjectExam = "mv" | "bv" | "iv" | "mp" | "fv";
 
-export type HistProblemIdType = {
-  year: string;
-  section: "I" | "II";
-  number: number;
-  problemType: "sources" | "questions" | "abcd";
-};
+/*
+g - pagrindinė sesija
+k - pakartotinė sesija
+v - pavyzdinės užduotys
+b - bandomasis egzaminas
+p - užduotys
+1 - I srautas
+2 - II srautas
+3 - III srautas
+*/
+export type Session = "g" | "k" | "v" | "b" | "p" | "1" | "2" | "3";
 
-export type PuppProblemIdType = {
-  year: string;
-  number: number;
-  problemType: "whole" | "root" | "sub";
-};
+/* 
+w - whole - pilnas uždavinys
+r - root - dalinio uždavinio šakninė pradžia (pvz.: 15. Išspręskite lygtis)
+s - sub - dalinis uždavinys (pvz.: 15.1. x + 3 = 5)
+o - source - šaltinis (istorijos egzaminas)
+q - questions - klausimų grupė šaltiniams (istorijos egzaminas)
+*/
+export type ProblemType = "w" | "r" | "s" | "o" | "q";
 
-export type NaglisProblemIdType = {
-  year: string;
-  number: number;
-};
+/*
+1 - I dalis
+2 - II dalis
+3 - III dalis
+4 - IV dalis
+none - ""
+*/
+export type Section = "1" | "2" | "3" | "4" | "none";
 
-export type SubjectType =
-  | "math"
-  | "bio"
-  | "hist"
-  | "pupp"
-  | "physics"
-  | "naglis";
+export type Level = "A" | "B" | "none" | "n/a";
 
-export function parseProblemFilename(
-  subject: SubjectType,
-  filename: string
-):
-  | MathProblemIdType
-  | BioProblemIdType
-  | HistProblemIdType
-  | PuppProblemIdType
-  | NaglisProblemIdType {
-  if (subject === "math") {
-    const year = filename.substring(2, 7);
-    const section: MathProblemIdType["section"] =
-      filename.charAt(7) === "1"
-        ? "I"
-        : filename.charAt(7) === "2"
-        ? "II"
-        : "III";
-    const problemType: MathProblemIdType["problemType"] =
-      filename.charAt(8) === "w"
-        ? "whole"
-        : filename.charAt(8) === "r"
-        ? "root"
-        : "sub";
+export type ProblemNumber = number;
+
+//LATER make a FSM. And describe syntax.
+export function parseProblemFilename(filename: string): ProblemDetails {
+  if (filename.substring(0, 2) === "mv") {
+    const year = filename.substring(2, 6);
+    const session: ProblemDetails["session"] = filename.charAt(6) as Session;
+    const section: ProblemDetails["section"] =
+      (filename.charAt(7) as Section) || "none";
+    const problemType: ProblemDetails["problemType"] = filename.charAt(
+      8
+    ) as ProblemType;
     let number;
-    let isBLevel;
+    let level;
 
-    if (problemType === "sub") {
+    if (problemType === "s") {
       number = parseFloat(filename.substring(9, 13));
-      isBLevel =
-        filename.charAt(13) === "A"
-          ? false
-          : filename.charAt(13) === "B"
-          ? true
-          : undefined;
-    } else {
+      level = (
+        filename.charAt(13) === "N" ? "none" : filename.charAt(13)
+      ) as Level;
+    } else if (problemType === "w") {
       number = parseInt(filename.substring(9, 11));
-      isBLevel =
-        filename.charAt(11) === "A"
-          ? false
-          : filename.charAt(11) === "B"
-          ? true
-          : undefined;
+      level = (
+        filename.charAt(11) === "N" ? "none" : filename.charAt(11)
+      ) as Level;
+    } else if (problemType === "r") {
+      number = parseInt(filename.substring(9, 11));
+      level = "n/a" as Level;
+    } else {
+      throw Error("Filename parse error, problemType '" + problemType + "'");
     }
 
     return {
-      year,
+      subjectExam: "mv",
+      year: parseInt(year),
+      session,
       section,
       problemType,
-      number,
-      isBlevel: isBLevel,
+      level,
+      problemNumber: number,
     };
-  } else if (subject === "bio") {
-    const year = filename.substring(2, 7);
-    const section: BioProblemIdType["section"] =
-      filename.charAt(7) === "1"
-        ? "I"
-        : filename.charAt(7) === "2"
-        ? "II"
-        : filename.charAt(7) === "3"
-        ? "III"
-        : "IV";
+  } else if (filename.substring(0, 2) === "bv") {
+    const year = filename.substring(2, 6);
+    const session: ProblemDetails["session"] = filename.charAt(6) as Session;
+    const section: ProblemDetails["section"] = filename.charAt(7) as Section;
     const number = parseInt(filename.substring(9, 11));
 
     return {
-      year,
+      subjectExam: "bv",
+      year: parseInt(year),
+      session,
       section,
-      number,
+      problemType: "w",
+      level: "n/a",
+      problemNumber: number,
     };
-  } else if (subject === "hist") {
-    const year = filename.substring(2, 7);
-    const section: HistProblemIdType["section"] =
-      filename.charAt(7) === "1" ? "I" : "II";
-    let number: HistProblemIdType["number"];
-    let problemType: HistProblemIdType["problemType"];
-    if (section === "I") {
+  } else if (filename.substring(0, 2) === "iv") {
+    const year = filename.substring(2, 6);
+    const session: ProblemDetails["session"] = filename.charAt(6) as Session;
+    const section: ProblemDetails["section"] = filename.charAt(7) as Section;
+    let number;
+    let problemType: ProblemDetails["problemType"];
+    if (section === "1") {
       number = parseInt(filename.substring(9, 11));
-      problemType = "abcd";
-    } else if (section === "II") {
+      problemType = "w";
+    } else if (section === "2") {
       number = parseInt(filename.substring(9, 10));
-      problemType =
-        filename.charAt(10) === "s"
-          ? "sources"
-          : filename.charAt(10) === "u"
-          ? "questions"
-          : "abcd";
+      if (filename.charAt(10) === "s") {
+        problemType = "o";
+      } else if (filename.charAt(10) === "u") {
+        problemType = "q";
+      } else {
+        throw Error(
+          "Filename parse error, problemType '" + filename.charAt(10) + "'"
+        );
+      }
     } else {
       throw Error("Filename parse error, section '" + section + "'");
     }
     return {
-      year,
+      subjectExam: "iv",
+      year: parseInt(year),
+      session,
       section,
-      number,
       problemType,
+      level: "n/a",
+      problemNumber: number,
     };
-  } else if (subject === "pupp") {
-    const year = filename.substring(2, 7);
-
-    const problemType: PuppProblemIdType["problemType"] =
-      filename.charAt(7) === "w" || filename.charAt(7) === "-"
-        ? "whole"
-        : filename.charAt(7) === "r"
-        ? "root"
-        : "sub";
+  } else if (filename.substring(0, 2) === "mp") {
+    const year = filename.substring(2, 6);
+    const session = filename.charAt(6) as Session;
+    const problemType: ProblemDetails["problemType"] =
+      filename.charAt(7) === "-" ? "w" : (filename.charAt(7) as ProblemType);
     let number;
-
-    if (problemType === "sub") {
+    if (problemType === "s") {
       number = parseFloat(filename.substring(8, 12));
     } else {
       number = parseInt(filename.substring(8, 10));
     }
 
     return {
-      year,
+      subjectExam: "mp",
+      year: parseInt(year),
+      session,
       problemType,
-      number,
+      section: "none",
+      level: "n/a",
+      problemNumber: number,
     };
-  } else if (subject === "physics") {
-    const year = filename.substring(2, 7);
-    const section: BioProblemIdType["section"] =
-      filename.charAt(7) === "1"
-        ? "I"
-        : filename.charAt(7) === "2"
-        ? "II"
-        : filename.charAt(7) === "3"
-        ? "III"
-        : "IV";
+  } else if (filename.substring(0, 2) === "fv") {
+    const year = filename.substring(2, 6);
+    const session = filename.charAt(6) as Session;
+    const section: ProblemDetails["section"] = filename.charAt(7) as Section;
     const number = parseInt(filename.substring(9, 11));
+    const problemType: ProblemDetails["problemType"] =
+      filename.charAt(8) === "-" ? "w" : (filename.charAt(8) as ProblemType);
 
     return {
-      year,
+      subjectExam: "fv",
+      year: parseInt(year),
+      session,
       section,
-      number,
+      problemType,
+      level: "n/a",
+      problemNumber: number,
     };
   } else {
-    throw Error("No parser for problem subject '" + subject + "'");
+    throw Error(
+      "No parser for problem subject '" + filename.substring(0, 2) + "'"
+    );
   }
 }
 
@@ -195,90 +201,80 @@ export function shuffle(array: any[], isShuffleOn: boolean) {
     return array;
   }
 }
+export function getLongYearName(year: number, session: Session) {
+  const sessionNames: { [key in Session]: string } = {
+    g: " pagrindinė sesija",
+    k: " pakartotinė sesija",
+    v: " pavyzdinės užduotys",
+    b: " bandomasis egzaminas",
+    p: " užduotys",
+    "1": " I srautas",
+    "2": " II srautas",
+    "3": " III srautas",
+  };
 
-export function getLongYearName(year: string) {
-  const yearNumber = parseInt(year.substring(0, 4));
-  const yearLetter = year.charAt(4);
-  let yearName = "";
-  if (yearLetter === "g") {
-    yearName = yearNumber + " m. pagrindinė sesija";
-  } else if (yearLetter === "k") {
-    yearName = yearNumber + " m. pakartotinė sesija";
-  } else if (yearLetter === "v") {
-    yearName = yearNumber + " m. pavyzdinės užduotys";
-  } else if (yearLetter === "b") {
-    yearName = yearNumber + " m. bandomasis egzaminas";
-  } else if (yearLetter === "p") {
-    yearName = yearNumber + " m. užduotys";
-  } else if (yearLetter === "1") {
-    yearName = yearNumber + " m. I srautas";
-  } else if (yearLetter === "2") {
-    yearName = yearNumber + " m. II srautas";
-  } else if (yearLetter === "3") {
-    yearName = yearNumber + " m. III srautas";
-  } else if (yearLetter === "-") {
-    yearName = yearNumber + " (SKF)";
-  } else {
-    throw Error("Invalid year letter '" + yearLetter + "'");
-  }
+  let yearName = `${year} m.${sessionNames[session]}`;
   return yearName;
 }
 
-export const noAnsMathVbeYearList = [
-  "2002p",
-  "2003p",
-  "2004p",
-  "2005p",
-  "2006p",
-  "2007p",
-  "2008g",
-  "2008k",
-  "2009k",
-  "2015k",
-  "2019k",
-  "2021k",
-  "2013g",
-  "2011k",
-  "2010k",
-];
+export const noAnsYearList: { [key: string]: string[] } = {
+  mv: [
+    "2002p",
+    "2003p",
+    "2004p",
+    "2005p",
+    "2006p",
+    "2007p",
+    "2008g",
+    "2008k",
+    "2009k",
+    "2015k",
+    "2019k",
+    "2021k",
+    "2013g",
+    "2011k",
+    "2010k",
+  ],
+  mp: ["2013p"],
+  fv: [],
+  bv: [],
+  iv: [],
+};
 
-export const noAnsMathPuppYearList = ["2013p"];
-
-export function isOfficialMathVbe(year: string) {
-  const nonOfficialList: string[] = ["2019k", "2020k", "2021k"];
-  if (nonOfficialList.includes(year)) {
-    return false;
-  } else {
-    return true;
-  }
+export function isOfficialMathVbe(year: number, session: Session) {
+  return ["2019k", "2020k", "2021k"].includes(year.toString() + session);
 }
 
-export function getShortYearName(year: string) {
-  const yearNumber = parseInt(year.substring(0, 4));
-  const yearLetter = year.charAt(4);
-  let yearName = "";
-  if (yearLetter === "g") {
-    yearName = yearNumber + " pag.";
-  } else if (yearLetter === "k") {
-    yearName = yearNumber + " pak.";
-  } else if (yearLetter === "v") {
-    yearName = yearNumber + " pav.";
-  } else if (yearLetter === "b") {
-    yearName = yearNumber + " band.";
-  } else if (yearLetter === "p") {
-    yearName = yearNumber + "";
-  } else if (yearLetter === "1") {
-    yearName = yearNumber + " I";
-  } else if (yearLetter === "2") {
-    yearName = yearNumber + " II";
-  } else if (yearLetter === "3") {
-    yearName = yearNumber + " III";
-  } else if (yearLetter === "-") {
-    yearName = yearNumber + " (SKF)";
-  } else {
-    throw Error("Invalid year letter '" + yearLetter + "'");
-  }
+export function getShortYearName(year: number, session: Session) {
+  const sessionNames: { [key in Session]: string } = {
+    g: " pag.",
+    k: " pak.",
+    v: " pav.",
+    b: " band.",
+    p: "",
+    "1": " I",
+    "2": " II",
+    "3": " III",
+  };
+
+  let yearName = `${year}${sessionNames[session]}`;
   return yearName;
+}
+
+export function getProblemName(problemDetails: ProblemDetails) {
+  const subjectNames: { [key in SubjectExam]: string } = {
+    mv: "Matematikos VBE",
+    bv: "Biologijos VBE",
+    iv: "Istorijos VBE",
+    mp: "Matematikos PUPP",
+    fv: "Fizikos VBE",
+  };
+  return `${subjectNames[problemDetails.subjectExam]} ${getLongYearName(
+    problemDetails.year,
+    problemDetails.session
+  )} ${
+    problemDetails.section === "none" ? "" : `${problemDetails.section} dalis`
+  } ${problemDetails.problemNumber} užd.`;
 }
 
 export const appendToMakerListUrl = (item: string, listUrl: string): string => {

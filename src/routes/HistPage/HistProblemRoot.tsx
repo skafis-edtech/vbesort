@@ -1,7 +1,7 @@
 import { Accordion } from "react-bootstrap";
 import nrTopicLut from "./data/nr-topic-lut.json";
 import "../../components/style.css";
-import SingleProblem from "../../components/SingleProblem";
+import SingleProblem from "../../components/ui/SingleProblem";
 
 export default function HistProblemRoot({
   questionsFilename,
@@ -13,7 +13,7 @@ export default function HistProblemRoot({
       <Accordion.Item eventKey="crazy">
         <Accordion.Header className="root-header">Šaltiniai</Accordion.Header>
         <Accordion.Body>
-          <SingleProblem
+          {/* <SingleProblem
             filename={
               questionsFilename.substring(0, 8) +
               "s" +
@@ -21,7 +21,7 @@ export default function HistProblemRoot({
             }
             subject="hist"
             answerLut={nrTopicLut}
-          />
+          /> */}
         </Accordion.Body>
       </Accordion.Item>
     </Accordion>

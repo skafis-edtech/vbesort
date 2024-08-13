@@ -1,12 +1,12 @@
 import { Accordion } from "react-bootstrap";
 
 export default function TopicItemHeader({
-  topic,
+  topicName,
   problemCount,
   expanded,
   setExpanded,
 }: {
-  topic: { topic: string; name: string };
+  topicName: string;
   problemCount: number;
   expanded: boolean;
   setExpanded: (expanded: boolean) => void;
@@ -21,7 +21,7 @@ export default function TopicItemHeader({
         }}
       >
         <div>
-          <h3>{topic.name.toUpperCase()}</h3>
+          <h3>{topicName.toUpperCase()}</h3>
         </div>
         <div style={{ paddingBottom: "4px", marginRight: "20px" }}>
           &nbsp;(

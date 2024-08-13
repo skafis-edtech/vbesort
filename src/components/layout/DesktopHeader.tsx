@@ -3,7 +3,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import DarkModeButton from "./DarkModeButton";
 import { useNavigate } from "react-router-dom";
-import { routes } from "../routes/routes";
+import { routes } from "../../routes/routes";
 
 export default function DesktopHeader() {
   const navigate = useNavigate();

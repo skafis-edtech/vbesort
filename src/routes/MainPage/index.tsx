@@ -1,15 +1,17 @@
 import { Accordion, Alert } from "react-bootstrap";
 import topics from "./data/topics-names-list.json";
 import nrTopicLut from "./data/nr-topic-lut.json";
-import TopicItem from "../../components/TopicItem";
-import YearSelector from "../../components/YearSelector";
+import TopicItem from "../../components/ui/TopicItem";
+import YearSelector from "../../components/ui/YearSelector";
 import { Components } from "../../types";
-import ShuffleBar from "../../components/ShuffleBar";
+import ShuffleBar from "../../components/layout/ShuffleBar";
 import {
   getShortYearName,
   isOfficialMathVbe,
-  noAnsMathVbeYearList,
+  noAnsYearList,
+  parseProblemFilename,
 } from "../../misc";
+import MathTopicProblemList from "./MathTopicProblemList";
 
 const MainPage: React.FC<Components.PageProps> = (props) => {
   return (
@@ -36,25 +38,38 @@ const MainPage: React.FC<Components.PageProps> = (props) => {
         yearList={props.yearList}
         setYearList={props.setYearList}
         allYearList={props.allYearList}
-        yearLabelStringify={(year) =>
-          getShortYearName(year) +
-          (noAnsMathVbeYearList.includes(year) ? " (be ats.)" : "") +
-          (isOfficialMathVbe(year) ? "" : " ne oficialu")
+        yearLabelStringify={(year, session) =>
+          getShortYearName(year, session) +
+          (noAnsYearList["mv"].includes(year.toString() + session)
+            ? " (be ats.)"
+            : "") +
+          (!isOfficialMathVbe(year, session) ? "" : " ne oficialu")
         }
-        noAnsYearList={noAnsMathVbeYearList}
+        noAnsYearList={noAnsYearList["mv"]}
         title="Pasirinkite, kurių metų matematikos VBE užduotis rodyti"
       />
       <Accordion>
         {topics.map((topic) => (
           <TopicItem
             key={topic.topic}
-            topic={topic}
-            yearList={props.yearList}
-            nrTopicLut={nrTopicLut}
-            subject="math"
-            listUrl={props.listUrl}
-            setListUrl={props.setListUrl}
-          />
+            topicName={topic.name}
+            problemCount={
+              nrTopicLut.filter((x) => {
+                const xInfo = parseProblemFilename(x.filename);
+                return (
+                  x.topic === topic.topic &&
+                  props.yearList.includes(xInfo.year.toString() + xInfo.session)
+                );
+              }).length
+            }
+          >
+            <MathTopicProblemList
+              nrTopicLutOfTopic={nrTopicLut.filter(
+                (x) => x.topic === topic.topic
+              )}
+              yearList={props.yearList}
+            />
+          </TopicItem>
         ))}
       </Accordion>
     </div>

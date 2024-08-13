@@ -1,10 +1,10 @@
 import { Accordion } from "react-bootstrap";
 import topics from "./data/topics-names-list.json";
 import nrTopicLut from "./data/nr-topic-lut.json";
-import TopicItem from "../../components/TopicItem";
+import TopicItem from "../../components/ui/TopicItem";
 import { Components } from "../../types";
-import ShuffleBar from "../../components/ShuffleBar";
-import YearSelector from "../../components/YearSelector";
+import ShuffleBar from "../../components/layout/ShuffleBar";
+import YearSelector from "../../components/ui/YearSelector";
 
 const BioPage: React.FC<Components.PageProps> = (props) => {
   return (
@@ -16,7 +16,7 @@ const BioPage: React.FC<Components.PageProps> = (props) => {
       </p>
 
       <h1 className="title">Biologijos VBE</h1>
-      <YearSelector
+      {/* <YearSelector
         yearList={props.yearList}
         setYearList={props.setYearList}
         allYearList={props.allYearList}
@@ -36,7 +36,7 @@ const BioPage: React.FC<Components.PageProps> = (props) => {
             subject="bio"
           />
         ))}
-      </Accordion>
+      </Accordion> */}
     </>
   );
 };

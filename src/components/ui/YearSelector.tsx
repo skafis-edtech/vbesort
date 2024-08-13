@@ -1,11 +1,12 @@
-import { ReactComponent as InfoIcon } from "./info.svg";
+import { Session } from "../../misc";
+import { ReactComponent as InfoIcon } from "../icons/info.svg";
 import { Accordion, Alert, Button, Form } from "react-bootstrap";
 
 interface YearSelectorProps {
   yearList: string[];
   setYearList: (value: string[]) => void;
   allYearList: string[];
-  yearLabelStringify: (year: string) => string;
+  yearLabelStringify: (year: number, session: Session) => string;
   noAnsYearList: string[];
   title: string;
 }
@@ -37,6 +38,7 @@ const YearSelector: React.FC<YearSelectorProps> = ({
   const selectWithAns = () => {
     setYearList(allYearList.filter((year) => !noAnsYearList.includes(year)));
   };
+
   return (
     <Alert variant="success" style={{ marginBottom: "20px" }}>
       <Accordion>
@@ -62,16 +64,20 @@ const YearSelector: React.FC<YearSelectorProps> = ({
               </Button>
               <div style={{ marginTop: "20px", display: "flex" }}>
                 <Form style={{ flexGrow: 3 }}>
-                  {allYearList.map((year) => (
-                    <Form.Check
-                      style={{ width: "250px" }}
-                      key={year}
-                      inline
-                      label={yearLabelStringify(year)}
-                      checked={yearList.includes(year)}
-                      onChange={() => toggleYearInList(year)}
-                    />
-                  ))}
+                  {allYearList.map((year) => {
+                    const yearNumber = Number(year.substring(0, 4));
+                    const session = year.substring(4, 5) as Session;
+                    return (
+                      <Form.Check
+                        style={{ width: "250px" }}
+                        key={year}
+                        inline
+                        label={yearLabelStringify(yearNumber, session)}
+                        checked={yearList.includes(year)}
+                        onChange={() => toggleYearInList(year)}
+                      />
+                    );
+                  })}
                 </Form>
               </div>
             </div>

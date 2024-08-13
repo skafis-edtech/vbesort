@@ -1,9 +1,9 @@
 import "./App.css";
-import Footer from "./components/Footer";
-import DesktopHeader from "./components/DesktopHeader";
-import MobileHeader from "./components/MobileHeader";
+import Footer from "./components/layout/Footer";
+import DesktopHeader from "./components/layout/DesktopHeader";
+import MobileHeader from "./components/layout/MobileHeader";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
-import { DarkModeProvider } from "./components/DarkModeContext";
+import { DarkModeProvider } from "./components/layout/DarkModeContext";
 import { useEffect, useState } from "react";
 import { Alert } from "react-bootstrap";
 import usePersistentState from "./hooks";
@@ -14,10 +14,6 @@ import globalYearListImport from "./year-list.json";
 const globalYearList = globalYearListImport as { [key: string]: string[] };
 
 function App() {
-  const [listUrl, setListUrl] = useState<string>(
-    localStorage.getItem("LIST_URL") || "https://www.vbesort.lt/list?list="
-  );
-
   const [yearList, setYearList] = usePersistentState<{
     [key: string]: string[];
   }>("GLOBAL_YEAR_LIST", globalYearList);
@@ -26,13 +22,6 @@ function App() {
     "COOKIES_ACCEPTED",
     false
   );
-
-  useEffect(() => {
-    localStorage.setItem("LIST_URL", listUrl);
-    /* migration */
-    localStorage.removeItem("YEAR_LIST");
-    /* migration */
-  }, [listUrl]);
 
   const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
 
@@ -52,8 +41,6 @@ function App() {
                     path={route.path}
                     element={
                       <route.element
-                        listUrl={listUrl}
-                        setListUrl={setListUrl}
                         yearList={yearList[route.path]}
                         setYearList={(value) =>
                           setYearList({ ...yearList, [route.path]: value })
