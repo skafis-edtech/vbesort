@@ -22,7 +22,7 @@ const MathProblem: React.FC<MathProblemProps> = ({
   return (
     <ListMakerProblemContainer filename={filename}>
       <em>{getProblemName(problemInfo)}</em>
-      {nrTopicLutSubsetForRoot.length > 0 && (
+      {problemInfo.problemType === "s" && (
         <MathProblemRoot nrTopicLutSubset={nrTopicLutSubsetForRoot} />
       )}
       <SingleProblem

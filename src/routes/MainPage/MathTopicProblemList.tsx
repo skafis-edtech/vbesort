@@ -47,22 +47,29 @@ const MathTopicProblemList: React.FC<TopicProblemListProps> = ({
             <MathProblem
               key={problem.filename}
               filename={problem.filename}
-              nrTopicLutSubsetForRoot={problemList.filter((pr) => {
-                const prInfo = parseProblemFilename(pr.filename);
-                return (
-                  (prInfo.year === problemInfo.year &&
-                    prInfo.session === problemInfo.session &&
-                    prInfo.problemNumber < problemInfo.problemNumber &&
-                    prInfo.problemNumber >
-                      Math.floor(problemInfo.problemNumber) &&
-                    prInfo.problemType === "s") ||
-                  (prInfo.year === problemInfo.year &&
-                    prInfo.session === problemInfo.session &&
-                    prInfo.problemNumber ===
-                      Math.floor(problemInfo.problemNumber) &&
-                    prInfo.problemType === "r")
-                );
-              })}
+              nrTopicLutSubsetForRoot={nrTopicLut
+                .filter((pr) => {
+                  const prInfo = parseProblemFilename(pr.filename);
+                  const isRootOrPrevSub =
+                    (prInfo.year === problemInfo.year &&
+                      prInfo.session === problemInfo.session &&
+                      prInfo.problemNumber < problemInfo.problemNumber &&
+                      prInfo.problemNumber >
+                        Math.floor(problemInfo.problemNumber) &&
+                      prInfo.problemType === "s") ||
+                    (prInfo.year === problemInfo.year &&
+                      prInfo.session === problemInfo.session &&
+                      prInfo.problemNumber ===
+                        Math.floor(problemInfo.problemNumber) &&
+                      prInfo.problemType === "r");
+
+                  return isRootOrPrevSub;
+                })
+                .sort((a, b) => {
+                  const aInfo = parseProblemFilename(a.filename);
+                  const bInfo = parseProblemFilename(b.filename);
+                  return aInfo.problemNumber - bInfo.problemNumber;
+                })}
             />
           </div>
         );

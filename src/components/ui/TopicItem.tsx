@@ -1,6 +1,6 @@
 import { Accordion } from "react-bootstrap";
 import TopicItemHeader from "./TopicItemHeader";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface TopicItemProps {
   topicName: string;
@@ -14,6 +14,10 @@ const TopicItem: React.FC<TopicItemProps> = ({
   children,
 }) => {
   const [expanded, setExpanded] = useState(false);
+  const [beenLoaded, setBeenLoaded] = useState(false);
+  useEffect(() => {
+    if (expanded) setBeenLoaded(true);
+  }, [expanded]);
   return (
     <Accordion.Item eventKey={topicName}>
       <TopicItemHeader
@@ -22,7 +26,7 @@ const TopicItem: React.FC<TopicItemProps> = ({
         topicName={topicName}
         problemCount={problemCount}
       />
-      {expanded && children}
+      {(expanded || beenLoaded) && children}
     </Accordion.Item>
   );
 };
