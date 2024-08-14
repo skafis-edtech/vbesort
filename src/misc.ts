@@ -15,7 +15,7 @@ iv - Istorijos VBE
 mp - Matematikos PUPP
 fv - Fizikos VBE
 */
-export type SubjectExam = "mv" | "bv" | "iv" | "mp" | "fv";
+export type SubjectExam = "mv" | "bv" | "iv" | "mp" | "fv" | "m8" | "cv" | "lv";
 
 /*
 g - pagrindinė sesija
@@ -269,6 +269,9 @@ export const noAnsYearList: { [key: string]: string[] } = {
     "2024g",
     "2024k",
   ],
+  m8: [],
+  cv: [],
+  lv: [],
 };
 
 export function isOfficialMathVbe(year: number, session: Session) {
@@ -298,6 +301,9 @@ export function getProblemName(problemDetails: ProblemDetails) {
     iv: "Istorijos VBE",
     mp: "Matematikos PUPP",
     fv: "Fizikos VBE",
+    m8: "Matematikos NMPP 8 kl.",
+    cv: "Chemijos VBE",
+    lv: "Lietuvių kalbos VBE",
   };
   return `${subjectNames[problemDetails.subjectExam]} ${getLongYearName(
     problemDetails.year,

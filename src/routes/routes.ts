@@ -7,6 +7,9 @@ import MainPage from "./MainPage";
 import MathPuppPage from "./MathPuppPage";
 import NotFoundPage from "./NotFoundPage";
 import PhysicsPage from "./PhysicsPage";
+import MathNmpp8Page from "./MathNmpp8Page";
+import ChemPage from "./ChemPage";
+import LietPage from "./LietPage";
 
 export const routes = [
   {
@@ -34,6 +37,21 @@ export const routes = [
     path: "/math-pupp",
     title: "Matematikos PUPP",
     element: MathPuppPage,
+  },
+  {
+    path: "/math-nmpp8",
+    title: "Matematikos NMPP 8 kl.",
+    element: MathNmpp8Page,
+  },
+  {
+    path: "/chem",
+    title: "Chemijos VBE",
+    element: ChemPage,
+  },
+  {
+    path: "/liet",
+    title: "Lietuvių kalbos VBE",
+    element: LietPage,
   },
   {
     path: "/list",
