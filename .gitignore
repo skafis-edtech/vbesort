@@ -42,6 +42,13 @@ yarn-error.log\*
 /public/mp-problems
 /public/mp-answers
 /public/fv-problems
+/public/fv-answers
+/public/m8-problems
+/public/m8-answers
+/public/cv-problems
+/public/cv-answers
+/public/lv-problems
+/public/lv-answers
 
 # ssh keys
 gh-pages-vbesort
