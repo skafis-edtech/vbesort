@@ -4,6 +4,7 @@ import Navbar from "react-bootstrap/Navbar";
 import DarkModeButton from "./DarkModeButton";
 import { useNavigate } from "react-router-dom";
 import { routes } from "../../routes/routes";
+import { Button } from "react-bootstrap";
 
 export default function DesktopHeader() {
   const navigate = useNavigate();
@@ -14,9 +15,20 @@ export default function DesktopHeader() {
           <Navbar.Brand onClick={() => navigate("/")}>vbesort.lt</Navbar.Brand>
           <Nav className="me-auto">
             {routes.map((route) => (
-              <Nav.Link key={route.path} onClick={() => navigate(route.path)}>
-                {route.title}
-              </Nav.Link>
+              <>
+                {route.title !== "404" && (
+                  <Nav.Link
+                    key={route.path}
+                    onClick={() => navigate(route.path)}
+                  >
+                    {route.title === "ATRINKTOS" ? (
+                      <Button>{route.title}</Button>
+                    ) : (
+                      route.title
+                    )}
+                  </Nav.Link>
+                )}
+              </>
             ))}
           </Nav>
           <DarkModeButton />

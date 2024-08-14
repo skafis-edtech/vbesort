@@ -4,7 +4,6 @@ import DesktopHeader from "./components/layout/DesktopHeader";
 import MobileHeader from "./components/layout/MobileHeader";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { DarkModeProvider } from "./components/layout/DarkModeContext";
-import { useEffect, useState } from "react";
 import { Alert } from "react-bootstrap";
 import usePersistentState from "./hooks";
 import { routes } from "./routes/routes";
@@ -30,7 +29,6 @@ function App() {
       <BrowserRouter>
         <div style={{ minHeight: "100vh" }}>
           {isMobile ? <MobileHeader /> : <DesktopHeader />}
-
           <main>
             <aside></aside>
             <section>

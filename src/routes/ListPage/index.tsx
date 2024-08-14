@@ -39,11 +39,17 @@ const ListPage: React.FC<Components.PageProps> = (props) => {
   return (
     <div>
       {items.length === 0 ? (
-        <Alert variant="warning">
-          Užduotys atrenkamos pagal nuorodą. Šiuo metu nuorodoje esantis sąrašas
-          tuščias. Žymėkite užduotis apatiniame dešiniajame kampe esančiu
-          žymekliu ir jos bus pridėtos į sąrašą.
-        </Alert>
+        <div>
+          <Alert variant="warning">
+            Užduotys atrenkamos pagal nuorodą. Šiuo metu nuorodoje esantis
+            sąrašas tuščias. Žymėkite užduotis apatiniame dešiniajame kampe
+            esančiu žymekliu ir jos bus pridėtos į sąrašą. Tuomet galite
+            sugrįžti čia.
+          </Alert>
+          <div style={{ border: "1px black solid", width: "fit-content" }}>
+            <img src="/help/list-maker-help.png" alt="list-maker-help" />
+          </div>
+        </div>
       ) : (
         <Alert
           variant="warning"
