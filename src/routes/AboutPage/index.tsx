@@ -13,34 +13,11 @@ const AboutPage: React.FC<Components.PageProps> = () => {
 
       <Support />
       <h3>Kontaktai</h3>
-      <ul>
-        <li>
-          El. paštas:{" "}
-          <a href="mailto:naglis.suliokas@gmail.com">
-            naglis.suliokas@gmail.com
-          </a>
-        </li>
-        <li>
-          Instagram:{" "}
-          <a
-            href="https://www.instagram.com/naglisaudrius/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            @naglisaudrius
-          </a>
-        </li>
-        <li>
-          TikTok:{" "}
-          <a
-            href="https://www.tiktok.com/@naglisaudrius"
-            target="_blank"
-            rel="noreferrer"
-          >
-            @naglisaudrius
-          </a>
-        </li>
-      </ul>
+      <p>
+        {" "}
+        El. paštas: <a href="mailto:info@skafis.lt">info@skafis.lt</a>
+      </p>
+      <p>MB Skafis</p>
       <h3>Tinklapio kodas</h3>
       <p>
         <a
@@ -52,6 +29,10 @@ const AboutPage: React.FC<Components.PageProps> = () => {
         </a>
       </p>
       <p>Mielai prašome prisidėti rašant kodą!</p>
+      <p>
+        Mano blog'as bei daugiau įdomių dalykų čia:{" "}
+        <a href="https://www.npw.lt">npw.lt</a>
+      </p>
       <h3>Apie užduočių rūšiavimą ir šaltinius</h3>
       <p>
         Užduotys nesikartoja keliose kategorijose. Esant kelioms temoms viename

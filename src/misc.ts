@@ -188,6 +188,22 @@ export function parseProblemFilename(filename: string): ProblemDetails {
       level: "n/a",
       problemNumber: number,
     };
+  } else if (filename.substring(0, 2) === "m8") {
+    const year = filename.substring(2, 6);
+    const session = filename.charAt(6) as Session;
+    const number = parseInt(filename.substring(8, 10));
+    const problemType: ProblemDetails["problemType"] =
+      filename.charAt(8) === "-" ? "w" : (filename.charAt(8) as ProblemType);
+
+    return {
+      subjectExam: "m8",
+      year: parseInt(year),
+      session,
+      section: "none",
+      problemType,
+      level: "n/a",
+      problemNumber: number,
+    };
   } else {
     throw Error(
       "No parser for problem subject '" + filename.substring(0, 2) + "'"
@@ -269,7 +285,7 @@ export const noAnsYearList: { [key: string]: string[] } = {
     "2024g",
     "2024k",
   ],
-  m8: [],
+  m8: ["20121", "20122", "2013p", "2014p", "2015p", "2016p", "2017p", "2018p", "20231", "20232"],
   cv: [],
   lv: [],
 };

@@ -1,6 +1,12 @@
-import { Alert } from "react-bootstrap";
+import { Accordion } from "react-bootstrap";
 import { Components } from "../../types";
 import ShuffleBar from "../../components/layout/ShuffleBar";
+import TopicItem from "../../components/ui/TopicItem";
+import YearSelector from "../../components/ui/YearSelector";
+import { getShortYearName, noAnsYearList, parseProblemFilename } from "../../misc";
+import Nmpp8TopicProblemList from "./Nmpp8TopicProblemList";
+import topics from "./data/topics-names-list.json";
+import nrTopicLut from "./data/nr-topic-lut.json";
 
 const MathNmpp8Page: React.FC<Components.PageProps> = (props) => {
   return (
@@ -13,7 +19,43 @@ const MathNmpp8Page: React.FC<Components.PageProps> = (props) => {
 
       <h1 className="title">Matematikos NMPP 8 kl.</h1>
 
-      <Alert variant="warning">Kol kas čia tuščia...</Alert>
+      <YearSelector
+        yearList={props.yearList}
+        setYearList={props.setYearList}
+        allYearList={props.allYearList}
+        yearLabelStringify={(year, session) =>
+          getShortYearName(year, session) +
+          (noAnsYearList["m8"].includes(year.toString() + session)
+            ? " (be ats.)"
+            : "")
+        }
+        noAnsYearList={noAnsYearList["m8"]}
+        title="Pasirinkite, kurių metų matematikos NMPP 8 kl. užduotis rodyti"
+      />
+      <Accordion>
+        {topics.map((topic) => (
+          <TopicItem
+            key={topic.topic}
+            topicName={topic.name}
+            problemCount={
+              nrTopicLut.filter((x) => {
+                const xInfo = parseProblemFilename(x.filename);
+                return (
+                  x.topic === topic.topic &&
+                  props.yearList.includes(xInfo.year.toString() + xInfo.session)
+                );
+              }).length
+            }
+          >
+            <Nmpp8TopicProblemList
+              nrTopicLutOfTopic={nrTopicLut.filter(
+                (x) => x.topic === topic.topic
+              )}
+              yearList={props.yearList}
+            />
+          </TopicItem>
+        ))}
+      </Accordion>
     </>
   );
 };

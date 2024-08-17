@@ -18,7 +18,7 @@ export default function DesktopHeader() {
     <header>
       <Navbar style={{ boxShadow: "0 2px 8px rgba(0, 0, 0, 0.3)" }}>
         <Container>
-          <Navbar.Brand onClick={() => navigate("/")}>vbesort.lt</Navbar.Brand>
+          <Navbar.Brand onClick={() => navigate("/")}>vbesort. lt</Navbar.Brand>
           <Nav className="me-auto"></Nav>
           <DarkModeButton />
           <Button onClick={handleShow} style={{ marginLeft: "16px" }}>
@@ -38,15 +38,23 @@ export default function DesktopHeader() {
         <Offcanvas.Body>
           <Nav className="flex-column">
             {routes.map((route) => (
-              <Nav.Link
-                key={route.path}
-                onClick={() => {
-                  navigate(route.path);
-                  handleClose();
-                }}
-              >
-                {route.title}
-              </Nav.Link>
+              <>
+                {route.title !== "404" && (
+                  <Nav.Link
+                    key={route.path}
+                    onClick={() => {
+                      navigate(route.path);
+                      handleClose();
+                    }}
+                  >
+                    {route.title === "ATRINKTOS" ? (
+                      <Button>{route.title}</Button>
+                    ) : (
+                      route.title
+                    )}
+                  </Nav.Link>
+                )}
+              </>
             ))}
           </Nav>
         </Offcanvas.Body>

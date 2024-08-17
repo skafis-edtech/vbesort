@@ -33,3 +33,10 @@ Tiesiog reikia paleisti "gen_questions.py" ir jis sugeneruos klausimus į final 
 ### Notes
 
 Labai rekomenduoju greitai peržiūrėti rezultatą, jei klausimas yra per du puslapius jis nesuveikia, ir šiap kartais būna random klaidų
+
+
+### NMPP 8
+pix inspection:
+
+![](./px-inspection-m8.png)
+![](./px-inspection-m8-2.png)

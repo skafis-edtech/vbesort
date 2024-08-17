@@ -10,9 +10,10 @@ import fvNrTopicLut from "../../routes/PhysicsPage/data/nr-topic-lut.json";
 import bvNrTopicLut from "../../routes/BioPage/data/nr-topic-lut.json";
 import ivNrTopicLut from "../../routes/HistPage/data/nr-topic-lut.json";
 import MathPuppProblem from "../MathPuppPage/MathPuppProblem";
-import PhysicsProblem from "../PhysicsPage/PhysicsProblem";
+import PhysicsProblem from "../MathNmpp8Page/Nmpp8Problem";
 import BioProblem from "../BioPage/BioProblem";
 import HistProblem from "../HistPage/HistProblem";
+import Nmpp8Problem from "../MathNmpp8Page/Nmpp8Problem";
 
 const ListPage: React.FC<Components.PageProps> = (props) => {
   const [items, setItems] = useState<string[]>([]);
@@ -72,10 +73,10 @@ const ListPage: React.FC<Components.PageProps> = (props) => {
 
       {items.map((item, index) => {
         const currProblemInfo = parseProblemFilename(item);
-        let probemComponent: React.ReactNode = null;
+        let problemComponent: React.ReactNode = null;
         switch (currProblemInfo.subjectExam) {
           case "mv":
-            probemComponent = (
+            problemComponent = (
               <MathProblem
                 filename={item + ".png"}
                 key={index}
@@ -110,7 +111,7 @@ const ListPage: React.FC<Components.PageProps> = (props) => {
             );
             break;
           case "mp":
-            probemComponent = (
+            problemComponent = (
               <MathPuppProblem
                 key={item}
                 filename={item + ".png"}
@@ -138,7 +139,7 @@ const ListPage: React.FC<Components.PageProps> = (props) => {
             );
             break;
           case "fv":
-            probemComponent = (
+            problemComponent = (
               <PhysicsProblem
                 key={item}
                 filename={item + ".png"}
@@ -150,7 +151,7 @@ const ListPage: React.FC<Components.PageProps> = (props) => {
             );
             break;
           case "bv":
-            probemComponent = (
+            problemComponent = (
               <BioProblem
                 key={item}
                 filename={item + ".png"}
@@ -162,7 +163,7 @@ const ListPage: React.FC<Components.PageProps> = (props) => {
             );
             break;
           case "iv":
-            probemComponent = (
+            problemComponent = (
               <HistProblem
                 key={item}
                 filename={item + ".png"}
@@ -184,14 +185,26 @@ const ListPage: React.FC<Components.PageProps> = (props) => {
               />
             );
             break;
+          case "m8":
+            problemComponent = (
+              <Nmpp8Problem
+                key={item}
+                filename={item + ".png"}
+                answerFilenameOrAnswer={
+                  mvNrTopicLut.find((pr) => pr.filename === item + ".png")
+                    ?.answer
+                }
+                />
+              );
+            break;
           default:
-            probemComponent = <p>Užduotis pagal kodą "{item}" nerasta.</p>;
+            problemComponent = <p>Užduotis pagal kodą "{item}" nerasta.</p>;
         }
         return (
           <div key={index}>
             <hr style={{ border: "3px solid black" }} />
             <h1>{index + 1}.</h1>
-            {probemComponent}
+            {problemComponent}
           </div>
         );
       })}

@@ -10,7 +10,7 @@ import {
 import { Components } from "../../types";
 import ShuffleBar from "../../components/layout/ShuffleBar";
 import YearSelector from "../../components/ui/YearSelector";
-import PhysicsTopicProblemList from "../PhysicsPage/PhysicsTopicProblemList";
+import PhysicsTopicProblemList from "./PhysicsTopicProblemList";
 
 const PhysicsPage: React.FC<Components.PageProps> = (props) => {
   return (
