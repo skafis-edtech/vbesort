@@ -1,5 +1,45 @@
 [
   {
+    "topic": "statistika",
+    "name": "Statistika"
+  },
+  {
+    "topic": "lygtys",
+    "name": "Lygtys"
+  },
+  {
+    "topic": "nelygybes",
+    "name": "Nelygybės"
+  },
+  {
+    "topic": "skaiciavimai",
+    "name": "Skaičiavimai"
+  },
+  {
+    "topic": "geometrija",
+    "name": "Geometrija ir koordinatės"
+  },
+  {
+    "topic": "analizes",
+    "name": "Analizės, mąstymo"
+  },
+  {
+    "topic": "kombinatorika",
+    "name": "Kombinatorika"
+  },
+  {
+    "topic": "procentai",
+    "name": "Procentai, skaičiaus dalis"
+  },
+  {
+    "topic": "skaiciai",
+    "name": "Skaičiai (jų savybės)"
+  },
+  {
+    "topic": "reiskiniai",
+    "name": "Reiškiniai"
+  },
+  {
     "topic": "misc",
     "name": "Kita arba nesurūšiuota"
   }

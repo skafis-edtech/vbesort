@@ -14,6 +14,7 @@ export default function TopicItemHeader({
   return (
     <Accordion.Header onClick={() => setExpanded(!expanded)}>
       <div
+        id={topicName}
         style={{
           display: "flex",
           alignItems: "center",
