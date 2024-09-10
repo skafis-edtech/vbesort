@@ -117,6 +117,9 @@ const AboutPage: React.FC<Components.PageProps> = () => {
           </li>
         </ul>
       </p>
+      <a href="https://www.nsa.smm.lt/egzaminai-ir-pasiekimu-patikrinimai/2024-2025-m-pasiekimu-patikrinimai/lietuviu-kalba/">
+        https://www.nsa.smm.lt/egzaminai-ir-pasiekimu-patikrinimai/2024-2025-m-pasiekimu-patikrinimai/lietuviu-kalba/
+      </a>
 
       <p>
         Užduočių sąlygų, sprendimų ir atsakymų autorinės teisės priklauso
@@ -124,8 +127,7 @@ const AboutPage: React.FC<Components.PageProps> = () => {
         švietimo, mokslo ir sporto ministerijai). Šiuo tinklapiu nepasisavinamos
         jokios autorinės teisės, informacija naudojama tik švietimo tikslais.
         Kilus neaiškumams, klausimams ar norint pareikšti priekaištus, prašome
-        kreiptis el. paštu{" "}
-        <a href="mailto:naglis.suliokas@gmail.com">naglis.suliokas@gmail.com</a>
+        kreiptis el. paštu <a href="mailto:info@skafis.lt">info@skafis.lt</a>
       </p>
 
       <h3>Privatumo politika</h3>

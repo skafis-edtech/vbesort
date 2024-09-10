@@ -17,11 +17,15 @@ const MainPage: React.FC<Components.PageProps> = (props) => {
   return (
     <div>
       <ShuffleBar />
+
       <h1 className="vbesort-title">vbesort.lt</h1>
       <p className="vbesort-description">
         Surūšiuotos VBE bei kitų egzaminų užduotys
       </p>
-
+      <Alert variant="danger">
+        Labai reikia, kad pasidalintumėte gerais lietuvių rašiniais! Rašykite{" "}
+        <a href="mailto:info@skafis.lt">info@skafis.lt</a>
+      </Alert>
       <h1 className="title">Matematikos VBE</h1>
 
       <Alert variant="info">
