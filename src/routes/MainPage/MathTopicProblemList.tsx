@@ -3,6 +3,7 @@ import { useDarkMode } from "../../components/layout/DarkModeContext";
 import { parseProblemFilename, shuffle } from "../../misc";
 import { Accordion } from "react-bootstrap";
 import MathProblem from "./MathProblem";
+import ListMakerProblemContainer from "../../components/ui/ListMakerProblemContainer";
 
 interface TopicProblemListProps {
   yearList: string[];
@@ -44,34 +45,36 @@ const MathTopicProblemList: React.FC<TopicProblemListProps> = ({
         return (
           <div key={problem.filename}>
             <hr style={{ border: "3px solid black" }} />
-            <MathProblem
-              key={problem.filename}
-              filename={problem.filename}
-              answerFilenameOrAnswer={problem.answer}
-              nrTopicLutSubsetForRoot={nrTopicLut
-                .filter((pr) => {
-                  const prInfo = parseProblemFilename(pr.filename);
-                  const isRootOrPrevSub =
-                    (prInfo.year === problemInfo.year &&
-                      prInfo.session === problemInfo.session &&
-                      prInfo.problemNumber < problemInfo.problemNumber &&
-                      prInfo.problemNumber >
-                        Math.floor(problemInfo.problemNumber) &&
-                      prInfo.problemType === "s") ||
-                    (prInfo.year === problemInfo.year &&
-                      prInfo.session === problemInfo.session &&
-                      prInfo.problemNumber ===
-                        Math.floor(problemInfo.problemNumber) &&
-                      prInfo.problemType === "r");
+            <ListMakerProblemContainer filename={problem.filename}>
+              <MathProblem
+                key={problem.filename}
+                filename={problem.filename}
+                answerFilenameOrAnswer={problem.answer}
+                nrTopicLutSubsetForRoot={nrTopicLut
+                  .filter((pr) => {
+                    const prInfo = parseProblemFilename(pr.filename);
+                    const isRootOrPrevSub =
+                      (prInfo.year === problemInfo.year &&
+                        prInfo.session === problemInfo.session &&
+                        prInfo.problemNumber < problemInfo.problemNumber &&
+                        prInfo.problemNumber >
+                          Math.floor(problemInfo.problemNumber) &&
+                        prInfo.problemType === "s") ||
+                      (prInfo.year === problemInfo.year &&
+                        prInfo.session === problemInfo.session &&
+                        prInfo.problemNumber ===
+                          Math.floor(problemInfo.problemNumber) &&
+                        prInfo.problemType === "r");
 
-                  return isRootOrPrevSub;
-                })
-                .sort((a, b) => {
-                  const aInfo = parseProblemFilename(a.filename);
-                  const bInfo = parseProblemFilename(b.filename);
-                  return aInfo.problemNumber - bInfo.problemNumber;
-                })}
-            />
+                    return isRootOrPrevSub;
+                  })
+                  .sort((a, b) => {
+                    const aInfo = parseProblemFilename(a.filename);
+                    const bInfo = parseProblemFilename(b.filename);
+                    return aInfo.problemNumber - bInfo.problemNumber;
+                  })}
+              />
+            </ListMakerProblemContainer>
           </div>
         );
       })}

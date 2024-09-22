@@ -18,7 +18,12 @@ export default function DesktopHeader() {
     <header>
       <Navbar style={{ boxShadow: "0 2px 8px rgba(0, 0, 0, 0.3)" }}>
         <Container>
-          <Navbar.Brand onClick={() => navigate("/")}>vbesort. lt</Navbar.Brand>
+          <Navbar.Brand onClick={() => navigate("/")}>
+            vbesort.lt{" "}
+            <sub>
+              <em>by Skafis</em>
+            </sub>
+          </Navbar.Brand>
           <Nav className="me-auto"></Nav>
           <DarkModeButton />
           <Button onClick={handleShow} style={{ marginLeft: "16px" }}>

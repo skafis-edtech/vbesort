@@ -285,7 +285,18 @@ export const noAnsYearList: { [key: string]: string[] } = {
     "2024g",
     "2024k",
   ],
-  m8: ["20121", "20122", "2013p", "2014p", "2015p", "2016p", "2017p", "2018p", "20231", "20232"],
+  m8: [
+    "20121",
+    "20122",
+    "2013p",
+    "2014p",
+    "2015p",
+    "2016p",
+    "2017p",
+    "2018p",
+    "20231",
+    "20232",
+  ],
   cv: [],
   lv: [],
 };
@@ -380,4 +391,33 @@ export const fracToLetter: { [key: number]: string } = {
   0.7: "G",
   0.8: "H",
   0.9: "I",
+};
+
+// LT parser
+export const getLongType = (type: string) => {
+  const typeNames: { [key: string]: string } = {
+    problema: "Probleminis klausimas",
+    tekstas: "Teksto interpretacija",
+    samprotavimo: "Samprotavimo rašinys",
+    literaturinis: "Literatūrinis rašinys",
+  };
+  return typeNames[type];
+};
+
+//Search
+export const getSearchNeutralText = (text: string) => {
+  const ltToEnLetter: { [key: string]: string } = {
+    ą: "ą",
+    č: "c",
+    ę: "e",
+    ė: "e",
+    į: "i",
+    ū: "u",
+    ų: "u",
+    š: "s",
+    ž: "z",
+  };
+  return text.toLowerCase().replace(/[ąčęėįūųšž]/g, (ltLetter) => {
+    return ltToEnLetter[ltLetter];
+  });
 };

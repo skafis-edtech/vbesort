@@ -1,4 +1,3 @@
-import ListMakerProblemContainer from "../../components/ui/ListMakerProblemContainer";
 import SingleProblem from "../../components/ui/SingleProblem";
 import { getProblemName, parseProblemFilename } from "../../misc";
 
@@ -14,13 +13,13 @@ const BioProblem: React.FC<ProblemProps> = ({
   const problemInfo = parseProblemFilename(filename);
 
   return (
-    <ListMakerProblemContainer filename={filename}>
+    <div>
       <em>{getProblemName(problemInfo)}</em>
       <SingleProblem
         filename={filename}
         answerFilenameOrAnswer={answerFilenameOrAnswer}
       />
-    </ListMakerProblemContainer>
+    </div>
   );
 };
 export default BioProblem;

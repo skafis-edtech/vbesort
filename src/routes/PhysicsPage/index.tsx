@@ -16,13 +16,23 @@ const PhysicsPage: React.FC<Components.PageProps> = (props) => {
   return (
     <>
       <ShuffleBar />
-      <h1 className="vbesort-title">vbesort.lt</h1>
+      <div
+        style={{
+          position: "relative",
+          display: "flex",
+          justifyContent: "center",
+          margin: "fit-content",
+        }}
+      >
+        <h1 className="vbesort-title">vbesort.lt</h1>
+        <em style={{ position: "absolute", right: "30%", bottom: 0 }}>
+          by Skafis
+        </em>
+      </div>{" "}
       <p className="vbesort-description">
         Surūšiuotos VBE bei kitų egzaminų užduotys
       </p>
-
       <h1 className="title">Fizikos VBE</h1>
-
       <Alert variant="warning">
         Special thanks Augustui už surūšiavimą! Kolkas tik pirmųjų dalių
         užduotys (testinės ABCD)

@@ -3,6 +3,7 @@ import { useDarkMode } from "../../components/layout/DarkModeContext";
 import { parseProblemFilename, shuffle } from "../../misc";
 import { Accordion } from "react-bootstrap";
 import BioProblem from "./BioProblem";
+import ListMakerProblemContainer from "../../components/ui/ListMakerProblemContainer";
 
 interface TopicProblemListProps {
   yearList: string[];
@@ -35,7 +36,7 @@ const BioTopicProblemList: React.FC<TopicProblemListProps> = ({
         isShuffleOn
       )
     );
-  }, [yearList, isShuffleOn, nrTopicLut]);
+  }, [yearList, isShuffleOn, nrTopicLut, topicString]);
 
   return (
     <Accordion.Body>
@@ -43,11 +44,13 @@ const BioTopicProblemList: React.FC<TopicProblemListProps> = ({
         return (
           <div key={problem.filename}>
             <hr style={{ border: "3px solid black" }} />
-            <BioProblem
-              key={problem.filename}
-              filename={problem.filename}
-              answerFilenameOrAnswer={problem.answer}
-            />
+            <ListMakerProblemContainer filename={problem.filename}>
+              <BioProblem
+                key={problem.filename}
+                filename={problem.filename}
+                answerFilenameOrAnswer={problem.answer}
+              />
+            </ListMakerProblemContainer>
           </div>
         );
       })}

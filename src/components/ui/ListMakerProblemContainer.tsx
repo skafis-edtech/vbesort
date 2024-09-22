@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { FormCheck, OverlayTrigger, Tooltip } from "react-bootstrap";
+import { FormCheck } from "react-bootstrap";
 import { appendToMakerListUrl, removeFromListUrl } from "../../misc";
 import { useDarkMode } from "../layout/DarkModeContext";
+import { Link } from "react-router-dom";
 
 type ProblemSelectContainerProps = {
   filename: string;
@@ -37,20 +38,20 @@ const ListMakerProblemContainer: React.FC<ProblemSelectContainerProps> = ({
           position: "absolute",
           right: "16px",
           bottom: "50px",
+          display: "flex",
+          flexDirection: "row",
+          gap: "15px",
         }}
       >
-        <OverlayTrigger
-          placement="top"
-          delay={{ show: 700, hide: 100 }}
-          overlay={<Tooltip id="checkbox-tooltip">Pridėti į sąrašą</Tooltip>}
-        >
-          <FormCheck
-            style={{ transform: "scale(1.5)" }}
-            type="checkbox"
-            checked={isAdded}
-            onChange={() => setIsAdded(!isAdded)}
-          />
-        </OverlayTrigger>
+        <FormCheck
+          style={{ transform: "scale(1.5)" }}
+          type="checkbox"
+          checked={isAdded}
+          onChange={() => setIsAdded(!isAdded)}
+        />
+        <em>
+          Pridėt{isAdded ? "a" : "i"} prie <Link to="/list">ATRINKTŲ</Link>
+        </em>
       </div>
     </div>
   );

@@ -1,4 +1,3 @@
-import ListMakerProblemContainer from "../../components/ui/ListMakerProblemContainer";
 import SingleProblem from "../../components/ui/SingleProblem";
 import { getProblemName, parseProblemFilename } from "../../misc";
 
@@ -13,13 +12,13 @@ const Nmpp8Problem: React.FC<PhysicsProblemProps> = ({
 }) => {
   const problemInfo = parseProblemFilename(filename);
   return (
-    <ListMakerProblemContainer filename={filename}>
+    <div>
       <em>{getProblemName(problemInfo)}</em>
       <SingleProblem
         filename={filename}
         answerFilenameOrAnswer={answerFilenameOrAnswer}
       />
-    </ListMakerProblemContainer>
+    </div>
   );
 };
 export default Nmpp8Problem;

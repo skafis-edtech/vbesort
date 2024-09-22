@@ -3,6 +3,7 @@ import { useDarkMode } from "../../components/layout/DarkModeContext";
 import { parseProblemFilename, shuffle } from "../../misc";
 import { Accordion } from "react-bootstrap";
 import HistProblem from "./HistProblem";
+import ListMakerProblemContainer from "../../components/ui/ListMakerProblemContainer";
 
 interface TopicProblemListProps {
   yearList: string[];
@@ -37,7 +38,7 @@ const HistTopicProblemList: React.FC<TopicProblemListProps> = ({
         isShuffleOn
       )
     );
-  }, [yearList, isShuffleOn, nrTopicLut]);
+  }, [yearList, isShuffleOn, nrTopicLut, topicString]);
 
   return (
     <Accordion.Body>
@@ -46,22 +47,24 @@ const HistTopicProblemList: React.FC<TopicProblemListProps> = ({
         return (
           <div key={problem.filename}>
             <hr style={{ border: "3px solid black" }} />
-            <HistProblem
-              key={problem.filename}
-              filename={problem.filename}
-              answerFilenameOrAnswer={problem.answer}
-              nrTopicLutForSources={nrTopicLut.filter((pr) => {
-                const prInfo = parseProblemFilename(pr.filename);
-                const isSource =
-                  prInfo.year === problemInfo.year &&
-                  prInfo.session === problemInfo.session &&
-                  prInfo.problemType === "o" &&
-                  Math.floor(prInfo.problemNumber) ===
-                    problemInfo.problemNumber;
+            <ListMakerProblemContainer filename={problem.filename}>
+              <HistProblem
+                key={problem.filename}
+                filename={problem.filename}
+                answerFilenameOrAnswer={problem.answer}
+                nrTopicLutForSources={nrTopicLut.filter((pr) => {
+                  const prInfo = parseProblemFilename(pr.filename);
+                  const isSource =
+                    prInfo.year === problemInfo.year &&
+                    prInfo.session === problemInfo.session &&
+                    prInfo.problemType === "o" &&
+                    Math.floor(prInfo.problemNumber) ===
+                      problemInfo.problemNumber;
 
-                return isSource;
-              })}
-            />
+                  return isSource;
+                })}
+              />
+            </ListMakerProblemContainer>
           </div>
         );
       })}

@@ -3,6 +3,7 @@ import { useDarkMode } from "../../components/layout/DarkModeContext";
 import { parseProblemFilename, shuffle } from "../../misc";
 import { Accordion } from "react-bootstrap";
 import Nmpp8Problem from "./Nmpp8Problem";
+import ListMakerProblemContainer from "../../components/ui/ListMakerProblemContainer";
 
 interface TopicProblemListProps {
   yearList: string[];
@@ -38,11 +39,13 @@ const Nmpp8TopicProblemList: React.FC<TopicProblemListProps> = ({
       {problemList.map((problem) => (
         <div key={problem.filename}>
           <hr style={{ border: "3px solid black" }} />
-          <Nmpp8Problem
-            key={problem.filename}
-            filename={problem.filename}
-            answerFilenameOrAnswer={problem.answer}
-          />
+          <ListMakerProblemContainer filename={problem.filename}>
+            <Nmpp8Problem
+              key={problem.filename}
+              filename={problem.filename}
+              answerFilenameOrAnswer={problem.answer}
+            />
+          </ListMakerProblemContainer>
         </div>
       ))}
     </Accordion.Body>

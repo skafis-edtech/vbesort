@@ -1,4 +1,3 @@
-import ListMakerProblemContainer from "../../components/ui/ListMakerProblemContainer";
 import SingleProblem from "../../components/ui/SingleProblem";
 import { getProblemName, parseProblemFilename } from "../../misc";
 import MathPuppProblemRoot from "./MathPuppProblemRoot";
@@ -20,7 +19,7 @@ const MathPuppProblem: React.FC<MathPuppProblemProps> = ({
 }) => {
   const problemInfo = parseProblemFilename(filename);
   return (
-    <ListMakerProblemContainer filename={filename}>
+    <div>
       <em>{getProblemName(problemInfo)}</em>
       {nrTopicLutSubsetForRoot.length > 0 && (
         <MathPuppProblemRoot nrTopicLutSubset={nrTopicLutSubsetForRoot} />
@@ -29,7 +28,7 @@ const MathPuppProblem: React.FC<MathPuppProblemProps> = ({
         filename={filename}
         answerFilenameOrAnswer={answerFilenameOrAnswer}
       />
-    </ListMakerProblemContainer>
+    </div>
   );
 };
 export default MathPuppProblem;

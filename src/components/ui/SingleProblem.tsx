@@ -1,7 +1,7 @@
-import { Accordion, Button } from "react-bootstrap";
+import { Accordion } from "react-bootstrap";
 import { noAnsYearList, parseProblemFilename } from "../../misc";
 import "./style.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 interface SingleProblemProps {
   filename: string;
@@ -15,16 +15,6 @@ const SingleProblem: React.FC<SingleProblemProps> = ({
   const problemInfo = parseProblemFilename(filename);
   const problemSrc = `${problemInfo.subjectExam}-problems/${problemInfo.year}/${filename}`;
   const answerSrc = `${problemInfo.subjectExam}-answers/${answerFilenameOrAnswer}`;
-  const [isOverflown, setIsOverflown] = useState(false);
-  const [isOverflownExpanded, setIsOverflownExpanded] = useState(false);
-
-  useEffect(() => {
-    const img = new Image();
-    img.src = problemSrc;
-    img.onload = () => {
-      setIsOverflown(img.height > 300);
-    };
-  }, [problemSrc]);
 
   const [answerExpanded, setAnswerExpanded] = useState(false);
   return (

@@ -4,13 +4,23 @@ import { Components } from "../../types";
 const AboutPage: React.FC<Components.PageProps> = () => {
   return (
     <div style={{ overflowX: "hidden" }}>
-      <h1 className="vbesort-title">vbesort.lt</h1>
+      <div
+        style={{
+          position: "relative",
+          display: "flex",
+          justifyContent: "center",
+          margin: "fit-content",
+        }}
+      >
+        <h1 className="vbesort-title">vbesort.lt</h1>
+        <em style={{ position: "absolute", right: "30%", bottom: 0 }}>
+          by Skafis
+        </em>
+      </div>{" "}
       <p className="vbesort-description">
         Surūšiuotos VBE bei kitų egzaminų užduotys
       </p>
-
       <h1 className="title">Apie</h1>
-
       <Support />
       <h3>Kontaktai</h3>
       <p>
@@ -40,7 +50,6 @@ const AboutPage: React.FC<Components.PageProps> = () => {
         nėra tiksliai apibrėžti, todėl gali būti rūšiavimo netisklumų. Jei
         tokius pastebėjote, rašykite man el. paštu.
       </p>
-
       <p>
         {" "}
         Užduočių šaltiniai:{" "}
@@ -120,7 +129,6 @@ const AboutPage: React.FC<Components.PageProps> = () => {
       <a href="https://www.nsa.smm.lt/egzaminai-ir-pasiekimu-patikrinimai/2024-2025-m-pasiekimu-patikrinimai/lietuviu-kalba/">
         https://www.nsa.smm.lt/egzaminai-ir-pasiekimu-patikrinimai/2024-2025-m-pasiekimu-patikrinimai/lietuviu-kalba/
       </a>
-
       <p>
         Užduočių sąlygų, sprendimų ir atsakymų autorinės teisės priklauso
         Nacionaliniam egzaminų centrui ir Nacionalinei švietimo agentūrai (LR
@@ -129,7 +137,6 @@ const AboutPage: React.FC<Components.PageProps> = () => {
         Kilus neaiškumams, klausimams ar norint pareikšti priekaištus, prašome
         kreiptis el. paštu <a href="mailto:info@skafis.lt">info@skafis.lt</a>
       </p>
-
       <h3>Privatumo politika</h3>
       <p>
         Šis puslapis naudoja Google Analytics bei saugo tinklapio informaciją

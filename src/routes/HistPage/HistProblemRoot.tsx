@@ -2,7 +2,6 @@ import { Accordion } from "react-bootstrap";
 import "../../components/ui/style.css";
 import SingleProblem from "../../components/ui/SingleProblem";
 import { fracToLetter, parseProblemFilename } from "../../misc";
-import { useEffect } from "react";
 
 export default function HistProblemRoot({ filename }: { filename: string }) {
   const sourceInfo = parseProblemFilename(filename);

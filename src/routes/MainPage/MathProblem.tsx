@@ -1,4 +1,3 @@
-import ListMakerProblemContainer from "../../components/ui/ListMakerProblemContainer";
 import SingleProblem from "../../components/ui/SingleProblem";
 import { getProblemName, parseProblemFilename } from "../../misc";
 import MathProblemRoot from "./MathProblemRoot";
@@ -20,7 +19,7 @@ const MathProblem: React.FC<MathProblemProps> = ({
 }) => {
   const problemInfo = parseProblemFilename(filename);
   return (
-    <ListMakerProblemContainer filename={filename}>
+    <div>
       <em>{getProblemName(problemInfo)}</em>
       {problemInfo.problemType === "s" && (
         <MathProblemRoot nrTopicLutSubset={nrTopicLutSubsetForRoot} />
@@ -29,7 +28,7 @@ const MathProblem: React.FC<MathProblemProps> = ({
         filename={filename}
         answerFilenameOrAnswer={answerFilenameOrAnswer}
       />
-    </ListMakerProblemContainer>
+    </div>
   );
 };
 export default MathProblem;

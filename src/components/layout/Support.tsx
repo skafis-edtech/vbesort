@@ -54,9 +54,9 @@ export default function Support() {
         }}
       >
         <li>
-          Pavedimu (Pervedimo paskirtis: Vbesort tinklapio parama + Jūsų norima
-          žinutė): Naglis Šuliokas LT943250092929077836{" "}
-          <CopyButton text="Naglis Šuliokas LT943250092929077836" />{" "}
+          Pavedimu (Pervedimo paskirtis: vbesort.lt tinklapio savanoriška parama
+          + Jūsų norima žinutė): MB SKAFIS LT737300010188621353{" "}
+          <CopyButton text="MB SKAFIS LT737300010188621353" />{" "}
         </li>
       </p>
     </Alert>

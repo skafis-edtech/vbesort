@@ -7,6 +7,8 @@
 - Rašyti/taisyti programos kodą
 - Paremti pinigais
 
+> Turinys truputį pasenęs, užduočių vardinimas pasikeitęs (naudojama dviejų simbvolių indikacija pradžioje, apie kokį egzaminą kalbama, pvz.: "mv" reiškia Matematikos VBE), o užduočių screenshotinimui daugiau naudojama automatizuoti Python scriptai, todėl geriau būtų prisidėti prie kodo, negu aklai screenshotinti, kaip buvo daryta anksčiau.
+
 ## Užduočių ir atsakymų screenshotinimas
 
 Screenshotinti viešai prieinamas užduotis/atsakymus ir jų .png failus užvardinti, kaip nurodyta apačioje. Neprieinamas viešai užduotis/atsakymus, žinoma, irgi galima screenshotint, bet negarantuoju ar galėsiu jas/juos panaudoti.
@@ -140,5 +142,4 @@ Fork šitą repo >>> pakeisk/pataisyk kodą >>> padaryk PR. Galima savarankiška
 
 Padėkai bei kad nebūtų reklamų:
 
-- Revolut pavedimu: `Naglis Šuliokas LT943250092929077836`
-- PayPal donation (su PayPal mokesčiais): [donation link'as](https://www.paypal.com/donate/?hosted_button_id=86R4K9Y6BLSXA)
+- Revolut pavedimu: `MB SKAFIS LT737300010188621353`

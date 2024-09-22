@@ -1,4 +1,3 @@
-import ListMakerProblemContainer from "../../components/ui/ListMakerProblemContainer";
 import SingleProblem from "../../components/ui/SingleProblem";
 import { getProblemName, parseProblemFilename } from "../../misc";
 import HistProblemRoot from "./HistProblemRoot";
@@ -20,7 +19,7 @@ const HistProblem: React.FC<ProblemProps> = ({
 }) => {
   const problemInfo = parseProblemFilename(filename);
   return (
-    <ListMakerProblemContainer filename={filename}>
+    <div>
       <em>{getProblemName(problemInfo)}</em>
       {problemInfo.problemType === "q" && nrTopicLutForSources.length > 0 && (
         <div>
@@ -33,7 +32,7 @@ const HistProblem: React.FC<ProblemProps> = ({
         filename={filename}
         answerFilenameOrAnswer={answerFilenameOrAnswer}
       />
-    </ListMakerProblemContainer>
+    </div>
   );
 };
 export default HistProblem;
