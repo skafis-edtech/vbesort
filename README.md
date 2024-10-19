@@ -58,13 +58,7 @@ Mainly the data about problems is kept in their screenshot filenames. There's a 
 
 ## Automatisation
 
-When you have screenshots in folders in `public/` dir, navigate to the dir with folders that have screenshots (e.g. `math-problems/`) and run this bash script:
-
-```bash
-sh ../../automatisation/filenames-bash/gen-filename-json-recursive.sh
-```
-
-Use generated content for the meta data JSONs.
+See more in github.com/skafis-edtech/autom
 
 ## Contribute
 
