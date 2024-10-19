@@ -60,12 +60,13 @@ const LietPage: React.FC<Components.PageProps> = (props) => {
       <p className="vbesort-description">
         Surūšiuotos VBE bei kitų egzaminų užduotys
       </p>
-      <Alert variant="danger">
-        Labai reikia, kad pasidalintumėte gerais lietuvių rašiniais! Rašykite{" "}
+      <h1 className="title">Lietuvių kalbos VBE</h1>
+      <Alert variant="warning">
+        Dalinkitės gerais lietuvių rašiniais! Rašykite{" "}
         <a href="mailto:info@skafis.lt">info@skafis.lt</a>
       </Alert>
       <Alert variant="info">
-        Oficialūs naujos programos pavyzdžiai:{" "}
+        Čia pateikti oficialūs naujos programos pavyzdžiai (
         <a href="https://www.nsa.smm.lt/wp-content/uploads/2024/09/Aukstesniojo-lygio-probleminio-klausimo-darbu-pavyzdziai-ir-vertinimas.pdf">
           Probleminio klausimo svarstymas
         </a>
@@ -73,8 +74,16 @@ const LietPage: React.FC<Components.PageProps> = (props) => {
         <a href="https://www.nsa.smm.lt/wp-content/uploads/2024/09/GROZINIO-TEKSTO-INTERPRETAVIMAS.Auksteniojo-lygio-darbu-pavyzdziai-ir-ju-vertinimas.pdf">
           Grožinio kūrinio interpretavimas
         </a>
+        ) ir neoficialūs senų VBE rašinių pavyzdžiai, pasidalinti buvusių
+        moksleivių.
       </Alert>
-      <h1 className="title">Lietuvių kalbos VBE</h1>
+      <Alert variant="info">
+        Naujos programos pavyzdžiai žymimi{" "}
+        <strong>Probleminis klausimas</strong> bei{" "}
+        <strong>Teksto interpretacija</strong> žymėmis, senos programos
+        pavyzdžiai žymimi <strong>Samprotavimo rašinys</strong> bei{" "}
+        <strong>Literatūrinis rašinys</strong> žymėmis.
+      </Alert>
       <Form.Control
         size="lg"
         type="text"

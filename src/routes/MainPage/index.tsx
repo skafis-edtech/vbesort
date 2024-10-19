@@ -33,10 +33,6 @@ const MainPage: React.FC<Components.PageProps> = (props) => {
       <p className="vbesort-description">
         Surūšiuotos VBE bei kitų egzaminų užduotys
       </p>
-      <Alert variant="danger">
-        Labai reikia, kad pasidalintumėte gerais lietuvių rašiniais! Rašykite{" "}
-        <a href="mailto:info@skafis.lt">info@skafis.lt</a>
-      </Alert>
       <h1 className="title">Matematikos VBE</h1>
       <Alert variant="info">
         VBE formulynas:{" "}
