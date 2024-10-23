@@ -14,7 +14,7 @@ import LietPage from "./LietPage";
 export const routes = [
   {
     path: "/",
-    title: "Matematikos VBE",
+    title: "Matematikos VBE*",
     element: MainPage,
   },
 

@@ -219,8 +219,8 @@ describe("listMaker", () => {
       expect(result).toEqual("2021 m. pakartotinė sesija");
     });
 
-    it("should return the correct long year name for session 'v'", () => {
-      const result = getLongYearName(2021, "v");
+    it("should return the correct long year name for session 'z'", () => {
+      const result = getLongYearName(2021, "z");
       expect(result).toEqual("2021 m. pavyzdinės užduotys");
     });
 
@@ -261,8 +261,8 @@ describe("listMaker", () => {
       expect(result).toEqual("2021 pak.");
     });
 
-    it("should return the correct short year name for session 'v'", () => {
-      const result = getShortYearName(2021, "v");
+    it("should return the correct short year name for session 'z'", () => {
+      const result = getShortYearName(2021, "z");
       expect(result).toEqual("2021 pav.");
     });
 

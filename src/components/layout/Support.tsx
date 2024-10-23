@@ -43,22 +43,22 @@ function CopyButton({ text }: { text: string }) {
 
 export default function Support() {
   return (
-    <Alert variant="info" style={{ marginBottom: "20px", marginTop: "20px" }}>
-      <h4>
-        <strong>Hmm, matai? Nėra reklamų! Tegu taip ir išlieka ;)</strong>
-      </h4>
-      <p>Būčiau labai dėkingas už piniginę paramą, už įdėtą darbą.</p>
-      <p
-        style={{
-          paddingLeft: "15px",
-        }}
-      >
-        <li>
-          Pavedimu (Pervedimo paskirtis: vbesort.lt tinklapio savanoriška parama
-          + Jūsų norima žinutė): MB SKAFIS LT737300010188621353{" "}
-          <CopyButton text="MB SKAFIS LT737300010188621353" />{" "}
-        </li>
-      </p>
+    <Alert variant="info" style={{ padding: "5px" }}>
+      <h5 style={{ textAlign: "center" }}>
+        Hmm, matai? Nėra reklamų! Tegu taip ir išlieka ;)
+      </h5>
+      <div>
+        <em>Pervedimo paskirtis:</em> vbesort.lt tinklapio savanoriška parama{" "}
+        <em>+ Jūsų norima žinutė</em>{" "}
+        <CopyButton text="vbesort.lt tinklapio savanoriška parama. ..." />
+      </div>
+      <div>
+        <em>Gavėjas:</em> MB SKAFIS <CopyButton text="MB SKAFIS" />
+      </div>
+      <div>
+        <em>Sąskaitos nr.:</em> LT737300010188621353{" "}
+        <CopyButton text="LT737300010188621353" />
+      </div>
     </Alert>
   );
 }

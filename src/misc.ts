@@ -9,7 +9,7 @@ export interface ProblemDetails {
 }
 
 /* 
-mv - Matematikos VBE
+mv - Matematikos VBE ir kiti 11-12 kl. egzaminai
 bv - Biologijos VBE
 iv - Istorijos VBE
 mp - Matematikos PUPP
@@ -20,14 +20,42 @@ export type SubjectExam = "mv" | "bv" | "iv" | "mp" | "fv" | "m8" | "cv" | "lv";
 /*
 g - pagrindinė sesija
 k - pakartotinė sesija
-v - pavyzdinės užduotys
+z - pavyzdinės užduotys
 b - bandomasis egzaminas
 p - užduotys
 1 - I srautas
 2 - II srautas
 3 - III srautas
+v - VBE (II dalis) pavyzdinės užduotys B lygis
+V - VBE (II dalis) pavyzdinės užduotys A lygis
+q - tarpinis patikrinimas B lygis
+Q - tarpinis patikrinimas A lygis
+x - VBE I dalis pavyzdinės užduotys B lygis
+X - VBE I dalis pavyzdinės užduotys A lygis
+P - bandomasis tarpinis patikrinimas
+t - tarpinio patikrinimo pavyzdys B lygis
+T - tarpinio patikrinimo pavyzdys A lygis
+i - 12 kl. įsivertinimo užduotys
 */
-export type Session = "g" | "k" | "v" | "b" | "p" | "1" | "2" | "3";
+export type Session =
+  | "g"
+  | "k"
+  | "z"
+  | "b"
+  | "p"
+  | "1"
+  | "2"
+  | "3"
+  | "v"
+  | "V"
+  | "q"
+  | "Q"
+  | "x"
+  | "X"
+  | "P"
+  | "t"
+  | "T"
+  | "i";
 
 /* 
 w - whole - pilnas uždavinys
@@ -57,7 +85,8 @@ export function parseProblemFilename(filename: string): ProblemDetails {
     const year = filename.substring(2, 6);
     const session: ProblemDetails["session"] = filename.charAt(6) as Session;
     const section: ProblemDetails["section"] =
-      (filename.charAt(7) as Section) || "none";
+      (filename.charAt(7) === "-" ? "none" : (filename.charAt(7) as Section)) ||
+      "none";
     const problemType: ProblemDetails["problemType"] = filename.charAt(
       8
     ) as ProblemType;
@@ -67,12 +96,20 @@ export function parseProblemFilename(filename: string): ProblemDetails {
     if (problemType === "s") {
       number = parseFloat(filename.substring(9, 13));
       level = (
-        filename.charAt(13) === "N" ? "none" : filename.charAt(13)
+        filename.charAt(13) === "N"
+          ? "none"
+          : filename.charAt(13) === "."
+          ? "A"
+          : filename.charAt(13)
       ) as Level;
     } else if (problemType === "w") {
       number = parseInt(filename.substring(9, 11));
       level = (
-        filename.charAt(11) === "N" ? "none" : filename.charAt(11)
+        filename.charAt(11) === "N"
+          ? "none"
+          : filename.charAt(11) === "."
+          ? "A"
+          : filename.charAt(11)
       ) as Level;
     } else if (problemType === "r") {
       number = parseInt(filename.substring(9, 11));
@@ -234,12 +271,22 @@ export function getLongYearName(year: number, session: Session) {
   const sessionNames: { [key in Session]: string } = {
     g: " pagrindinė sesija",
     k: " pakartotinė sesija",
-    v: " pavyzdinės užduotys",
+    z: " pavyzdinės užduotys",
     b: " bandomasis egzaminas",
     p: " užduotys",
     "1": " I srautas",
     "2": " II srautas",
     "3": " III srautas",
+    v: " (II dalis) pavyzdinės užduotys B lygis",
+    V: " (II dalis) pavyzdinės užduotys A lygis",
+    Q: " tarpinis patikrinimas A lygis",
+    q: " tarpinis patikrinimas B lygis",
+    X: " I dalis pavyzdinės užduotys A lygis",
+    x: " I dalis pavyzdinės užduotys B lygis",
+    P: " bandomasis tarpinis patikrinimas",
+    T: " tarpinio patikrinimo pavyzdys A lygis",
+    t: " tarpinio patikrinimo pavyzdys B lygis",
+    i: " 12 kl. įsivertinimo užduotys",
   };
 
   let yearName = `${year} m.${sessionNames[session]}`;
@@ -263,6 +310,10 @@ export const noAnsYearList: { [key: string]: string[] } = {
     "2013g",
     "2011k",
     "2010k",
+    "2024i",
+    "2024Q",
+    "2024q",
+    "2024P",
   ],
   mp: ["2013p"],
   fv: [],
@@ -309,12 +360,22 @@ export function getShortYearName(year: number, session: Session) {
   const sessionNames: { [key in Session]: string } = {
     g: " pag.",
     k: " pak.",
-    v: " pav.",
+    z: " pav.",
     b: " band.",
     p: "",
     "1": " I",
     "2": " II",
     "3": " III",
+    v: " (II d.) pav. B",
+    V: " (II d.) pav. A",
+    Q: " tarp. A",
+    q: " tarp. B",
+    X: " I d. pav. A",
+    x: " I d. pav. B",
+    P: " tarp. band.",
+    T: " tarp. pav. A",
+    t: " tarp. pav. B",
+    i: " įsiv.",
   };
 
   let yearName = `${year}${sessionNames[session]}`;
@@ -323,7 +384,7 @@ export function getShortYearName(year: number, session: Session) {
 
 export function getProblemName(problemDetails: ProblemDetails) {
   const subjectNames: { [key in SubjectExam]: string } = {
-    mv: "Matematikos VBE",
+    mv: "Matematikos VBE*",
     bv: "Biologijos VBE",
     iv: "Istorijos VBE",
     mp: "Matematikos PUPP",

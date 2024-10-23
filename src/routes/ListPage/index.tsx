@@ -72,22 +72,55 @@ const ListPage: React.FC<Components.PageProps> = (props) => {
       )}
 
       {items.map((item, index) => {
-        const currProblemInfo = parseProblemFilename(item);
-        let problemComponent: React.ReactNode = null;
-        switch (currProblemInfo.subjectExam) {
-          case "mv":
-            problemComponent = (
-              <MathProblem
-                filename={item + ".png"}
-                key={index}
-                answerFilenameOrAnswer={
-                  mvNrTopicLut.find((pr) => pr.filename === item + ".png")
-                    ?.answer
-                }
-                nrTopicLutSubsetForRoot={mvNrTopicLut
-                  .filter((pr) => {
+        try {
+          const currProblemInfo = parseProblemFilename(item);
+
+          let problemComponent: React.ReactNode = null;
+          switch (currProblemInfo.subjectExam) {
+            case "mv":
+              problemComponent = (
+                <MathProblem
+                  filename={item + ".png"}
+                  key={index}
+                  answerFilenameOrAnswer={
+                    mvNrTopicLut.find((pr) => pr.filename === item + ".png")
+                      ?.answer
+                  }
+                  nrTopicLutSubsetForRoot={mvNrTopicLut
+                    .filter((pr) => {
+                      const prInfo = parseProblemFilename(pr.filename);
+                      const isRootOrPrevSub =
+                        (prInfo.year === currProblemInfo.year &&
+                          prInfo.session === currProblemInfo.session &&
+                          prInfo.problemNumber <
+                            currProblemInfo.problemNumber &&
+                          prInfo.problemNumber >
+                            Math.floor(currProblemInfo.problemNumber) &&
+                          prInfo.problemType === "s") ||
+                        (prInfo.year === currProblemInfo.year &&
+                          prInfo.session === currProblemInfo.session &&
+                          prInfo.problemNumber ===
+                            Math.floor(currProblemInfo.problemNumber) &&
+                          prInfo.problemType === "r");
+
+                      return isRootOrPrevSub;
+                    })
+                    .sort((a, b) => {
+                      const aInfo = parseProblemFilename(a.filename);
+                      const bInfo = parseProblemFilename(b.filename);
+                      return aInfo.problemNumber - bInfo.problemNumber;
+                    })}
+                />
+              );
+              break;
+            case "mp":
+              problemComponent = (
+                <MathPuppProblem
+                  key={item}
+                  filename={item + ".png"}
+                  nrTopicLutSubsetForRoot={mpNrTopicLut.filter((pr) => {
                     const prInfo = parseProblemFilename(pr.filename);
-                    const isRootOrPrevSub =
+                    return (
                       (prInfo.year === currProblemInfo.year &&
                         prInfo.session === currProblemInfo.session &&
                         prInfo.problemNumber < currProblemInfo.problemNumber &&
@@ -98,115 +131,94 @@ const ListPage: React.FC<Components.PageProps> = (props) => {
                         prInfo.session === currProblemInfo.session &&
                         prInfo.problemNumber ===
                           Math.floor(currProblemInfo.problemNumber) &&
-                        prInfo.problemType === "r");
-
-                    return isRootOrPrevSub;
-                  })
-                  .sort((a, b) => {
-                    const aInfo = parseProblemFilename(a.filename);
-                    const bInfo = parseProblemFilename(b.filename);
-                    return aInfo.problemNumber - bInfo.problemNumber;
+                        prInfo.problemType === "r")
+                    );
                   })}
-              />
-            );
-            break;
-          case "mp":
-            problemComponent = (
-              <MathPuppProblem
-                key={item}
-                filename={item + ".png"}
-                nrTopicLutSubsetForRoot={mpNrTopicLut.filter((pr) => {
-                  const prInfo = parseProblemFilename(pr.filename);
-                  return (
-                    (prInfo.year === currProblemInfo.year &&
-                      prInfo.session === currProblemInfo.session &&
-                      prInfo.problemNumber < currProblemInfo.problemNumber &&
-                      prInfo.problemNumber >
-                        Math.floor(currProblemInfo.problemNumber) &&
-                      prInfo.problemType === "s") ||
-                    (prInfo.year === currProblemInfo.year &&
-                      prInfo.session === currProblemInfo.session &&
-                      prInfo.problemNumber ===
-                        Math.floor(currProblemInfo.problemNumber) &&
-                      prInfo.problemType === "r")
-                  );
-                })}
-                answerFilenameOrAnswer={
-                  mpNrTopicLut.find((pr) => pr.filename === item + ".png")
-                    ?.answer
-                }
-              />
-            );
-            break;
-          case "fv":
-            problemComponent = (
-              <PhysicsProblem
-                key={item}
-                filename={item + ".png"}
-                answerFilenameOrAnswer={
-                  fvNrTopicLut.find((pr) => pr.filename === item + ".png")
-                    ?.answer
-                }
-              />
-            );
-            break;
-          case "bv":
-            problemComponent = (
-              <BioProblem
-                key={item}
-                filename={item + ".png"}
-                answerFilenameOrAnswer={
-                  bvNrTopicLut.find((pr) => pr.filename === item + ".png")
-                    ?.answer
-                }
-              />
-            );
-            break;
-          case "iv":
-            problemComponent = (
-              <HistProblem
-                key={item}
-                filename={item + ".png"}
-                answerFilenameOrAnswer={
-                  ivNrTopicLut.find((pr) => pr.filename === item + ".png")
-                    ?.answer
-                }
-                nrTopicLutForSources={ivNrTopicLut.filter((pr) => {
-                  const prInfo = parseProblemFilename(pr.filename);
-                  const isSource =
-                    prInfo.year === currProblemInfo.year &&
-                    prInfo.session === currProblemInfo.session &&
-                    prInfo.problemType === "o" &&
-                    Math.floor(prInfo.problemNumber) ===
-                      currProblemInfo.problemNumber;
-
-                  return isSource;
-                })}
-              />
-            );
-            break;
-          case "m8":
-            problemComponent = (
-              <Nmpp8Problem
-                key={item}
-                filename={item + ".png"}
-                answerFilenameOrAnswer={
-                  mvNrTopicLut.find((pr) => pr.filename === item + ".png")
-                    ?.answer
-                }
+                  answerFilenameOrAnswer={
+                    mpNrTopicLut.find((pr) => pr.filename === item + ".png")
+                      ?.answer
+                  }
                 />
               );
-            break;
-          default:
-            problemComponent = <p>Užduotis pagal kodą "{item}" nerasta.</p>;
+              break;
+            case "fv":
+              problemComponent = (
+                <PhysicsProblem
+                  key={item}
+                  filename={item + ".png"}
+                  answerFilenameOrAnswer={
+                    fvNrTopicLut.find((pr) => pr.filename === item + ".png")
+                      ?.answer
+                  }
+                />
+              );
+              break;
+            case "bv":
+              problemComponent = (
+                <BioProblem
+                  key={item}
+                  filename={item + ".png"}
+                  answerFilenameOrAnswer={
+                    bvNrTopicLut.find((pr) => pr.filename === item + ".png")
+                      ?.answer
+                  }
+                />
+              );
+              break;
+            case "iv":
+              problemComponent = (
+                <HistProblem
+                  key={item}
+                  filename={item + ".png"}
+                  answerFilenameOrAnswer={
+                    ivNrTopicLut.find((pr) => pr.filename === item + ".png")
+                      ?.answer
+                  }
+                  nrTopicLutForSources={ivNrTopicLut.filter((pr) => {
+                    const prInfo = parseProblemFilename(pr.filename);
+                    const isSource =
+                      prInfo.year === currProblemInfo.year &&
+                      prInfo.session === currProblemInfo.session &&
+                      prInfo.problemType === "o" &&
+                      Math.floor(prInfo.problemNumber) ===
+                        currProblemInfo.problemNumber;
+
+                    return isSource;
+                  })}
+                />
+              );
+              break;
+            case "m8":
+              problemComponent = (
+                <Nmpp8Problem
+                  key={item}
+                  filename={item + ".png"}
+                  answerFilenameOrAnswer={
+                    mvNrTopicLut.find((pr) => pr.filename === item + ".png")
+                      ?.answer
+                  }
+                />
+              );
+              break;
+            default:
+              problemComponent = <p>Užduotis pagal kodą "{item}" nerasta.</p>;
+          }
+          return (
+            <div key={index}>
+              <hr style={{ border: "3px solid black" }} />
+              <h1>{index + 1}.</h1>
+              {problemComponent}
+            </div>
+          );
+        } catch {
+          return (
+            <p>
+              Nuorodos formatas turi formatavimo klaidų. Jei nuoroda sugerenuora
+              senos tinklapio versijos, susisiekite su administratoriumi
+              info@skafis.lt
+            </p>
+          );
         }
-        return (
-          <div key={index}>
-            <hr style={{ border: "3px solid black" }} />
-            <h1>{index + 1}.</h1>
-            {problemComponent}
-          </div>
-        );
       })}
     </div>
   );

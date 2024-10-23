@@ -12,6 +12,7 @@ import {
   parseProblemFilename,
 } from "../../misc";
 import MathTopicProblemList from "./MathTopicProblemList";
+import Support from "../../components/layout/Support";
 
 const MainPage: React.FC<Components.PageProps> = (props) => {
   return (
@@ -33,7 +34,9 @@ const MainPage: React.FC<Components.PageProps> = (props) => {
       <p className="vbesort-description">
         Surūšiuotos VBE bei kitų egzaminų užduotys
       </p>
-      <h1 className="title">Matematikos VBE</h1>
+      <Support />
+      <h1 className="title">Matematikos VBE*</h1>
+      <p>* ir kitos 11-12 kl. egzaminų nesąmonės</p>
       <Alert variant="info">
         VBE formulynas:{" "}
         <a href="https://www.nsa.smm.lt/wp-content/uploads/2024/02/2023-Mat_PRIEDAS_isplestinis_projektas.pdf">
@@ -56,7 +59,7 @@ const MainPage: React.FC<Components.PageProps> = (props) => {
           (!isOfficialMathVbe(year, session) ? "" : " ne oficialu")
         }
         noAnsYearList={noAnsYearList["mv"]}
-        title="Pasirinkite, kurių metų matematikos VBE užduotis rodyti"
+        title="Pasirinkite, kurių metų matematikos VBE* užduotis rodyti"
       />
       <Accordion>
         {topics.map((topic) => (
