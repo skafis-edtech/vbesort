@@ -5,7 +5,7 @@ export default function Footer() {
         © 2024 MB Skafis. Visos teisės saugomos. Susisiekite{" "}
         <a href="mailto:info@skafis.lt">info@skafis.lt</a>
       </p>
-      <p>v2.1.0+ Paskutinį kartą atnaujinta: 2024-08-16</p>
+      <p>v2.1.0+ Paskutinį kartą atnaujinta: 2024-10-23</p>
     </footer>
   );
 }
