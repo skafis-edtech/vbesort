@@ -37,7 +37,7 @@ const ListMakerProblemContainer: React.FC<ProblemSelectContainerProps> = ({
         style={{
           position: "absolute",
           right: "16px",
-          bottom: "50px",
+          top: "5px",
           display: "flex",
           flexDirection: "row",
           gap: "15px",

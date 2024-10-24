@@ -312,7 +312,6 @@ export const noAnsYearList: { [key: string]: string[] } = {
     "2010k",
     "2024i",
     "2024Q",
-    "2024q",
     "2024P",
   ],
   mp: ["2013p"],

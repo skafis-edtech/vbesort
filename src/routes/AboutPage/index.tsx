@@ -1,4 +1,4 @@
-import Support from "../../components/layout/Support";
+import { Alert } from "react-bootstrap";
 import { Components } from "../../types";
 
 const AboutPage: React.FC<Components.PageProps> = () => {
@@ -21,7 +21,27 @@ const AboutPage: React.FC<Components.PageProps> = () => {
         Surūšiuotos VBE bei kitų egzaminų užduotys
       </p>
       <h1 className="title">Apie</h1>
-      <Support />
+      <Alert variant="warning">
+        <h5>
+          Sekite šio bei kitų Skafis tinklapių statusą, naujienas bei
+          bendraukite tarpusavyje{" "}
+          <a href="https://www.facebook.com/share/g/GxkKxrKPeSNoM1nJ/?mibextid=K35XfP">
+            Facebook grupėje
+          </a>
+        </h5>
+      </Alert>
+      <Alert variant="info">
+        Pagrindinis puslapis (užduočių PDF sudarymas){" "}
+        <a href="https://www.skafis.lt">skafis.lt</a>
+      </Alert>
+      <Alert variant="info">
+        Užduočių banko platforma:{" "}
+        <a href="https://bankas.skafis.lt">bankas.skafis.lt</a>
+      </Alert>
+      <Alert variant="info">
+        Testavimo platforma:{" "}
+        <a href="https://testai.skafis.lt">testai.skafis.lt</a>
+      </Alert>
       <h3>Kontaktai</h3>
       <p>
         {" "}
@@ -31,11 +51,11 @@ const AboutPage: React.FC<Components.PageProps> = () => {
       <h3>Tinklapio kodas</h3>
       <p>
         <a
-          href="https://github.com/naglissul/vbe-sort"
+          href="https://github.com/skafis-edtech/vbesort"
           target="_blank"
           rel="noreferrer"
         >
-          https://github.com/naglissul/vbe-sort
+          https://github.com/skafis-edtech/vbesort
         </a>
       </p>
       <p>Mielai prašome prisidėti rašant kodą!</p>
@@ -65,6 +85,12 @@ const AboutPage: React.FC<Components.PageProps> = () => {
             </a>
           </li>
           <li>
+            2015 pakartotinės PUPP užduočių nuoroda (neveikianti tinklapyje):{" "}
+            <a href="https://www.nsa.smm.lt/wp-content/uploads/2021/05/6026_2015_MAT-2_PUP.pdf">
+              https://www.nsa.smm.lt/wp-content/uploads/2021/05/6026_2015_MAT-2_PUP.pdf
+            </a>
+          </li>
+          <li>
             PUPP:{" "}
             <a
               href="https://www.nsa.smm.lt/egzaminai-ir-pasiekimu-patikrinimai/pupp/pupp-uzduotys/"
@@ -75,10 +101,7 @@ const AboutPage: React.FC<Components.PageProps> = () => {
             </a>
           </li>
           <li>
-            2015 pakartotinės PUPP užduočių nuoroda (neveikianti tinklapyje):{" "}
-            <a href="https://www.nsa.smm.lt/wp-content/uploads/2021/05/6026_2015_MAT-2_PUP.pdf">
-              https://www.nsa.smm.lt/wp-content/uploads/2021/05/6026_2015_MAT-2_PUP.pdf
-            </a>
+            https://www.nsa.smm.lt/egzaminai-ir-pasiekimu-patikrinimai/2024-2025-m-pasiekimu-patikrinimai/matematika/
           </li>
           <li>
             2019, 2020 ir 2021 metų matematikos VBE pakartotinių sesijų užduotys
