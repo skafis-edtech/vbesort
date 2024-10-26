@@ -21,8 +21,8 @@ const SingleProblem: React.FC<SingleProblemProps> = ({
     <>
       <div
         style={{
-          paddingTop: "30px",
-          paddingBottom: "30px",
+          marginTop: "10px",
+          marginBottom: "10px",
           overflowX: "auto",
           overflowY: "auto",
         }}
@@ -45,7 +45,7 @@ const SingleProblem: React.FC<SingleProblemProps> = ({
           !noAnsYearList[problemInfo.subjectExam].includes(
             problemInfo.year.toString() + problemInfo.session
           ) && (
-            <Accordion style={{ marginTop: "20px" }}>
+            <Accordion>
               <Accordion.Item eventKey="answer">
                 <Accordion.Header
                   className="root-header"

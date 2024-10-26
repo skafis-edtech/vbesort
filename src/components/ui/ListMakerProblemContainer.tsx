@@ -31,16 +31,15 @@ const ListMakerProblemContainer: React.FC<ProblemSelectContainerProps> = ({
     }
   }, [isAdded, listUrl, setListUrl, filename]);
   return (
-    <div style={{ position: "relative" }}>
+    <div>
       {children}
       <div
         style={{
-          position: "absolute",
-          right: "16px",
-          top: "5px",
           display: "flex",
           flexDirection: "row",
           gap: "15px",
+          justifyContent: "flex-end",
+          marginTop: "5px",
         }}
       >
         <FormCheck
