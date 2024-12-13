@@ -12,7 +12,6 @@ import {
   parseProblemFilename,
 } from "../../misc";
 import MathTopicProblemList from "./MathTopicProblemList";
-import Support from "../../components/layout/Support";
 
 const MainPage: React.FC<Components.PageProps> = (props) => {
   return (
@@ -37,9 +36,9 @@ const MainPage: React.FC<Components.PageProps> = (props) => {
       <p>
         Plačiau puslapyje <a href="/about">"Apie"</a>
       </p>
-      <Support />
       <h1 className="title">Matematikos VBE*</h1>
       <p>* ir kitos 11-12 kl. egzaminų nesąmonės</p>
+      <Alert>Čia rasite VISAS matematikos VBE užduotis nuo 2002 metų!</Alert>
       <Alert variant="info">
         VBE formulynas:{" "}
         <a href="https://www.nsa.smm.lt/wp-content/uploads/2024/02/2023-Mat_PRIEDAS_isplestinis_projektas.pdf">
@@ -49,13 +48,6 @@ const MainPage: React.FC<Components.PageProps> = (props) => {
         <a href="https://www.nsa.smm.lt/wp-content/uploads/2024/02/2023-Mat_PRIEDAS_bendrasis_projektas.pdf">
           B lygis
         </a>
-      </Alert>
-      <Alert>
-        Naujausi oficialūs 11-12 kl. egzaminų pavyzdžiai:
-        <ul>
-          <li>11 kl. - "2024 I d. pav. A" ir "2024 I d. pav. B"</li>
-          <li>12 kl. - "2024 (II d.) pav. A" ir "2024 (II d.) pav. B"</li>
-        </ul>
       </Alert>
       <YearSelector
         yearList={props.yearList}
