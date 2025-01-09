@@ -1,12 +1,14 @@
 # vbesort.lt
 
-Website with Lithuania state exam (liet. VBE) math and other exams' problems, sorted by topic.
+Website with Lithuania state exam (_liet. VBE_) math and other exams' problems, sorted by topic.
 
 Website is deployed here: [https://www.vbesort.lt](https://www.vbesort.lt)
 
+Screenshot content here: [Google drive](https://drive.google.com/drive/folders/1hVOXXNupm-cZZdraDrXthxK3PUeCeY7g?usp=sharing)
+
 The whole website is in Lithuanian (because it is made for Lithuania's students and teachers), all the exam problems are also in Lithuanian.
 
-Use, share, rate, suggest, contribute, support!
+Used by 2k active monthly users!
 
 ## Screenshots
 
