@@ -14,7 +14,7 @@ const AboutPage: React.FC<Components.PageProps> = () => {
       >
         <h1 className="vbesort-title">vbesort.lt</h1>
         <em style={{ position: "absolute", right: "30%", bottom: 0 }}>
-          by Skafis
+          by <a href="https://www.skafis.lt">Skafis</a>
         </em>
       </div>{" "}
       <p className="vbesort-description">
@@ -31,16 +31,7 @@ const AboutPage: React.FC<Components.PageProps> = () => {
         </h5>
       </Alert>
       <Alert variant="info">
-        Pagrindinis puslapis (užduočių PDF sudarymas){" "}
-        <a href="https://www.skafis.lt">skafis.lt</a>
-      </Alert>
-      <Alert variant="info">
-        Užduočių banko platforma:{" "}
-        <a href="https://bankas.skafis.lt">bankas.skafis.lt</a>
-      </Alert>
-      <Alert variant="info">
-        Testavimo platforma:{" "}
-        <a href="https://testai.skafis.lt">testai.skafis.lt</a>
+        Pagrindinis puslapis <a href="https://www.skafis.lt">skafis.lt</a>
       </Alert>
       <h3>Kontaktai</h3>
       <p>

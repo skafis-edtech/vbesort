@@ -14,7 +14,7 @@ const ContributePage: React.FC<Components.PageProps> = () => {
       >
         <h1 className="vbesort-title">vbesort.lt</h1>
         <em style={{ position: "absolute", right: "30%", bottom: 0 }}>
-          by Skafis
+          by <a href="https://www.skafis.lt">Skafis</a>
         </em>
       </div>{" "}
       <p className="vbesort-description">

@@ -59,6 +59,7 @@ export default function Support() {
         <em>Sąskaitos nr.:</em> LT737300010188621353{" "}
         <CopyButton text="LT737300010188621353" />
       </div>
+      <div>Susisiekite el. paštu dėl sąskaitos faktūros.</div>
     </Alert>
   );
 }

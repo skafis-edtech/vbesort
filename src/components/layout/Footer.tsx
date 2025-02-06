@@ -2,10 +2,10 @@ export default function Footer() {
   return (
     <footer>
       <p>
-        © 2024 MB Skafis. Visos teisės saugomos. Susisiekite{" "}
+        © 2025 MB Skafis. Visos teisės saugomos. Susisiekite{" "}
         <a href="mailto:info@skafis.lt">info@skafis.lt</a>
       </p>
-      <p>v2.1.0+ Paskutinį kartą atnaujinta: 2024-10-25</p>
+      <p>v2.1.0+ Paskutinį kartą atnaujinta: 2025-02-06</p>
     </footer>
   );
 }

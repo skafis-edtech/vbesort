@@ -19,9 +19,16 @@ export default function DesktopHeader() {
       <Navbar style={{ boxShadow: "0 2px 8px rgba(0, 0, 0, 0.3)" }}>
         <Container>
           <Navbar.Brand onClick={() => navigate("/")}>
+            <img
+              src="/favicon-32x32.png"
+              alt="vbesort logo"
+              style={{ height: "30px", marginRight: "10px" }}
+            />
             vbesort.lt{" "}
             <sub>
-              <em>by Skafis</em>
+              <em>
+                by <a href="https://www.skafis.lt">Skafis</a>
+              </em>
             </sub>
           </Navbar.Brand>
           <Nav className="me-auto"></Nav>
