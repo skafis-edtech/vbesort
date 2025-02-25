@@ -29,6 +29,7 @@ const AboutPage: React.FC<Components.PageProps> = () => {
             Facebook grupėje
           </a>
         </h5>
+        <h5>Taip pat sekite informaciją https://www.npw.lt</h5>
       </Alert>
       <Alert variant="info">
         Pagrindinis puslapis <a href="https://www.skafis.lt">skafis.lt</a>

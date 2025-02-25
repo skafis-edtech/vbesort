@@ -41,11 +41,11 @@ const MainPage: React.FC<Components.PageProps> = (props) => {
       <Alert>Čia rasite VISAS matematikos VBE užduotis nuo 2002 metų!</Alert>
       <Alert variant="info">
         VBE formulynas:{" "}
-        <a href="https://www.nsa.smm.lt/wp-content/uploads/2024/02/2023-Mat_PRIEDAS_isplestinis_projektas.pdf">
+        <a href="https://www.nsa.smm.lt/wp-content/uploads/2025/02/VBE-formuliu-rinkinys-A.pdf">
           A lygis
         </a>
         ,{" "}
-        <a href="https://www.nsa.smm.lt/wp-content/uploads/2024/02/2023-Mat_PRIEDAS_bendrasis_projektas.pdf">
+        <a href="https://www.nsa.smm.lt/wp-content/uploads/2024/10/VBE-formuliu-rinkinys-B-2024-10-30.pdf">
           B lygis
         </a>
       </Alert>
