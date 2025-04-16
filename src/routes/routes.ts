@@ -11,6 +11,7 @@ import MathNmpp8Page from "./MathNmpp8Page";
 import ChemPage from "./ChemPage";
 import LietPage from "./LietPage";
 import MockExamPage from "./MockExamPage";
+import ExamQuestionPage from "./ExamQuestionPage";
 
 export type Route = {
     path: string;
@@ -92,7 +93,6 @@ export const routes: Route[] = [
         filepath: "/ContributePage",
         element: ContributePage,
     },
-
     {
         path: "*",
         title: "404",

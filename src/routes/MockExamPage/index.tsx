@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Container, Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import { Components } from "../../types";
 import { routes } from "../routes";
 import ExamSelector from "./components/ExamSelector";
@@ -12,6 +13,7 @@ interface Topic {
 }
 
 const MockExamPage: React.FC<Components.PageProps> = () => {
+    const navigate = useNavigate();
     const [selectedExam, setSelectedExam] = useState<string | null>(null);
     const [topics, setTopics] = useState<Topic[]>([]);
     const [selectedTopics, setSelectedTopics] = useState<string[]>([]);
@@ -61,11 +63,12 @@ const MockExamPage: React.FC<Components.PageProps> = () => {
     };
 
     const handleStartExam = () => {
-        // TODO: Implement exam start functionality
-        console.log("Starting exam with:", {
-            selectedExam,
-            selectedTopics,
-            questionCount,
+        navigate("/examquestion", {
+            state: {
+                selectedExam,
+                selectedTopics,
+                questionCount,
+            },
         });
     };
 
