@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, Row, Col } from "react-bootstrap";
-import { Route } from "../../../types";
+import { type Route } from "../../routes";
 
 interface ExamSelectorProps {
     examRoutes: Route[];
@@ -25,7 +25,7 @@ const ExamSelector: React.FC<ExamSelectorProps> = ({
                                     ? "border-primary"
                                     : ""
                             }`}
-                            onClick={() => onExamSelect(route.path)}
+                            onClick={() => onExamSelect(route.filepath)}
                             style={{ cursor: "pointer" }}
                         >
                             <Card.Body>

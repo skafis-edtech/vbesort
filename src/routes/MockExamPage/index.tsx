@@ -21,7 +21,7 @@ const MockExamPage: React.FC<Components.PageProps> = () => {
     // Filter out the routes we don't want to show
     const examRoutes = routes.filter(
         (route) =>
-            !["404", "Apie", "ATRINKTOS", "Prisidėk", "Pasibandyk"].includes(
+            !["404", "Apie", "ATRINKTOS", "Prisidėk", "Testai"].includes(
                 route.title
             )
     );
@@ -31,10 +31,9 @@ const MockExamPage: React.FC<Components.PageProps> = () => {
             const loadTopics = async () => {
                 try {
                     setError(null);
-                    const examPath = selectedExam.substring(1);
-                    const topicsModule = await import(
-                        `../routes/${examPath}/data/topics-names-list.json`
-                    );
+                    const path = `../${selectedExam}/data/topics-names-list.json`;
+                    console.log(selectedExam);
+                    const topicsModule = await import(path);
                     setTopics(topicsModule.default);
                     setSelectedTopics([]); // Reset selected topics when exam changes
                 } catch (error) {
@@ -74,14 +73,11 @@ const MockExamPage: React.FC<Components.PageProps> = () => {
 
     return (
         <Container className="py-4">
-            <h2 className="text-center mb-5">Egzamino konfigūracija</h2>
-
             <ExamSelector
                 examRoutes={examRoutes}
                 selectedExam={selectedExam}
                 onExamSelect={setSelectedExam}
             />
-
             <TopicSelector
                 topics={topics}
                 selectedTopics={selectedTopics}
@@ -89,7 +85,6 @@ const MockExamPage: React.FC<Components.PageProps> = () => {
                 error={error}
                 disabled={!selectedExam}
             />
-
             <QuestionCountSelector
                 questionCount={questionCount}
                 onQuestionCountChange={setQuestionCount}
