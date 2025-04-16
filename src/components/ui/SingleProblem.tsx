@@ -35,6 +35,7 @@ const SingleProblem: React.FC<SingleProblemProps> = ({
         isImage,
         problemInfo,
         noAns,
+        answerExpanded,
     });
 
     return (
@@ -62,70 +63,64 @@ const SingleProblem: React.FC<SingleProblemProps> = ({
 
             <div>
                 {answerFilenameOrAnswer && !noAns && (
-                    <Accordion>
+                    <Accordion activeKey={answerExpanded ? "answer" : ""}>
                         <Accordion.Item eventKey="answer">
                             <Accordion.Header
-                                className="root-header"
                                 onClick={() =>
                                     setAnswerExpanded(!answerExpanded)
                                 }
                             >
                                 Atsakymas {imageError ? "(Failed to load)" : ""}
                             </Accordion.Header>
-                            {answerExpanded && (
-                                <Accordion.Body>
-                                    {!isImage ? (
-                                        <h3>{answerFilenameOrAnswer}</h3>
-                                    ) : (
-                                        <div
-                                            className="single-problem"
+                            <Accordion.Body>
+                                {!isImage ? (
+                                    <h3>{answerFilenameOrAnswer}</h3>
+                                ) : (
+                                    <div
+                                        className="single-problem"
+                                        style={{
+                                            overflowX: "auto",
+                                        }}
+                                    >
+                                        <img
+                                            loading="lazy"
+                                            alt={answerFilenameOrAnswer}
+                                            src={answerSrc}
                                             style={{
+                                                width: "auto",
+                                                height: "auto",
+                                                maxWidth: "900px",
                                                 overflowX: "auto",
-                                                display: answerExpanded
-                                                    ? "block"
-                                                    : "none",
                                             }}
-                                        >
-                                            <img
-                                                loading="lazy"
-                                                alt={answerFilenameOrAnswer}
-                                                src={answerSrc}
+                                            onError={(e) => {
+                                                const error = `Failed to load answer image: ${answerSrc}`;
+                                                console.error(error);
+                                                setImageError(error);
+                                                // Don't hide the image element completely
+                                                e.currentTarget.style.opacity =
+                                                    "0.5";
+                                            }}
+                                            onLoad={() => {
+                                                console.log(
+                                                    "Successfully loaded answer image:",
+                                                    answerSrc
+                                                );
+                                                setImageError(null);
+                                            }}
+                                        />
+                                        {imageError && (
+                                            <div
                                                 style={{
-                                                    width: "auto",
-                                                    height: "auto",
-                                                    maxWidth: "900px",
-                                                    overflowX: "auto",
+                                                    color: "red",
+                                                    marginTop: "10px",
                                                 }}
-                                                onError={(e) => {
-                                                    const error = `Failed to load answer image: ${answerSrc}`;
-                                                    console.error(error);
-                                                    setImageError(error);
-                                                    // Don't hide the image element completely
-                                                    e.currentTarget.style.opacity =
-                                                        "0.5";
-                                                }}
-                                                onLoad={() => {
-                                                    console.log(
-                                                        "Successfully loaded answer image:",
-                                                        answerSrc
-                                                    );
-                                                    setImageError(null);
-                                                }}
-                                            />
-                                            {imageError && (
-                                                <div
-                                                    style={{
-                                                        color: "red",
-                                                        marginTop: "10px",
-                                                    }}
-                                                >
-                                                    {imageError}
-                                                </div>
-                                            )}
-                                        </div>
-                                    )}
-                                </Accordion.Body>
-                            )}
+                                            >
+                                                {imageError}
+                                            </div>
+                                        )}
+                                    </div>
+                                )}
+                            </Accordion.Body>
                         </Accordion.Item>
                     </Accordion>
                 )}
