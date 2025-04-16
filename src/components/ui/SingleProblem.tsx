@@ -1,7 +1,7 @@
 import { Accordion } from "react-bootstrap";
 import { noAnsYearList, parseProblemFilename } from "../../misc";
 import "./style.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 interface SingleProblemProps {
     filename: string;
@@ -23,6 +23,11 @@ const SingleProblem: React.FC<SingleProblemProps> = ({
 
     const [imageError, setImageError] = useState<string | null>(null);
     const [answerExpanded, setAnswerExpanded] = useState(defaultExpanded);
+
+    // Add useEffect to update answerExpanded when defaultExpanded changes
+    useEffect(() => {
+        setAnswerExpanded(defaultExpanded);
+    }, [defaultExpanded]);
 
     const noAns = noAnsYearList[problemInfo.subjectExam].includes(
         problemInfo.year.toString() + problemInfo.session
