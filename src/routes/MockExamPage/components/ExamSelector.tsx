@@ -21,7 +21,7 @@ const ExamSelector: React.FC<ExamSelectorProps> = ({
                     <Col key={route.path}>
                         <Card
                             className={`h-100 ${
-                                selectedExam === route.path
+                                selectedExam === route.filepath
                                     ? "border-primary"
                                     : ""
                             }`}
@@ -32,7 +32,7 @@ const ExamSelector: React.FC<ExamSelectorProps> = ({
                                 <Card.Title className="text-center">
                                     {route.title}
                                 </Card.Title>
-                                {selectedExam === route.path && (
+                                {selectedExam === route.filepath && (
                                     <div className="text-center mt-2">
                                         <span className="text-primary">
                                             ✓ Pasirinkta
