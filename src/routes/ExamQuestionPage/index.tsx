@@ -1,19 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Container, ProgressBar, Button, Card } from "react-bootstrap";
+import { Container, ProgressBar, Button } from "react-bootstrap";
 import { useLocation, useNavigate } from "react-router-dom";
-import SingleProblem from "../../components/ui/SingleProblem";
-
-interface ExamState {
-    selectedExam: string;
-    selectedTopics: string[];
-    questionCount: number;
-}
-
-interface Question {
-    filename: string;
-    answer?: string;
-    topic: string;
-}
+import { noAnsYearList, parseProblemFilename } from "../../misc";
+import ProblemRenderer, { Question, ExamState } from "./ProblemRenderer";
 
 const ExamQuestionPage: React.FC = () => {
     const location = useLocation();
@@ -23,6 +12,7 @@ const ExamQuestionPage: React.FC = () => {
     const [showAnswer, setShowAnswer] = useState(false);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
+    const [initialConditions, setInitialConditions] = useState<Question[]>([]);
 
     const examState = location.state as ExamState;
 
@@ -37,9 +27,17 @@ const ExamQuestionPage: React.FC = () => {
                 const topicPath = `../${examState.selectedExam}/data/nr-topic-lut.json`;
                 const questions = await import(topicPath);
                 for (const question of questions.default) {
+                    const problemInfo = parseProblemFilename(question.filename);
+                    console.log(problemInfo);
                     if (
                         !examState.selectedTopics.includes(question.topic) ||
-                        !question.answer
+                        !question.answer ||
+                        question.answer === "SA nepaskelbtas atsakymas" ||
+                        question.answer.includes("(ne oficialu)") ||
+                        question.answer === "Z" ||
+                        noAnsYearList[problemInfo.subjectExam].includes(
+                            problemInfo.year.toString() + problemInfo.session
+                        )
                     ) {
                         continue;
                     }
@@ -65,6 +63,38 @@ const ExamQuestionPage: React.FC = () => {
             navigate("/mockexam");
         }
     }, [examState, navigate]);
+
+    useEffect(() => {
+        // When current question changes, check if it has initial conditions
+        if (questions[currentQuestionIndex]) {
+            const problemInfo = parseProblemFilename(
+                questions[currentQuestionIndex].filename
+            );
+            if (problemInfo.problemType === "s") {
+                // Load initial conditions for this question
+                const topicPath = `../${examState.selectedExam}/data/nr-topic-lut.json`;
+                import(topicPath).then((module) => {
+                    const allQuestions = module.default;
+                    // Find questions that are part of the same problem set
+                    const relatedQuestions = allQuestions.filter(
+                        (q: Question) => {
+                            const qInfo = parseProblemFilename(q.filename);
+                            return (
+                                qInfo.year === problemInfo.year &&
+                                qInfo.session === problemInfo.session &&
+                                Math.floor(qInfo.problemNumber) ===
+                                    Math.floor(problemInfo.problemNumber) &&
+                                qInfo.problemType === "r"
+                            );
+                        }
+                    );
+                    setInitialConditions(relatedQuestions);
+                });
+            } else {
+                setInitialConditions([]);
+            }
+        }
+    }, [currentQuestionIndex, questions, examState.selectedExam]);
 
     const handleNextQuestion = () => {
         if (currentQuestionIndex < questions.length - 1) {
@@ -106,6 +136,7 @@ const ExamQuestionPage: React.FC = () => {
     }
 
     const currentQuestion = questions[currentQuestionIndex];
+    const problemInfo = parseProblemFilename(currentQuestion.filename);
 
     return (
         <Container className="py-4">
@@ -116,16 +147,20 @@ const ExamQuestionPage: React.FC = () => {
                 />
             </div>
 
-            <Card className="mb-4">
-                <Card.Body>
-                    <SingleProblem
-                        filename={currentQuestion.filename}
-                        answerFilenameOrAnswer={
-                            showAnswer ? currentQuestion.answer : undefined
-                        }
-                    />
-                </Card.Body>
-            </Card>
+            <h5 className="mb-3">
+                {problemInfo.year} m.{" "}
+                {problemInfo.session === "k" ? "kartojimo" : "pagrindinė"}{" "}
+                sesija, {Math.floor(problemInfo.problemNumber)} klausimas
+                <span className="text-muted ms-2">
+                    ({currentQuestion.filename.split(".")[0]})
+                </span>
+            </h5>
+
+            <ProblemRenderer
+                currentQuestion={currentQuestion}
+                showAnswer={showAnswer}
+                initialConditions={initialConditions}
+            />
 
             <div className="d-flex justify-content-between align-items-center">
                 <Button
