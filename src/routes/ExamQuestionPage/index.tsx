@@ -34,16 +34,16 @@ const ExamQuestionPage: React.FC = () => {
 
                 // Load questions for selected topics
                 const allQuestions: Question[] = [];
-                for (const topic of examState.selectedTopics) {
-                    const path = `../${examState.selectedExam}/data/${topic}/topic-lut.json`;
-                    const topicModule = await import(path);
-                    const topicQuestions = topicModule.default.map(
-                        (q: any) => ({
-                            ...q,
-                            topic,
-                        })
-                    );
-                    allQuestions.push(...topicQuestions);
+                const topicPath = `../${examState.selectedExam}/data/nr-topic-lut.json`;
+                const questions = await import(topicPath);
+                for (const question of questions.default) {
+                    if (
+                        !examState.selectedTopics.includes(question.topic) ||
+                        !question.answer
+                    ) {
+                        continue;
+                    }
+                    allQuestions.push(question);
                 }
 
                 // Randomly select questions

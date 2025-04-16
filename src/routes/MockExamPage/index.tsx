@@ -34,7 +34,6 @@ const MockExamPage: React.FC<Components.PageProps> = () => {
                 try {
                     setError(null);
                     const path = `../${selectedExam}/data/topics-names-list.json`;
-                    console.log(selectedExam);
                     const topicsModule = await import(path);
                     setTopics(topicsModule.default);
                     setSelectedTopics([]); // Reset selected topics when exam changes
