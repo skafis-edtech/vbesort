@@ -1,8 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { Container, ProgressBar, Button } from "react-bootstrap";
+import { Container, ProgressBar, Button, ButtonGroup } from "react-bootstrap";
 import { useLocation, useNavigate } from "react-router-dom";
 import { noAnsYearList, parseProblemFilename } from "../../misc";
 import ProblemRenderer, { Question, ExamState } from "./ProblemRenderer";
+import ExamResults from "./ExamResults";
+
+interface AnswerRecord {
+    isCorrect: boolean;
+    answered: boolean;
+}
 
 const ExamQuestionPage: React.FC = () => {
     const location = useLocation();
@@ -13,6 +19,8 @@ const ExamQuestionPage: React.FC = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const [initialConditions, setInitialConditions] = useState<Question[]>([]);
+    const [answers, setAnswers] = useState<AnswerRecord[]>([]);
+    const [showResults, setShowResults] = useState(false);
 
     const examState = location.state as ExamState;
 
@@ -25,7 +33,7 @@ const ExamQuestionPage: React.FC = () => {
                 // Load questions for selected topics
                 const allQuestions: Question[] = [];
                 const topicPath = `../${examState.selectedExam}/data/nr-topic-lut.json`;
-                const questions = await import(topicPath);
+                const questions = await import(/* @vite-ignore */ topicPath);
                 for (const question of questions.default) {
                     const problemInfo = parseProblemFilename(question.filename);
                     console.log(problemInfo);
@@ -46,7 +54,18 @@ const ExamQuestionPage: React.FC = () => {
 
                 // Randomly select questions
                 const shuffled = allQuestions.sort(() => 0.5 - Math.random());
-                setQuestions(shuffled.slice(0, examState.questionCount));
+                const selectedQuestions = shuffled.slice(
+                    0,
+                    examState.questionCount
+                );
+                setQuestions(selectedQuestions);
+                // Initialize answers array
+                setAnswers(
+                    new Array(selectedQuestions.length).fill({
+                        isCorrect: false,
+                        answered: false,
+                    })
+                );
                 setLoading(false);
             } catch (error) {
                 console.error("Failed to load questions:", error);
@@ -73,7 +92,7 @@ const ExamQuestionPage: React.FC = () => {
             if (problemInfo.problemType === "s") {
                 // Load initial conditions for this question
                 const topicPath = `../${examState.selectedExam}/data/nr-topic-lut.json`;
-                import(topicPath).then((module) => {
+                import(/* @vite-ignore */ topicPath).then((module) => {
                     const allQuestions = module.default;
                     // Find questions that are part of the same problem set
                     const relatedQuestions = allQuestions.filter(
@@ -110,7 +129,31 @@ const ExamQuestionPage: React.FC = () => {
         }
     };
 
-    const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
+    const handleAnswerMark = (isCorrect: boolean) => {
+        setAnswers((prev) => {
+            const newAnswers = [...prev];
+            newAnswers[currentQuestionIndex] = { isCorrect, answered: true };
+            return newAnswers;
+        });
+
+        // If it's the last question, show results
+        if (currentQuestionIndex === questions.length - 1) {
+            setShowResults(true);
+        } else {
+            // Otherwise, advance to next question
+            setCurrentQuestionIndex((prev) => prev + 1);
+            setShowAnswer(false);
+        }
+    };
+
+    const getStats = () => {
+        const answeredQuestions = answers.filter((a) => a.answered);
+        const correctAnswers = answeredQuestions.filter((a) => a.isCorrect);
+        return {
+            total: answeredQuestions.length,
+            correct: correctAnswers.length,
+        };
+    };
 
     if (loading) {
         return (
@@ -135,6 +178,16 @@ const ExamQuestionPage: React.FC = () => {
         );
     }
 
+    if (showResults) {
+        const stats = getStats();
+        return (
+            <ExamResults
+                totalAnswered={stats.total}
+                correctAnswers={stats.correct}
+            />
+        );
+    }
+
     const currentQuestion = questions[currentQuestionIndex];
     const problemInfo = parseProblemFilename(currentQuestion.filename);
 
@@ -142,7 +195,7 @@ const ExamQuestionPage: React.FC = () => {
         <Container className="py-4">
             <div className="mb-4">
                 <ProgressBar
-                    now={progress}
+                    now={((currentQuestionIndex + 1) / questions.length) * 100}
                     label={`${currentQuestionIndex + 1} / ${questions.length}`}
                 />
             </div>
@@ -162,42 +215,52 @@ const ExamQuestionPage: React.FC = () => {
                 initialConditions={initialConditions}
             />
 
-            <div className="d-flex justify-content-between align-items-center">
-                <Button
-                    variant="secondary"
-                    onClick={handlePreviousQuestion}
-                    disabled={currentQuestionIndex === 0}
-                >
-                    ← Ankstesnis
-                </Button>
-
-                <Button
-                    variant="primary"
-                    onClick={() => setShowAnswer(true)}
-                    disabled={showAnswer}
-                >
-                    Rodyti atsakymą
-                </Button>
-
-                <Button
-                    variant="secondary"
-                    onClick={handleNextQuestion}
-                    disabled={currentQuestionIndex === questions.length - 1}
-                >
-                    Sekantis →
-                </Button>
-            </div>
-
-            {currentQuestionIndex === questions.length - 1 && showAnswer && (
-                <div className="text-center mt-4">
+            <div className="d-flex flex-column align-items-center gap-3">
+                {!showAnswer ? (
                     <Button
                         variant="primary"
-                        onClick={() => navigate("/mockexam")}
+                        onClick={() => setShowAnswer(true)}
+                        className="w-auto"
                     >
-                        Baigti egzaminą
+                        Rodyti atsakymą
+                    </Button>
+                ) : (
+                    <ButtonGroup>
+                        <Button
+                            variant="success"
+                            onClick={() => handleAnswerMark(true)}
+                            disabled={answers[currentQuestionIndex]?.answered}
+                        >
+                            Atsakiau teisingai
+                        </Button>
+                        <Button
+                            variant="danger"
+                            onClick={() => handleAnswerMark(false)}
+                            disabled={answers[currentQuestionIndex]?.answered}
+                        >
+                            Atsakiau neteisingai
+                        </Button>
+                    </ButtonGroup>
+                )}
+
+                <div className="d-flex justify-content-between w-100">
+                    <Button
+                        variant="secondary"
+                        onClick={handlePreviousQuestion}
+                        disabled={currentQuestionIndex === 0}
+                    >
+                        ← Ankstesnis
+                    </Button>
+
+                    <Button
+                        variant="secondary"
+                        onClick={handleNextQuestion}
+                        disabled={currentQuestionIndex === questions.length - 1}
+                    >
+                        Sekantis →
                     </Button>
                 </div>
-            )}
+            </div>
         </Container>
     );
 };

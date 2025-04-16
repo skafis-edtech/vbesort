@@ -23,9 +23,17 @@ const MockExamPage: React.FC<Components.PageProps> = () => {
     // Filter out the routes we don't want to show
     const examRoutes = routes.filter(
         (route) =>
-            !["404", "Apie", "ATRINKTOS", "Prisidėk", "Testai"].includes(
-                route.title
-            )
+            ![
+                "/chem",
+                "/liet",
+                "/list",
+                "/about",
+                "/mockexam",
+                "*",
+                "/contribute",
+                "/hist",
+                "/math-nmpp8",
+            ].includes(route.path)
     );
 
     useEffect(() => {
@@ -34,7 +42,7 @@ const MockExamPage: React.FC<Components.PageProps> = () => {
                 try {
                     setError(null);
                     const path = `../${selectedExam}/data/topics-names-list.json`;
-                    const topicsModule = await import(path);
+                    const topicsModule = await import(/* @vite-ignore */ path);
                     setTopics(topicsModule.default);
                     setSelectedTopics([]); // Reset selected topics when exam changes
                 } catch (error) {
