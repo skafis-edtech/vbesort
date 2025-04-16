@@ -33,16 +33,6 @@ const SingleProblem: React.FC<SingleProblemProps> = ({
         problemInfo.year.toString() + problemInfo.session
     );
 
-    // Log when component mounts or answer changes
-    console.log("Attempting to load answer:", {
-        answerSrc,
-        answerFilenameOrAnswer,
-        isImage,
-        problemInfo,
-        noAns,
-        answerExpanded,
-    });
-
     return (
         <>
             <div
@@ -106,10 +96,6 @@ const SingleProblem: React.FC<SingleProblemProps> = ({
                                                     "0.5";
                                             }}
                                             onLoad={() => {
-                                                console.log(
-                                                    "Successfully loaded answer image:",
-                                                    answerSrc
-                                                );
                                                 setImageError(null);
                                             }}
                                         />

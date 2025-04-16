@@ -36,7 +36,6 @@ const ExamQuestionPage: React.FC = () => {
                 const questions = await import(/* @vite-ignore */ topicPath);
                 for (const question of questions.default) {
                     const problemInfo = parseProblemFilename(question.filename);
-                    console.log(problemInfo);
                     if (
                         !examState.selectedTopics.includes(question.topic) ||
                         !question.answer ||
