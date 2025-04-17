@@ -6,6 +6,7 @@ import { routes } from "../routes";
 import ExamSelector from "./components/ExamSelector";
 import TopicSelector from "./components/TopicSelector";
 import QuestionCountSelector from "./components/QuestionCountSelector";
+import { noAnsYearList, parseProblemFilename } from "../../misc";
 
 interface Topic {
   topic: string;
@@ -19,6 +20,9 @@ const MockExamPage: React.FC<Components.PageProps> = () => {
   const [selectedTopics, setSelectedTopics] = useState<string[]>([]);
   const [questionCount, setQuestionCount] = useState<number>(10);
   const [error, setError] = useState<string | null>(null);
+  const [questionCounts, setQuestionCounts] = useState<{
+    [key: string]: number;
+  }>({});
 
   // Filter out the routes we don't want to show
   const examRoutes = routes.filter(
@@ -41,20 +45,52 @@ const MockExamPage: React.FC<Components.PageProps> = () => {
       const loadTopics = async () => {
         try {
           setError(null);
-          const path = `../${selectedExam}/data/topics-names-list.json`;
-          const topicsModule = await import(/* @vite-ignore */ path);
+          const topicsPath = `../${selectedExam}/data/topics-names-list.json`;
+          const questionsPath = `../${selectedExam}/data/nr-topic-lut.json`;
+          const [topicsModule, questionsModule] = await Promise.all([
+            import(/* @vite-ignore */ topicsPath),
+            import(/* @vite-ignore */ questionsPath),
+          ]);
+
           setTopics(topicsModule.default);
+
+          // Calculate question counts per topic
+          const counts: { [key: string]: number } = {};
+          questionsModule.default.forEach(
+            (question: {
+              topic: string;
+              filename: string;
+              answer?: string;
+            }) => {
+              const problemInfo = parseProblemFilename(question.filename);
+              if (
+                question.answer &&
+                question.answer !== "SA nepaskelbtas atsakymas" &&
+                !question.answer.includes("(ne oficialu)") &&
+                question.answer !== "Z" &&
+                !noAnsYearList[problemInfo.subjectExam]?.includes(
+                  problemInfo.year.toString() + problemInfo.session
+                )
+              ) {
+                counts[question.topic] = (counts[question.topic] || 0) + 1;
+              }
+            }
+          );
+          setQuestionCounts(counts);
+
           setSelectedTopics([]); // Reset selected topics when exam changes
         } catch (error) {
           console.error("Failed to load topics:", error);
           setError("Nepavyko įkelti temų. Prašome bandyti dar kartą.");
           setTopics([]);
+          setQuestionCounts({});
         }
       };
       loadTopics();
     } else {
       setTopics([]);
       setSelectedTopics([]);
+      setQuestionCounts({});
     }
   }, [selectedExam]);
 
@@ -81,6 +117,7 @@ const MockExamPage: React.FC<Components.PageProps> = () => {
 
   return (
     <Container className="py-4">
+      <h2 className="text-center mb-4">Bandomasis egzaminas</h2>
       <ExamSelector
         examRoutes={examRoutes}
         selectedExam={selectedExam}
@@ -92,20 +129,18 @@ const MockExamPage: React.FC<Components.PageProps> = () => {
         onTopicSelect={handleTopicSelect}
         error={error}
         disabled={!selectedExam}
+        questionCounts={questionCounts}
       />
       <QuestionCountSelector
         questionCount={questionCount}
         onQuestionCountChange={setQuestionCount}
-        disabled={!selectedExam || selectedTopics.length === 0}
-        maxQuestions={50}
+        disabled={!canStartExam}
       />
-
-      <div className="text-center mt-5">
+      <div className="text-center mt-4">
         <Button
           variant="primary"
-          size="lg"
-          disabled={!canStartExam}
           onClick={handleStartExam}
+          disabled={!canStartExam}
         >
           Pradėti egzaminą
         </Button>

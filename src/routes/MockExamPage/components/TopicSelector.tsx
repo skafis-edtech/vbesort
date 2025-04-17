@@ -12,6 +12,7 @@ interface TopicSelectorProps {
   onTopicSelect: (topic: string) => void;
   error: string | null;
   disabled?: boolean;
+  questionCounts: { [key: string]: number };
 }
 
 const TopicSelector: React.FC<TopicSelectorProps> = ({
@@ -20,6 +21,7 @@ const TopicSelector: React.FC<TopicSelectorProps> = ({
   onTopicSelect,
   error,
   disabled = false,
+  questionCounts,
 }) => {
   const handleSelectAll = () => {
     topics.forEach((topic) => {
@@ -77,12 +79,9 @@ const TopicSelector: React.FC<TopicSelectorProps> = ({
               style={{ cursor: "pointer" }}
             >
               <Card.Body>
-                <Card.Title className="text-center">{topic.name}</Card.Title>
-                {selectedTopics.includes(topic.topic) && (
-                  <div className="text-center mt-2">
-                    <span className="text-primary">✓ Pasirinkta</span>
-                  </div>
-                )}
+                <Card.Title className="text-center">
+                  {topic.name} ({questionCounts[topic.topic] || 0})
+                </Card.Title>
               </Card.Body>
             </Card>
           </Col>

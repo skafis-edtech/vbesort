@@ -61,6 +61,7 @@ const SingleProblem: React.FC<SingleProblemProps> = ({
           <Accordion activeKey={answerExpanded ? "answer" : ""}>
             <Accordion.Item eventKey="answer">
               <Accordion.Header
+                className="root-header"
                 onClick={() => setAnswerExpanded(!answerExpanded)}
               >
                 Atsakymas {imageError ? "(Failed to load)" : ""}
