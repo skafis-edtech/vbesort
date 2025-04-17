@@ -99,8 +99,8 @@ export function parseProblemFilename(filename: string): ProblemDetails {
         filename.charAt(13) === "N"
           ? "none"
           : filename.charAt(13) === "."
-          ? "A"
-          : filename.charAt(13)
+            ? "A"
+            : filename.charAt(13)
       ) as Level;
     } else if (problemType === "w") {
       number = parseInt(filename.substring(9, 11));
@@ -108,8 +108,8 @@ export function parseProblemFilename(filename: string): ProblemDetails {
         filename.charAt(11) === "N"
           ? "none"
           : filename.charAt(11) === "."
-          ? "A"
-          : filename.charAt(11)
+            ? "A"
+            : filename.charAt(11)
       ) as Level;
     } else if (problemType === "r") {
       number = parseInt(filename.substring(9, 11));
