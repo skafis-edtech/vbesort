@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { routes } from "../../routes/routes";
 import { Button, Offcanvas } from "react-bootstrap";
 import { useState } from "react";
-import { ReactComponent as ListIcon } from "../icons/list.svg";
+import ListIcon from "../icons/list.svg?react";
 
 export default function DesktopHeader() {
   const navigate = useNavigate();

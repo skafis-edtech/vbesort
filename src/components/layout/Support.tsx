@@ -1,5 +1,5 @@
 import { Alert } from "react-bootstrap";
-import { ReactComponent as CopyIcon } from "../icons/copy.svg";
+import CopyIcon from "../icons/copy.svg?react";
 import { useState } from "react";
 import { useDarkMode } from "./DarkModeContext";
 

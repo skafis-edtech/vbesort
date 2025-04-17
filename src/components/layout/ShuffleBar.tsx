@@ -1,5 +1,5 @@
 import { Button } from "react-bootstrap";
-import { ReactComponent as ShuffleIcon } from "../icons/shuffle.svg";
+import ShuffleIcon from "../icons/shuffle.svg?react";
 import { useDarkMode } from "./DarkModeContext";
 
 export default function ShuffleBar() {

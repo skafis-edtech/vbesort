@@ -1,5 +1,5 @@
 import { Session } from "../../misc";
-import { ReactComponent as InfoIcon } from "../icons/info.svg";
+import InfoIcon from "../icons/info.svg?react";
 import { Accordion, Alert, Button, Form } from "react-bootstrap";
 
 interface YearSelectorProps {
@@ -46,7 +46,11 @@ const YearSelector: React.FC<YearSelectorProps> = ({
           <Accordion.Header>
             <div>
               <InfoIcon
-                style={{ height: "24px", width: "24px", margin: "10px" }}
+                style={{
+                  height: "24px",
+                  width: "24px",
+                  margin: "10px",
+                }}
               />
             </div>
             <h5>{title}</h5>

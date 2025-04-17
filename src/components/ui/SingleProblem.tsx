@@ -1,22 +1,38 @@
 import { Accordion } from "react-bootstrap";
 import { noAnsYearList, parseProblemFilename } from "../../misc";
 import "./style.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 interface SingleProblemProps {
   filename: string;
   answerFilenameOrAnswer?: string;
+  defaultExpanded?: boolean;
 }
 
 const SingleProblem: React.FC<SingleProblemProps> = ({
   filename,
   answerFilenameOrAnswer,
+  defaultExpanded = false,
 }) => {
   const problemInfo = parseProblemFilename(filename);
   const problemSrc = `${problemInfo.subjectExam}-problems/${problemInfo.year}/${filename}`;
   const answerSrc = `${problemInfo.subjectExam}-answers/${answerFilenameOrAnswer}`;
+  const isImage =
+    answerFilenameOrAnswer?.includes(".png") ||
+    answerFilenameOrAnswer?.includes(".jpg");
 
-  const [answerExpanded, setAnswerExpanded] = useState(false);
+  const [imageError, setImageError] = useState<string | null>(null);
+  const [answerExpanded, setAnswerExpanded] = useState(defaultExpanded);
+
+  // Add useEffect to update answerExpanded when defaultExpanded changes
+  useEffect(() => {
+    setAnswerExpanded(defaultExpanded);
+  }, [defaultExpanded]);
+
+  const noAns = noAnsYearList[problemInfo.subjectExam].includes(
+    problemInfo.year.toString() + problemInfo.session
+  );
+
   return (
     <>
       <div
@@ -41,47 +57,62 @@ const SingleProblem: React.FC<SingleProblemProps> = ({
       </div>
 
       <div>
-        {answerFilenameOrAnswer &&
-          !noAnsYearList[problemInfo.subjectExam].includes(
-            problemInfo.year.toString() + problemInfo.session
-          ) && (
-            <Accordion>
-              <Accordion.Item eventKey="answer">
-                <Accordion.Header
-                  className="root-header"
-                  onClick={() => setAnswerExpanded(!answerExpanded)}
-                >
-                  Atsakymas
-                </Accordion.Header>
-                {answerExpanded && (
-                  <Accordion.Body>
-                    {!answerFilenameOrAnswer.includes(".png") ? (
-                      <h3>{answerFilenameOrAnswer}</h3>
-                    ) : (
+        {answerFilenameOrAnswer && !noAns && (
+          <Accordion activeKey={answerExpanded ? "answer" : ""}>
+            <Accordion.Item eventKey="answer">
+              <Accordion.Header
+                className="root-header"
+                onClick={() => setAnswerExpanded(!answerExpanded)}
+              >
+                Atsakymas {imageError ? "(Failed to load)" : ""}
+              </Accordion.Header>
+              <Accordion.Body>
+                {!isImage ? (
+                  <h3>{answerFilenameOrAnswer}</h3>
+                ) : (
+                  <div
+                    className="single-problem"
+                    style={{
+                      overflowX: "auto",
+                    }}
+                  >
+                    <img
+                      loading="lazy"
+                      alt={answerFilenameOrAnswer}
+                      src={answerSrc}
+                      style={{
+                        width: "auto",
+                        height: "auto",
+                        maxWidth: "900px",
+                        overflowX: "auto",
+                      }}
+                      onError={(e) => {
+                        const error = `Failed to load answer image: ${answerSrc}`;
+                        console.error(error);
+                        setImageError(error);
+                        // Don't hide the image element completely
+                        e.currentTarget.style.opacity = "0.5";
+                      }}
+                      onLoad={() => {
+                        setImageError(null);
+                      }}
+                    />
+                    {imageError && (
                       <div
-                        className="single-problem"
                         style={{
-                          overflowX: "auto",
+                          color: "red",
+                          marginTop: "10px",
                         }}
                       >
-                        <img
-                          loading="lazy"
-                          alt={answerFilenameOrAnswer}
-                          src={answerSrc}
-                          style={{
-                            width: "auto",
-                            height: "auto",
-                            maxWidth: "900px",
-                            overflowX: "auto",
-                          }}
-                        />
+                        {imageError}
                       </div>
                     )}
-                  </Accordion.Body>
+                  </div>
                 )}
-              </Accordion.Item>
-            </Accordion>
-          )}
+              </Accordion.Body>
+            </Accordion.Item>
+          </Accordion>
+        )}
       </div>
     </>
   );

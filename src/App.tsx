@@ -9,6 +9,7 @@ import usePersistentState from "./hooks";
 import { routes } from "./routes/routes";
 import { useMediaQuery } from "react-responsive";
 import globalYearListImport from "./year-list.json";
+import ExamQuestionPage from "./routes/ExamQuestionPage";
 
 const globalYearList = globalYearListImport as { [key: string]: string[] };
 
@@ -40,14 +41,18 @@ function App() {
                     element={
                       <route.element
                         yearList={yearList[route.path]}
-                        setYearList={(value) =>
-                          setYearList({ ...yearList, [route.path]: value })
+                        setYearList={(value: any) =>
+                          setYearList({
+                            ...yearList,
+                            [route.path]: value,
+                          })
                         }
                         allYearList={globalYearList[route.path]}
                       />
                     }
                   />
                 ))}
+                <Route path="/examquestion" element={<ExamQuestionPage />} />
               </Routes>
             </section>
             <aside></aside>
@@ -57,7 +62,12 @@ function App() {
               variant="info"
               dismissible
               onClose={() => setIsCookiesAccepted(true)}
-              style={{ position: "fixed", bottom: "-16px", left: 0, right: 0 }}
+              style={{
+                position: "fixed",
+                bottom: "-16px",
+                left: 0,
+                right: 0,
+              }}
             >
               Šis tinklapis naudoja Google Analytics slapukus bei Jūsų
               kompiuterio atmintį. Tęsdami lankymąsi puslapyje Jūs sutinkate su
