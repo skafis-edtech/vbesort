@@ -30,11 +30,11 @@ Used by 2k active monthly users!
 
 2. Install if not have yet `nodejs` and `npm`
 
-3. Run locally (access via browser [http://localhost:3000](http://localhost:3000))
+3. Run locally (access via browser [http://localhost:5173](http://localhost:5173))
 
 ```bash
 npm install
-npm run start
+npm run dev
 ```
 
 4. For deployment run if not have yet `npx firebase login`, setup stuff on firebase hosting and change project name in [/.firebaserc](/.firebaserc) to the name you use in firebase hosting.

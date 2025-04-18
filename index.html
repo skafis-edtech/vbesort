@@ -1,13 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="lt">
   <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>VBE Sort</title>
+    <meta charset="utf-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Pagal temas surūšiuotos VBE užduotys" />
+    <meta name="author" content="vbesort.lt" />
+    <meta
+      name="keywords"
+      content="egzaminas, vbe, užduotys, pagal temas, matematikos, surūšiuoti, uždaviniai, brandos egzaminas, 12 klasė, pupp, informatikos, istorijos, biologijos"
+    />
+    <link rel="apple-touch-icon" href="/favicon-apple.png" />
+    <link rel="manifest" href="/manifest.json" />
+
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-P8JCZHXYT5"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-P8JCZHXYT5");
+    </script>
+
+    <title>Surūšiuotos VBE užduotys</title>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/index.tsx"></script>
   </body>
-</html> 
+  <script>
+    (function () {
+      const darkMode = localStorage.getItem("IS_DARK_MODE") === "true";
+      const prefersDark = window.matchMedia(
+        "(prefers-color-scheme: dark)"
+      ).matches;
+      if (darkMode || prefersDark) {
+        document.body.setAttribute("data-bs-theme", "dark");
+        document.body.classList.add("bg-dark", "text-light");
+      }
+    })();
+  </script>
+</html>

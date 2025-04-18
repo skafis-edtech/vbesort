@@ -11,7 +11,6 @@ import MathNmpp8Page from "./MathNmpp8Page";
 import ChemPage from "./ChemPage";
 import LietPage from "./LietPage";
 import MockExamPage from "./MockExamPage";
-import ExamQuestionPage from "./ExamQuestionPage";
 
 export type Route = {
   path: string;
@@ -26,6 +25,12 @@ export const routes: Route[] = [
     title: "Matematikos VBE*",
     filepath: "/MainPage",
     element: MainPage,
+  },
+  {
+    path: "/mockexam",
+    title: "Testai",
+    filepath: "/MockExamPage",
+    element: MockExamPage,
   },
   {
     path: "/physics",
@@ -75,19 +80,13 @@ export const routes: Route[] = [
     filepath: "/ListPage",
     element: ListPage,
   },
+
   {
     path: "/about",
     title: "Apie",
     filepath: "/AboutPage",
     element: AboutPage,
   },
-  {
-    path: "/mockexam",
-    title: "Testai",
-    filepath: "/MockExamPage",
-    element: MockExamPage,
-  },
-
   {
     path: "/contribute",
     title: "Prisidėk",

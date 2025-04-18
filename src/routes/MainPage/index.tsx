@@ -34,7 +34,9 @@ const MainPage: React.FC<Components.PageProps> = (props) => {
         Surūšiuotos VBE bei kitų egzaminų užduotys
       </p>
       <p>
-        Plačiau puslapyje <a href="/about">"Apie"</a>
+        Galite generuoti <a href="/mockexam">mock testus</a>! Special thanks{" "}
+        <a href="https://github.com/delivey">delivey</a>. Plačiau puslapyje{" "}
+        <a href="/about">"Apie"</a>
       </p>
       <h1 className="title">Matematikos VBE*</h1>
       <p>* ir kitos 11-12 kl. egzaminų nesąmonės</p>

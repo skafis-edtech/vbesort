@@ -59,7 +59,7 @@ export default function DesktopHeader() {
                       handleClose();
                     }}
                   >
-                    {route.title === "ATRINKTOS" ? (
+                    {route.title === "ATRINKTOS" || route.title === "Testai" ? (
                       <Button>{route.title}</Button>
                     ) : (
                       route.title

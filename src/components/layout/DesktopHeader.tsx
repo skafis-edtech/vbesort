@@ -33,7 +33,7 @@ export default function DesktopHeader() {
                     key={route.path}
                     onClick={() => navigate(route.path)}
                   >
-                    {route.title === "ATRINKTOS" ? (
+                    {route.title === "ATRINKTOS" || route.title === "Testai" ? (
                       <Button>{route.title}</Button>
                     ) : (
                       route.title
