@@ -8,7 +8,7 @@ import contentfile from "./data/content.json";
 import "./styles.css";
 import { getLongType, getSearchNeutralText } from "../../misc";
 
-const LietPage: React.FC<Components.PageProps> = (props) => {
+const LietPage: React.FC<Components.PageProps> = () => {
   const [editorValue, setEditorValue] = useState<string>("");
   const [filterValue, setFilterValue] = useState<string>("");
 

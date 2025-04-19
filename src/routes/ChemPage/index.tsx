@@ -2,7 +2,7 @@ import { Alert } from "react-bootstrap";
 import { Components } from "../../types";
 import ShuffleBar from "../../components/layout/ShuffleBar";
 
-const ChemPage: React.FC<Components.PageProps> = (props) => {
+const ChemPage: React.FC<Components.PageProps> = () => {
   return (
     <>
       <ShuffleBar />
