@@ -33,7 +33,14 @@ const ProblemRenderer: React.FC<ProblemRendererProps> = ({
     <Card className="mb-4">
       <Card.Body>
         {problemInfo.problemType === "s" && initialConditions.length > 0 && (
-          <MathProblemRoot nrTopicLutSubset={initialConditions} />
+          <MathProblemRoot
+            nrTopicLutSubset={initialConditions.map((q) => ({
+              filename: q.filename,
+              topic: q.topic,
+              answer: q.answer,
+            }))}
+            defaultExpanded={true}
+          />
         )}
         <SingleProblem
           filename={currentQuestion.filename}
