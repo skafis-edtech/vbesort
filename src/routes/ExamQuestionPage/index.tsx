@@ -5,6 +5,10 @@ import { noAnsYearList, parseProblemFilename } from "../../misc";
 import ProblemRenderer, { Question, ExamState } from "./ProblemRenderer";
 import ExamResults from "./ExamResults";
 
+const questionsFiles = import.meta.glob<{
+  default: { topic: string; filename: string; answer?: string }[];
+}>("../*/data/nr-topic-lut.json", { eager: true });
+
 interface AnswerRecord {
   isCorrect: boolean;
   answered: boolean;
@@ -31,10 +35,13 @@ const ExamQuestionPage: React.FC = () => {
         setError(null);
 
         // Load questions for selected topics
+        // grab the pre-bundled JSON module instead of dynamic import
+        const examFolder = examState.selectedExam.replace(/^\//, "");
+        const mod = questionsFiles[`../${examFolder}/data/nr-topic-lut.json`];
+        if (!mod) throw new Error(`No question data for "${examFolder}"`);
+        const allRaw: Question[] = mod.default;
         const allQuestions: Question[] = [];
-        const topicPath = `../${examState.selectedExam}/data/nr-topic-lut.json`;
-        const questions = await import(/* @vite-ignore */ topicPath);
-        for (const question of questions.default) {
+        for (const question of allRaw) {
           const problemInfo = parseProblemFilename(question.filename);
           if (
             !examState.selectedTopics.includes(question.topic) ||
