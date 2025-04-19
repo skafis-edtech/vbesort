@@ -15,7 +15,7 @@ import BioProblem from "../BioPage/BioProblem";
 import HistProblem from "../HistPage/HistProblem";
 import Nmpp8Problem from "../MathNmpp8Page/Nmpp8Problem";
 
-const ListPage: React.FC<Components.PageProps> = (props) => {
+const ListPage: React.FC<Components.PageProps> = () => {
   const [items, setItems] = useState<string[]>([]);
   const { listUrl, setListUrl } = useDarkMode();
 

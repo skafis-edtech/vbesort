@@ -6,6 +6,13 @@ import { routes } from "../routes";
 import ExamSelector from "./components/ExamSelector";
 import TopicSelector from "./components/TopicSelector";
 import QuestionCountSelector from "./components/QuestionCountSelector";
+const topicsFiles = import.meta.glob<{ default: Topic[] }>(
+  "../*/data/topics-names-list.json",
+  { eager: true }
+);
+const questionsFiles = import.meta.glob<{
+  default: { topic: string; filename: string; answer?: string }[];
+}>("../*/data/nr-topic-lut.json", { eager: true });
 import { noAnsYearList, parseProblemFilename } from "../../misc";
 
 interface Topic {
@@ -45,12 +52,16 @@ const MockExamPage: React.FC<Components.PageProps> = () => {
       const loadTopics = async () => {
         try {
           setError(null);
-          const topicsPath = `../${selectedExam}/data/topics-names-list.json`;
-          const questionsPath = `../${selectedExam}/data/nr-topic-lut.json`;
-          const [topicsModule, questionsModule] = await Promise.all([
-            import(/* @vite-ignore */ topicsPath),
-            import(/* @vite-ignore */ questionsPath),
-          ]);
+          // grab the pre-bundled modules from our glob maps
+          const examFolder = selectedExam.replace(/^\//, "");
+          const topicsModule =
+            topicsFiles[`../${examFolder}/data/topics-names-list.json`];
+          const questionsModule =
+            questionsFiles[`../${examFolder}/data/nr-topic-lut.json`];
+
+          if (!topicsModule || !questionsModule) {
+            throw new Error(`Cannot find data for exam "${examFolder}"`);
+          }
 
           setTopics(topicsModule.default);
 

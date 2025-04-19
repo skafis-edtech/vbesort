@@ -53,3 +53,5 @@ yarn-error.log\*
 # ssh keys
 gh-pages-vbesort
 gh-pages-vbesort.pub
+
+dist/
