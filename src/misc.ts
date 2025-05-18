@@ -383,7 +383,7 @@ export function getShortYearName(year: number, session: Session) {
 
 export function getProblemName(problemDetails: ProblemDetails) {
   const subjectNames: { [key in SubjectExam]: string } = {
-    mv: "Matematikos VBE*",
+    mv: "Matematikos VBE",
     bv: "Biologijos VBE",
     iv: "Istorijos VBE",
     mp: "Matematikos PUPP",

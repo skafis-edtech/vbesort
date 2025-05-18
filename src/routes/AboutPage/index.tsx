@@ -1,5 +1,6 @@
 import { Alert } from "react-bootstrap";
 import { Components } from "../../types";
+import Support from "../../components/layout/Support";
 
 const AboutPage: React.FC<Components.PageProps> = () => {
   return (
@@ -21,6 +22,8 @@ const AboutPage: React.FC<Components.PageProps> = () => {
         Surūšiuotos VBE bei kitų egzaminų užduotys
       </p>
       <h1 className="title">Apie</h1>
+      <div id="support"></div>
+      <Support />
       <Alert variant="warning">
         <h5>
           Sekite šio bei kitų Skafis tinklapių statusą, naujienas bei
