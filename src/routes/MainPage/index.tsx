@@ -17,6 +17,12 @@ const MainPage: React.FC<Components.PageProps> = (props) => {
   return (
     <div>
       <ShuffleBar />
+      <Alert
+        variant="info"
+        style={{ padding: 0, paddingLeft: "4px", margin: 0, marginTop: "2px" }}
+      >
+        Paremkite. Informacija puslapyje <a href="/about#support">"Apie"</a>
+      </Alert>
       <div
         style={{
           position: "relative",
@@ -33,13 +39,12 @@ const MainPage: React.FC<Components.PageProps> = (props) => {
       <p className="vbesort-description">
         Surūšiuotos VBE bei kitų egzaminų užduotys
       </p>
+      <h1 className="title">Matematikos VBE</h1>
       <p>
         Galite generuoti <a href="/mockexam">mock testus</a>! Special thanks{" "}
         <a href="https://github.com/delivey">delivey</a>. Plačiau puslapyje{" "}
         <a href="/about">"Apie"</a>
       </p>
-      <h1 className="title">Matematikos VBE*</h1>
-      <p>* ir kitos 11-12 kl. egzaminų nesąmonės</p>
       <Alert>Čia rasite VISAS matematikos VBE užduotis nuo 2002 metų!</Alert>
       <Alert variant="info">
         VBE formulynas:{" "}
@@ -63,7 +68,7 @@ const MainPage: React.FC<Components.PageProps> = (props) => {
           (!isOfficialMathVbe(year, session) ? "" : " ne oficialu")
         }
         noAnsYearList={noAnsYearList["mv"]}
-        title="Pasirinkite, kurių metų matematikos VBE* užduotis rodyti"
+        title="Pasirinkite, kurių metų matematikos VBE užduotis rodyti"
       />
       <Accordion>
         {topics.map((topic) => (

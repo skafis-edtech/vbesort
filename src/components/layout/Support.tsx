@@ -48,9 +48,9 @@ export default function Support() {
         Hmm, matai? Nėra reklamų! Tegu taip ir išlieka ;)
       </h5>
       <div>
-        <em>Pervedimo paskirtis:</em> vbesort.lt tinklapio savanoriška parama{" "}
+        <em>Pervedimo paskirtis:</em> vbesort.lt tinklapio parama{" "}
         <em>+ Jūsų norima žinutė</em>{" "}
-        <CopyButton text="vbesort.lt tinklapio savanoriška parama. ..." />
+        <CopyButton text="vbesort.lt tinklapio parama. ..." />
       </div>
       <div>
         <em>Gavėjas:</em> MB SKAFIS <CopyButton text="MB SKAFIS" />
@@ -59,7 +59,7 @@ export default function Support() {
         <em>Sąskaitos nr.:</em> LT737300010188621353{" "}
         <CopyButton text="LT737300010188621353" />
       </div>
-      <div>Susisiekite el. paštu dėl sąskaitos faktūros.</div>
+      <div>Susisiekite el. paštu info@skafis.lt dėl sąskaitos faktūros.</div>
     </Alert>
   );
 }

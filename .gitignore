@@ -54,4 +54,4 @@ yarn-error.log\*
 gh-pages-vbesort
 gh-pages-vbesort.pub
 
-dist/
+/dist

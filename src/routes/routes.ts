@@ -22,7 +22,7 @@ export type Route = {
 export const routes: Route[] = [
   {
     path: "/",
-    title: "Matematikos VBE*",
+    title: "Matematikos VBE",
     filepath: "/MainPage",
     element: MainPage,
   },

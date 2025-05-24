@@ -1,0 +1,9 @@
+.flex-mobile {
+  flex-direction: column;
+}
+
+@media (min-width: 1200px) {
+  .flex-mobile {
+    flex-direction: row;
+  }
+}
