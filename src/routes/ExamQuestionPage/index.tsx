@@ -37,16 +37,6 @@ const ExamQuestionPage: React.FC = () => {
         // Load questions for selected topics
         // grab the pre-bundled JSON module instead of dynamic import
         const examFolder = examState.selectedExam.replace(/^\//, "");
-        console.log(
-          "Available questionsFiles keys:",
-          Object.keys(questionsFiles)
-        );
-        console.log(
-          "Looking for key:",
-          `../${examFolder}/data/nr-topic-lut.json`
-        );
-        console.log("examFolder:", examFolder);
-        console.log("selectedExam:", examState.selectedExam);
         const mod = questionsFiles[`../${examFolder}/data/nr-topic-lut.json`];
         if (!mod) throw new Error(`No question data for "${examFolder}"`);
         const allRaw: Question[] = mod.default;
