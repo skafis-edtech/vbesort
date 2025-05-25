@@ -37,6 +37,16 @@ const ExamQuestionPage: React.FC = () => {
         // Load questions for selected topics
         // grab the pre-bundled JSON module instead of dynamic import
         const examFolder = examState.selectedExam.replace(/^\//, "");
+        console.log(
+          "Available questionsFiles keys:",
+          Object.keys(questionsFiles)
+        );
+        console.log(
+          "Looking for key:",
+          `../${examFolder}/data/nr-topic-lut.json`
+        );
+        console.log("examFolder:", examFolder);
+        console.log("selectedExam:", examState.selectedExam);
         const mod = questionsFiles[`../${examFolder}/data/nr-topic-lut.json`];
         if (!mod) throw new Error(`No question data for "${examFolder}"`);
         const allRaw: Question[] = mod.default;
@@ -92,9 +102,10 @@ const ExamQuestionPage: React.FC = () => {
       );
       if (problemInfo.problemType === "s") {
         // Load initial conditions for this question
-        const topicPath = `../${examState.selectedExam}/data/nr-topic-lut.json`;
-        import(/* @vite-ignore */ topicPath).then((module) => {
-          const allQuestions = module.default;
+        const examFolder = examState.selectedExam.replace(/^\//, "");
+        const mod = questionsFiles[`../${examFolder}/data/nr-topic-lut.json`];
+        if (mod) {
+          const allQuestions = mod.default;
           // Find questions that are part of the same problem set
           const relatedQuestions = allQuestions.filter((q: Question) => {
             const qInfo = parseProblemFilename(q.filename);
@@ -107,7 +118,7 @@ const ExamQuestionPage: React.FC = () => {
             );
           });
           setInitialConditions(relatedQuestions);
-        });
+        }
       } else {
         setInitialConditions([]);
       }

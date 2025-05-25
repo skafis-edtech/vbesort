@@ -1,8 +1,6 @@
 import { Accordion } from "react-bootstrap";
 import "../../components/ui/style.css";
 import SingleProblem from "../../components/ui/SingleProblem";
-import { useState } from "react";
-
 interface MathProblemRootProps {
   nrTopicLutSubset: { filename: string; topic: string; answer?: string }[];
   defaultExpanded?: boolean;
