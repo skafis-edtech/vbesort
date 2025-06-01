@@ -60,7 +60,7 @@ Mainly the data about problems is kept in their screenshot filenames. There's a 
 
 ## Automatisation
 
-See more in github.com/skafis-edtech/autom
+See more in [automatisation/](./automatisation/)
 
 ## Contribute
 
