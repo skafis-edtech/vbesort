@@ -1,4 +1,4 @@
-import { Alert, Button } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import ShuffleIcon from "../icons/shuffle.svg?react";
 import { useDarkMode } from "./DarkModeContext";
 import "./flexMobile.css";
@@ -51,21 +51,6 @@ export default function ShuffleBar() {
           </Button>
         </div>
       </div>
-      <Alert
-        variant="warning"
-        style={{ padding: 0, paddingLeft: "4px", margin: 0 }}
-      >
-        Taip pat prieinama per:{" "}
-        <a href="https://vbesort.web.app">vbesort.web.app</a>,{" "}
-        <a href="https://vbesort2.web.app">vbesort2.web.app</a>,{" "}
-        <a href="https://vbesort3.web.app">vbesort3.web.app</a>,{" "}
-        <a href="https://vbesort4.web.app">vbesort4.web.app</a>,{" "}
-        <a href="https://vbesort5.web.app">vbesort5.web.app</a>. Tinklapio
-        statusas:{" "}
-        <a href="https://www.facebook.com/groups/428680532854585">
-          Facebook grupėje
-        </a>
-      </Alert>
     </div>
   );
 }

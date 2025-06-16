@@ -7,6 +7,41 @@
         "source": "**",
         "destination": "/index.html"
       }
+    ],
+    "headers": [
+      {
+        "source": "**",
+
+        "headers": [
+          {
+            "key": "Access-Control-Allow-Origin",
+
+            "value": "https://www.vbesort.lt"
+          },
+
+          {
+            "key": "Access-Control-Allow-Methods",
+
+            "value": "GET, HEAD, POST, OPTIONS"
+          },
+
+          {
+            "key": "Access-Control-Allow-Headers",
+            "value": "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+          },
+
+          {
+            "key": "Access-Control-Allow-Credentials",
+            "value": "true"
+          },
+
+          {
+            "key": "Access-Control-Max-Age",
+
+            "value": "3600"
+          }
+        ]
+      }
     ]
   }
 }
