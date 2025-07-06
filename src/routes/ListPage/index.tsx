@@ -48,7 +48,7 @@ const ListPage: React.FC<Components.PageProps> = () => {
             sugrįžti čia.
           </Alert>
           <div style={{ border: "1px black solid", width: "fit-content" }}>
-            <img src="/help/list-maker-help.png" alt="list-maker-help" />
+            <img src="/help/list-maker-help.webp" alt="list-maker-help" />
           </div>
         </div>
       ) : (
@@ -80,10 +80,10 @@ const ListPage: React.FC<Components.PageProps> = () => {
             case "mv":
               problemComponent = (
                 <MathProblem
-                  filename={item + ".png"}
+                  filename={item + ".webp"}
                   key={index}
                   answerFilenameOrAnswer={
-                    mvNrTopicLut.find((pr) => pr.filename === item + ".png")
+                    mvNrTopicLut.find((pr) => pr.filename === item + ".webp")
                       ?.answer
                   }
                   nrTopicLutSubsetForRoot={mvNrTopicLut
@@ -117,7 +117,7 @@ const ListPage: React.FC<Components.PageProps> = () => {
               problemComponent = (
                 <MathPuppProblem
                   key={item}
-                  filename={item + ".png"}
+                  filename={item + ".webp"}
                   nrTopicLutSubsetForRoot={mpNrTopicLut.filter((pr) => {
                     const prInfo = parseProblemFilename(pr.filename);
                     return (
@@ -135,7 +135,7 @@ const ListPage: React.FC<Components.PageProps> = () => {
                     );
                   })}
                   answerFilenameOrAnswer={
-                    mpNrTopicLut.find((pr) => pr.filename === item + ".png")
+                    mpNrTopicLut.find((pr) => pr.filename === item + ".webp")
                       ?.answer
                   }
                 />
@@ -145,9 +145,9 @@ const ListPage: React.FC<Components.PageProps> = () => {
               problemComponent = (
                 <PhysicsProblem
                   key={item}
-                  filename={item + ".png"}
+                  filename={item + ".webp"}
                   answerFilenameOrAnswer={
-                    fvNrTopicLut.find((pr) => pr.filename === item + ".png")
+                    fvNrTopicLut.find((pr) => pr.filename === item + ".webp")
                       ?.answer
                   }
                 />
@@ -157,9 +157,9 @@ const ListPage: React.FC<Components.PageProps> = () => {
               problemComponent = (
                 <BioProblem
                   key={item}
-                  filename={item + ".png"}
+                  filename={item + ".webp"}
                   answerFilenameOrAnswer={
-                    bvNrTopicLut.find((pr) => pr.filename === item + ".png")
+                    bvNrTopicLut.find((pr) => pr.filename === item + ".webp")
                       ?.answer
                   }
                 />
@@ -169,9 +169,9 @@ const ListPage: React.FC<Components.PageProps> = () => {
               problemComponent = (
                 <HistProblem
                   key={item}
-                  filename={item + ".png"}
+                  filename={item + ".webp"}
                   answerFilenameOrAnswer={
-                    ivNrTopicLut.find((pr) => pr.filename === item + ".png")
+                    ivNrTopicLut.find((pr) => pr.filename === item + ".webp")
                       ?.answer
                   }
                   nrTopicLutForSources={ivNrTopicLut.filter((pr) => {
@@ -192,9 +192,9 @@ const ListPage: React.FC<Components.PageProps> = () => {
               problemComponent = (
                 <Nmpp8Problem
                   key={item}
-                  filename={item + ".png"}
+                  filename={item + ".webp"}
                   answerFilenameOrAnswer={
-                    mvNrTopicLut.find((pr) => pr.filename === item + ".png")
+                    mvNrTopicLut.find((pr) => pr.filename === item + ".webp")
                       ?.answer
                   }
                 />
