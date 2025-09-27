@@ -27,7 +27,7 @@ export default function DesktopHeader() {
             vbesort.lt{" "}
             <sub>
               <em>
-                by <a href="https://www.skafis.lt">Skafis</a>
+                by <a href="https://simtukas.lt">Šimtukas</a>
               </em>
             </sub>
           </Navbar.Brand>

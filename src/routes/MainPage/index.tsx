@@ -21,7 +21,12 @@ const MainPage: React.FC<Components.PageProps> = (props) => {
         variant="info"
         style={{ padding: 0, paddingLeft: "4px", margin: 0, marginTop: "2px" }}
       >
-        Paremkite. Informacija puslapyje <a href="/about#support">"Apie"</a>
+        Rimtas ruošimas matematikos egzaminams, siekiantiems aukštų rezultatų (9
+        - 12 kl.). Garantuojame gerus rezultatus, mokytojų matematikos egzaminų
+        vidurkis 95/100! Registracijos forma:{" "}
+        <a href="https://forms.gle/DpM2B4PMo1EEv8QJ9">
+          https://forms.gle/DpM2B4PMo1EEv8QJ9
+        </a>
       </Alert>
       <div
         style={{
@@ -33,7 +38,7 @@ const MainPage: React.FC<Components.PageProps> = (props) => {
       >
         <h1 className="vbesort-title">vbesort.lt</h1>
         <em style={{ position: "absolute", right: "30%", bottom: 0 }}>
-          by <a href="https://www.skafis.lt">Skafis</a>
+          by <a href="https://simtukas.lt">Šimtukas</a>
         </em>
       </div>{" "}
       <p className="vbesort-description">

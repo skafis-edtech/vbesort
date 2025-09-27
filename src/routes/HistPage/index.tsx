@@ -26,7 +26,7 @@ const HistPage: React.FC<Components.PageProps> = (props) => {
       >
         <h1 className="vbesort-title">vbesort.lt</h1>
         <em style={{ position: "absolute", right: "30%", bottom: 0 }}>
-          by <a href="https://www.skafis.lt">Skafis</a>
+          by <a href="https://simtukas.lt">Šimtukas</a>
         </em>
       </div>{" "}
       <p className="vbesort-description">

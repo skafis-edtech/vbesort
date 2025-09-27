@@ -15,7 +15,7 @@ const AboutPage: React.FC<Components.PageProps> = () => {
       >
         <h1 className="vbesort-title">vbesort.lt</h1>
         <em style={{ position: "absolute", right: "30%", bottom: 0 }}>
-          by <a href="https://www.skafis.lt">Skafis</a>
+          by <a href="https://simtukas.lt">Šimtukas</a>
         </em>
       </div>{" "}
       <p className="vbesort-description">
@@ -40,9 +40,9 @@ const AboutPage: React.FC<Components.PageProps> = () => {
       <h3>Kontaktai</h3>
       <p>
         {" "}
-        El. paštas: <a href="mailto:info@skafis.lt">info@skafis.lt</a>
+        El. paštas: <a href="mailto:tech@simtukas.lt">tech@simtukas.lt</a>
       </p>
-      <p>MB Skafis</p>
+      <p>MB Šimtukas</p>
       <h3>Tinklapio kodas</h3>
       <p>
         <a
