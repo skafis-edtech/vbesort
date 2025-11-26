@@ -18,7 +18,7 @@ const SingleProblem: React.FC<SingleProblemProps> = ({
   const problemSrc = `${problemInfo.subjectExam}-problems/${problemInfo.year}/${filename}`;
   const answerSrc = `${problemInfo.subjectExam}-answers/${answerFilenameOrAnswer}`;
   const isImage =
-    answerFilenameOrAnswer?.includes(".png") ||
+    answerFilenameOrAnswer?.includes(".webp") ||
     answerFilenameOrAnswer?.includes(".jpg");
 
   const [imageError, setImageError] = useState<string | null>(null);

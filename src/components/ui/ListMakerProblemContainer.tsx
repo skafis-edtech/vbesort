@@ -16,17 +16,17 @@ const ListMakerProblemContainer: React.FC<ProblemSelectContainerProps> = ({
   const { listUrl, setListUrl } = useDarkMode();
 
   const [isAdded, setIsAdded] = useState(
-    listUrl.includes(filename.slice(0, -4)) || false
+    listUrl.includes(filename.slice(0, -5)) || false
   );
 
   useEffect(() => {
     if (isAdded) {
       setListUrl(
-        appendToMakerListUrl(filename.slice(0, -4), listUrl ? listUrl : "")
+        appendToMakerListUrl(filename.slice(0, -5), listUrl ? listUrl : "")
       );
     } else {
       setListUrl(
-        removeFromListUrl(filename.slice(0, -4), listUrl ? listUrl : "")
+        removeFromListUrl(filename.slice(0, -5), listUrl ? listUrl : "")
       );
     }
   }, [isAdded, listUrl, setListUrl, filename]);

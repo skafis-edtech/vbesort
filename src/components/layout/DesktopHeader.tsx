@@ -14,7 +14,7 @@ export default function DesktopHeader() {
         <Container>
           <Navbar.Brand onClick={() => navigate("/")}>
             <img
-              src="/favicon-32x32.png"
+              src="/favicon-32x32.webp"
               alt="vbesort logo"
               style={{ height: "30px", marginRight: "10px" }}
             />
